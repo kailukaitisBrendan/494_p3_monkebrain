@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     float movementSpeed = 5f;
     public LayerMask Climbable;
-
+    public Camera cam;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,90 +21,87 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-
-            newVelocity.z = movementSpeed;
+            Vector3 xzmove = cam.transform.forward;
+            xzmove.y = 0;
+            newVelocity = xzmove * movementSpeed;
 
             //Rotation
             if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
             {
-                transform.rotation = Quaternion.LookRotation(newVelocity);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVelocity), 0.1f);
             }
             else
             {
                 Vector3 newRot = newVelocity;
                 newRot.y = 0;
-                transform.rotation = Quaternion.LookRotation(newRot);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRot), 0.1f);
             }
 
         }
-        else
-        {
-            newVelocity.z = 0;
-        }
+        
 
         if (Input.GetKey(KeyCode.S))
         {
-            newVelocity.z = -movementSpeed;
+            Vector3 xzmove = cam.transform.forward;
+            xzmove.y = 0;
+            newVelocity = xzmove * -movementSpeed;
 
             //Rotation
             if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
             {
-                transform.rotation = Quaternion.LookRotation(newVelocity);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVelocity), 0.1f);
             }
             else
             {
                 Vector3 newRot = newVelocity;
                 newRot.y = 0;
-                transform.rotation = Quaternion.LookRotation(newRot);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRot), 0.1f);
             }
         }
-        else if (!Input.GetKey(KeyCode.W))
-        {
-            newVelocity.z = 0;
-        }
+        
 
         if (Input.GetKey(KeyCode.A))
         {
-            newVelocity.x = -movementSpeed;
+            Vector3 xzmove = cam.transform.forward;
+            xzmove.y = 0;
+            Vector3 left = Vector3.Cross(xzmove, Vector3.up).normalized;
+            newVelocity = left * movementSpeed;
 
             //Rotation
             if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
             {
-                transform.rotation = Quaternion.LookRotation(newVelocity);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVelocity), 0.1f);
             }
             else
             {
                 Vector3 newRot = newVelocity;
                 newRot.y = 0;
-                transform.rotation = Quaternion.LookRotation(newRot);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRot), 0.1f);
             }
 
         }
-        else
-        {
-            newVelocity.x = 0;
-        }
+        
         if (Input.GetKey(KeyCode.D))
         {
-            newVelocity.x = movementSpeed;
+            Vector3 xzmove = cam.transform.forward;
+            xzmove.y = 0;
+            Vector3 left = Vector3.Cross(xzmove, Vector3.up).normalized;
+            newVelocity = left * -movementSpeed;
 
             //Rotation
             if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
             {
-                transform.rotation = Quaternion.LookRotation(newVelocity);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVelocity), 0.1f);
             }
             else
             {
                 Vector3 newRot = newVelocity;
                 newRot.y = 0;
-                transform.rotation = Quaternion.LookRotation(newRot);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRot), 0.1f);
             }
 
         }
-        else if (!Input.GetKey(KeyCode.A))
-        {
-            newVelocity.x = 0;
-        }
+        
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
         {
             newVelocity.x = 0;

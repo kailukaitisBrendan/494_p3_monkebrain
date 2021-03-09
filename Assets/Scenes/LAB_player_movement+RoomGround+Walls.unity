@@ -342,6 +342,7 @@ MonoBehaviour:
   Climbable:
     serializedVersion: 2
     m_Bits: 256
+  cam: {fileID: 963194227}
 --- !u!1 &648159377
 GameObject:
   m_ObjectHideFlags: 0
