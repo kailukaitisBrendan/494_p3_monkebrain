@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
-    float movementSpeed = 5f;
+    float movementSpeed = 6f;
+    float jumpPower = 5f;
     public LayerMask Climbable;
     public Camera cam;
     // Start is called before the first frame update
@@ -24,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
             Vector3 xzmove = cam.transform.forward;
             xzmove.y = 0;
             newVelocity = xzmove * movementSpeed;
+
+            
+
 
             //Rotation
             if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
@@ -65,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 xzmove = cam.transform.forward;
             xzmove.y = 0;
             Vector3 left = Vector3.Cross(xzmove, Vector3.up).normalized;
-            newVelocity = left * movementSpeed;
+            newVelocity = left * movementSpeed / 2;
 
             //Rotation
             if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
@@ -86,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 xzmove = cam.transform.forward;
             xzmove.y = 0;
             Vector3 left = Vector3.Cross(xzmove, Vector3.up).normalized;
-            newVelocity = left * -movementSpeed;
+            newVelocity = left * -movementSpeed / 2;
 
             //Rotation
             if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
@@ -101,7 +105,91 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        
+
+
+        // DIAGONAL MOVEMENT
+
+        if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            Vector3 xzmove = cam.transform.forward;
+            xzmove.y = 0;
+            
+            Vector3 left = Vector3.Cross(xzmove, Vector3.up).normalized;
+            newVelocity = (xzmove + left) * movementSpeed / 2;
+
+            //Rotation
+            if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVelocity), 0.1f);
+            }
+            else
+            {
+                Vector3 newRot = newVelocity;
+                newRot.y = 0;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRot), 0.1f);
+            }
+        }
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
+            Vector3 xzmove = cam.transform.forward;
+            xzmove.y = 0;
+
+            Vector3 left = Vector3.Cross(xzmove, Vector3.up).normalized;
+            newVelocity = (xzmove - left) * movementSpeed / 2;
+            //Rotation
+            if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVelocity), 0.1f);
+            }
+            else
+            {
+                Vector3 newRot = newVelocity;
+                newRot.y = 0;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRot), 0.1f);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        {
+            Vector3 xzmove = cam.transform.forward;
+            xzmove.y = 0;
+
+            Vector3 left = Vector3.Cross(xzmove, Vector3.up).normalized;
+            newVelocity = (xzmove - left) * -movementSpeed / 2;
+            //Rotation
+            if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVelocity), 0.1f);
+            }
+            else
+            {
+                Vector3 newRot = newVelocity;
+                newRot.y = 0;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRot), 0.1f);
+            }
+        }
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
+            Vector3 xzmove = cam.transform.forward;
+            xzmove.y = 0;
+
+            Vector3 left = Vector3.Cross(xzmove, Vector3.up).normalized;
+            newVelocity = (xzmove + left) * -movementSpeed / 2;
+            //Rotation
+            if (IsGrounded() && !Input.GetKey(KeyCode.Space) && newVelocity.y == 0)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newVelocity), 0.1f);
+            }
+            else
+            {
+                Vector3 newRot = newVelocity;
+                newRot.y = 0;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRot), 0.1f);
+            }
+        }
+
+
+
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
         {
             newVelocity.x = 0;
@@ -120,8 +208,21 @@ public class PlayerMovement : MonoBehaviour
             newVelocity.y = 3;
             //Debug.Log("Hi");
         }
-        
 
+        //JUMP 
+
+        if (Input.GetKey(KeyCode.Space) && IsGrounded())
+        {
+           
+            newVelocity.y = jumpPower;
+
+
+        }
+
+        if (!IsGrounded() && !ExistsForwardWall())
+        {
+            newVelocity.y = rb.velocity.y;
+        }
 
         rb.velocity = newVelocity;
     }
@@ -130,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit hit;
         float dist = 1.01f;
-        Vector3 offset = new Vector3(0, 1, 0);
+        Vector3 offset = new Vector3(0, 0, 0);
         Debug.DrawRay(transform.position + offset, Vector3.down, Color.cyan);
         if (Physics.Raycast(transform.position + offset, Vector3.down, out hit, dist))
         {
