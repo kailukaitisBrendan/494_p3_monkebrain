@@ -145,7 +145,8 @@ public class PlayerMovement : MonoBehaviour
             || Physics.Raycast(transform.position + head, transform.forward, out hit, dist, Climbable)
         )
         {
-            return true;
+            // Ignore if we are currently holding the climbable object.
+            return hit.transform.parent == null;
         }
 
         return false;
