@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1980551992258579896}
   - component: {fileID: 1980551992258579897}
   - component: {fileID: 1980551992258579903}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ramp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,4 +159,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319b9e43c72154a13b88e24cd7a8d3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPressEventId: 0
+  buttonEventId: 0
+  reversible: 0

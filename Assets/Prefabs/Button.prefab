@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7204206149281160239}
   - component: {fileID: 7204206149281160240}
   - component: {fileID: 7204206149281160238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Button Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   threshold: 0.5
-  buttonPressEventId: 0
+  buttonEventId: 0
 --- !u!1 &7204206149586570431
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 7204206149586570429}
   - component: {fileID: 7204206149586570430}
   - component: {fileID: 7204206149586570426}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}

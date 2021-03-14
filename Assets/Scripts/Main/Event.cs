@@ -6,7 +6,8 @@ using UnityEngine;
 Includes a list of Event class declarations / constructors
 */
 
-// Empty Event Class (deprecated, since it's not descriptive)
+
+// USE: (deprecated, since it's not descriptive)
 public class Event
 {
 }
@@ -23,6 +24,8 @@ public class AddWinConEvent
     }
 }
 
+
+// USE: published when a level is cleared
 public class LevelClearEvent
 {
     public LevelClearEvent()
@@ -30,6 +33,8 @@ public class LevelClearEvent
     }
 }
 
+
+// USE: published when a level is failed
 public class LevelFailEvent
 {
     public LevelFailEvent()
@@ -48,3 +53,15 @@ public class ButtonPressEvent
         id = _id;
     }
 }
+
+
+// USE: published when a button is lifted
+public class ButtonLiftEvent
+{
+    public int id;
+    public ButtonLiftEvent(int _id)
+    {
+        id = _id;
+    }
+}
+

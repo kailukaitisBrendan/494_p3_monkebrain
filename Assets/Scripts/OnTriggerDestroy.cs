@@ -6,12 +6,11 @@ public class OnTriggerDestroy : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hello1");
-
-        if (other.gameObject.CompareTag("Package"))
-        {
-            Debug.Log("Hello");
-            Destroy(other.gameObject);
+        if (other.gameObject.GetComponent<Respawnable>()) {
+            other.gameObject.GetComponent<Respawnable>().Respawn();
+        }
+        else {
+            // Destroy(other.gameObject);
         }
     }
 }
