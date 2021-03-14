@@ -49,7 +49,7 @@ public class PickupObject : MonoBehaviour
     {
         // Try to pick up item in front of the player.
         // Create mask so we only collide with grabbable objects.
-        LayerMask mask = LayerMask.GetMask("Grabbable Object");
+        LayerMask mask = LayerMask.GetMask("Interactable Object");
         // Shoot a ray out a short distance in front of player. 
         Vector3 pos = transform.position;
         pos.y = itemSlot.position.y;
