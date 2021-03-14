@@ -12,6 +12,7 @@ public class TriggerButtonEventUponPress : MonoBehaviour
     private float initialPosition;
 
     public int buttonPressEventId;
+    private bool published = false;
 
     void Start()
     {
@@ -20,8 +21,12 @@ public class TriggerButtonEventUponPress : MonoBehaviour
 
     void Update()
     {
-        if (transform.localPosition.y / initialPosition <= threshold) {
+        // Publish button press event when a button is pressed beyond it's threshold
+        if (!published && 
+            transform.localPosition.y / initialPosition <= threshold) {
+            
             EventBus.Publish<ButtonPressEvent>(new ButtonPressEvent(buttonPressEventId));
+            published = true;
         }
     }
 }
