@@ -39,9 +39,9 @@ public class PickupObject : MonoBehaviour
 
         _pickedUp = false;
         
-        //Re-enable collision.
-        Physics.IgnoreCollision(col, GetComponent<Collider>(), false);
-        
+        //Re-enable collider.
+        col.enabled = true;
+
         Debug.Log("Dropped Item");
     }
 
@@ -49,7 +49,7 @@ public class PickupObject : MonoBehaviour
     {
         // Try to pick up item in front of the player.
         // Create mask so we only collide with grabbable objects.
-        LayerMask mask = LayerMask.GetMask("Interactable Object");
+        LayerMask mask = LayerMask.GetMask("Grabbable Object");
         // Shoot a ray out a short distance in front of player. 
         Vector3 pos = transform.position;
         pos.y = itemSlot.position.y;
@@ -59,6 +59,8 @@ public class PickupObject : MonoBehaviour
             Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             Debug.Log("Item picked up");
         }
+
+        if (hit.transform == null) return;
         
         _pickedUpObject = hit.transform.gameObject;
         
@@ -75,10 +77,10 @@ public class PickupObject : MonoBehaviour
         _pickedUpObject.transform.localPosition = Vector3.zero;
         _pickedUpObject.transform.localEulerAngles = Vector3.zero;
         
-        // Ignore collision between the collider and the player.
+        // Disable collider of grabbed object.
         Collider col = _pickedUpObject.GetComponent<Collider>();
-        Physics.IgnoreCollision(col, GetComponent<Collider>(), true);
-
+        col.enabled = false;
+        
         _pickedUp = true;
     }
 

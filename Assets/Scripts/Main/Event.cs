@@ -30,6 +30,13 @@ public class LevelClearEvent
     }
 }
 
+public class LevelFailEvent
+{
+    public LevelFailEvent()
+    {
+    }
+}
+
 
 // USE: published when a button is pressed
 public class ButtonPressEvent

@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7189565168047139424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8631240490255696574}
+  - component: {fileID: 577245095600177450}
+  m_Layer: 0
+  m_Name: Shadow Projector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8631240490255696574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7189565168047139424}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8497152196208681337}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!119 &577245095600177450
+Projector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7189565168047139424}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_NearClipPlane: 0.1
+  m_FarClipPlane: 100
+  m_FieldOfView: 60
+  m_AspectRatio: 1
+  m_Orthographic: 0
+  m_OrthographicSize: 1
+  m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &8497152196208681333
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,9 +65,9 @@ GameObject:
   - component: {fileID: 8497152196208681336}
   - component: {fileID: 8497152196208681343}
   - component: {fileID: 8884979795343272461}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +85,7 @@ Transform:
   m_Children:
   - {fileID: 8497152197109940815}
   - {fileID: 6333447323867098795}
+  - {fileID: 8631240490255696574}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,6 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfa4da9b3681684abeb5e40899f15c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 6
+  jumpPower: 5
+  climbSpeed: 3
   Climbable:
     serializedVersion: 2
     m_Bits: 256
@@ -156,7 +210,7 @@ GameObject:
   - component: {fileID: 8497152197109940815}
   - component: {fileID: 8497152197109940808}
   - component: {fileID: 8497152197109940809}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6333447323867098795}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ItemSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8917929062937886382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8497152196208681337}
