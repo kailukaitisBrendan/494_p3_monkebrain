@@ -61,7 +61,7 @@ public class EnemyMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, point, enemySpeed * Time.deltaTime);
             yield return null;
         }
-        Debug.Log("Reached point: " + point);
+        // Debug.Log("Reached point: " + point);
     }
 
     void _OnPlayerSpotted(PlayerSpottedEvent e)
@@ -69,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
         if (e.enemy != this.gameObject)
             return;
         StopAllCoroutines();
-        Debug.Log("Player Spotted!: " + e.player.transform.position);
+        // Debug.Log("Player Spotted!: " + e.player.transform.position);
         StartCoroutine(FollowPlayer(e.player));
         enemySpeed *= 2;
         
@@ -85,7 +85,7 @@ public class EnemyMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, point, enemySpeed * Time.deltaTime);
             yield return null;
         }
-        Debug.Log("Reached player: ");
+        //Debug.Log("Reached player: ");
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -105,9 +105,9 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator WaitToDie()
     {
-        Debug.Log("start death");
+        // Debug.Log("start death");
         yield return new WaitForSeconds(1f);
-        Debug.Log("end death");
+        // Debug.Log("end death");
         EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
     }
 }

@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             newForce = transform.forward;
             newForce.y = climbSpeed;
-            Debug.Log("climb");
+            //Debug.Log("climb");
             isJumpingOrClimbing = true;
         }
 
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
             newForce.y = jumpPower;
-            Debug.Log("jump");
+            //Debug.Log("jump");
             isJumpingOrClimbing = true;
         }
 
