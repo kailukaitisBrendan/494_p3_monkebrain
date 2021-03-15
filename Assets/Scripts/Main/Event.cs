@@ -65,3 +65,16 @@ public class ButtonLiftEvent
     }
 }
 
+// USE: published when enemy spots player
+public class PlayerSpottedEvent
+{
+    public GameObject player;
+    public GameObject enemy;
+    public PlayerSpottedEvent(GameObject _player, GameObject _enemy)
+    {
+        player = _player;
+        enemy = _enemy;
+    }
+
+}
+
