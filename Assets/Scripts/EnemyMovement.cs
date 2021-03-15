@@ -71,6 +71,7 @@ public class EnemyMovement : MonoBehaviour
         StopAllCoroutines();
         Debug.Log("Player Spotted!: " + e.player.transform.position);
         StartCoroutine(FollowPlayer(e.player));
+        enemySpeed *= 2;
         
     }
 
@@ -105,7 +106,7 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator WaitToDie()
     {
         Debug.Log("start death");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         Debug.Log("end death");
         EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
     }

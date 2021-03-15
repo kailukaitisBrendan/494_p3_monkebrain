@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpotPlayer : MonoBehaviour
 {
+    bool hasBeenSpotted = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +20,9 @@ public class SpotPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !hasBeenSpotted)
         {
+            hasBeenSpotted = true;
             EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(other.gameObject, transform.parent.gameObject));
         }
     }
