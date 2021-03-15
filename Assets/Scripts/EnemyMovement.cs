@@ -42,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
             
             target.y = transform.position.y;
 
-            Debug.Log("Target point: " + target);
+            //Debug.Log("Target point: " + target);
             yield return StartCoroutine(WaitToGetToPoint(target));
 
             // increment pointIndex

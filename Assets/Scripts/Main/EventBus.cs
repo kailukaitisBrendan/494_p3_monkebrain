@@ -60,8 +60,7 @@ public class EventBus
                 EventBus.Unsubscribe<T>(orphan_subscription);
             }
 
-        } else
-        {
+        } else {
             if (DEBUG_MODE)
                 Debug.Log("...but no one is subscribed to this event right now.");
         }

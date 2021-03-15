@@ -20,10 +20,10 @@ public class CameraFollow : MonoBehaviour
 
 
     float t = 0.0f;
-    void Update()
+    void FixedUpdate()
     {
         
-        t += Input.GetAxis("Mouse X") * moveSpeed;
+        t -= Input.GetAxis("Mouse X") * moveSpeed;
 
         Vector3 playerXZ = Vector3.zero;
         playerXZ.x += player.transform.position.x;

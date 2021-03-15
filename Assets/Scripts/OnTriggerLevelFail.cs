@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnTriggerLevelFail : MonoBehaviour
-{
+public class OnTriggerLevelFail : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

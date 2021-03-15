@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -453,6 +453,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1980551992258579897, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579897, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -20
       objectReference: {fileID: 0}
@@ -530,6 +535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
+      propertyPath: lerpSpeed
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
@@ -812,7 +822,7 @@ PrefabInstance:
     - target: {fileID: 1980551992258579897, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 1.5500002
+      value: -30.45
       objectReference: {fileID: 0}
     - target: {fileID: 1980551992258579898, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
@@ -878,6 +888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
+      propertyPath: lerpSpeed
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
@@ -4867,7 +4882,7 @@ PrefabInstance:
     - target: {fileID: 1980551992258579897, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 33.85
+      value: 1.5500002
       objectReference: {fileID: 0}
     - target: {fileID: 1980551992258579898, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
@@ -5616,7 +5631,7 @@ PrefabInstance:
     - target: {fileID: 1980551992258579897, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -20
+      value: -41.5
       objectReference: {fileID: 0}
     - target: {fileID: 1980551992258579897, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
@@ -5626,7 +5641,7 @@ PrefabInstance:
     - target: {fileID: 1980551992258579897, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 14
+      value: 33.85
       objectReference: {fileID: 0}
     - target: {fileID: 1980551992258579898, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}

@@ -19,7 +19,7 @@ public class TriggerButtonEventUponPress : MonoBehaviour
         initialPosition = transform.localPosition.y;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Publish button press event when a button is pressed beyond it's threshold
         if (!pressed && 
