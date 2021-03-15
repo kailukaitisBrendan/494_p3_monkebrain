@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LevelControllerBrain : MonoBehaviour
 {
+    
     private Subscription<AddWinConEvent> addWinConSubscription;
     private Condition winCon;
 
@@ -17,7 +18,7 @@ public class LevelControllerBrain : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!winConMet && CheckWinCon()) {
             winConMet = true;

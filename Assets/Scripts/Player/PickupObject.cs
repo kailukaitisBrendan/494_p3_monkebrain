@@ -7,6 +7,7 @@ public class PickupObject : MonoBehaviour
 {
     public float pickupDistance;
     public Transform itemSlot;
+    public GameObject dolly;
     private bool _pickedUp;
     private GameObject _pickedUpObject;
 
@@ -14,6 +15,9 @@ public class PickupObject : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            // enable dolly
+            if (dolly != null)
+                dolly.SetActive(true);
             // Drop item if we are already holding something. 
             if (_pickedUp)
             {
@@ -23,6 +27,12 @@ public class PickupObject : MonoBehaviour
             {
                 PickupItem();
             }
+        }
+        if (Input.GetKeyUp(KeyCode.E) && !_pickedUp)
+        {
+            // disable dolly
+            if (dolly != null)
+                dolly.SetActive(false);
         }
     }
 
@@ -41,8 +51,12 @@ public class PickupObject : MonoBehaviour
         
         //Re-enable collider.
         col.enabled = true;
+        // TODO: re-enable jump
 
-        Debug.Log("Dropped Item");
+        // disable dolly
+        if (dolly != null)
+            dolly.SetActive(false);
+        //Debug.Log("Dropped Item");
     }
 
     private void PickupItem()
@@ -57,7 +71,7 @@ public class PickupObject : MonoBehaviour
         if (Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, pickupDistance, mask))
         {
             Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Item picked up");
+            //Debug.Log("Item picked up");
         }
 
         if (hit.transform == null) return;
@@ -80,7 +94,12 @@ public class PickupObject : MonoBehaviour
         // Disable collider of grabbed object.
         Collider col = _pickedUpObject.GetComponent<Collider>();
         col.enabled = false;
-        
+
+        // TODO: disable jump
+
+        // enable dolly
+        if (dolly != null)
+            dolly.SetActive(true);
         _pickedUp = true;
     }
 
