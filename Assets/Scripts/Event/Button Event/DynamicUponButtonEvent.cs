@@ -9,12 +9,16 @@ public class DynamicUponButtonEvent : MonoBehaviour
 
     public int buttonEventId;
     public bool reversible;
-    public float lerpSpeed = 0.01f;
+    private float lerpSpeed = 0.0002f;
+    float i = 0;
     
     // Variables representing original state
     private bool isKinematic = true;
     private Vector3 initPosition;
     private Quaternion initRotation;
+
+    private Vector3 currPosition;
+    private Quaternion currRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -42,21 +46,24 @@ public class DynamicUponButtonEvent : MonoBehaviour
         if (_event.id == buttonEventId) {
             GetComponent<Rigidbody>().isKinematic = true;
             isKinematic = true;
-
-            StartCoroutine(LerpToOriginalState());
         }
     }
-
-    private IEnumerator LerpToOriginalState() 
-    {
-        Vector3 currPosition = transform.position;
-        Quaternion currRotation = transform.rotation;
-
-        for (int i = 0; i < 100 && isKinematic; ++i) {
+    
+    private void FixedUpdate() {
+        if (isKinematic && reversible) {
+            currPosition = transform.position;
+            currRotation = transform.rotation;
             transform.position = Vector3.Lerp(currPosition, initPosition, i * lerpSpeed);
             transform.rotation = Quaternion.Lerp(currRotation, initRotation, i * lerpSpeed);
-            yield return null;
+            i++;
+            if (i > 100) {
+                i = 0;
+            }
+            if (Mathf.Abs((initPosition.x-currPosition.x) 
+                + (initPosition.y-currPosition.y) 
+                + (initPosition.z-currPosition.z)) < 0.001) {
+                isKinematic = false;
+            }
         }
     }
-
 }

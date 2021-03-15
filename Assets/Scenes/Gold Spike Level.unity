@@ -585,6 +585,11 @@ PrefabInstance:
       propertyPath: buttonPressEventId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
+      propertyPath: time_between_lerps
+      value: 0.001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfadae3d837fb4ea4919ef7d2fd14d2a, type: 3}
 --- !u!1 &115183184 stripped
@@ -705,6 +710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonPressEventId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
+      propertyPath: time_between_lerps
+      value: 0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfadae3d837fb4ea4919ef7d2fd14d2a, type: 3}
@@ -954,6 +964,11 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonPressEventId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
+      propertyPath: time_between_lerps
+      value: 0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfadae3d837fb4ea4919ef7d2fd14d2a, type: 3}
@@ -2631,6 +2646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonPressEventId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
+      propertyPath: time_between_lerps
+      value: 0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfadae3d837fb4ea4919ef7d2fd14d2a, type: 3}
@@ -4769,6 +4789,11 @@ PrefabInstance:
       propertyPath: buttonPressEventId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
+      propertyPath: time_between_lerps
+      value: 0.001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfadae3d837fb4ea4919ef7d2fd14d2a, type: 3}
 --- !u!1 &1303380392
@@ -5482,6 +5507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonPressEventId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
+      propertyPath: time_between_lerps
+      value: 0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfadae3d837fb4ea4919ef7d2fd14d2a, type: 3}
@@ -6258,6 +6288,11 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonPressEventId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980551992258579903, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
+        type: 3}
+      propertyPath: time_between_lerps
+      value: 0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfadae3d837fb4ea4919ef7d2fd14d2a, type: 3}
