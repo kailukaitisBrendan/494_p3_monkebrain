@@ -93,6 +93,12 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("climb");
             isJumpingOrClimbing = true;
         }
+        
+        //ANTI WALL STICK 
+        if (newForce != Vector3.zero && ExistsForwardWallNotClimbable())
+        {
+            newForce = rb.velocity;
+        }
 
         //JUMP 
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
@@ -151,4 +157,39 @@ public class PlayerMovement : MonoBehaviour
 
         return false;
     }
+
+
+    public bool ExistsForwardWallNotClimbable()
+    {
+        RaycastHit hit;
+        float dist = 0.7f;
+
+        Vector3 left = new Vector3(-0.5f, 0, 0);
+        Vector3 mid = new Vector3(0.5f, 0, 0);
+        Vector3 right = new Vector3(0, 1, 0);
+        Vector3 foot = new Vector3(0, -1, 0);
+
+
+        Debug.DrawRay(transform.position + left, transform.forward, Color.blue);
+        Debug.DrawRay(transform.position + mid, transform.forward, Color.blue);
+        Debug.DrawRay(transform.position + right, transform.forward, Color.blue);
+        Debug.DrawRay(transform.position + foot, transform.forward, Color.blue);
+
+
+
+        if (Physics.Raycast(transform.position + left, transform.forward, out hit, dist, ~Climbable)
+            || Physics.Raycast(transform.position + mid, transform.forward, out hit, dist, ~Climbable)
+            || Physics.Raycast(transform.position + right, transform.forward, out hit, dist, ~Climbable)
+            || Physics.Raycast(transform.position + foot, transform.forward, out hit, dist, ~Climbable)
+        )
+        {
+            // Ignore if we are currently holding the NOT climbable object.
+            Debug.Log("BANG0");
+            return hit.transform.parent == null;
+        }
+
+        return false;
+    }
+
+    
 }
