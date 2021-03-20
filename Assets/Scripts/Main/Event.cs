@@ -78,3 +78,12 @@ public class PlayerSpottedEvent
 
 }
 
+public class HitObjectEvent
+{
+    public Vector3 position;
+
+    public HitObjectEvent(Vector3 _position)
+    {
+        position = _position;
+    }
+}
