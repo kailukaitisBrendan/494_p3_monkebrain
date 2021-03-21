@@ -90,6 +90,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("why is this running");
         if (collision.collider.gameObject.CompareTag("Player"))
         {
             StopAllCoroutines();
