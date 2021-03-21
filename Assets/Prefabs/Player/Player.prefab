@@ -514,8 +514,8 @@ MonoBehaviour:
   itemSlot: {fileID: 6333447323867098795}
   dolly: {fileID: 3996719794959161134}
   lineRenderer: {fileID: 8413363109491614448}
-  throwForce: 100
-  maxForceMultiplier: 1
+  throwForce: 5
+  maxForceMultiplier: 2
   throwAngle: 45
 --- !u!1 &8497152197109940811
 GameObject:

@@ -81,6 +81,7 @@ public class ObjectInteraction : MonoBehaviour
     private void DrawTrajectoryPath()
     {
         List<Vector3> path = new List<Vector3>();
+        lineRenderer.enabled = true;
         // ---- Draw trajectory path -----
         // To draw the trajectory path we need to simulate the projectile position across set intervals.
         // First, we need to calculate the total time the projectile will take before landing
@@ -130,6 +131,7 @@ public class ObjectInteraction : MonoBehaviour
 
     private void ThrowItem()
     {
+        Vector3 force = CalculateVelocity();
         //Debug.Log("Throw!");
         GameObject item = _pickedUpObject;
         // First, drop the object
@@ -141,15 +143,14 @@ public class ObjectInteraction : MonoBehaviour
         // float angle = throwAngle * Mathf.Deg2Rad;
         // Vector3 angleDirection = new Vector3(0, Mathf.Sin(angle), 0f);
         // Vector3 forceDirection = (transform.forward + angleDirection).normalized * throwForce;
-        // //Debug.Log(forceDirection);
-        Vector3 force = CalculateVelocity();
+        // //Debug.Log(forceDirection)
         //Debug.Log(force);
         item.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
         
         
         // Add Component to the package to alert enemies on colliding with ground.
         item.AddComponent<OnCollisionEvent>();
-        _currentForceMultiplier = 0f;
+        
 
     }
 
@@ -205,6 +206,11 @@ public class ObjectInteraction : MonoBehaviour
 
         _pickedUpObject = null;
         _hasItem = false;
+        
+        // Reset our trajectory calculations
+        _currentForceMultiplier = 0f;
+        // Disable LineRenderer
+        lineRenderer.enabled = false;
         
         
 
