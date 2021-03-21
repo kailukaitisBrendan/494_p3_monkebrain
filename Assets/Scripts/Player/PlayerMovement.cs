@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
 
 
     public LayerMask Climbable;
+    
+    // Denotes the maximum angle for a surface below to be considered as 'ground' (vs wall)
+    private float maxGroundAngle = Mathf.PI / 6;
 
     public Camera cam;
 
@@ -119,12 +122,19 @@ public class PlayerMovement : MonoBehaviour
     public bool IsGrounded()
     {
         RaycastHit hit;
-        float dist = 1.01f;
+        float dist = 1.1f;
         Vector3 offset = new Vector3(0, 0, 0);
         Debug.DrawRay(transform.position + offset, Vector3.down, Color.cyan);
         if (Physics.Raycast(transform.position + offset, Vector3.down, out hit, dist))
         {
-            return true;
+            Vector3 surfaceNormal = hit.normal.normalized;
+            float sinMax;
+            float sin;
+            sin = Mathf.Abs(surfaceNormal.z);
+            sinMax = Mathf.Sin(maxGroundAngle);
+
+            if (sin <= sinMax) return true;
+            else return false;
         }
 
         return false;
