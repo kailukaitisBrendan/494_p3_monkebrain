@@ -11,12 +11,16 @@ public class ObjectInteraction : MonoBehaviour
     public Transform itemSlot;
     public GameObject dolly;
 
+    public LineRenderer lineRenderer;
+
     public float throwForce;
+    public float maxForceMultiplier;
     public float throwAngle = 45f;
     
     private bool _hasItem;
     private bool _hasDolly;
     private GameObject _pickedUpObject;
+    private float _currentForceMultiplier;
 
     private void Update()
     {
@@ -26,49 +30,126 @@ public class ObjectInteraction : MonoBehaviour
             if (_hasItem)
             {
                 DropItem();
-            } else if (_hasDolly)
+            }
+            else if (_hasDolly)
             {
                 // No, item so drop dolly.
                 DropDolly();
             }
 
-        } else if (Input.GetKeyDown(KeyCode.E))
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             // If we do not have dolly, pick it up first
             if (!_hasDolly)
             {
                 PickupDolly();
-            } else if (!_hasItem)
+            }
+            else if (!_hasItem)
             {
                 // Then pick up item.
                 PickupItem();
             }
-        } else if (Input.GetMouseButtonDown(1))
+        }
+        else if (Input.GetMouseButton(1))
         {
-            if (!_hasItem || !_hasDolly) return; 
+            // We are holding down the mouse button, so charge up the force.
+            if (!_hasItem || !_hasDolly) return;
+            ChargeThrow();
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            if (!_hasItem || !_hasDolly) return;
+            // Throw item.
             ThrowItem();
         }
     }
 
+    private void ChargeThrow()
+    {
+        _currentForceMultiplier += Time.deltaTime;
+        
+        // If we go over our maximum charge, then set it to max
+        if (_currentForceMultiplier >= maxForceMultiplier)
+        {
+            _currentForceMultiplier = maxForceMultiplier;
+        }
+        
+        DrawTrajectoryPath();
+    }
+
+    private void DrawTrajectoryPath()
+    {
+        List<Vector3> path = new List<Vector3>();
+        // ---- Draw trajectory path -----
+        // To draw the trajectory path we need to simulate the projectile position across set intervals.
+        // First, we need to calculate the total time the projectile will take before landing
+        // This is given by the equation t = (vsin(θ) + sqr((vsin(θ)^2 + 2gy_0)) / g where
+        // θ = Angle of the projectile
+        // y_0 = the initial height of the projectile
+        // v = the magnitude of the velocity vector
+        // g = gravity
+
+        Vector3 position = _pickedUpObject.transform.position;
+        Vector3 velocity = CalculateVelocity();
+        float v = velocity.magnitude;
+        // Calculate magnitude
+        // Since Physics.gravity.y returns a negative value, we have to convert to absolute value. 
+        float totalTime = (v * Mathf.Sin(throwAngle) +
+                            Mathf.Sqrt(Mathf.Pow(v * Mathf.Sin(throwAngle), 2) + 2 * Physics.gravity.y * position.y));
+        totalTime /= Mathf.Abs(Physics.gravity.y);
+        //Debug.Log(totalTime);
+        
+        // Next, we need to simulate the flight path by calculating the position and 
+        // velocity vectors over set time intervals.
+        // For each interval, we add the position to the path list so we can draw the trajectory.
+        float timeStep = Time.fixedDeltaTime;
+        for (float t = 0f; t < totalTime; t += timeStep)
+        {
+            velocity += Physics.gravity * timeStep;
+            position += velocity * timeStep;
+            path.Add(position);
+        }
+        
+        // Now, draw the trajectory using a LineRenderer.
+        lineRenderer.positionCount = path.Count;
+        lineRenderer.SetPositions(path.ToArray());
+    }
+
+    private Vector3 CalculateVelocity()
+    {
+        // Since our charge throw force acts as a force multiplier, then we can calculate our force
+        // from multiplying our values together with the angle. Thus, our velocity will be defined as
+        // v = angleDirection + current forward direction * throw force * throw multiplier. 
+        float angle = throwAngle * Mathf.Deg2Rad;
+        Vector3 angleDir = new Vector3(0, Mathf.Sin(angle), 0);
+        Vector3 forceDir = (transform.forward + angleDir).normalized * (throwForce * _currentForceMultiplier);
+        //Debug.Log(forceDir);
+        return forceDir;
+    }
+
     private void ThrowItem()
     {
-        Debug.Log("Throw!");
+        //Debug.Log("Throw!");
         GameObject item = _pickedUpObject;
         // First, drop the object
         DropItem();
         // We want to throw object in direction the player is facing
         // This should be the transform.forward of our player object.
         // We need to apply an impulse force in the respective direction
-        //Vector3 forceDirection = transform.forward.normalized * throwForce;
 
-        float angle = throwAngle * Mathf.Deg2Rad;
-        Vector3 angleDirection = new Vector3(0, Mathf.Sin(angle), 0f);
-        Vector3 forceDirection = transform.forward + angleDirection;
-        Debug.Log(forceDirection);
-        item.GetComponent<Rigidbody>().AddForce(forceDirection * throwForce, ForceMode.Impulse);
+        // float angle = throwAngle * Mathf.Deg2Rad;
+        // Vector3 angleDirection = new Vector3(0, Mathf.Sin(angle), 0f);
+        // Vector3 forceDirection = (transform.forward + angleDirection).normalized * throwForce;
+        // //Debug.Log(forceDirection);
+        Vector3 force = CalculateVelocity();
+        //Debug.Log(force);
+        item.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+        
         
         // Add Component to the package to alert enemies on colliding with ground.
         item.AddComponent<OnCollisionEvent>();
+        _currentForceMultiplier = 0f;
 
     }
 
