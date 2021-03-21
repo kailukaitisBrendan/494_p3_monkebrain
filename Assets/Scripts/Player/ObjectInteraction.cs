@@ -22,24 +22,25 @@ public class ObjectInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (_hasDolly)
+            // If we have an item, drop it first.
+            if (_hasItem)
             {
+                DropItem();
+            } else if (_hasDolly)
+            {
+                // No, item so drop dolly.
                 DropDolly();
-            }
-            else
-            {
-                PickupDolly();
             }
 
         } else if (Input.GetKeyDown(KeyCode.E))
         {
-            if (!_hasDolly) return;
-            if (_hasItem)
+            // If we do not have dolly, pick it up first
+            if (!_hasDolly)
             {
-                DropItem();
-            }
-            else
+                PickupDolly();
+            } else if (!_hasItem)
             {
+                // Then pick up item.
                 PickupItem();
             }
         } else if (Input.GetMouseButtonDown(1))
