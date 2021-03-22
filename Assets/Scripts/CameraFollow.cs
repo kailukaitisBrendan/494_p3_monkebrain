@@ -16,6 +16,9 @@ public class CameraFollow : MonoBehaviour
     public LayerMask mask;
     private RaycastHit camhit;
     public float lerpSpeed = 2f;
+
+    [Range(0,1)]
+    public float wallBuffer = 0.5f;
    
 
 
@@ -28,7 +31,7 @@ public class CameraFollow : MonoBehaviour
         {
             
             
-            radius = Vector3.Distance(camhit.point, player.transform.position);
+            radius = wallBuffer * Vector3.Distance(camhit.point, player.transform.position);
             //Debug.Log("True");
         }
         else

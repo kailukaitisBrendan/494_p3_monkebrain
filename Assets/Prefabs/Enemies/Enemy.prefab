@@ -939,6 +939,9 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 5943
+  obstacleMaskForBox:
+    serializedVersion: 2
+    m_Bits: 7479
   field_radius: 8.23
   view_range: 180
 --- !u!114 &8398375989089109119
@@ -954,6 +957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desiredPositionIsGameobject: {fileID: 0}
+  fieldOfView: {fileID: 0}
   pathPoints:
   - {fileID: 0}
   - {fileID: 0}

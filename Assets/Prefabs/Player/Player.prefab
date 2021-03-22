@@ -320,7 +320,10 @@ MonoBehaviour:
 
     [Space]: jump
 
-    [E]: pick up / drop item'
+    [E]: pick up item
+
+    [Right
+    Click]: throw item'
 --- !u!1 &7189565168047139424
 GameObject:
   m_ObjectHideFlags: 0

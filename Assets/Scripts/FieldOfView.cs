@@ -9,6 +9,7 @@ public class FieldOfView : MonoBehaviour
     public bool playerSpotted = false;
     public LayerMask targetMask;
     public LayerMask obstacleMask;
+    public LayerMask obstacleMaskForBox;
 
     public float field_radius = 5f;
     public float view_range = 75;
@@ -57,6 +58,21 @@ public class FieldOfView : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool PackageInFieldOfView(Vector3 package_position)
+    {
+
+        bool inRange = false;
+        float distance_to_package = Vector3.Distance(transform.position, package_position);
+        Vector3 package_to_enemy_dir = (package_position - transform.position).normalized;
+        //make sure there are no obstacles/walls in the way and package is within radius
+        if (distance_to_package <= field_radius && !Physics.Raycast(transform.position, package_to_enemy_dir, distance_to_package, obstacleMaskForBox))
+        {
+            inRange = true;
+        }
+
+        return inRange;
     }
 
     private void OnDrawGizmos()
