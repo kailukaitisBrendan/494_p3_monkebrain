@@ -1,24 +1,31 @@
 ﻿<Properties StartupConfiguration="{108BC56D-781D-2F15-59FA-C7AE658ECD87}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enemies/EnemyMovementController.cs">
     <Files>
-      <File FileName="Assets/Scripts/DesiredPositionIsGameobject.cs" Line="33" Column="43" IsPinned="True" />
-      <File FileName="Assets/Scripts/FieldOfView.cs" Line="28" Column="34" />
-      <File FileName="Assets/Scripts/Enemies/EnemyMovementController.cs" Line="23" Column="83" />
+      <File FileName="Assets/Scripts/DesiredPositionIsGameobject.cs" Line="30" Column="10" IsPinned="True" />
+      <File FileName="Assets/Scripts/FieldOfView.cs" Line="62" Column="38" />
+      <File FileName="Assets/Scripts/Player/PlayerMovement.cs" Line="129" Column="12" />
+      <File FileName="Assets/Scripts/Event/OnCollisionEvent.cs" Line="24" Column="10" />
+      <File FileName="Assets/Scripts/Player/ObjectInteraction.cs" Line="139" Column="23" />
+      <File FileName="Assets/Scripts/Level Control/LevelControllerBrain.cs" Line="10" Column="1" />
+      <File FileName="Assets/Scripts/Event/Level Event/ReloadSceneUponLevelFail.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Event/Level Event/ReloadSceneUponLevelClear.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Main/Event.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Enemies/EnemyMovementController.cs" Line="141" Column="18" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="494_p3_monkebrain" expanded="True">
             <Node name="Assets" expanded="True">
+              <Node name="navmeshcomponents" expanded="True">
+                <Node name="Examples" expanded="True">
+                  <Node name="Scripts" expanded="True" />
+                </Node>
+              </Node>
               <Node name="Scripts" expanded="True">
                 <Node name="Enemies" expanded="True">
                   <Node name="EnemyMovementController.cs" selected="True" />
                 </Node>
-                <Node name="Event" expanded="True">
-                  <Node name="Button Event" expanded="True" />
-                  <Node name="Level Event" expanded="True" />
-                </Node>
-                <Node name="Level Control" expanded="True" />
                 <Node name="Main" expanded="True" />
                 <Node name="Player" expanded="True" />
               </Node>
