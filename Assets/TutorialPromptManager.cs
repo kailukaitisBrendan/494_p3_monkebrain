@@ -8,6 +8,7 @@ public class TutorialPromptManager : MonoBehaviour
     private ObjectInteraction objInter;
     
     private bool jumped = false;
+    private bool onButton = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +33,30 @@ public class TutorialPromptManager : MonoBehaviour
                 textPrompt.SetActive(true);
                 textPrompt.GetComponent<TextMesh>().text = "E";
             }
-            else {
+            else if (!onButton) {
                 textPrompt.SetActive(false);
             }
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.layer
+            == LayerMask.NameToLayer("Interactable Object")) {
+            textPrompt.SetActive(true);
+            textPrompt.GetComponent<TextMesh>().text = "Right Click";
+            onButton = true;
+        }
+    }
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.gameObject.layer
+            == LayerMask.NameToLayer("Interactable Object")) {
+            textPrompt.SetActive(false);
+            onButton = false;
+        }
+    }
+
 
     // Check for 
 }
