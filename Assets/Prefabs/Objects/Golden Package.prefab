@@ -97,7 +97,12 @@ PrefabInstance:
     - target: {fileID: 8325154509369887461, guid: 518da76f516b7fa4598a500bbd46aa34,
         type: 3}
       propertyPath: m_Name
-      value: Package (4)
+      value: Golden Package
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325154509369887461, guid: 518da76f516b7fa4598a500bbd46aa34,
+        type: 3}
+      propertyPath: m_TagString
+      value: GoldenPackage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 518da76f516b7fa4598a500bbd46aa34, type: 3}

@@ -236,7 +236,7 @@ public class ObjectInteraction : MonoBehaviour
         
         GameObject item = GetItem();
         if (item == null) return;
-        if (!item.CompareTag("Package")) return;
+        if (!item.CompareTag("Package") && !item.CompareTag("GoldenPackage")) return;
         // Get the rigidbody of our hit.
         Rigidbody rb = item.GetComponent<Rigidbody>();
         //Disable the rigidbody and rest velocities 
