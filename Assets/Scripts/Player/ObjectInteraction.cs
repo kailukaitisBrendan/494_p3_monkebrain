@@ -99,9 +99,9 @@ public class ObjectInteraction : MonoBehaviour
         // Calculate magnitude
         // Since Physics.gravity.y returns a negative value, we have to convert to absolute value. 
         float totalTime = (v * Mathf.Sin(throwAngle) +
-                            Mathf.Sqrt(Mathf.Pow(v * Mathf.Sin(throwAngle), 2) + 2 * Physics.gravity.y * position.y));
+                            Mathf.Sqrt(Mathf.Pow(v * Mathf.Sin(throwAngle), 2) + Mathf.Abs(2 * Physics.gravity.y * position.y)));
         totalTime /= Mathf.Abs(Physics.gravity.y);
-        //Debug.Log(totalTime);
+        Debug.Log(totalTime);
         
         // Next, we need to simulate the flight path by calculating the position and 
         // velocity vectors over set time intervals.

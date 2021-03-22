@@ -455,7 +455,7 @@ PrefabInstance:
     - target: {fileID: 5440292959527038508, guid: 1558d988a663c05418b5be5eeafd3948,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1558d988a663c05418b5be5eeafd3948, type: 3}
@@ -763,7 +763,7 @@ PrefabInstance:
     - target: {fileID: 1980551992258579897, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 46.75
+      value: 70.75
       objectReference: {fileID: 0}
     - target: {fileID: 1980551992258579897, guid: bfadae3d837fb4ea4919ef7d2fd14d2a,
         type: 3}
@@ -5324,6 +5324,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7204206149281160238, guid: 7844b94417848457a9cf072cbf315977,
         type: 3}
+      propertyPath: threshold
+      value: 0.203
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204206149281160238, guid: 7844b94417848457a9cf072cbf315977,
+        type: 3}
       propertyPath: buttonEventId
       value: 4
       objectReference: {fileID: 0}
@@ -7283,17 +7288,17 @@ PrefabInstance:
     - target: {fileID: 8497152196208681337, guid: 908fb1146e0ee6f4f86639bff20c168a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 8497152196208681337, guid: 908fb1146e0ee6f4f86639bff20c168a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8497152196208681337, guid: 908fb1146e0ee6f4f86639bff20c168a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 92
       objectReference: {fileID: 0}
     - target: {fileID: 8497152196208681337, guid: 908fb1146e0ee6f4f86639bff20c168a,
         type: 3}
