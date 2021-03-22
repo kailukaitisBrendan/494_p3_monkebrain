@@ -6,13 +6,13 @@ public class CameraFollow : MonoBehaviour
 {
     public GameObject player;
 
-    public Vector3 offset = new Vector3(0, 7, -5);
+    public Vector3 offset = new Vector3(0, 4, -5);
     public float baseRadius = 4.0f;
     public float radius = 4.0f;
     public Vector2 sensitivity;
     public float y_axis_position;
     public float min_y = 0;
-    public float max_y = 9;
+    public float max_y = 4.5f;
     public LayerMask mask;
     private RaycastHit camhit;
     public float lerpSpeed = 2f;
@@ -58,7 +58,7 @@ public class CameraFollow : MonoBehaviour
         }
         if(y_axis_position > max_y)
         {
-            y_axis_position = 9;
+            y_axis_position = max_y;
         }
         if(y_axis_position < min_y)
         {

@@ -14,9 +14,6 @@ public class ReloadSceneUponLevelClear : MonoBehaviour
 
     void ReloadScene(LevelClearEvent _event)
     {
-        SceneManager.LoadScene(
-            SceneManager.GetActiveScene().buildIndex
-        );
+        SceneManager.LoadScene("Hub");
     }
-
 }

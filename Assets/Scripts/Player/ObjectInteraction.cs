@@ -16,59 +16,71 @@ public class ObjectInteraction : MonoBehaviour
     public float throwForce;
     public float maxForceMultiplier;
     public float throwAngle = 45f;
+
+    public float charge_force_scaler = 1.5f;
     
+    private float action_delay = 0.2f;
+    private float action_t = 0.0f;
+
     private bool _hasItem;
     private bool _hasDolly;
     private GameObject _pickedUpObject;
-    private float _currentForceMultiplier;
+    private float _currentForceMultiplier = 0.0f;
     private Rigidbody _pickedUpObjectRigidbody;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if ((Input.GetKeyDown(KeyCode.E) || 
+            (Input.GetMouseButton(0) && !_hasItem)) &&
+            Time.time - action_t > action_delay)
         {
-            // If we have an item, drop it first.
-            if (_hasItem)
-            {
-                DropItem();
-            }
-            else if (_hasDolly)
-            {
-                // No, item so drop dolly.
-                DropDolly();
-            }
-
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
+            action_t = Time.time;
             // If we do not have dolly, pick it up first
             if (!_hasDolly)
             {
                 PickupDolly();
             }
-            else if (!_hasItem)
+            else if (!_hasItem && _hasDolly)
             {
-                // Then pick up item.
+                // if no item, pick up item.
                 PickupItem();
+                if (!_hasItem) {
+                    DropDolly();
+                }
+            }
+            // If we have an item, drop it first.
+            else if (_hasItem)
+            {
+                DropItem();
+            }
+            else if (_hasDolly && !_hasItem)
+            {
+                Debug.Log("you should never see this");
+                // No, item so drop dolly.
+                DropDolly();
             }
         }
-        else if (Input.GetMouseButton(1))
+    }
+
+    void FixedUpdate() {
+        if (Input.GetMouseButton(0))
         {
             // We are holding down the mouse button, so charge up the force.
             if (!_hasItem || !_hasDolly) return;
             ChargeThrow();
         }
-        else if (Input.GetMouseButtonUp(1))
+        if (!Input.GetMouseButton(0) && _currentForceMultiplier > 0.0f)
         {
             if (!_hasItem || !_hasDolly) return;
             // Throw item.
             ThrowItem();
+            _currentForceMultiplier = 0.0f;
         }
     }
 
     private void ChargeThrow()
     {
-        _currentForceMultiplier += Time.deltaTime;
+        _currentForceMultiplier += Time.deltaTime * charge_force_scaler;
         
         // If we go over our maximum charge, then set it to max
         if (_currentForceMultiplier >= maxForceMultiplier)
@@ -101,7 +113,7 @@ public class ObjectInteraction : MonoBehaviour
         float totalTime = (v * Mathf.Sin(throwAngle) +
                             Mathf.Sqrt(Mathf.Pow(v * Mathf.Sin(throwAngle), 2) + Mathf.Abs(2 * Physics.gravity.y * position.y)));
         totalTime /= Mathf.Abs(Physics.gravity.y);
-        Debug.Log(totalTime);
+        //Debug.Log(totalTime);
         
         // Next, we need to simulate the flight path by calculating the position and 
         // velocity vectors over set time intervals.
@@ -174,7 +186,8 @@ public class ObjectInteraction : MonoBehaviour
 
         // Re-enable collider.
         dolly.GetComponent<Collider>().enabled = true;
-        
+        dolly.GetComponent<Collider>().attachedRigidbody.isKinematic = false;
+        dolly.GetComponent<Collider>().attachedRigidbody.useGravity = true;
         dolly.transform.parent = null;
         dolly = null;
         _hasDolly = false;
@@ -187,10 +200,12 @@ public class ObjectInteraction : MonoBehaviour
         GameObject item = GetItem();
         if (item == null) return;
         if (!item.CompareTag("Dolly")) return;
-        
+        item.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         // Set parent to be player
         item.transform.SetParent(gameObject.transform);
         item.transform.localPosition = Vector3.zero;
+        item.transform.localRotation = Quaternion.identity;
+        item.transform.GetComponent<Rigidbody>().freezeRotation = true;
         item.transform.localEulerAngles = Vector3.zero;
         dolly = item;
         _hasDolly = true;
@@ -198,6 +213,8 @@ public class ObjectInteraction : MonoBehaviour
         // Disable collider so that it ignores all collision when
         // we pick it up.
         Collider col = item.GetComponent<Collider>();
+        col.attachedRigidbody.useGravity = false;
+        col.attachedRigidbody.isKinematic = true;
         col.enabled = false;
 
 
