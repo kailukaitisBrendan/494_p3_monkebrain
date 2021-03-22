@@ -245,7 +245,7 @@ public class ObjectInteraction : MonoBehaviour
         _pickedUpObject = item;
     }
 
-    private GameObject GetItem()
+    public GameObject GetItem()
     {
         // Raycast out from player to see if item is in front of the player.
         // Create mask so we only collide with pickup-able objects.
