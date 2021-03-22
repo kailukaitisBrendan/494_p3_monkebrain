@@ -63,10 +63,12 @@ public class EnemyMovementController : MonoBehaviour
         // set desired target
         desiredPositionIsGameobject.target = target;
 
-        while (transform.position.x != target.transform.position.x || transform.position.z != target.transform.position.z)
+        while (!almostEqual(transform.position.x, target.transform.position.x, .1f) || !almostEqual(transform.position.z, target.transform.position.z, .1f))
         {
             yield return null;
         }
+
+        
 
         desiredPositionIsGameobject.agent.ResetPath();
 
