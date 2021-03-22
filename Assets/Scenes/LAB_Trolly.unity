@@ -390,7 +390,7 @@ PrefabInstance:
     - target: {fileID: 8884979795343272461, guid: 908fb1146e0ee6f4f86639bff20c168a,
         type: 3}
       propertyPath: throwForce
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 908fb1146e0ee6f4f86639bff20c168a, type: 3}
@@ -584,8 +584,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 732062048}
   offset: {x: 0, y: 14, z: -10}
+  baseRadius: 4
   radius: 10
-  moveSpeed: 0.3
+  sensitivity: {x: 0, y: 0}
   y_axis_position: 6
   min_y: 0
   max_y: 9
