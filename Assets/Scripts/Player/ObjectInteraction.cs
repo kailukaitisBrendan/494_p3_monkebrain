@@ -21,6 +21,7 @@ public class ObjectInteraction : MonoBehaviour
     private bool _hasDolly;
     private GameObject _pickedUpObject;
     private float _currentForceMultiplier;
+    private Rigidbody _pickedUpObjectRigidbody;
 
     private void Update()
     {
@@ -92,7 +93,8 @@ public class ObjectInteraction : MonoBehaviour
         // g = gravity
 
         Vector3 position = _pickedUpObject.transform.position;
-        Vector3 velocity = CalculateVelocity();
+        Vector3 velocity = CalculateVelocity(true);
+        Debug.Log(velocity);
         float v = velocity.magnitude;
         // Calculate magnitude
         // Since Physics.gravity.y returns a negative value, we have to convert to absolute value. 
@@ -117,16 +119,27 @@ public class ObjectInteraction : MonoBehaviour
         lineRenderer.SetPositions(path.ToArray());
     }
 
-    private Vector3 CalculateVelocity()
+    private Vector3 CalculateVelocity(bool mass=false)
     {
         // Since our charge throw force acts as a force multiplier, then we can calculate our force
         // from multiplying our values together with the angle. Thus, our velocity will be defined as
         // v = angleDirection + current forward direction * throw force * throw multiplier. 
         float angle = throwAngle * Mathf.Deg2Rad;
         Vector3 angleDir = new Vector3(0, Mathf.Sin(angle), 0);
-        Vector3 forceDir = (transform.forward + angleDir).normalized * (throwForce * _currentForceMultiplier);
+        Vector3 force = (transform.forward + angleDir).normalized * (throwForce * _currentForceMultiplier);
+        // If mass is true, then calculate the velocity using the mass of the object.
+        // The velocity is given by the equation v = p / m, where
+        // p = the momentum of the object
+        // m = the mass of the object.
+        // Since we are throwing the object, then our forceMode will be Impulse. This means that the force to add will
+        // be our momentum since we want the velocity to change instantly. Thus, our force vector is p, and we 
+        // can calculate our velocity.
+        if (mass)
+        {
+            return force / _pickedUpObjectRigidbody.mass;
+        }
         //Debug.Log(forceDir);
-        return forceDir;
+        return force;
     }
 
     private void ThrowItem()
@@ -205,6 +218,7 @@ public class ObjectInteraction : MonoBehaviour
         col.enabled = true;
 
         _pickedUpObject = null;
+        _pickedUpObjectRigidbody = null;
         _hasItem = false;
         
         // Reset our trajectory calculations
@@ -243,6 +257,7 @@ public class ObjectInteraction : MonoBehaviour
 
         _hasItem = true;
         _pickedUpObject = item;
+        _pickedUpObjectRigidbody = item.GetComponent<Rigidbody>();
     }
 
     public GameObject GetItem()

@@ -17,10 +17,14 @@ public class EnemyMovementController : MonoBehaviour
 
     Subscription<PlayerSpottedEvent> playerSpottedSubscription;
 
+    Subscription<HitObjectEvent> hitObjectSubscription;
+
+
     // Start is called before the first frame update
     void Start()
     {
         playerSpottedSubscription = EventBus.Subscribe<PlayerSpottedEvent>(_OnPlayerSpotted);
+        hitObjectSubscription = EventBus.Subscribe<HitObjectEvent>(_OnHitObject);
 
         desiredPositionIsGameobject = GetComponent<DesiredPositionIsGameobject>();
         normalSpeed = desiredPositionIsGameobject.agent.speed;
@@ -28,10 +32,11 @@ public class EnemyMovementController : MonoBehaviour
         if (pathPoints.Length < 1)
             return;
 
-        // set initial enemy spot to intial point
+        // set initial enemy spot to intial point and increment index
         transform.position = pathPoints[pointIndex].transform.position;
         pointIndex = (pointIndex + 1) % pathPoints.Length;
 
+        // start enemy movement
         StartCoroutine(MoveEnemy());
     }
 
@@ -40,8 +45,8 @@ public class EnemyMovementController : MonoBehaviour
         while (true)
         {
             GameObject target = pathPoints[pointIndex];
-            //target.y = transform.position.y;
 
+            // wait until enemy has reached the target
             yield return StartCoroutine(WaitToGetToPoint(target));
 
             // increment pointIndex
@@ -51,16 +56,41 @@ public class EnemyMovementController : MonoBehaviour
 
     IEnumerator WaitToGetToPoint(GameObject target)
     {
+        // set desired target
         desiredPositionIsGameobject.target = target;
 
         while (transform.position.x != target.transform.position.x || transform.position.z != target.transform.position.z)
         {
             yield return null;
         }
+
         desiredPositionIsGameobject.agent.ResetPath();
 
         yield return null;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.CompareTag("Player"))
+        {
+            // Player is caught by enemy. Stop all movement and have player "die."
+            StopAllCoroutines();
+            PlayerMovement playerMovement = collision.collider.gameObject.GetComponent<PlayerMovement>();
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = false;
+            }
+            StartCoroutine(WaitToDie());
+        }
+    }
+
+    IEnumerator WaitToDie()
+    {
+        yield return new WaitForSeconds(1f);
+        EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
+    }
+
+    // Events
 
     void _OnPlayerSpotted(PlayerSpottedEvent e)
     {
@@ -68,7 +98,7 @@ public class EnemyMovementController : MonoBehaviour
         if (e.enemy != this.gameObject)
             return;
 
-        // change target to be either the list of waypoints or the player
+        // change target to be the player
         if (e.player)
         {
             StopAllCoroutines();
@@ -80,6 +110,7 @@ public class EnemyMovementController : MonoBehaviour
             StartCoroutine(desiredPositionIsGameobject.PathfindingLoop());
             desiredPositionIsGameobject.agent.speed = chaseSpeed;
         }
+        // change target to move to the waypoints
         else
         {
             desiredPositionIsGameobject.agent.ResetPath();
@@ -93,23 +124,10 @@ public class EnemyMovementController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void _OnHitObject(HitObjectEvent e)
     {
-        if (collision.collider.gameObject.CompareTag("Player"))
-        {
-            StopAllCoroutines();
-            PlayerMovement playerMovement = collision.collider.gameObject.GetComponent<PlayerMovement>();
-            //if (playerMovement != null)
-            //{
-            //    playerMovement.enabled = false;
-            //}
-            StartCoroutine(WaitToDie());
-        }
+
     }
 
-    IEnumerator WaitToDie()
-    {
-        yield return new WaitForSeconds(1f);
-        EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
-    }
+    
 }

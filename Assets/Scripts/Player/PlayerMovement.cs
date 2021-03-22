@@ -155,13 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
-
-
-
-
-
-
-        Debug.Log(newForce);
+        //Debug.Log(newForce);
         rb.velocity = newForce;
 
     }
