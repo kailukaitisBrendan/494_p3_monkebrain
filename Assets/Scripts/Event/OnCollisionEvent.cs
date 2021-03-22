@@ -8,12 +8,14 @@ using UnityEngine.Events;
 public class OnCollisionEvent : MonoBehaviour
 {
     public LayerMask collisionLayers;
+
+    public bool destroyOnCollision = false;
     //public HitObjectEvent onObjectHit;
 
     private void Start()
     {
         // Default layer mask to ground and enemies
-        collisionLayers = LayerMask.GetMask("Ground");
+        collisionLayers = LayerMask.GetMask("Ground", "Enemy", "Conveyor Belt");
     }
 
     private void OnCollisionEnter(Collision other)
@@ -23,7 +25,15 @@ public class OnCollisionEvent : MonoBehaviour
         if (collisionLayers == (collisionLayers | (1 << layer)))
         {
             Debug.Log("Collided with object!");
-            EventBus.Publish<HitObjectEvent>(new HitObjectEvent(transform.position));
+            EventBus.Publish<HitObjectEvent>(new HitObjectEvent(transform.position, other.gameObject));
+            
+            // Remove the component.
+            if (destroyOnCollision)
+            {
+                Destroy(this);
+            }
         }
+        
+        
     }
 }
