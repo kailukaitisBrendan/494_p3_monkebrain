@@ -6,6 +6,7 @@ public class EnemyMovementController : MonoBehaviour
 {
 
     public DesiredPositionIsGameobject desiredPositionIsGameobject;
+    public FieldOfView fieldOfView;
 
     public GameObject[] pathPoints;
     int pointIndex = 0;
@@ -13,6 +14,7 @@ public class EnemyMovementController : MonoBehaviour
 
     public float chaseSpeed = 6f;
     float normalSpeed;
+    bool isChasingPlayer = false;
 
 
     Subscription<PlayerSpottedEvent> playerSpottedSubscription;
@@ -27,6 +29,8 @@ public class EnemyMovementController : MonoBehaviour
         hitObjectSubscription = EventBus.Subscribe<HitObjectEvent>(_OnHitObject);
 
         desiredPositionIsGameobject = GetComponent<DesiredPositionIsGameobject>();
+        fieldOfView = GetComponent<FieldOfView>();
+
         normalSpeed = desiredPositionIsGameobject.agent.speed;
 
         if (pathPoints.Length < 1)
@@ -106,8 +110,9 @@ public class EnemyMovementController : MonoBehaviour
             desiredPositionIsGameobject.agent.ResetPath();
 
             desiredPositionIsGameobject.target = e.player;
+            isChasingPlayer = true;
 
-            StartCoroutine(desiredPositionIsGameobject.PathfindingLoop());
+            //StartCoroutine(desiredPositionIsGameobject.PathfindingLoop());
             desiredPositionIsGameobject.agent.speed = chaseSpeed;
         }
         // change target to move to the waypoints
@@ -116,6 +121,7 @@ public class EnemyMovementController : MonoBehaviour
             desiredPositionIsGameobject.agent.ResetPath();
 
             desiredPositionIsGameobject.target = null;
+            isChasingPlayer = false;
             desiredPositionIsGameobject.agent.speed = normalSpeed;
             if (pathPoints.Length < 1)
                 return;
@@ -126,8 +132,73 @@ public class EnemyMovementController : MonoBehaviour
 
     void _OnHitObject(HitObjectEvent e)
     {
+        bool packageInRange = fieldOfView.PackageInFieldOfView(e.position);
+        Debug.Log("packageinrange? " + packageInRange);
 
+        if (packageInRange && !isChasingPlayer)
+        {
+            StartCoroutine(DistractEnemy(e.position));
+        }
     }
 
-    
+
+    IEnumerator DistractEnemy(Vector3 pos)
+    {
+        Debug.Log("Chase Box at: " + pos);
+        desiredPositionIsGameobject.target = null;
+
+        desiredPositionIsGameobject.agent.ResetPath();
+
+
+        yield return new WaitForSeconds(3f);
+        EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
+    }
+
+
+    public bool almostEqual(float a, float b, float eps)
+    {
+        return Mathf.Abs(a - b) < eps;
+    }
 }
+
+//StartCoroutine(desiredPositionIsGameobject.PathfindingLoop());
+
+//while (!almostEqual(transform.position.x, hitObject.transform.position.x, 2.0f) || !almostEqual(transform.position.z, hitObject.transform.position.z, 2.0f))
+//{
+//    //Debug.Log("f1 " + hitObject.transform.position.x + almostEqual(transform.position.x, hitObject.transform.position.x, 2.0f));
+//    //Debug.Log("f2 " + hitObject.transform.position.z + almostEqual(transform.position.z, hitObject.transform.position.z, 2.0f));
+//    Debug.Log("help");
+//    yield return null;
+//}
+
+//StartCoroutine(desiredPositionIsGameobject.PathfindingLoop());
+
+//while (!almostEqual(transform.position.x, hitObject.transform.position.x, 2.0f) || !almostEqual(transform.position.z, hitObject.transform.position.z, 2.0f))
+//{
+//    //Debug.Log("f1 " + hitObject.transform.position.x + almostEqual(transform.position.x, hitObject.transform.position.x, 2.0f));
+//    //Debug.Log("f2 " + hitObject.transform.position.z + almostEqual(transform.position.z, hitObject.transform.position.z, 2.0f));
+//    Debug.Log("help");
+//    yield return null;
+//}
+
+//Debug.Log("Chase Box at: " + pos);
+//desiredPositionIsGameobject.target = null;
+//desiredPositionIsGameobject.agent.ResetPath();
+
+//Vector3 newRotateVal = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+//newRotateVal.y -= 90;
+////look left
+//while (transform.rotation.y != newRotateVal.y)
+//{
+//    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRotateVal), 0.1f);
+//    yield return null;
+//}
+////look right
+//newRotateVal.y += 180;
+//while (transform.rotation.y != newRotateVal.y)
+//{
+//    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRotateVal), 0.1f);
+//    yield return null;
+//}
+
+//EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
