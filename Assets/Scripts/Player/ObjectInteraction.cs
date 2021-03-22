@@ -94,7 +94,7 @@ public class ObjectInteraction : MonoBehaviour
 
         Vector3 position = _pickedUpObject.transform.position;
         Vector3 velocity = CalculateVelocity(true);
-        Debug.Log(velocity);
+        //Debug.Log(velocity);
         float v = velocity.magnitude;
         // Calculate magnitude
         // Since Physics.gravity.y returns a negative value, we have to convert to absolute value. 
