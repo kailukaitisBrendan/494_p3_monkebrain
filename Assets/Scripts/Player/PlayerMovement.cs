@@ -11,9 +11,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     public LayerMask Climbable;
-    
-    // Denotes the maximum angle for a surface below to be considered as 'ground' (vs wall)
-    private float maxGroundAngle = Mathf.PI / 6;
 
     public Camera cam;
 
@@ -60,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Rotate(Vector3 force)
     {
+
+
         if (IsGrounded() && !Input.GetKey(KeyCode.Space) && force.y == 0)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(force), 0.1f);
@@ -70,12 +69,54 @@ public class PlayerMovement : MonoBehaviour
             newRot.y = 0;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRot), 0.1f);
         }
+
     }
+
+
+
+    RaycastHit hit;
+    void Slide()
+    {
+
+
+        Vector3 checkpos = transform.position;
+        //checkpos.x += transform.forward.x;
+        //checkpos.z += transform.forward.z;
+
+        Debug.DrawRay(checkpos, Vector3.down, Color.cyan, 2f);
+
+
+
+        if (Physics.Raycast(checkpos, Vector3.down, out hit, 2f))
+        {
+
+            if (Vector3.Angle(hit.normal, Vector3.up) > 30)
+            {
+                rb.freezeRotation = false;
+
+            }
+            else
+            {
+
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(Vector3.Cross(transform.right, hit.normal)), 10 * Time.deltaTime);
+                rb.freezeRotation = true;
+            }
+        }
+
+
+    }
+
+    bool jumped;
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
         Vector3 newForce = GetInput() * movementSpeed;
+
+        Slide();
+
+
 
         if (newForce != Vector3.zero)
         {
@@ -84,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+
         }
 
         bool isJumpingOrClimbing = false;
@@ -96,12 +138,8 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("climb");
             isJumpingOrClimbing = true;
         }
-        
-        //ANTI WALL STICK 
-        if (newForce != Vector3.zero && ExistsForwardWallNotClimbable())
-        {
-            newForce = rb.velocity;
-        }
+
+
 
         //JUMP 
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
@@ -114,49 +152,42 @@ public class PlayerMovement : MonoBehaviour
         if (!isJumpingOrClimbing)
         {
             newForce.y = rb.velocity.y;
+
+
         }
 
+
+
+
+
+
+        Debug.Log(newForce);
         rb.velocity = newForce;
+
     }
 
     public bool IsGrounded()
     {
         RaycastHit hit;
-        float dist = 1.1f;
+        float dist = 1.01f;
         Vector3 offset = new Vector3(0, 0, 0);
         Debug.DrawRay(transform.position + offset, Vector3.down, Color.cyan);
         if (Physics.Raycast(transform.position + offset, Vector3.down, out hit, dist))
         {
-            Vector3 surfaceNormal = hit.normal.normalized;
-
-            if (surfaceNormal.z < 0) surfaceNormal *= -1f;
-
-            float sinMax;
-            float sin;
-            sin = surfaceNormal.z;
-            sinMax = Mathf.Sin(maxGroundAngle);
-
-            // Also rotate with ground any applicable children
-            foreach (Transform child in transform) {
-                if (child.GetComponent<RotateWithGround>()) {
-                    child.GetComponent<RotateWithGround>().Align(transform.rotation * surfaceNormal);
-                }
-            }
-
-            if (sin <= sinMax) return true;
-            else return false;
+            return true;
         }
 
         return false;
     }
 
 
+
     public bool ExistsForwardWall()
     {
         RaycastHit hit;
-        float dist = 0.7f;
+        float dist = 1f;
 
-        Vector3 toes = new Vector3(0, -1f, 0);
+        Vector3 toes = new Vector3(0, 0f, 0);
         Vector3 knees = new Vector3(0, -0.5f, 0);
         Vector3 head = new Vector3(0, 1, 0);
 
@@ -179,37 +210,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public bool ExistsForwardWallNotClimbable()
-    {
-        RaycastHit hit;
-        float dist = 0.7f;
-
-        Vector3 left = new Vector3(-0.5f, 0, 0);
-        Vector3 mid = new Vector3(0.5f, 0, 0);
-        Vector3 right = new Vector3(0, 1, 0);
-        Vector3 foot = new Vector3(0, -1, 0);
-
-
-        Debug.DrawRay(transform.position + left, transform.forward, Color.blue);
-        Debug.DrawRay(transform.position + mid, transform.forward, Color.blue);
-        Debug.DrawRay(transform.position + right, transform.forward, Color.blue);
-        Debug.DrawRay(transform.position + foot, transform.forward, Color.blue);
 
 
 
-        if (Physics.Raycast(transform.position + left, transform.forward, out hit, dist, ~Climbable)
-            || Physics.Raycast(transform.position + mid, transform.forward, out hit, dist, ~Climbable)
-            || Physics.Raycast(transform.position + right, transform.forward, out hit, dist, ~Climbable)
-            || Physics.Raycast(transform.position + foot, transform.forward, out hit, dist, ~Climbable)
-        )
-        {
-            // Ignore if we are currently holding the NOT climbable object.
-            Debug.Log("BANG0");
-            return hit.transform.parent == null;
-        }
-
-        return false;
-    }
-
-    
 }
