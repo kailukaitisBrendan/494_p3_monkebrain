@@ -237,8 +237,8 @@ public class ObjectInteraction : MonoBehaviour
         item.transform.localEulerAngles = Vector3.zero;
         
         // Disable collider of grabbed object.
-        //Collider col = item.GetComponent<Collider>();
-        //col.enabled = false;
+        Collider col = item.GetComponent<Collider>();
+        col.enabled = false;
         // Ignore collisions between player and package
 
         _hasItem = true;

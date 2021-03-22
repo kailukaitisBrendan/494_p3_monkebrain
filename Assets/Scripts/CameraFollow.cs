@@ -7,8 +7,9 @@ public class CameraFollow : MonoBehaviour
     public GameObject player;
 
     public Vector3 offset = new Vector3(0, 7, -5);
+    public float baseRadius = 4.0f;
     public float radius = 4.0f;
-    public float moveSpeed = 0.5f;
+    public Vector2 sensitivity;
     public float y_axis_position;
     public float min_y = 0;
     public float max_y = 9;
@@ -37,12 +38,12 @@ public class CameraFollow : MonoBehaviour
         }
         else
         {
-            radius = 4f;
+            radius = baseRadius;
             
         }
 
 
-        t -= Input.GetAxis("Mouse X") * moveSpeed * Time.deltaTime;
+        t -= Input.GetAxis("Mouse X") * sensitivity.x * Time.deltaTime;
 
         Vector3 playerXZ = Vector3.zero;
         playerXZ.x += player.transform.position.x;
@@ -55,7 +56,7 @@ public class CameraFollow : MonoBehaviour
         if (y_axis_position <= max_y && y_axis_position >= min_y)
         {
             
-            y_axis_position += Input.GetAxis("Mouse Y") * moveSpeed * Time.deltaTime * 2;
+            y_axis_position += Input.GetAxis("Mouse Y") * sensitivity.y * Time.deltaTime;
         }
         if(y_axis_position > max_y)
         {

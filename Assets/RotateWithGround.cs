@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class RotateWithGround : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Align(Vector3 normal) {
+        transform.rotation = Quaternion.LookRotation(normal);
     }
 }
