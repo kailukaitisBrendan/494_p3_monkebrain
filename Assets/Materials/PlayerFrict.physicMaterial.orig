@@ -6,15 +6,9 @@ PhysicMaterial:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:Assets/Materials/Frictionless.physicMaterial
-  m_Name: Frictionless
-  dynamicFriction: 0.6
-  staticFriction: 0.6
-=======
   m_Name: PlayerFrict
   dynamicFriction: 0
   staticFriction: 0
->>>>>>> ae793ae947e706229b8850617fcd968ded03e28a:Assets/Materials/PlayerFrict.physicMaterial
   bounciness: 0
   frictionCombine: 2
   bounceCombine: 2
