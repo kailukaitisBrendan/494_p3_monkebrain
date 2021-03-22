@@ -14,13 +14,8 @@ public class CameraFollow : MonoBehaviour
     public float max_y = 9;
     public LayerMask mask;
     private RaycastHit camhit;
-    public float lerpSpeed = 0.5f;
+    public float lerpSpeed = 2f;
    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
 
 
