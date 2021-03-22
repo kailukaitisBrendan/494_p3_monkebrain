@@ -8,6 +8,7 @@ TagManager:
   - Dolly
   - TextPrompt
   - GoldenPackage
+  - Wagon
   layers:
   - Default
   - TransparentFX
