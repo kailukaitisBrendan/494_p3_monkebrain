@@ -80,12 +80,12 @@ public class PlayerSpottedEvent
 
 public class HitObjectEvent
 {
-    public Vector3 position;
-    public GameObject obj;
+    public GameObject sourceObject;
+    public GameObject hitObject;
 
-    public HitObjectEvent(Vector3 _position, GameObject _object)
+    public HitObjectEvent(GameObject _sourceObject, GameObject _hitObject)
     {
-        position = _position;
-        obj = _object;
+        sourceObject = _sourceObject;
+        hitObject = _hitObject;
     }
 }

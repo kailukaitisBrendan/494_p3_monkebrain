@@ -25,7 +25,7 @@ public class OnCollisionEvent : MonoBehaviour
         if (collisionLayers == (collisionLayers | (1 << layer)))
         {
             //Debug.Log("Collided with object!");
-            EventBus.Publish<HitObjectEvent>(new HitObjectEvent(transform.position, other.gameObject));
+            EventBus.Publish<HitObjectEvent>(new HitObjectEvent(gameObject, other.gameObject));
             
             // Remove the component.
             if (destroyOnCollision)
