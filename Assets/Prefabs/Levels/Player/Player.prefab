@@ -1394,6 +1394,9 @@ MonoBehaviour:
   movementSpeed: 6
   jumpPower: 5
   climbSpeed: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   Climbable:
     serializedVersion: 2
     m_Bits: 256

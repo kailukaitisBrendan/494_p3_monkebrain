@@ -9,15 +9,18 @@ public class PlayerMovement : MonoBehaviour
     public float jumpPower = 5f;
     public float climbSpeed = 3f;
 
-
+    public LayerMask groundLayer;
     public LayerMask Climbable;
 
+
+    Collider coll;
     public Camera cam;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        coll = GetComponent<Collider>();
     }
 
     Vector3 GetInput()
@@ -78,16 +81,16 @@ public class PlayerMovement : MonoBehaviour
     void Slide()
     {
 
-
-        Vector3 checkpos = transform.position;
+        Vector3 offset = new Vector3(0f, 1f, 0f);
+        Vector3 checkpos = transform.position - transform.up;
         //checkpos.x += transform.forward.x;
         //checkpos.z += transform.forward.z;
+        float dist = 1f;
+        Debug.DrawRay(checkpos, Vector3.down * dist, Color.cyan);
 
-        Debug.DrawRay(checkpos, Vector3.down, Color.cyan, 2f);
 
-
-
-        if (Physics.Raycast(checkpos, Vector3.down, out hit, 2f))
+        
+        if (Physics.Raycast(checkpos, Vector3.down, out hit, dist, groundLayer))
         {
 
             if (Vector3.Angle(hit.normal, Vector3.up) > 30)
