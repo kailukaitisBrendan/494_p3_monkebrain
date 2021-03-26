@@ -134,12 +134,12 @@ public class EnemyMovementController : MonoBehaviour
 
     void _OnHitObject(HitObjectEvent e)
     {
-        bool packageInRange = fieldOfView.PackageInFieldOfView(e.position);
+        bool packageInRange = fieldOfView.PackageInFieldOfView(e.hitObject.transform.position);
         Debug.Log("packageinrange? " + packageInRange);
 
         if (packageInRange && !isChasingPlayer)
         {
-            StartCoroutine(DistractEnemy(e.position));
+            StartCoroutine(DistractEnemy(e.hitObject.transform.position));
         }
     }
 

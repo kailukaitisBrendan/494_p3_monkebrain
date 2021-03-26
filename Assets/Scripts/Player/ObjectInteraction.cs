@@ -27,9 +27,27 @@ public class ObjectInteraction : MonoBehaviour
     private GameObject _pickedUpObject;
     private float _currentForceMultiplier = 0.0f;
     private Rigidbody _pickedUpObjectRigidbody;
+    private BoxCollider OPC;
 
+    private void Start()
+    {
+        OPC = GetComponentInChildren<BoxCollider>();
+    }
     private void Update()
     {
+        //Add box collider if has dolly
+        if (_hasDolly)
+        {
+            OPC.enabled = true;
+        }
+        else
+        {
+            OPC.enabled = false;
+        }
+
+
+
+
         if ((Input.GetKeyDown(KeyCode.E) || 
             (Input.GetMouseButton(0) && !_hasItem)) &&
             Time.time - action_t > action_delay)

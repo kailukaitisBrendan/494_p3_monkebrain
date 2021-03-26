@@ -12,15 +12,14 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask Climbable;
 
-
-    Collider coll;
     public Camera cam;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        coll = GetComponent<Collider>();
+        
+        
     }
 
     Vector3 GetInput()
@@ -81,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     void Slide()
     {
 
-        Vector3 offset = new Vector3(0f, 1f, 0f);
+        
         Vector3 checkpos = transform.position - transform.up;
         //checkpos.x += transform.forward.x;
         //checkpos.z += transform.forward.z;
@@ -114,6 +113,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+
 
         Vector3 newForce = GetInput() * movementSpeed;
 
@@ -205,6 +206,8 @@ public class PlayerMovement : MonoBehaviour
 
         return false;
     }
+
+    
 
 
 
