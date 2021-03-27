@@ -50,7 +50,7 @@ public class ObjectInteraction : MonoBehaviour
         }
 
 
-        if(Input.GetKey(KeyCode.E) &&
+        if (Input.GetMouseButtonDown(0) &&
             Time.time - action_t > action_delay)
         {
             
@@ -60,15 +60,9 @@ public class ObjectInteraction : MonoBehaviour
                 
                 PickupDolly();
             }
-            else if (_hasDolly)
-            {
-                DropDolly();
-            }
-        }
-        if (Input.GetMouseButtonDown(0) &&
-            Time.time - action_t > action_delay)
-        {
-            action_t = Time.time;
+            
+        
+            //action_t = Time.time;
             if (num_items == 0)
             {
                 // if no item, pick up item.
@@ -82,6 +76,22 @@ public class ObjectInteraction : MonoBehaviour
                 PickupItem(itemSlot2);
             }
             
+        }
+
+        if (Input.GetMouseButton(1) &&
+            Time.time - action_t > action_delay)
+        {
+            action_t = Time.time;
+            if (num_items == 0 && _hasDolly)
+            {
+                DropDolly();
+                return;
+            }
+            else if (_hasDolly)
+            {
+                DropItem();
+                return;
+            }
         }
 
         //if ((Input.GetKeyDown(KeyCode.E) || 
@@ -117,17 +127,14 @@ public class ObjectInteraction : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if (Input.GetMouseButton(1) && Time.time - action_t > action_delay)
+        if (Input.GetMouseButton(1))
         {
             // We are holding down the mouse button, so charge up the force.
-            //action_t = Time.time;
-            if (num_items == 0) return;
-            if (_hasDolly)
+            
+            if (num_items == 1 && !_hasDolly)
             {
-                DropItem();
-                return;
+                ChargeThrow();
             }
-            ChargeThrow();
         }
         if (!Input.GetMouseButton(1) && _currentForceMultiplier > 0.0f)
         {
@@ -244,6 +251,8 @@ public class ObjectInteraction : MonoBehaviour
         // Dont drop dolly if we have an item in it!
         if (num_items > 0) return;
 
+       // Debug.Log("drop called");
+
         // Re-enable collider.
         dolly.GetComponent<Collider>().enabled = true;
         dolly.GetComponent<Collider>().attachedRigidbody.isKinematic = false;
@@ -257,7 +266,7 @@ public class ObjectInteraction : MonoBehaviour
 
     private void PickupDolly()
     {
-        Debug.Log("Whats goping on");
+        
         GameObject item = GetDolly();
         if (item == null) return;
         
