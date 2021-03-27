@@ -18,12 +18,12 @@ public class ObjectInteraction : MonoBehaviour
     public float maxForceMultiplier;
     public float throwAngle = 45f;
 
-    public float chargeForceScaler = 1.5f;
-    
+    public float charge_force_scaler = 1.5f;
+
     private float action_delay = 0.2f;
     private float action_t = 0.0f;
 
-    private int _numItems = 0;
+    private float num_items = 0;
     private bool _hasDolly = false;
     private Stack<GameObject> _pickedUpObjects = new Stack<GameObject>();
     private float _currentForceMultiplier = 0.0f;
@@ -37,9 +37,9 @@ public class ObjectInteraction : MonoBehaviour
     private void Update()
     {
         //Debug.Log(num_items);
-        
-            
-            //Add box collider if has dolly
+
+
+        //Add box collider if has dolly
         if (_hasDolly)
         {
             OPC.enabled = true;
@@ -53,29 +53,29 @@ public class ObjectInteraction : MonoBehaviour
         if (Input.GetMouseButtonDown(0) &&
             Time.time - action_t > action_delay)
         {
-            
+
             action_t = Time.time;
             if (!_hasDolly)
             {
-                
+
                 PickupDolly();
             }
-            
-        
+
+
             //action_t = Time.time;
             if (num_items == 0)
             {
                 // if no item, pick up item.
-                
+
                 PickupItem(itemSlot);
-                
+
             }
-            else if(_numItems == 1 && _hasDolly)
+            else if (num_items == 1 && _hasDolly)
             {
-                
+
                 PickupItem(itemSlot2);
             }
-            
+
         }
 
         if (Input.GetMouseButton(1) &&
@@ -126,11 +126,12 @@ public class ObjectInteraction : MonoBehaviour
         //}
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         if (Input.GetMouseButton(1))
         {
             // We are holding down the mouse button, so charge up the force.
-            
+
             if (num_items == 1 && !_hasDolly)
             {
                 ChargeThrow();
@@ -138,7 +139,7 @@ public class ObjectInteraction : MonoBehaviour
         }
         if (!Input.GetMouseButton(1) && _currentForceMultiplier > 0.0f)
         {
-            if (_numItems == 0 || _hasDolly) return;
+            if (num_items == 0 || _hasDolly) return;
             // Throw item.
             ThrowItem();
             _currentForceMultiplier = 0.0f;
@@ -147,14 +148,14 @@ public class ObjectInteraction : MonoBehaviour
 
     private void ChargeThrow()
     {
-        _currentForceMultiplier += Time.deltaTime * chargeForceScaler;
-        
+        _currentForceMultiplier += Time.deltaTime * charge_force_scaler;
+
         // If we go over our maximum charge, then set it to max
         if (_currentForceMultiplier >= maxForceMultiplier)
         {
             _currentForceMultiplier = maxForceMultiplier;
         }
-        
+
         DrawTrajectoryPath();
     }
 
@@ -181,7 +182,7 @@ public class ObjectInteraction : MonoBehaviour
                             Mathf.Sqrt(Mathf.Pow(v * Mathf.Sin(throwAngle), 2) + Mathf.Abs(2 * Physics.gravity.y * position.y)));
         totalTime /= Mathf.Abs(Physics.gravity.y);
         //Debug.Log(totalTime);
-        
+
         // Next, we need to simulate the flight path by calculating the position and 
         // velocity vectors over set time intervals.
         // For each interval, we add the position to the path list so we can draw the trajectory.
@@ -192,13 +193,13 @@ public class ObjectInteraction : MonoBehaviour
             position += velocity * timeStep;
             path.Add(position);
         }
-        
+
         // Now, draw the trajectory using a LineRenderer.
         lineRenderer.positionCount = path.Count;
         lineRenderer.SetPositions(path.ToArray());
     }
 
-    private Vector3 CalculateVelocity(bool mass=false)
+    private Vector3 CalculateVelocity(bool mass = false)
     {
         // Since our charge throw force acts as a force multiplier, then we can calculate our force
         // from multiplying our values together with the angle. Thus, our velocity will be defined as
@@ -238,20 +239,20 @@ public class ObjectInteraction : MonoBehaviour
         // //Debug.Log(forceDirection)
         //Debug.Log(force);
         item.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
-        
-        
+
+
         // Add Component to the package to alert enemies on colliding with ground.
         item.AddComponent<OnCollisionEvent>();
-        
+
 
     }
 
     private void DropDolly()
     {
         // Dont drop dolly if we have an item in it!
-        if (_numItems > 0) return;
+        if (num_items > 0) return;
 
-       // Debug.Log("drop called");
+        // Debug.Log("drop called");
 
         // Re-enable collider.
         dolly.GetComponent<Collider>().enabled = true;
@@ -266,10 +267,10 @@ public class ObjectInteraction : MonoBehaviour
 
     private void PickupDolly()
     {
-        
+
         GameObject item = GetDolly();
         if (item == null) return;
-        
+
         if (!item.CompareTag("Dolly")) return;
         item.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         // Set parent to be player
@@ -280,7 +281,7 @@ public class ObjectInteraction : MonoBehaviour
         item.transform.localEulerAngles = Vector3.zero;
         dolly = item;
         _hasDolly = true;
-        
+
         // Disable collider so that it ignores all collision when
         // we pick it up.
         Collider col = item.GetComponent<Collider>();
@@ -295,19 +296,19 @@ public class ObjectInteraction : MonoBehaviour
 
     private void DropItem()
     {
-        
-        if (_hasDolly && _numItems == 2)
+
+        if (_hasDolly && num_items == 2)
         {
             _pickedUpObjects.Peek().transform.position += transform.forward;
         }
-        _numItems--;
+        num_items--;
         float dist = 1f;
 
-        
+
 
         // Re-enable rigidbody and collider.
         Rigidbody rb = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
-        
+
         Collider col = _pickedUpObjects.Peek().GetComponent<Collider>();
 
         // Set the parent back to null
@@ -315,7 +316,7 @@ public class ObjectInteraction : MonoBehaviour
         rb.isKinematic = false;
         col.enabled = true;
 
-        
+
         _pickedUpObjectRigidbody = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
         _pickedUpObjects.Pop();
 
@@ -324,7 +325,7 @@ public class ObjectInteraction : MonoBehaviour
         // Disable LineRenderer
         lineRenderer.enabled = false;
 
-       
+
 
         //Debug.Log("Dropped Item");
     }
@@ -332,11 +333,11 @@ public class ObjectInteraction : MonoBehaviour
 
     private void PickupItem(Transform itemSlot)
     {
-        
+
 
         GameObject item = GetItem();
         if (item == null) return;
-        _numItems++;
+        num_items++;
 
         if (!item.CompareTag("Package") && !item.CompareTag("GoldenPackage")) return;
         // Get the rigidbody of our hit.
@@ -345,13 +346,13 @@ public class ObjectInteraction : MonoBehaviour
         rb.isKinematic = true;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        
+
         // Set parent as the player.
         item.transform.SetParent(itemSlot);
         // Reset the local position and rotation.
         item.transform.localPosition = Vector3.zero;
         item.transform.localEulerAngles = Vector3.zero;
-        
+
         // Disable collider of grabbed object.
         Collider col = item.GetComponent<Collider>();
         col.enabled = false;
@@ -403,7 +404,7 @@ public class ObjectInteraction : MonoBehaviour
         Gizmos.color = Color.red;
         Vector3 pos = transform.position;
         pos.y = itemSlot.transform.position.y;
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * pickupDistance / 2 ;
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * pickupDistance / 2;
         Gizmos.DrawWireSphere(pos + direction, 1f);
     }
 }
