@@ -135,6 +135,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: Hub
+--- !u!1 &348690209280535152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8218031657446126718}
+  m_Layer: 0
+  m_Name: GroundSphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8218031657446126718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348690209280535152}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8497152196208681337}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &864743674370103933
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8231854697542493952
 Transform:
   m_ObjectHideFlags: 0
@@ -1393,6 +1423,7 @@ Transform:
   - {fileID: 2369614514712895123}
   - {fileID: 445998092972689753}
   - {fileID: 1166358741}
+  - {fileID: 8218031657446126718}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1515,7 +1546,7 @@ MonoBehaviour:
   throwForce: 5
   maxForceMultiplier: 2
   throwAngle: 45
-  charge_force_scaler: 1.5
+  chargeForceScaler: 1.5
 --- !u!1 &8497152197109940811
 GameObject:
   m_ObjectHideFlags: 0

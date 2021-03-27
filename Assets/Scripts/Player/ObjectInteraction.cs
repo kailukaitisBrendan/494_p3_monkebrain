@@ -18,12 +18,12 @@ public class ObjectInteraction : MonoBehaviour
     public float maxForceMultiplier;
     public float throwAngle = 45f;
 
-    public float charge_force_scaler = 1.5f;
+    public float chargeForceScaler = 1.5f;
     
     private float action_delay = 0.2f;
     private float action_t = 0.0f;
 
-    private float num_items = 0;
+    private int _numItems = 0;
     private bool _hasDolly = false;
     private Stack<GameObject> _pickedUpObjects = new Stack<GameObject>();
     private float _currentForceMultiplier = 0.0f;
@@ -70,7 +70,7 @@ public class ObjectInteraction : MonoBehaviour
                 PickupItem(itemSlot);
                 
             }
-            else if(num_items == 1 && _hasDolly)
+            else if(_numItems == 1 && _hasDolly)
             {
                 
                 PickupItem(itemSlot2);
@@ -138,7 +138,7 @@ public class ObjectInteraction : MonoBehaviour
         }
         if (!Input.GetMouseButton(1) && _currentForceMultiplier > 0.0f)
         {
-            if (num_items == 0 || _hasDolly) return;
+            if (_numItems == 0 || _hasDolly) return;
             // Throw item.
             ThrowItem();
             _currentForceMultiplier = 0.0f;
@@ -147,7 +147,7 @@ public class ObjectInteraction : MonoBehaviour
 
     private void ChargeThrow()
     {
-        _currentForceMultiplier += Time.deltaTime * charge_force_scaler;
+        _currentForceMultiplier += Time.deltaTime * chargeForceScaler;
         
         // If we go over our maximum charge, then set it to max
         if (_currentForceMultiplier >= maxForceMultiplier)
@@ -249,7 +249,7 @@ public class ObjectInteraction : MonoBehaviour
     private void DropDolly()
     {
         // Dont drop dolly if we have an item in it!
-        if (num_items > 0) return;
+        if (_numItems > 0) return;
 
        // Debug.Log("drop called");
 
@@ -296,11 +296,11 @@ public class ObjectInteraction : MonoBehaviour
     private void DropItem()
     {
         
-        if (_hasDolly && num_items == 2)
+        if (_hasDolly && _numItems == 2)
         {
             _pickedUpObjects.Peek().transform.position += transform.forward;
         }
-        num_items--;
+        _numItems--;
         float dist = 1f;
 
         
@@ -336,7 +336,7 @@ public class ObjectInteraction : MonoBehaviour
 
         GameObject item = GetItem();
         if (item == null) return;
-        num_items++;
+        _numItems++;
 
         if (!item.CompareTag("Package") && !item.CompareTag("GoldenPackage")) return;
         // Get the rigidbody of our hit.
