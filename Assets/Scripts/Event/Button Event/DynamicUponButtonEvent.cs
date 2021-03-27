@@ -14,6 +14,10 @@ public class DynamicUponButtonEvent : MonoBehaviour
     
     // Variables representing original state
     private bool isKinematic = true;
+    private delegate void Handler();
+    private Handler pressHandler;
+    private Handler liftHandler; 
+
     private Vector3 initPosition;
     private Quaternion initRotation;
 
@@ -23,34 +27,54 @@ public class DynamicUponButtonEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buttonPressSubscription = EventBus.Subscribe<ButtonPressEvent>(MakeRigidbodyDynamic);
-        
+        isKinematic = GetComponent<Rigidbody>().isKinematic;
+        if (isKinematic) {
+            pressHandler = MakeRigidbodyDynamic;
+            liftHandler = MakeRigidbodyKinematic;
+        }
+        else {
+            pressHandler = MakeRigidbodyKinematic;
+            liftHandler = MakeRigidbodyDynamic;
+        }
+
+        initPosition = transform.position;
+        initRotation = transform.rotation;
+
+        buttonPressSubscription = EventBus.Subscribe<ButtonPressEvent>(ButtonPressHandler);
+
         if (reversible) {
-            buttonLiftSubscription = EventBus.Subscribe<ButtonLiftEvent>(MakeRigidbodyKinematic);
-            
-            initPosition = transform.position;
-            initRotation = transform.rotation;
+            buttonLiftSubscription = EventBus.Subscribe<ButtonLiftEvent>(ButtonLiftHandler);
         }
     }
 
-    private void MakeRigidbodyDynamic(ButtonPressEvent _event)
+    private void ButtonPressHandler(ButtonPressEvent _event)
     {
-        if (_event.id == buttonEventId) {
-            GetComponent<Rigidbody>().isKinematic = false;
-            isKinematic = false;
+        if (_event.id == buttonEventId && pressHandler != null) {
+            pressHandler();
         }
     }
 
-    private void MakeRigidbodyKinematic(ButtonLiftEvent _event)
+    private void ButtonLiftHandler(ButtonLiftEvent _event)
     {
-        if (_event.id == buttonEventId) {
-            GetComponent<Rigidbody>().isKinematic = true;
-            isKinematic = true;
+        if (_event.id == buttonEventId && liftHandler != null) {
+            liftHandler();
         }
+    }
+
+    private void MakeRigidbodyDynamic()
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
+        isKinematic = false;
+    }
+
+    private void MakeRigidbodyKinematic()
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        isKinematic = true;
     }
     
     private void FixedUpdate() {
-        if (isKinematic && reversible) {
+        if (isKinematic) {
             currPosition = transform.position;
             currRotation = transform.rotation;
             transform.position = Vector3.Lerp(currPosition, initPosition, i * lerpSpeed);
