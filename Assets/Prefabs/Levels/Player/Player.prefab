@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1166358740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166358741}
+  - component: {fileID: 1166358742}
+  m_Layer: 11
+  m_Name: ItemSlot2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1166358741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166358740}
+  m_LocalRotation: {x: -0.01745245, y: 0, z: 0, w: 0.99984777}
+  m_LocalPosition: {x: 0, y: 0.8, z: 1.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8497152196208681337}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: -2, y: 0, z: 0}
+--- !u!114 &1166358742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166358740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e2980296b70ce44975b8232e382419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &123335998058147751
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,10 +893,15 @@ MonoBehaviour:
 
     [Space]: jump
 
-    [E/Click]: pick up item
+    [E]: pick up trolly
 
-    [Hold
-    Click]: throw item
+    [Left
+    Click] Pick up item
+
+    [Right Click]: drop item
+
+    [Hold Right Click]: throw
+    item
 
 
     Deliver the golden package!'
@@ -1344,6 +1392,7 @@ Transform:
   - {fileID: 8231854697542493952}
   - {fileID: 2369614514712895123}
   - {fileID: 445998092972689753}
+  - {fileID: 1166358741}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1460,6 +1509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupDistance: 2
   itemSlot: {fileID: 6333447323867098795}
+  itemSlot2: {fileID: 1166358741}
   dolly: {fileID: 3996719794959161134}
   lineRenderer: {fileID: 8413363109491614448}
   throwForce: 5
@@ -1869,6 +1919,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: dolly
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440292959527038508, guid: 1558d988a663c05418b5be5eeafd3948,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1558d988a663c05418b5be5eeafd3948, type: 3}

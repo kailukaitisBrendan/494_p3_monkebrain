@@ -9,6 +9,7 @@ public class ObjectInteraction : MonoBehaviour
 {
     public float pickupDistance;
     public Transform itemSlot;
+    public Transform itemSlot2;
     public GameObject dolly;
 
     public LineRenderer lineRenderer;
@@ -22,9 +23,9 @@ public class ObjectInteraction : MonoBehaviour
     private float action_delay = 0.2f;
     private float action_t = 0.0f;
 
-    private bool _hasItem;
+    private float num_items = 0;
     private bool _hasDolly;
-    private GameObject _pickedUpObject;
+    private Stack<GameObject> _pickedUpObjects = new Stack<GameObject>();
     private float _currentForceMultiplier = 0.0f;
     private Rigidbody _pickedUpObjectRigidbody;
     private BoxCollider OPC;
@@ -35,7 +36,10 @@ public class ObjectInteraction : MonoBehaviour
     }
     private void Update()
     {
-        //Add box collider if has dolly
+        //Debug.Log(num_items);
+        
+            
+            //Add box collider if has dolly
         if (_hasDolly)
         {
             OPC.enabled = true;
@@ -46,50 +50,86 @@ public class ObjectInteraction : MonoBehaviour
         }
 
 
-
-
-        if ((Input.GetKeyDown(KeyCode.E) || 
-            (Input.GetMouseButton(0) && !_hasItem)) &&
+        if(Input.GetKey(KeyCode.E) &&
             Time.time - action_t > action_delay)
         {
             action_t = Time.time;
-            // If we do not have dolly, pick it up first
             if (!_hasDolly)
             {
                 PickupDolly();
             }
-            else if (!_hasItem && _hasDolly)
+            else if (_hasDolly)
             {
-                // if no item, pick up item.
-                PickupItem();
-                if (!_hasItem) {
-                    DropDolly();
-                }
-            }
-            // If we have an item, drop it first.
-            else if (_hasItem)
-            {
-                DropItem();
-            }
-            else if (_hasDolly && !_hasItem)
-            {
-                Debug.Log("you should never see this");
-                // No, item so drop dolly.
                 DropDolly();
             }
         }
+        if (Input.GetMouseButtonDown(0) &&
+            Time.time - action_t > action_delay)
+        {
+            action_t = Time.time;
+            if (num_items == 0)
+            {
+                // if no item, pick up item.
+                
+                PickupItem(itemSlot);
+                
+            }
+            else if(num_items == 1 && _hasDolly)
+            {
+                
+                PickupItem(itemSlot2);
+            }
+            
+        }
+
+        //if ((Input.GetKeyDown(KeyCode.E) || 
+        //    (Input.GetMouseButton(0) && !_hasItem)) &&
+        //    Time.time - action_t > action_delay)
+        //{
+        //    action_t = Time.time;
+        //    // If we do not have dolly, pick it up first
+        //    if (!_hasDolly)
+        //    {
+        //        PickupDolly();
+        //    }
+        //    if (!_hasItem)
+        //    {
+        //        // if no item, pick up item.
+        //        PickupItem();
+        //        if (!_hasItem) {
+        //            DropDolly();
+        //        }
+        //    }
+        //    // If we have an item, drop it first.
+        //    else if (_hasItem)
+        //    {
+        //        DropItem();
+        //    }
+        //    else if (_hasDolly && !_hasItem)
+        //    {
+        //        Debug.Log("you should never see this");
+        //        // No, item so drop dolly.
+        //        DropDolly();
+        //    }
+        //}
     }
 
     void FixedUpdate() {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1) && Time.time - action_t > action_delay)
         {
             // We are holding down the mouse button, so charge up the force.
-            if (!_hasItem || !_hasDolly) return;
+            //action_t = Time.time;
+            if (num_items == 0) return;
+            if (_hasDolly)
+            {
+                DropItem();
+                return;
+            }
             ChargeThrow();
         }
-        if (!Input.GetMouseButton(0) && _currentForceMultiplier > 0.0f)
+        if (!Input.GetMouseButton(1) && _currentForceMultiplier > 0.0f)
         {
-            if (!_hasItem || !_hasDolly) return;
+            if (num_items == 0 || _hasDolly) return;
             // Throw item.
             ThrowItem();
             _currentForceMultiplier = 0.0f;
@@ -122,7 +162,7 @@ public class ObjectInteraction : MonoBehaviour
         // v = the magnitude of the velocity vector
         // g = gravity
 
-        Vector3 position = _pickedUpObject.transform.position;
+        Vector3 position = _pickedUpObjects.Peek().transform.position;
         Vector3 velocity = CalculateVelocity(true);
         //Debug.Log(velocity);
         float v = velocity.magnitude;
@@ -176,7 +216,7 @@ public class ObjectInteraction : MonoBehaviour
     {
         Vector3 force = CalculateVelocity();
         //Debug.Log("Throw!");
-        GameObject item = _pickedUpObject;
+        GameObject item = _pickedUpObjects.Peek();
         // First, drop the object
         DropItem();
         // We want to throw object in direction the player is facing
@@ -200,7 +240,7 @@ public class ObjectInteraction : MonoBehaviour
     private void DropDolly()
     {
         // Dont drop dolly if we have an item in it!
-        if (_hasItem) return;
+        if (num_items > 0) return;
 
         // Re-enable collider.
         dolly.GetComponent<Collider>().enabled = true;
@@ -215,7 +255,7 @@ public class ObjectInteraction : MonoBehaviour
 
     private void PickupDolly()
     {
-        GameObject item = GetItem();
+        GameObject item = GetDolly();
         if (item == null) return;
         if (!item.CompareTag("Dolly")) return;
         item.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -242,35 +282,49 @@ public class ObjectInteraction : MonoBehaviour
 
     private void DropItem()
     {
+        
+        if (_hasDolly && num_items == 2)
+        {
+            _pickedUpObjects.Peek().transform.position += transform.forward;
+        }
+        num_items--;
+        float dist = 1f;
+
+        
+
         // Re-enable rigidbody and collider.
-        Rigidbody rb = _pickedUpObject.GetComponent<Rigidbody>();
+        Rigidbody rb = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
         
-        Collider col = _pickedUpObject.GetComponent<Collider>();
-        
+        Collider col = _pickedUpObjects.Peek().GetComponent<Collider>();
+
         // Set the parent back to null
-        _pickedUpObject.transform.parent = null;
+        _pickedUpObjects.Peek().transform.parent = null;
         rb.isKinematic = false;
         col.enabled = true;
 
-        _pickedUpObject = null;
-        _pickedUpObjectRigidbody = null;
-        _hasItem = false;
         
+        _pickedUpObjectRigidbody = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
+        _pickedUpObjects.Pop();
+
         // Reset our trajectory calculations
         _currentForceMultiplier = 0f;
         // Disable LineRenderer
         lineRenderer.enabled = false;
-        
-        
+
+       
 
         //Debug.Log("Dropped Item");
     }
 
-    private void PickupItem()
+
+    private void PickupItem(Transform itemSlot)
     {
         
+
         GameObject item = GetItem();
         if (item == null) return;
+        num_items++;
+
         if (!item.CompareTag("Package") && !item.CompareTag("GoldenPackage")) return;
         // Get the rigidbody of our hit.
         Rigidbody rb = item.GetComponent<Rigidbody>();
@@ -290,10 +344,10 @@ public class ObjectInteraction : MonoBehaviour
         col.enabled = false;
         // Ignore collisions between player and package
 
-        _hasItem = true;
-        _pickedUpObject = item;
+        _pickedUpObjects.Push(item);
         _pickedUpObjectRigidbody = item.GetComponent<Rigidbody>();
     }
+
 
     public GameObject GetItem()
     {
@@ -303,7 +357,27 @@ public class ObjectInteraction : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y = itemSlot.position.y;
         RaycastHit hit;
-        if (Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, pickupDistance, mask))
+        float radius = 1f;
+        if (Physics.SphereCast(pos, radius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2, mask)
+            || Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, pickupDistance, mask))
+        {
+            Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+        }
+
+        return hit.transform == null ? null : hit.transform.gameObject;
+    }
+
+    public GameObject GetDolly()
+    {
+        // Raycast out from player to see if item is in front of the player.
+        // Create mask so we only collide with pickup-able objects.
+        LayerMask mask = LayerMask.GetMask("Dolly");
+        Vector3 pos = transform.position;
+        pos.y = itemSlot.position.y;
+        RaycastHit hit;
+        float radius = 1f;
+        if (Physics.SphereCast(pos, radius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2, mask)
+            || Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, pickupDistance, mask))
         {
             Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
         }
@@ -316,7 +390,7 @@ public class ObjectInteraction : MonoBehaviour
         Gizmos.color = Color.red;
         Vector3 pos = transform.position;
         pos.y = itemSlot.transform.position.y;
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * pickupDistance;
-        Gizmos.DrawRay(pos, direction);
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * pickupDistance / 2 ;
+        Gizmos.DrawWireSphere(pos + direction, 1f);
     }
 }
