@@ -24,7 +24,7 @@ public class ObjectInteraction : MonoBehaviour
     private float action_t = 0.0f;
 
     private float num_items = 0;
-    private bool _hasDolly;
+    private bool _hasDolly = false;
     private Stack<GameObject> _pickedUpObjects = new Stack<GameObject>();
     private float _currentForceMultiplier = 0.0f;
     private Rigidbody _pickedUpObjectRigidbody;
@@ -53,9 +53,11 @@ public class ObjectInteraction : MonoBehaviour
         if(Input.GetKey(KeyCode.E) &&
             Time.time - action_t > action_delay)
         {
+            
             action_t = Time.time;
             if (!_hasDolly)
             {
+                
                 PickupDolly();
             }
             else if (_hasDolly)
@@ -255,8 +257,10 @@ public class ObjectInteraction : MonoBehaviour
 
     private void PickupDolly()
     {
+        Debug.Log("Whats goping on");
         GameObject item = GetDolly();
         if (item == null) return;
+        
         if (!item.CompareTag("Dolly")) return;
         item.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         // Set parent to be player

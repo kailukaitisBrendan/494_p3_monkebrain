@@ -514,58 +514,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1558d988a663c05418b5be5eeafd3948, type: 3}
---- !u!1 &1166358740
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1166358741}
-  - component: {fileID: 1166358742}
-  m_Layer: 11
-  m_Name: ItemSlot2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1166358741
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1166358740}
-  m_LocalRotation: {x: -0.01745245, y: 0, z: 0, w: 0.99984777}
-  m_LocalPosition: {x: 0, y: 0.8, z: 1.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1241326841}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: -2, y: 0, z: 0}
---- !u!114 &1166358742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1166358740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36e2980296b70ce44975b8232e382419, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1241326834 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8497152196208681333, guid: 908fb1146e0ee6f4f86639bff20c168a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1695892124}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1241326841 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8497152196208681337, guid: 908fb1146e0ee6f4f86639bff20c168a,
     type: 3}
   m_PrefabInstance: {fileID: 1695892124}
   m_PrefabAsset: {fileID: 0}
@@ -580,31 +531,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3996719794959161134, guid: 908fb1146e0ee6f4f86639bff20c168a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8002769603840951040, guid: 908fb1146e0ee6f4f86639bff20c168a,
-        type: 3}
-      propertyPath: m_Text
-      value: '[W][A][S][D]: movement
-
-        [Space]: jump
-
-        [E]: pick up
-        trolly
-
-        [Left Click] Pick up item
-
-        [Right Click]: drop item
-
-        [Hold
-        Right Click]: throw item
-
-
-        Deliver the golden package!'
       objectReference: {fileID: 0}
     - target: {fileID: 8497152196208681333, guid: 908fb1146e0ee6f4f86639bff20c168a,
         type: 3}
@@ -671,11 +597,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2052671676}
-    - target: {fileID: 8884979795343272461, guid: 908fb1146e0ee6f4f86639bff20c168a,
-        type: 3}
-      propertyPath: itemSlot2
-      value: 
-      objectReference: {fileID: 1166358741}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 908fb1146e0ee6f4f86639bff20c168a, type: 3}
 --- !u!1 &1930520017
