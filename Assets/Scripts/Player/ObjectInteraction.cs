@@ -304,6 +304,13 @@ public class ObjectInteraction : MonoBehaviour
             _pickedUpObjects.Peek().transform.position += transform.forward;
         }
         num_items--;
+        LayerMask mask = LayerMask.GetMask("Grabbable Object");
+        float dist = 2f;
+        Debug.DrawRay(transform.position, transform.forward * dist);
+        if (Physics.Raycast(transform.position, transform.forward, dist, mask))
+        {
+            _pickedUpObjects.Peek().transform.position += Vector3.up;
+        }
 
         // Re-enable rigidbody and collider.
         Rigidbody rb = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
