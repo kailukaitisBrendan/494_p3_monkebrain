@@ -40,7 +40,7 @@ public class ObjectInteraction : MonoBehaviour
 
 
         //Add box collider if has dolly
-        if (_hasDolly)
+        if (_hasDolly || num_items > 0)
         {
             OPC.enabled = true;
         }
@@ -59,6 +59,8 @@ public class ObjectInteraction : MonoBehaviour
             {
 
                 PickupDolly();
+                if(_hasDolly)
+                    return;
             }
 
 
@@ -302,9 +304,6 @@ public class ObjectInteraction : MonoBehaviour
             _pickedUpObjects.Peek().transform.position += transform.forward;
         }
         num_items--;
-        float dist = 1f;
-
-
 
         // Re-enable rigidbody and collider.
         Rigidbody rb = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
