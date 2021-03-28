@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
@@ -8,6 +9,7 @@ public class ThirdPersonMovement : MonoBehaviour
     Rigidbody rb;
     public float movementSpeed = 6f;
     public float jumpPower = 5f;
+    public float rotationSpeed;// Player's rotation speed when throwing an object.
 
     public LayerMask groundMask;
 
@@ -23,22 +25,39 @@ public class ThirdPersonMovement : MonoBehaviour
     
     private float _angleVelocity;
     private bool _isGrounded = false;
+    private bool _isThrowing = false;
+    private Camera _mainCamera;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Cursor.visible = false;
+        _mainCamera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Try and align player's rotation with the angle of the ground. 
         AlignWithGround();
         
+        // Get the movement inputs.
         Vector3 velocity = Vector3.zero;
         _isGrounded = IsGrounded();
         Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
+
+        if (_isThrowing)
+        {
+            // If we are in the process of throwing an object, then our mouse x input should control the players 
+            // rotation
+            // float mouseInput = Mathf.Clamp(Input.GetAxis("Mouse X") * rotationSpeed * 1.5f * Time.deltaTime, -180f, 180f);
+            // Debug.Log(mouseInput);
+            // transform.Rotate(0f, mouseInput, 0f);
+            Vector3 angle = transform.eulerAngles;
+            angle.y = _mainCamera.transform.eulerAngles.y;
+            transform.eulerAngles = angle;
+        }
 
         if (direction.magnitude >= 0.1f)
         {
@@ -46,6 +65,7 @@ public class ThirdPersonMovement : MonoBehaviour
             //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _angleVelocity, angleDamping);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            //transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             velocity = moveDir.normalized * movementSpeed;
@@ -94,5 +114,10 @@ public class ThirdPersonMovement : MonoBehaviour
             }
         }
 
+    }
+
+    public void OnToggleThrowing()
+    {
+        _isThrowing = !_isThrowing;
     }
 }

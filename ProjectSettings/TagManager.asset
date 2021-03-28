@@ -9,6 +9,7 @@ TagManager:
   - TextPrompt
   - GoldenPackage
   - Wagon
+  - CineMachineController
   layers:
   - Default
   - TransparentFX
