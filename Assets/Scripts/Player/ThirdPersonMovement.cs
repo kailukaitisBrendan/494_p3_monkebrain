@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -27,13 +28,19 @@ public class ThirdPersonMovement : MonoBehaviour
     private bool _isGrounded = false;
     private bool _isThrowing = false;
     private Camera _mainCamera;
-
+    private bool isPlayingWalkingSound = false;
+    AudioSource sound;
+    public AudioClip walkingSound;
+    public AudioClip hitGround;
+    private bool jumped = false;
+ 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Cursor.visible = false;
         _mainCamera = Camera.main;
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -61,6 +68,17 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
+            //play walking sound
+            if (_isGrounded && !isPlayingWalkingSound)
+            {
+                sound.Stop();
+                sound.loop = true;
+                sound.clip = walkingSound;
+                sound.Play();
+                isPlayingWalkingSound = true;
+            }
+
+
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _mainCamera.transform.eulerAngles.y;
             //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _angleVelocity, angleDamping);
@@ -73,20 +91,55 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         else
         {
+            //stop walking sound
+            if(sound.clip != hitGround)
+                sound.Stop();
+            isPlayingWalkingSound = false;
+
+
             velocity = Vector3.zero;
         }
         
+
         velocity.y = rb.velocity.y;
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
+            
             _isGrounded = false;
             velocity.y = jumpPower;
         }
 
+
+        if (jumped && _isGrounded)
+        {
+            
+            sound.clip = hitGround;
+            sound.loop = false;
+            sound.Play();
+            jumped = false;
+            StartCoroutine(WaitForFallSoundToFinish());
+        }
+        //stop walking sound
+        if (!_isGrounded)
+        {
+            jumped = true;
+            sound.Stop();
+            isPlayingWalkingSound = false;
+        }
+        
+
+
+
         rb.velocity = velocity;
     }
 
+
+    IEnumerator WaitForFallSoundToFinish()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isPlayingWalkingSound = false;
+    }
     private bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
