@@ -1553,6 +1553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 6
   jumpPower: 5
+  rotationSpeed: 450
   groundMask:
     serializedVersion: 2
     m_Bits: 4096

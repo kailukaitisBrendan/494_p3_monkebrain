@@ -21,7 +21,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float angleDamping = 0.1f;
     //public LayerMask Climbable;
 
-    public Transform cam;
+    //public Transform cam;
     
     private float _angleVelocity;
     private bool _isGrounded = false;
@@ -61,7 +61,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _mainCamera.transform.eulerAngles.y;
             //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _angleVelocity, angleDamping);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
