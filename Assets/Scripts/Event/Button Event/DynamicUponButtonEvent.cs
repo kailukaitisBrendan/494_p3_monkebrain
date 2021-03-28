@@ -24,9 +24,11 @@ public class DynamicUponButtonEvent : MonoBehaviour
     private Vector3 currPosition;
     private Quaternion currRotation;
 
+    AudioSource sound;
     // Start is called before the first frame update
     void Start()
     {
+        sound = GetComponent<AudioSource>();
         isKinematic = GetComponent<Rigidbody>().isKinematic;
         if (isKinematic) {
             pressHandler = MakeRigidbodyDynamic;
@@ -51,6 +53,7 @@ public class DynamicUponButtonEvent : MonoBehaviour
     {
         if (_event.id == buttonEventId && pressHandler != null) {
             pressHandler();
+            sound.Play();
         }
     }
 
@@ -58,6 +61,7 @@ public class DynamicUponButtonEvent : MonoBehaviour
     {
         if (_event.id == buttonEventId && liftHandler != null) {
             liftHandler();
+            sound.Play();
         }
     }
 
