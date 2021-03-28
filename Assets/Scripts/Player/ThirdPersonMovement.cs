@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
     Rigidbody rb;
     public float movementSpeed = 6f;
     public float jumpPower = 5f;
-    public float rotationSpeed;// Player's rotation speed when throwing an object.
+    public float rotationSpeed; // Player's rotation speed when throwing an object.
 
     public LayerMask groundMask;
 
@@ -22,11 +23,16 @@ public class ThirdPersonMovement : MonoBehaviour
     //public LayerMask Climbable;
 
     //public Transform cam;
-    
+
     private float _angleVelocity;
     private bool _isGrounded = false;
     private bool _isThrowing = false;
     private Camera _mainCamera;
+    private bool isPlayingWalkingSound = false;
+    AudioSource sound;
+    public AudioClip walkingSound;
+    public AudioClip hitGround;
+    private bool jumped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,14 +40,15 @@ public class ThirdPersonMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Cursor.visible = false;
         _mainCamera = Camera.main;
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Try and align player's rotation with the angle of the ground. 
-        AlignWithGround();
-        
+        //AlignWithGround();
+
         // Get the movement inputs.
         Vector3 velocity = Vector3.zero;
         _isGrounded = IsGrounded();
@@ -61,7 +68,19 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _mainCamera.transform.eulerAngles.y;
+            //play walking sound
+            if (_isGrounded && !isPlayingWalkingSound)
+            {
+                sound.Stop();
+                sound.loop = true;
+                sound.clip = walkingSound;
+                sound.Play();
+                isPlayingWalkingSound = true;
+            }
+
+
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg +
+                                _mainCamera.transform.eulerAngles.y;
             //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _angleVelocity, angleDamping);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -73,9 +92,16 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         else
         {
+            //stop walking sound
+            if (sound.clip != hitGround)
+                sound.Stop();
+            isPlayingWalkingSound = false;
+
+
             velocity = Vector3.zero;
         }
-        
+
+
         velocity.y = rb.velocity.y;
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
@@ -84,7 +110,33 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = jumpPower;
         }
 
+
+        if (jumped && _isGrounded)
+        {
+            sound.clip = hitGround;
+            sound.loop = false;
+            sound.Play();
+            jumped = false;
+            StartCoroutine(WaitForFallSoundToFinish());
+        }
+
+        //stop walking sound
+        if (!_isGrounded)
+        {
+            jumped = true;
+            sound.Stop();
+            isPlayingWalkingSound = false;
+        }
+
+
         rb.velocity = velocity;
+    }
+
+
+    IEnumerator WaitForFallSoundToFinish()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isPlayingWalkingSound = false;
     }
 
     private bool IsGrounded()
@@ -96,6 +148,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         // This function tries to align the player's rotation with the angle of the ground if they are on a slope.
         RaycastHit hitInfo;
+        Debug.DrawRay(groundCheck.position, Vector3.down * 2f, Color.cyan);
         if (Physics.Raycast(groundCheck.position, Vector3.down, out hitInfo, 1f, groundMask))
         {
             // We hit the ground, calculate the angle of the player and our hit's normal.
@@ -105,7 +158,7 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 Vector3 slopeForward = Vector3.Cross(transform.right, hitInfo.normal);
                 Quaternion lookRotation = Quaternion.LookRotation(slopeForward);
-                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 10 * Time.deltaTime );
+                transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
                 rb.freezeRotation = true;
             }
             else
@@ -113,7 +166,6 @@ public class ThirdPersonMovement : MonoBehaviour
                 rb.freezeRotation = false;
             }
         }
-
     }
 
     public void OnToggleThrowing()

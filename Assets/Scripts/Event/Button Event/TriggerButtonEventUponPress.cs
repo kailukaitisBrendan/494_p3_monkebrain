@@ -14,9 +14,11 @@ public class TriggerButtonEventUponPress : MonoBehaviour
     public int buttonEventId;
     private bool pressed = false;
 
+    AudioSource sound;
     void Start()
     {
         initialPosition = transform.localPosition.y;
+        sound = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -26,6 +28,7 @@ public class TriggerButtonEventUponPress : MonoBehaviour
             transform.localPosition.y / initialPosition <= threshold) {
             
             EventBus.Publish<ButtonPressEvent>(new ButtonPressEvent(buttonEventId));
+            sound.Play();
             pressed = true;
         }
         else if (transform.localPosition.y / initialPosition > threshold) {
