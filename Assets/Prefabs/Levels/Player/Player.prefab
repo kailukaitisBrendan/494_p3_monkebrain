@@ -1561,6 +1561,8 @@ MonoBehaviour:
   groundCheck: {fileID: 8218031657446126718}
   groundDistance: 0.4
   angleDamping: 0.1
+  walkingSound: {fileID: 8300000, guid: 18a1b4888bb0d1f439c941e78ed5837d, type: 3}
+  hitGround: {fileID: 8300000, guid: da4ec7cfba8664543ae58627e33ed649, type: 3}
 --- !u!82 &6974805035240246420
 AudioSource:
   m_ObjectHideFlags: 0
