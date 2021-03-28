@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.Events;
 using Debug = UnityEngine.Debug;
 
 public class ObjectInteraction : MonoBehaviour
@@ -19,6 +20,7 @@ public class ObjectInteraction : MonoBehaviour
     public float throwAngle = 45f;
 
     public float charge_force_scaler = 1.5f;
+    public UnityEvent OnThrow;
 
     private float action_delay = 0.2f;
     private float action_t = 0.0f;
@@ -34,13 +36,14 @@ public class ObjectInteraction : MonoBehaviour
     {
         OPC = GetComponentInChildren<BoxCollider>();
     }
+
     private void Update()
     {
         //Debug.Log(num_items);
 
 
         //Add box collider if has dolly
-        if (_hasDolly)
+        if (_hasDolly || num_items > 0)
         {
             OPC.enabled = true;
         }
@@ -53,12 +56,12 @@ public class ObjectInteraction : MonoBehaviour
         if (Input.GetMouseButtonDown(0) &&
             Time.time - action_t > action_delay)
         {
-
             action_t = Time.time;
             if (!_hasDolly)
             {
-
                 PickupDolly();
+                if (_hasDolly)
+                    return;
             }
 
 
@@ -68,14 +71,11 @@ public class ObjectInteraction : MonoBehaviour
                 // if no item, pick up item.
 
                 PickupItem(itemSlot);
-
             }
             else if (num_items == 1 && _hasDolly)
             {
-
                 PickupItem(itemSlot2);
             }
-
         }
 
         if (Input.GetMouseButton(1) &&
@@ -134,9 +134,11 @@ public class ObjectInteraction : MonoBehaviour
 
             if (num_items == 1 && !_hasDolly)
             {
+                OnThrow.Invoke();
                 ChargeThrow();
             }
         }
+
         if (!Input.GetMouseButton(1) && _currentForceMultiplier > 0.0f)
         {
             if (num_items == 0 || _hasDolly) return;
@@ -179,7 +181,8 @@ public class ObjectInteraction : MonoBehaviour
         // Calculate magnitude
         // Since Physics.gravity.y returns a negative value, we have to convert to absolute value. 
         float totalTime = (v * Mathf.Sin(throwAngle) +
-                            Mathf.Sqrt(Mathf.Pow(v * Mathf.Sin(throwAngle), 2) + Mathf.Abs(2 * Physics.gravity.y * position.y)));
+                           Mathf.Sqrt(Mathf.Pow(v * Mathf.Sin(throwAngle), 2) +
+                                      Mathf.Abs(2 * Physics.gravity.y * position.y)));
         totalTime /= Mathf.Abs(Physics.gravity.y);
         //Debug.Log(totalTime);
 
@@ -218,6 +221,7 @@ public class ObjectInteraction : MonoBehaviour
         {
             return force / _pickedUpObjectRigidbody.mass;
         }
+
         //Debug.Log(forceDir);
         return force;
     }
@@ -243,8 +247,7 @@ public class ObjectInteraction : MonoBehaviour
 
         // Add Component to the package to alert enemies on colliding with ground.
         item.AddComponent<OnCollisionEvent>();
-
-
+        OnThrow.Invoke();
     }
 
     private void DropDolly()
@@ -267,7 +270,6 @@ public class ObjectInteraction : MonoBehaviour
 
     private void PickupDolly()
     {
-
         GameObject item = GetDolly();
         if (item == null) return;
 
@@ -291,20 +293,23 @@ public class ObjectInteraction : MonoBehaviour
 
 
         // TODO: Disable jump
-
     }
 
     private void DropItem()
     {
-
         if (_hasDolly && num_items == 2)
         {
             _pickedUpObjects.Peek().transform.position += transform.forward;
         }
+
         num_items--;
-        float dist = 1f;
-
-
+        LayerMask mask = LayerMask.GetMask("Grabbable Object");
+        float dist = 2f;
+        Debug.DrawRay(transform.position, transform.forward * dist);
+        if (Physics.Raycast(transform.position, transform.forward, dist, mask))
+        {
+            _pickedUpObjects.Peek().transform.position += Vector3.up;
+        }
 
         // Re-enable rigidbody and collider.
         Rigidbody rb = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
@@ -326,15 +331,12 @@ public class ObjectInteraction : MonoBehaviour
         lineRenderer.enabled = false;
 
 
-
         //Debug.Log("Dropped Item");
     }
 
 
     private void PickupItem(Transform itemSlot)
     {
-
-
         GameObject item = GetItem();
         if (item == null) return;
         num_items++;
@@ -372,7 +374,8 @@ public class ObjectInteraction : MonoBehaviour
         pos.y = itemSlot.position.y;
         RaycastHit hit;
         float radius = 1f;
-        if (Physics.SphereCast(pos, radius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2, mask)
+        if (Physics.SphereCast(pos, radius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2,
+                mask)
             || Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, pickupDistance, mask))
         {
             Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
@@ -390,7 +393,8 @@ public class ObjectInteraction : MonoBehaviour
         pos.y = itemSlot.position.y;
         RaycastHit hit;
         float radius = 1f;
-        if (Physics.SphereCast(pos, radius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2, mask)
+        if (Physics.SphereCast(pos, radius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2,
+                mask)
             || Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, pickupDistance, mask))
         {
             Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);

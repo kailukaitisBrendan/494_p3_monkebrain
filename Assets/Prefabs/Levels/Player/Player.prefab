@@ -506,7 +506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8231854697542493952
 Transform:
   m_ObjectHideFlags: 0
@@ -528,7 +528,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4093699278569110279}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1394,8 +1394,8 @@ GameObject:
   - component: {fileID: 8497152196208681339}
   - component: {fileID: 8497152196208681332}
   - component: {fileID: 8497152196208681336}
-  - component: {fileID: 8497152196208681343}
   - component: {fileID: 8884979795343272461}
+  - component: {fileID: 4289985393076564439}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1504,28 +1504,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8497152196208681343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8497152196208681333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcfa4da9b3681684abeb5e40899f15c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 6
-  jumpPower: 5
-  climbSpeed: 3
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  Climbable:
-    serializedVersion: 2
-    m_Bits: 256
-  cam: {fileID: 0}
 --- !u!114 &8884979795343272461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1546,7 +1524,43 @@ MonoBehaviour:
   throwForce: 5
   maxForceMultiplier: 2
   throwAngle: 45
-  chargeForceScaler: 1.5
+  charge_force_scaler: 1.5
+  OnThrow:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4289985393076564439}
+        m_MethodName: OnToggleThrowing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4289985393076564439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8497152196208681333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0304bd7a8d7f9141b48456eae0108c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 6
+  jumpPower: 5
+  rotationSpeed: 450
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  groundCheck: {fileID: 8218031657446126718}
+  groundDistance: 0.4
+  angleDamping: 0.1
+  cam: {fileID: 0}
 --- !u!1 &8497152197109940811
 GameObject:
   m_ObjectHideFlags: 0
