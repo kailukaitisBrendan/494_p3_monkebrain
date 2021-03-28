@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using Debug = UnityEngine.Debug;
@@ -31,6 +32,7 @@ public class ObjectInteraction : MonoBehaviour
     private float _currentForceMultiplier = 0.0f;
     private Rigidbody _pickedUpObjectRigidbody;
     private BoxCollider OPC;
+    private bool _eventInvoked = false;
 
     private void Start()
     {
@@ -134,7 +136,11 @@ public class ObjectInteraction : MonoBehaviour
 
             if (num_items == 1 && !_hasDolly)
             {
-                OnThrow.Invoke();
+                if (!_eventInvoked)
+                {
+                    OnThrow.Invoke();
+                    _eventInvoked = true;
+                }
                 ChargeThrow();
             }
         }
@@ -145,6 +151,8 @@ public class ObjectInteraction : MonoBehaviour
             // Throw item.
             ThrowItem();
             _currentForceMultiplier = 0.0f;
+            OnThrow.Invoke();
+            _eventInvoked = false;
         }
     }
 
@@ -247,7 +255,6 @@ public class ObjectInteraction : MonoBehaviour
 
         // Add Component to the package to alert enemies on colliding with ground.
         item.AddComponent<OnCollisionEvent>();
-        OnThrow.Invoke();
     }
 
     private void DropDolly()
