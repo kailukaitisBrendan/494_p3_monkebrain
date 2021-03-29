@@ -24,7 +24,7 @@ public class OnCollisionEvent : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         // Check if we hit a tag first
-        if (collisionTags.Contains(other.gameObject.tag))
+        if (collisionTags != null && collisionTags.Contains(other.gameObject.tag))
         {
             Debug.Log("Collided with object! " + other.gameObject.name + count);
             EventBus.Publish(new HitObjectEvent(gameObject, other.gameObject));

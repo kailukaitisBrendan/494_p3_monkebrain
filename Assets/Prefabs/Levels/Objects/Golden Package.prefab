@@ -114,6 +114,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: GoldenPackage
       objectReference: {fileID: 0}
+    - target: {fileID: 8325154509369887462, guid: 518da76f516b7fa4598a500bbd46aa34,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 518da76f516b7fa4598a500bbd46aa34, type: 3}
 --- !u!1 &1046256141015245097 stripped
