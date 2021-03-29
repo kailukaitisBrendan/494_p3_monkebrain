@@ -87,10 +87,10 @@ public class EnemyMovementController : MonoBehaviour
             // Player is caught by enemy. Stop all movement and have player "die."
             StopAllCoroutines();
             desiredPositionIsGameobject.StopAllCoroutines();
-            PlayerMovement playerMovement = collision.collider.gameObject.GetComponent<PlayerMovement>();
+            ThirdPersonMovement playerMovement = collision.collider.gameObject.GetComponent<ThirdPersonMovement>();
             if (playerMovement != null)
             {
-                playerMovement.enabled = false;
+                playerMovement.movementSpeed = 0f;
             }
             StartCoroutine(WaitToDie());
         }
@@ -103,10 +103,10 @@ public class EnemyMovementController : MonoBehaviour
             // Player is caught by enemy. Stop all movement and have player "die."
             StopAllCoroutines();
             desiredPositionIsGameobject.StopAllCoroutines();
-            PlayerMovement playerMovement = other.gameObject.GetComponent<PlayerMovement>();
+            ThirdPersonMovement playerMovement = other.gameObject.GetComponent<ThirdPersonMovement>();
             if (playerMovement != null)
             {
-                playerMovement.enabled = false;
+                playerMovement.movementSpeed = 0f;
             }
             StartCoroutine(WaitToDie());
         }
