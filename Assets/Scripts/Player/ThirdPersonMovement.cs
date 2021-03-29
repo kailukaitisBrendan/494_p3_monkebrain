@@ -10,7 +10,7 @@ public class ThirdPersonMovement : MonoBehaviour
     Rigidbody rb;
     public float movementSpeed = 6f;
     public float jumpPower = 5f;
-    public float rotationSpeed; // Player's rotation speed when throwing an object.
+    //public float rotationSpeed; // Player's rotation speed when throwing an object.
 
     public LayerMask groundMask;
 
