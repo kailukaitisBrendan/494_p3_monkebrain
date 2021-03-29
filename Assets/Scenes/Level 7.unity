@@ -2447,12 +2447,12 @@ PrefabInstance:
     - target: {fileID: 4561909938793627835, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001646809
+      value: 0.000000016468093
       objectReference: {fileID: 0}
     - target: {fileID: 4561909938793627835, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004986136
+      value: -0.0000000049861373
       objectReference: {fileID: 0}
     - target: {fileID: 4561909939005826121, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
@@ -21231,10 +21231,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1882782764}
     m_Modifications:
-    - target: {fileID: 1969452146, guid: 7125ab83830014071972ddf05b0c04e4, type: 3}
-      propertyPath: buttonPressEventId
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 8102458399747213731, guid: 7125ab83830014071972ddf05b0c04e4,
         type: 3}
       propertyPath: m_Name
