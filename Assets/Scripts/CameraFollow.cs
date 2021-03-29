@@ -24,7 +24,7 @@ public class CameraFollow : MonoBehaviour
 
 
     float t = 0.0f;
-    void FixedUpdate()
+    void Update()
     {
         
         if (CheckWall())
