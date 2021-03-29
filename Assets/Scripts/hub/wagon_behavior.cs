@@ -85,7 +85,7 @@ public class wagon_behavior : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            rb.velocity = new Vector3(0f, 0f, 0f);
 
         }
     }
