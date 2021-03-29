@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,6 +28,7 @@ public class OnTriggerLevelFail : MonoBehaviour {
             fallen = false;
             EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
         }
+
     }
 
     IEnumerator WaitForScream()
@@ -35,5 +36,6 @@ public class OnTriggerLevelFail : MonoBehaviour {
         
         yield return new WaitForSeconds(1.5f);
         fallen = true;
+
     }
 }
