@@ -1069,7 +1069,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8398375989089109118}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 1.25
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1142,6 +1142,7 @@ MonoBehaviour:
   - {fileID: 0}
   chaseSpeed: 6
   dazeTime: 7
+  distractTime: 3
   isStatic: 0
   emoteText: {fileID: 7348430949181493855}
 --- !u!114 &3703694373792037137
