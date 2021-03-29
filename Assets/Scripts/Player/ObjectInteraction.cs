@@ -300,6 +300,10 @@ public class ObjectInteraction : MonoBehaviour
 
         // Add Component to the package to alert enemies on colliding with ground.
         item.AddComponent<OnCollisionEvent>();
+        OnCollisionEvent collisionEvent = item.AddComponent<OnCollisionEvent>();
+        // Set the collision event destroyOnCollision flag
+        collisionEvent.destroyOnCollision = true;
+
     }
 
     private void DropDolly()
