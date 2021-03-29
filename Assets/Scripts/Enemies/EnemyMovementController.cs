@@ -13,7 +13,8 @@ public class EnemyMovementController : MonoBehaviour
     int pointIndex = 0;
 
     public float chaseSpeed = 6f;
-    public float dazeTime = 7f;
+    public float dazeTime = 10f;
+    public float distractTime = 3f;
     public bool isStatic;
     float normalSpeed;
     bool isChasingPlayer = false;
@@ -56,19 +57,19 @@ public class EnemyMovementController : MonoBehaviour
             GameObject target = pathPoints[pointIndex];
 
             // wait until enemy has reached the target
-            yield return StartCoroutine(WaitToGetToPoint(target));
+            yield return StartCoroutine(WaitToGetToPoint(target, .1f));
 
             // increment pointIndex
             pointIndex = (pointIndex + 1) % pathPoints.Length;
         }
     }
 
-    IEnumerator WaitToGetToPoint(GameObject target)
+    IEnumerator WaitToGetToPoint(GameObject target, float eps)
     {
         // set desired target
         desiredPositionIsGameobject.target = target;
 
-        while (!almostEqual(transform.position.x, target.transform.position.x, .1f) || !almostEqual(transform.position.z, target.transform.position.z, .1f))
+        while (!almostEqual(transform.position.x, target.transform.position.x, eps) || !almostEqual(transform.position.z, target.transform.position.z, eps))
         {
             yield return null;
         }
@@ -86,10 +87,26 @@ public class EnemyMovementController : MonoBehaviour
             // Player is caught by enemy. Stop all movement and have player "die."
             StopAllCoroutines();
             desiredPositionIsGameobject.StopAllCoroutines();
-            PlayerMovement playerMovement = collision.collider.gameObject.GetComponent<PlayerMovement>();
+            ThirdPersonMovement playerMovement = collision.collider.gameObject.GetComponent<ThirdPersonMovement>();
             if (playerMovement != null)
             {
-                playerMovement.enabled = false;
+                playerMovement.movementSpeed = 0f;
+            }
+            StartCoroutine(WaitToDie());
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") && !isDazed)
+        {
+            // Player is caught by enemy. Stop all movement and have player "die."
+            StopAllCoroutines();
+            desiredPositionIsGameobject.StopAllCoroutines();
+            ThirdPersonMovement playerMovement = other.gameObject.GetComponent<ThirdPersonMovement>();
+            if (playerMovement != null)
+            {
+                playerMovement.movementSpeed = 0f;
             }
             StartCoroutine(WaitToDie());
         }
@@ -106,7 +123,7 @@ public class EnemyMovementController : MonoBehaviour
     void _OnPlayerSpotted(PlayerSpottedEvent e)
     {
         // check to see if it is the right enemy
-        if (e.enemy != this.gameObject)
+        if (e.enemy != this.gameObject || isDazed)
             return;
 
         // change target to be the player
@@ -153,6 +170,7 @@ public class EnemyMovementController : MonoBehaviour
 
         if (packageInRange && !enemyOccupied)
         {
+            Debug.Log("check");
             if (e.hitObject.CompareTag("Enemy"))
             {
                 // make sure it is this enemy
@@ -181,10 +199,13 @@ public class EnemyMovementController : MonoBehaviour
 
         desiredPositionIsGameobject.agent.ResetPath();
 
-        yield return StartCoroutine(WaitToGetToPoint(box));
+        yield return StartCoroutine(WaitToGetToPoint(box, 2f));
+        desiredPositionIsGameobject.agent.speed = 0f;
+        yield return new WaitForSeconds(distractTime);
+        desiredPositionIsGameobject.agent.speed = normalSpeed;
+        isDistracted = false;
 
         EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
-        isDistracted = false;
         emoteText.text = "";
     }
 

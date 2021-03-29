@@ -71,6 +71,7 @@ public class ThirdPersonMovement : MonoBehaviour
             //play walking sound
             if (_isGrounded && !isPlayingWalkingSound)
             {
+               
                 sound.Stop();
                 sound.loop = true;
                 sound.clip = walkingSound;
