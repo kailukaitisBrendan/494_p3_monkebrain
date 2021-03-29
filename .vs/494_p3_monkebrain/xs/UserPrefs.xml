@@ -1,19 +1,14 @@
 ﻿<Properties StartupConfiguration="{108BC56D-781D-2F15-59FA-C7AE658ECD87}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level Control/LevelControllerBrain.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Main/Event.cs">
     <Files>
       <File FileName="Assets/Scripts/DesiredPositionIsGameobject.cs" Line="35" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/FieldOfView.cs" />
+      <File FileName="Assets/Scripts/FieldOfView.cs" Line="69" Column="1" />
       <File FileName="Assets/Scripts/Player/ThirdPersonMovement.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Player/PlayerMovement.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CameraFollow.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Enemies/EnemyMovementController.cs" Line="150" Column="5" NotebookId="1" />
+      <File FileName="Assets/Scripts/Enemies/EnemyMovementController.cs" Line="91" Column="10" NotebookId="1" />
       <File FileName="Assets/Scripts/Event/OnCollisionEvent.cs" NotebookId="1" />
-      <File FileName="Assets/Scripts/Event/Button Event/DynamicUponButtonEvent.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets/Scripts/TutorialPromptManager.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets/Scripts/Event/Level Event/LevelClearUponButtonEvent.cs" Line="23" Column="33" NotebookId="1" />
-      <File FileName="Assets/Scripts/Event/Level Event/ReloadSceneUponLevelClear.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets/Scripts/Event/Level Event/ReloadSceneUponLevelFail.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets/Scripts/Level Control/LevelControllerBrain.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets/Scripts/Main/Event.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,10 +21,10 @@
                   <Node name="Button Event" expanded="True" />
                   <Node name="Level Event" expanded="True" />
                 </Node>
-                <Node name="Level Control" expanded="True">
-                  <Node name="LevelControllerBrain.cs" selected="True" />
+                <Node name="Level Control" expanded="True" />
+                <Node name="Main" expanded="True">
+                  <Node name="Event.cs" selected="True" />
                 </Node>
-                <Node name="Main" expanded="True" />
                 <Node name="Player" expanded="True" />
               </Node>
             </Node>

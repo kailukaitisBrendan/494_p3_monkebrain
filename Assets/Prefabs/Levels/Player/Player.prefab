@@ -1522,7 +1522,7 @@ MonoBehaviour:
   itemSlot2: {fileID: 1166358741}
   dolly: {fileID: 3996719794959161134}
   lineRenderer: {fileID: 8413363109491614448}
-  throwForce: 5
+  throwForce: 7
   maxForceMultiplier: 2
   throwAngle: 45
   charge_force_scaler: 1.5
@@ -1561,6 +1561,8 @@ MonoBehaviour:
   groundCheck: {fileID: 8218031657446126718}
   groundDistance: 0.4
   angleDamping: 0.1
+  walkingSound: {fileID: 0}
+  hitGround: {fileID: 0}
 --- !u!82 &6974805035240246420
 AudioSource:
   m_ObjectHideFlags: 0

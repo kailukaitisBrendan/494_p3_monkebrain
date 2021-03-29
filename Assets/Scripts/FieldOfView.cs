@@ -13,11 +13,12 @@ public class FieldOfView : MonoBehaviour
 
     public float field_radius = 5f;
     public float view_range = 75;
+    public float cur_view_range;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        cur_view_range = view_range;
     }
 
     // Update is called once per frame
@@ -48,7 +49,7 @@ public class FieldOfView : MonoBehaviour
         for (int i = 0; i < targets.Length; ++i)
         {
             Vector3 objectToTargetDir = (targets[i].transform.position - transform.position).normalized;
-            if (Vector3.Angle(transform.forward, objectToTargetDir) < view_range / 2)
+            if (Vector3.Angle(transform.forward, objectToTargetDir) < cur_view_range / 2)
             {
                 //make sure there are no obstacles/walls in the way
                 if (!Physics.Raycast(transform.position, objectToTargetDir, Vector3.Distance(transform.position, targets[i].transform.position), obstacleMask))
@@ -66,6 +67,8 @@ public class FieldOfView : MonoBehaviour
         bool inRange = false;
         float distance_to_package = Vector3.Distance(transform.position, package_position);
         Vector3 package_to_enemy_dir = (package_position - transform.position).normalized;
+        Debug.DrawRay(transform.position, package_to_enemy_dir * distance_to_package, Color.blue, 5f, false);
+
         //make sure there are no obstacles/walls in the way and package is within radius
         if (distance_to_package <= field_radius && !Physics.Raycast(transform.position, package_to_enemy_dir, distance_to_package, obstacleMaskForBox))
         {

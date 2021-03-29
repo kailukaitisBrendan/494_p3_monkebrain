@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyMovementController : MonoBehaviour
 {
@@ -10,12 +11,16 @@ public class EnemyMovementController : MonoBehaviour
 
     public GameObject[] pathPoints;
     int pointIndex = 0;
-    bool caughtPlayer = false;
 
     public float chaseSpeed = 6f;
+    public float dazeTime = 7f;
+    public bool isStatic;
     float normalSpeed;
     bool isChasingPlayer = false;
+    bool isDistracted = false;
+    bool isDazed = false;
 
+    public TextMeshPro emoteText;
 
     Subscription<PlayerSpottedEvent> playerSpottedSubscription;
 
@@ -68,19 +73,19 @@ public class EnemyMovementController : MonoBehaviour
             yield return null;
         }
 
-        
-
         desiredPositionIsGameobject.agent.ResetPath();
 
         yield return null;
     }
 
+    // Collisions
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.CompareTag("Player"))
+        if (collision.collider.gameObject.CompareTag("Player") && !isDazed)
         {
             // Player is caught by enemy. Stop all movement and have player "die."
             StopAllCoroutines();
+            desiredPositionIsGameobject.StopAllCoroutines();
             PlayerMovement playerMovement = collision.collider.gameObject.GetComponent<PlayerMovement>();
             if (playerMovement != null)
             {
@@ -113,8 +118,9 @@ public class EnemyMovementController : MonoBehaviour
 
             desiredPositionIsGameobject.target = e.player;
             isChasingPlayer = true;
+            fieldOfView.cur_view_range = 360f;
+            emoteText.text = "!";
 
-            //StartCoroutine(desiredPositionIsGameobject.PathfindingLoop());
             desiredPositionIsGameobject.agent.speed = chaseSpeed;
         }
         // change target to move to the waypoints
@@ -124,6 +130,9 @@ public class EnemyMovementController : MonoBehaviour
 
             desiredPositionIsGameobject.target = null;
             isChasingPlayer = false;
+            fieldOfView.cur_view_range = fieldOfView.view_range;
+            emoteText.text = "";
+
             desiredPositionIsGameobject.agent.speed = normalSpeed;
             if (pathPoints.Length < 1)
                 return;
@@ -134,26 +143,63 @@ public class EnemyMovementController : MonoBehaviour
 
     void _OnHitObject(HitObjectEvent e)
     {
-        bool packageInRange = fieldOfView.PackageInFieldOfView(e.hitObject.transform.position);
+        Debug.Log(e.hitObject); // ground
+        Debug.Log(e.sourceObject); // golden package
+
+        bool packageInRange = fieldOfView.PackageInFieldOfView(e.sourceObject.transform.position);
         Debug.Log("packageinrange? " + packageInRange);
 
-        if (packageInRange && !isChasingPlayer)
+        bool enemyOccupied = isChasingPlayer || isDistracted || isDazed;
+
+        if (packageInRange && !enemyOccupied)
         {
-            StartCoroutine(DistractEnemy(e.hitObject.transform.position));
+            if (e.hitObject.CompareTag("Enemy"))
+            {
+                // make sure it is this enemy
+                if (e.hitObject != this.gameObject)
+                    return;
+
+                Debug.Log("Daze Enemy");
+                StartCoroutine(DazeEnemy());
+            }
+            else if(!isStatic)
+            {
+                Debug.Log("Distract Enemy");
+                StartCoroutine(DistractEnemy(e.sourceObject));
+            }
         }
+
     }
 
-
-    IEnumerator DistractEnemy(Vector3 pos)
+    IEnumerator DistractEnemy(GameObject box)
     {
-        Debug.Log("Chase Box at: " + pos);
+        isDistracted = true;
+        emoteText.text = "?";
+
+        Debug.Log("Chase Box at: " + box.transform.position);
+        desiredPositionIsGameobject.target = box;
+
+        desiredPositionIsGameobject.agent.ResetPath();
+
+        yield return StartCoroutine(WaitToGetToPoint(box));
+
+        EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
+        isDistracted = false;
+        emoteText.text = "";
+    }
+
+    IEnumerator DazeEnemy()
+    {
+        isDazed = true;
+        emoteText.text = "*";
         desiredPositionIsGameobject.target = null;
 
         desiredPositionIsGameobject.agent.ResetPath();
 
-
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(dazeTime);
         EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
+        isDazed = false;
+        emoteText.text = "";
     }
 
 
@@ -162,45 +208,3 @@ public class EnemyMovementController : MonoBehaviour
         return Mathf.Abs(a - b) < eps;
     }
 }
-
-//StartCoroutine(desiredPositionIsGameobject.PathfindingLoop());
-
-//while (!almostEqual(transform.position.x, hitObject.transform.position.x, 2.0f) || !almostEqual(transform.position.z, hitObject.transform.position.z, 2.0f))
-//{
-//    //Debug.Log("f1 " + hitObject.transform.position.x + almostEqual(transform.position.x, hitObject.transform.position.x, 2.0f));
-//    //Debug.Log("f2 " + hitObject.transform.position.z + almostEqual(transform.position.z, hitObject.transform.position.z, 2.0f));
-//    Debug.Log("help");
-//    yield return null;
-//}
-
-//StartCoroutine(desiredPositionIsGameobject.PathfindingLoop());
-
-//while (!almostEqual(transform.position.x, hitObject.transform.position.x, 2.0f) || !almostEqual(transform.position.z, hitObject.transform.position.z, 2.0f))
-//{
-//    //Debug.Log("f1 " + hitObject.transform.position.x + almostEqual(transform.position.x, hitObject.transform.position.x, 2.0f));
-//    //Debug.Log("f2 " + hitObject.transform.position.z + almostEqual(transform.position.z, hitObject.transform.position.z, 2.0f));
-//    Debug.Log("help");
-//    yield return null;
-//}
-
-//Debug.Log("Chase Box at: " + pos);
-//desiredPositionIsGameobject.target = null;
-//desiredPositionIsGameobject.agent.ResetPath();
-
-//Vector3 newRotateVal = new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z);
-//newRotateVal.y -= 90;
-////look left
-//while (transform.rotation.y != newRotateVal.y)
-//{
-//    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRotateVal), 0.1f);
-//    yield return null;
-//}
-////look right
-//newRotateVal.y += 180;
-//while (transform.rotation.y != newRotateVal.y)
-//{
-//    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(newRotateVal), 0.1f);
-//    yield return null;
-//}
-
-//EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));

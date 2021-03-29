@@ -10,6 +10,7 @@ TagManager:
   - GoldenPackage
   - Wagon
   - CineMachineController
+  - Enemy
   layers:
   - Default
   - TransparentFX
