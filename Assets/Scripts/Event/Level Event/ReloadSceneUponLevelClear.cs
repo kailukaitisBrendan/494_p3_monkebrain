@@ -6,14 +6,27 @@ using UnityEngine.SceneManagement;
 public class ReloadSceneUponLevelClear : MonoBehaviour
 {
     private Subscription<LevelClearEvent> levelClearSubscription;
-
+    AudioSource sound;
+    public AudioClip mailshere;
     void Start()
     {
+        sound = GetComponent<AudioSource>();
         levelClearSubscription = EventBus.Subscribe<LevelClearEvent>(ReloadScene);
     }
 
     void ReloadScene(LevelClearEvent _event)
     {
+        //Debug.Log("mailshere");
+        sound.clip = mailshere;
+        sound.Play();
+        StartCoroutine(WaitForMailsHere());
+        
+    }
+
+    IEnumerator WaitForMailsHere()
+    {
+        
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("Hub");
     }
 }
