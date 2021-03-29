@@ -16,7 +16,9 @@ public class OnTriggerLevelFail : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            sound.Play();
+            if (sound) {
+                sound.Play();
+            }
             StartCoroutine(WaitForScream());
         }
     }

@@ -313,6 +313,10 @@ public class ObjectInteraction : MonoBehaviour
         dolly.GetComponent<Collider>().enabled = true;
         dolly.GetComponent<Collider>().attachedRigidbody.isKinematic = false;
         dolly.GetComponent<Collider>().attachedRigidbody.useGravity = true;
+
+        // Subtract dolly mass from player
+        GetComponent<Rigidbody>().mass -= dolly.GetComponent<Collider>().attachedRigidbody.mass;
+
         dolly.transform.parent = null;
         dolly = null;
         _hasDolly = false;
@@ -326,12 +330,13 @@ public class ObjectInteraction : MonoBehaviour
         if (item == null) return;
 
         if (!item.CompareTag("Dolly")) return;
-        item.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Rigidbody rb = item.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
         // Set parent to be player
         item.transform.SetParent(gameObject.transform);
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
-        item.transform.GetComponent<Rigidbody>().freezeRotation = true;
+        rb.freezeRotation = true;
         item.transform.localEulerAngles = Vector3.zero;
         dolly = item;
         _hasDolly = true;
@@ -342,6 +347,9 @@ public class ObjectInteraction : MonoBehaviour
         col.attachedRigidbody.useGravity = false;
         col.attachedRigidbody.isKinematic = true;
         col.enabled = false;
+
+        // Add dolly mass to player
+        GetComponent<Rigidbody>().mass += rb.mass;
 
 
         // TODO: Disable jump
@@ -377,6 +385,9 @@ public class ObjectInteraction : MonoBehaviour
         _pickedUpObjectRigidbody = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
         _pickedUpObjects.Pop();
 
+        // Subtract object mass from player
+        GetComponent<Rigidbody>().mass -= rb.mass;
+
         // Reset our trajectory calculations
         _currentForceMultiplier = 0f;
         // Disable LineRenderer
@@ -410,6 +421,10 @@ public class ObjectInteraction : MonoBehaviour
         // Disable collider of grabbed object.
         Collider col = item.GetComponent<Collider>();
         col.enabled = false;
+
+        // Add object mass to player
+        GetComponent<Rigidbody>().mass += rb.mass;
+
         // Ignore collisions between player and package
 
         _pickedUpObjects.Push(item);
