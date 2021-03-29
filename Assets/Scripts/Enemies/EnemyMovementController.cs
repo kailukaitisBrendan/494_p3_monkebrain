@@ -170,6 +170,7 @@ public class EnemyMovementController : MonoBehaviour
 
         if (packageInRange && !enemyOccupied)
         {
+            Debug.Log("check");
             if (e.hitObject.CompareTag("Enemy"))
             {
                 // make sure it is this enemy
