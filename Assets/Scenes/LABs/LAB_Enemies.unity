@@ -2926,6 +2926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9ecf0f1d20f4098b18a2dd092e8bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mailshere: {fileID: 0}
 --- !u!1001 &441063753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6267,6 +6268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9ecf0f1d20f4098b18a2dd092e8bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mailshere: {fileID: 0}
 --- !u!114 &918970874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12505,12 +12507,12 @@ PrefabInstance:
     - target: {fileID: 4561909939111555175, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001860223
+      value: -0.000000018602229
       objectReference: {fileID: 0}
     - target: {fileID: 4561909939111555175, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000049021796
+      value: 0.000000004902179
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c582eec15cf65f24bac2a1d9c9c02545, type: 3}
@@ -12712,6 +12714,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 711317375}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1686265196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1046256141015245097, guid: c5f665c23a554cc42b916f0a5d863be3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1870367607}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1686265204
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686265196}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1692293211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17456,6 +17480,7 @@ MonoBehaviour:
   - {fileID: 791437125}
   chaseSpeed: 0
   dazeTime: 7
+  distractTime: 3
   isStatic: 0
   emoteText: {fileID: 1260249358}
 --- !u!114 &8398375989333658576

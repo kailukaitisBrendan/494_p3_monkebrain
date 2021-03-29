@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ba5fe62bf63411494d940e14bf324d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyWhenHoldingGoldenPackage: 1
   buttonPressEventId: 2
 --- !u!1001 &1408445458755011868
 PrefabInstance:
@@ -95,6 +96,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Clear Button Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7631626211505541578, guid: 7844b94417848457a9cf072cbf315977,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f5d733080e61ce04a8435e3ccd15ebe3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7844b94417848457a9cf072cbf315977, type: 3}
 --- !u!1 &8102458400044767529 stripped

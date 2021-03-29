@@ -5,6 +5,7 @@ using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
 public class ObjectInteraction : MonoBehaviour
@@ -33,16 +34,60 @@ public class ObjectInteraction : MonoBehaviour
     private Rigidbody _pickedUpObjectRigidbody;
     private BoxCollider OPC;
     private bool _eventInvoked = false;
-
+    public Image box1;
+    public Image box2;
+  
     private void Start()
     {
+        box2.enabled = false;
         OPC = GetComponentInChildren<BoxCollider>();
+    }
+
+
+    private void BoxColorChange()
+    {
+        var box1color = box1.color;
+        var box2color = box2.color;
+        if (!_hasDolly)
+        {
+            box2.enabled = false;
+            if (num_items == 0)
+            {
+                box1color.a = 0.2f;
+            }
+            if (num_items == 1)
+            {
+                box1color.a = 1f;
+            }
+        }
+        else
+        {
+            box2.enabled = true;
+            if (num_items == 0)
+            {
+                box1color.a = 0.2f;
+                box2color.a = 0.2f;
+            }
+            if (num_items == 1)
+            {
+                box1color.a = 1f;
+                box2color.a = 0.2f;
+            }
+            if (num_items == 2)
+            {
+                box1color.a = 1f;
+                box2color.a = 1f;
+            }
+        }
+
+        box1.color = box1color;
+        box2.color = box2color;
     }
 
     private void Update()
     {
         //Debug.Log(num_items);
-
+        BoxColorChange();
 
         //Add box collider if has dolly
         if (_hasDolly || num_items > 0)
