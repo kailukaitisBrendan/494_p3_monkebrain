@@ -440,7 +440,7 @@ public class ObjectInteraction : MonoBehaviour
     {
         // Raycast out from player to see if item is in front of the player.
         // Create mask so we only collide with pickup-able objects.
-        LayerMask mask = LayerMask.GetMask("Grabbable Object");
+        LayerMask mask = LayerMask.GetMask("Grabbable Object") + LayerMask.GetMask("Golden Package");
         Vector3 pos = transform.position;
         pos.y = itemSlot.position.y;
         RaycastHit hit;
