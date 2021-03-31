@@ -17,5 +17,6 @@ public class able_object_button_behavior : MonoBehaviour
     public void OnButtonPress(){
         print("buttonpress");
         s.SetActive(b);
+        Cursor.visible = b;
     }
 }
