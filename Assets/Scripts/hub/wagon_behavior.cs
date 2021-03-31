@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class wagon_behavior : MonoBehaviour
 {
+    public ParticleSystem dust;
+
     Rigidbody rb;
     public Camera cam;
     public float movementSpeed = 6f;
@@ -67,8 +69,14 @@ public class wagon_behavior : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         Vector3 newForce = GetInput() * movementSpeed;
+        if (Mathf.Abs(newForce.x) > 0.01f 
+            || Mathf.Abs(newForce.y) > 0.01f 
+            || Mathf.Abs(newForce.z) > 0.01f)
+            CreateDust();
+        else {
+            StopDust();
+        }
         rb.velocity = newForce;
 
         if (newForce != Vector3.zero)
@@ -77,8 +85,15 @@ public class wagon_behavior : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+            rb.velocity = new Vector3(0f, 0f, 0f);
 
         }
+    }
+
+    void CreateDust() {
+        dust.Play();
+    }
+    void StopDust() {
+        dust.Stop();
     }
 }

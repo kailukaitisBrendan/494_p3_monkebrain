@@ -12,8 +12,26 @@ EditorBuildSettings:
     path: Assets/Scenes/Hub.unity
     guid: e6db340f06b3f794aae39b63032e753f
   - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 639112270df14a74185d20f07f0c12b2
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 4e2ad25cd6f789844a6990e550fc7d3b
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 484c53311ac72ee45bb98f30fbbb193c
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: 7f1903c6b678d4889884ffb5ce7fd28d
+  - enabled: 1
+    path: Assets/Scenes/Level6.unity
+    guid: d42282137398e4854aef575d314f07e3
+  - enabled: 1
     path: Assets/Scenes/EnemyLevel.unity
     guid: a6e29cf027f5642bfbed3b85aabd7571
+  - enabled: 1
+    path: Assets/Scenes/Level7.unity
+    guid: f359ff2ee77c7d54492ee42f008d5c0b
   - enabled: 1
     path: Assets/Scenes/Dolly Tutorial.unity
     guid: 0721373b97ef56e4b86f24e431a01a47
