@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(checkpos, Vector3.down, out hit, dist, groundLayer))
         {
 
-            if (Vector3.Angle(hit.normal, Vector3.up) > 15)
+            if (Vector3.Angle(hit.normal, Vector3.up) > 30)
             {
                 rb.freezeRotation = false;
 
