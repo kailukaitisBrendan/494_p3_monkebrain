@@ -89,3 +89,33 @@ public class HitObjectEvent
         hitObject = _hitObject;
     }
 }
+
+public class MovementEvent
+{
+    public bool isWalking;
+    public bool isJumping;
+    public bool isGrounded;
+
+    public MovementEvent(bool _isWalking, bool _isJumping, bool _isGrounded)
+    {
+        isWalking = _isWalking;
+        isJumping = _isJumping;
+        isGrounded = _isGrounded;
+    }
+}
+
+public class EnemyStateEvent
+{
+    public bool isWalking;
+    public bool isDistracted;
+    public bool isDazed;
+    public bool drawingGun;
+
+    public EnemyStateEvent(bool _isWalking, bool _isDrawingGun, bool _isAlerted, bool _drawingGun)
+    {
+        isWalking = _isWalking;
+        isDistracted = _isDrawingGun;
+        isDazed = _isAlerted;
+        drawingGun = _drawingGun;
+    }
+}
