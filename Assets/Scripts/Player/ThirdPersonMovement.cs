@@ -110,6 +110,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
+            
             _isGrounded = false;
             velocity.y = jumpPower;
         }
@@ -134,6 +135,9 @@ public class ThirdPersonMovement : MonoBehaviour
             sound.Stop();
             isPlayingWalkingSound = false;
         }
+
+        //Animation publisher
+        EventBus.Publish<MovementEvent>(new MovementEvent(isPlayingWalkingSound, jumped, _isGrounded));
 
 
         rb.velocity = velocity + baseVelocity;
