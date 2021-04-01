@@ -34,6 +34,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public AudioClip hitGround;
     private bool jumped = false;
 
+    // Denotes base velocity (before factoring in player inputs)
+    public Vector3 baseVelocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +114,9 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = jumpPower;
         }
 
+        if (_isGrounded) {
+            baseVelocity = Vector3.zero;
+        }
 
         if (jumped && _isGrounded)
         {
@@ -130,7 +136,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
 
 
-        rb.velocity = velocity;
+        rb.velocity = velocity + baseVelocity;
     }
 
 

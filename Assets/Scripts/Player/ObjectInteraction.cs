@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
+using System.Linq;
 
 public class ObjectInteraction : MonoBehaviour
 {
@@ -382,24 +383,41 @@ public class ObjectInteraction : MonoBehaviour
         //Debug.Log("Throw!");
         GameObject item = _pickedUpObjects.Peek();
         // First, drop the object
-        DropItem();
-        // We want to throw object in direction the player is facing
-        // This should be the transform.forward of our player object.
-        // We need to apply an impulse force in the respective direction
+        if (!item.CompareTag("BluePackage")) {
+            DropItem();
 
-        // float angle = throwAngle * Mathf.Deg2Rad;
-        // Vector3 angleDirection = new Vector3(0, Mathf.Sin(angle), 0f);
-        // Vector3 forceDirection = (transform.forward + angleDirection).normalized * throwForce;
-        // //Debug.Log(forceDirection)
-        //Debug.Log(force);
-        item.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+            // We want to throw object in direction the player is facing
+            // This should be the transform.forward of our player object.
+            // We need to apply an impulse force in the respective direction
+
+            // float angle = throwAngle * Mathf.Deg2Rad;
+            // Vector3 angleDirection = new Vector3(0, Mathf.Sin(angle), 0f);
+            // Vector3 forceDirection = (transform.forward + angleDirection).normalized * throwForce;
+            // //Debug.Log(forceDirection)
+            //Debug.Log(force);
+            item.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
 
 
-        // Add Component to the package to alert enemies on colliding with ground.
-        //item.AddComponent<OnCollisionEvent>();
-        OnCollisionEvent collisionEvent = item.AddComponent<OnCollisionEvent>();
-        // Set the collision event destroyOnCollision flag
-        collisionEvent.destroyOnCollision = true;
+            // Add Component to the package to alert enemies on colliding with ground.
+            //item.AddComponent<OnCollisionEvent>();
+            OnCollisionEvent collisionEvent = item.AddComponent<OnCollisionEvent>();
+            // Set the collision event destroyOnCollision flag
+            collisionEvent.destroyOnCollision = true;
+        }
+        else {
+            // Reset our trajectory calculations
+            _currentForceMultiplier = 0f;
+            // Disable LineRenderer
+            lineRenderer.enabled = false;
+
+            // Add Force to player
+            Rigidbody rb = GetComponent<Rigidbody>();
+            // First add vertical force
+            rb.AddForce(force, ForceMode.Impulse);
+
+            ThirdPersonMovement tpm = GetComponent<ThirdPersonMovement>();
+            tpm.baseVelocity = new Vector3(force.x, 0f, force.z);
+        }
     }
 
     private void DropDolly()
@@ -507,7 +525,10 @@ public class ObjectInteraction : MonoBehaviour
         if (item == null) return;
         num_items++;
 
-        if (!item.CompareTag("Package") && !item.CompareTag("GoldenPackage")) return;
+        string[] validTags = {"Package", "GoldenPackage", "BluePackage"};
+
+        // Return if item does not have a valid tag
+        if (!validTags.Any(tag => item.CompareTag(tag))) return;
         // Get the rigidbody of our hit.
         Rigidbody rb = item.GetComponent<Rigidbody>();
         //Disable the rigidbody and rest velocities 
