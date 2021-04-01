@@ -8,6 +8,7 @@ public class PlayerAnimations : MonoBehaviour
     private bool isWalking;
     private bool isJumping;
     private bool isGrounded;
+   
     Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class PlayerAnimations : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
         }
+        
 
     }
 

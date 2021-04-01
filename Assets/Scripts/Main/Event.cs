@@ -103,3 +103,19 @@ public class MovementEvent
         isGrounded = _isGrounded;
     }
 }
+
+public class EnemyStateEvent
+{
+    public bool isWalking;
+    public bool isDistracted;
+    public bool isDazed;
+    public bool drawingGun;
+
+    public EnemyStateEvent(bool _isWalking, bool _isDrawingGun, bool _isAlerted, bool _drawingGun)
+    {
+        isWalking = _isWalking;
+        isDistracted = _isDrawingGun;
+        isDazed = _isAlerted;
+        drawingGun = _drawingGun;
+    }
+}

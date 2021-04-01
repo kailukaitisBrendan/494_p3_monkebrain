@@ -20,6 +20,8 @@ public class EnemyMovementController : MonoBehaviour
     bool isChasingPlayer = false;
     bool isDistracted = false;
     bool isDazed = false;
+    bool atBox = false;
+    bool drawingGun = false;
 
     public TextMeshPro emoteText;
 
@@ -50,10 +52,20 @@ public class EnemyMovementController : MonoBehaviour
         StartCoroutine(MoveEnemy());
     }
 
+    private void Update()
+    {
+        {
+            //Animation publisher
+            EventBus.Publish<EnemyStateEvent>(new EnemyStateEvent(true, atBox, isDazed, drawingGun));
+        }
+    }
+
     IEnumerator MoveEnemy()
     {
         while (true)
         {
+            
+
             GameObject target = pathPoints[pointIndex];
 
             // wait until enemy has reached the target
@@ -114,6 +126,7 @@ public class EnemyMovementController : MonoBehaviour
 
     IEnumerator WaitToDie()
     {
+        drawingGun = true;
         yield return new WaitForSeconds(1f);
         EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
     }
@@ -200,8 +213,12 @@ public class EnemyMovementController : MonoBehaviour
         desiredPositionIsGameobject.agent.ResetPath();
 
         yield return StartCoroutine(WaitToGetToPoint(box, 2f));
+        atBox = true;
+        
         desiredPositionIsGameobject.agent.speed = 0f;
         yield return new WaitForSeconds(distractTime);
+        atBox = false;
+        
         desiredPositionIsGameobject.agent.speed = normalSpeed;
         isDistracted = false;
 
