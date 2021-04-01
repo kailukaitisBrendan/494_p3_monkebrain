@@ -8,7 +8,7 @@ public class load_level_OnEnter : MonoBehaviour
     public string s = "Main_Menu";
 
     public void Update(){
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             SceneManager.LoadScene(s);
     }
 }

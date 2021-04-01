@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a77af8aca2985104183f037a2cfe0220
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Branding Iron
+  fontNames:
+  - Branding_Iron
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 54e8b0c03e03579418dcd1cdd7a9b40d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

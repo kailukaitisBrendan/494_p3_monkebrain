@@ -650,7 +650,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &257545874
 MonoBehaviour:
@@ -672,8 +672,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -684,7 +684,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Enter to Play Level
+  m_Text: Press Space to Play Level
 --- !u!222 &257545875
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -886,10 +886,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial3
       objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990888, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220,
+        type: 3}
     - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
       propertyPath: m_Text
       value: 0-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_FontSize
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5392394510486990895, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
@@ -1516,7 +1532,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &561021175
 MonoBehaviour:
@@ -1538,11 +1554,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1550,7 +1566,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Enter to Play Level
+  m_Text: Press Space to Play Level
 --- !u!222 &561021176
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1826,7 +1842,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &622301133
 MonoBehaviour:
@@ -1848,8 +1864,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1860,7 +1876,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Enter to Play Level
+  m_Text: Press Space to Play Level
 --- !u!222 &622301134
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2478,10 +2494,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2809047407895035320, guid: 4245730d898527d4a8cefe289ce74fb6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    - target: {fileID: 2809047407895035323, guid: 4245730d898527d4a8cefe289ce74fb6,
+        type: 3}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220,
+        type: 3}
     - target: {fileID: 2809047407895035323, guid: 4245730d898527d4a8cefe289ce74fb6,
         type: 3}
       propertyPath: m_Text
       value: Level 0-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2809047407895035323, guid: 4245730d898527d4a8cefe289ce74fb6,
+        type: 3}
+      propertyPath: m_FontSize
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2809047407895035324, guid: 4245730d898527d4a8cefe289ce74fb6,
         type: 3}
@@ -2976,7 +3008,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &776780178
 MonoBehaviour:
@@ -2998,8 +3030,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -3010,7 +3042,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Enter to Play Level
+  m_Text: Press Space to Play Level
 --- !u!222 &776780179
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3626,10 +3658,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelObject (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990888, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220,
+        type: 3}
     - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
       propertyPath: m_Text
       value: 1-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_FontSize
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1, type: 3}
@@ -3826,10 +3874,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial2
       objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990888, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220,
+        type: 3}
     - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
       propertyPath: m_Text
       value: 0-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_FontSize
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5392394510486990895, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
@@ -4205,10 +4269,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelObject (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990888, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220,
+        type: 3}
     - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
       propertyPath: m_Text
       value: 1-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_FontSize
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1, type: 3}
@@ -4399,10 +4479,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelObject (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990888, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220,
+        type: 3}
     - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
       propertyPath: m_Text
       value: 1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_FontSize
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1, type: 3}
@@ -4593,7 +4689,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1671272370
 MonoBehaviour:
@@ -4615,8 +4711,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -4627,7 +4723,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Enter to Play Level
+  m_Text: Press Space to Play Level
 --- !u!222 &1671272371
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4768,10 +4864,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial1
       objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990888, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220,
+        type: 3}
     - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
       propertyPath: m_Text
       value: 0-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392394510486990889, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_FontSize
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5392394510486990895, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
@@ -4857,7 +4969,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 400, y: 30}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806379044
 MonoBehaviour:
@@ -4879,8 +4991,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -4891,7 +5003,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Enter to Play Level
+  m_Text: Press Space to Play Level
 --- !u!222 &1806379045
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4959,11 +5071,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: a77af8aca2985104183f037a2cfe0220, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
