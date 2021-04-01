@@ -11,6 +11,7 @@ public class able_object_button_behavior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             OnButtonPress();
+            Time.timeScale = 0f;
         }
     }
 
