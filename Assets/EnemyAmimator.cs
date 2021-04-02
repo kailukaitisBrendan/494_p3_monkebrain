@@ -10,13 +10,22 @@ public class EnemyAmimator : MonoBehaviour
     public bool isDistracted;
     public bool isDazed;
     private bool drawingGun;
+    
+    private GameObject walking;
+    private GameObject stickemup;
+    private GameObject looking;
+    private GameObject dazed;
 
-    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        
         EnemyState = EventBus.Subscribe<EnemyStateEvent>(EnemyUpdate);
+        walking = transform.Find("walking").gameObject;
+        stickemup = transform.Find("stickemup").gameObject;
+        looking = transform.Find("looking").gameObject;
+        dazed = transform.Find("dazed").gameObject;
+
     }
 
 
@@ -28,39 +37,42 @@ public class EnemyAmimator : MonoBehaviour
         drawingGun = e.drawingGun;
     }
     // Update is called once per frame
+    
     void Update()
     {
-        if (isWalking)
+        
+        
+        if (isWalking && !isDistracted && !isDazed && !drawingGun)
         {
-            animator.SetBool("isWalking", true);
+            walking.SetActive(true);
+            looking.SetActive(false);
+            dazed.SetActive(false);
+            stickemup.SetActive(false);
         }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
+        
+
         if (isDistracted)
         {
-            animator.SetBool("isDistracted", true);
-            animator.SetBool("isWalking", false);
+            walking.SetActive(false);
+            looking.SetActive(true);
+            dazed.SetActive(false);
+            stickemup.SetActive(false);
         }
-        else
-        {
-            animator.SetBool("isDistracted", false);
-        }
+        
         if (isDazed)
         {
-            animator.SetBool("isDazed", true);
-            animator.SetBool("isWalking", false);
+            walking.SetActive(false);
+            looking.SetActive(false);
+            dazed.SetActive(true);
+            stickemup.SetActive(false);
         }
-        else
-        {
-            animator.SetBool("isDazed", false);
-        }
+        
         if (drawingGun)
         {
-           // Debug.Log("stickemup");
-            animator.SetBool("DrawingGun", true);
-            animator.SetBool("isWalking", false);
+            walking.SetActive(false);
+            looking.SetActive(false);
+            dazed.SetActive(false);
+            stickemup.SetActive(true);
         }
     }
 }
