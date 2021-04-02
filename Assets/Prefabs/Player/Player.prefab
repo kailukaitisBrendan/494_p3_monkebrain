@@ -432,8 +432,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  box1: {fileID: 0}
-  box2: {fileID: 0}
 --- !u!114 &4289985393076564439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0304bd7a8d7f9141b48456eae0108c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
+  movementSpeed: 8
   jumpPower: 5
   groundMask:
     serializedVersion: 2
