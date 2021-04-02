@@ -20,6 +20,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 576366153348142687, guid: 7844b94417848457a9cf072cbf315977,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7204206149281160238, guid: 7844b94417848457a9cf072cbf315977,
         type: 3}
       propertyPath: threshold
@@ -44,6 +49,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Spring
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204206149281160240, guid: 7844b94417848457a9cf072cbf315977,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 7204206149281160242, guid: 7844b94417848457a9cf072cbf315977,
         type: 3}
