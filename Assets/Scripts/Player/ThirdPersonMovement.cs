@@ -34,6 +34,12 @@ public class ThirdPersonMovement : MonoBehaviour
     // Denotes base velocity (before factoring in player inputs)
     public Vector3 baseVelocity;
 
+    private void Awake()
+    {
+        // Lock the cursor to the game window
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
