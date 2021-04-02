@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupDistance: 2
+  pickupRadius: 2
   itemSlot: {fileID: 6333447323867098795}
   itemSlot2: {fileID: 1166358741}
   dolly: {fileID: 0}
