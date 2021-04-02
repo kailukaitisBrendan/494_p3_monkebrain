@@ -12,6 +12,7 @@ using System.Linq;
 public class ObjectInteraction : MonoBehaviour
 {
     public float pickupDistance;
+    public float pickupRadius;
     public Transform itemSlot;
     public Transform itemSlot2;
     public GameObject dolly;
@@ -413,8 +414,7 @@ public class ObjectInteraction : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y = itemSlot.position.y;
         RaycastHit hit;
-        float radius = 1f;
-        if (Physics.SphereCast(pos, radius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2,
+        if (Physics.SphereCast(pos, pickupRadius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2,
                 mask)
             || Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, pickupDistance, mask))
         {
@@ -449,6 +449,6 @@ public class ObjectInteraction : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y = itemSlot.transform.position.y;
         Vector3 direction = transform.TransformDirection(Vector3.forward) * pickupDistance / 2;
-        Gizmos.DrawWireSphere(pos + direction, 1f);
+        Gizmos.DrawWireSphere(pos + direction, pickupRadius);
     }
 }
