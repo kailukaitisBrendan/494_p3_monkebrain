@@ -7,32 +7,29 @@ using UnityEngine.UI;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-    Rigidbody rb;
+    private Rigidbody _rb;
     public float movementSpeed = 6f;
     public float jumpPower = 5f;
-    //public float rotationSpeed; // Player's rotation speed when throwing an object.
 
     public LayerMask groundMask;
 
     public Transform groundCheck;
 
     public float groundDistance = 0.4f;
-    //public float climbSpeed = 3f;
 
     public float angleDamping = 0.1f;
-    //public LayerMask Climbable;
-
-    //public Transform cam;
-
+    
+    public AudioClip walkingSound;
+    public AudioClip hitGround;
+    
     private float _angleVelocity;
     private bool _isGrounded = false;
     private bool _isThrowing = false;
     private Camera _mainCamera;
-    private bool isPlayingWalkingSound = false;
-    AudioSource sound;
-    public AudioClip walkingSound;
-    public AudioClip hitGround;
-    private bool jumped = false;
+    private bool _isPlayingWalkingSound = false;
+    private AudioSource _sound;
+    
+    private bool _jumped = false;
 
     // Denotes base velocity (before factoring in player inputs)
     public Vector3 baseVelocity;
@@ -40,10 +37,10 @@ public class ThirdPersonMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         Cursor.visible = false;
         _mainCamera = Camera.main;
-        sound = GetComponent<AudioSource>();
+        _sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -61,9 +58,6 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             // If we are in the process of throwing an object, then our mouse x input should control the players 
             // rotation
-            // float mouseInput = Mathf.Clamp(Input.GetAxis("Mouse X") * rotationSpeed * 1.5f * Time.deltaTime, -180f, 180f);
-            // Debug.Log(mouseInput);
-            // transform.Rotate(0f, mouseInput, 0f);
             Vector3 angle = transform.eulerAngles;
             angle.y = _mainCamera.transform.eulerAngles.y;
             transform.eulerAngles = angle;
@@ -72,14 +66,13 @@ public class ThirdPersonMovement : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             //play walking sound
-            if (_isGrounded && !isPlayingWalkingSound)
+            if (_isGrounded && !_isPlayingWalkingSound)
             {
-               
-                sound.Stop();
-                sound.loop = true;
-                sound.clip = walkingSound;
-                sound.Play();
-                isPlayingWalkingSound = true;
+                _sound.Stop();
+                _sound.loop = true;
+                _sound.clip = walkingSound;
+                _sound.Play();
+                _isPlayingWalkingSound = true;
             }
 
 
@@ -97,57 +90,57 @@ public class ThirdPersonMovement : MonoBehaviour
         else
         {
             //stop walking sound
-            if (sound.clip != hitGround)
-                sound.Stop();
-            isPlayingWalkingSound = false;
+            if (_sound.clip != hitGround)
+                _sound.Stop();
+            _isPlayingWalkingSound = false;
 
 
             velocity = Vector3.zero;
         }
 
 
-        velocity.y = rb.velocity.y;
+        velocity.y = _rb.velocity.y;
 
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
-            
             _isGrounded = false;
             velocity.y = jumpPower;
         }
 
-        if (_isGrounded) {
+        if (_isGrounded)
+        {
             baseVelocity = Vector3.zero;
         }
 
-        if (jumped && _isGrounded)
+        if (_jumped && _isGrounded)
         {
-            sound.clip = hitGround;
-            sound.loop = false;
-            sound.Play();
-            jumped = false;
+            _sound.clip = hitGround;
+            _sound.loop = false;
+            _sound.Play();
+            _jumped = false;
             StartCoroutine(WaitForFallSoundToFinish());
         }
 
         //stop walking sound
         if (!_isGrounded)
         {
-            jumped = true;
-            sound.Stop();
-            isPlayingWalkingSound = false;
+            _jumped = true;
+            _sound.Stop();
+            _isPlayingWalkingSound = false;
         }
 
         //Animation publisher
-        EventBus.Publish<MovementEvent>(new MovementEvent(isPlayingWalkingSound, jumped, _isGrounded));
+        EventBus.Publish<MovementEvent>(new MovementEvent(_isPlayingWalkingSound, _jumped, _isGrounded));
 
 
-        rb.velocity = velocity + baseVelocity;
+        _rb.velocity = velocity + baseVelocity;
     }
 
 
     IEnumerator WaitForFallSoundToFinish()
     {
         yield return new WaitForSeconds(0.3f);
-        isPlayingWalkingSound = false;
+        _isPlayingWalkingSound = false;
     }
 
     private bool IsGrounded()
@@ -170,11 +163,11 @@ public class ThirdPersonMovement : MonoBehaviour
                 Vector3 slopeForward = Vector3.Cross(transform.right, hitInfo.normal);
                 Quaternion lookRotation = Quaternion.LookRotation(slopeForward);
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
-                rb.freezeRotation = true;
+                _rb.freezeRotation = true;
             }
             else
             {
-                rb.freezeRotation = false;
+                _rb.freezeRotation = false;
             }
         }
     }

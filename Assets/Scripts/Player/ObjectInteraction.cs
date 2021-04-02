@@ -22,94 +22,51 @@ public class ObjectInteraction : MonoBehaviour
     public float maxForceMultiplier;
     public float throwAngle = 45f;
 
-    public float charge_force_scaler = 1.5f;
-    public UnityEvent OnThrow;
+    public float chargeForceScaler = 1.5f;
+    public UnityEvent onThrow;
 
     private float action_delay = 0.2f;
-    private float action_t = 0.0f;
+    private float _actionT = 0.0f;
 
-    private float num_items = 0;
+    private float _numItems = 0;
     private bool _hasDolly = false;
     private Stack<GameObject> _pickedUpObjects = new Stack<GameObject>();
     private float _currentForceMultiplier = 0.0f;
     private Rigidbody _pickedUpObjectRigidbody;
-    private BoxCollider OPC;
+    private BoxCollider _opc;
+
     private bool _eventInvoked = false;
-    public Image box1;
-    public Image box2;
+
+    // public Image box1;
+    // public Image box2;
     private bool _inputHeld = false;
     private float _pressedTime = 0f;
 
     private void Start()
     {
-        box2.enabled = false;
-        OPC = GetComponentInChildren<BoxCollider>();
-    }
-
-
-    private void BoxColorChange()
-    {
-        var box1color = box1.color;
-        var box2color = box2.color;
-        if (!_hasDolly)
-        {
-            box2.enabled = false;
-            if (num_items == 0)
-            {
-                box1color.a = 0.2f;
-            }
-
-            if (num_items == 1)
-            {
-                box1color.a = 1f;
-            }
-        }
-        else
-        {
-            box2.enabled = true;
-            if (num_items == 0)
-            {
-                box1color.a = 0.2f;
-                box2color.a = 0.2f;
-            }
-
-            if (num_items == 1)
-            {
-                box1color.a = 1f;
-                box2color.a = 0.2f;
-            }
-
-            if (num_items == 2)
-            {
-                box1color.a = 1f;
-                box2color.a = 1f;
-            }
-        }
-
-        box1.color = box1color;
-        box2.color = box2color;
+        // box2.enabled = false;
+        _opc = GetComponentInChildren<BoxCollider>();
     }
 
     private void Update()
     {
-        //Debug.Log(num_items);
-        BoxColorChange();
+        //BoxColorChange();
 
         //Add box collider if has dolly
-        if (_hasDolly || num_items > 0)
+        if (_hasDolly || _numItems > 0)
         {
-            OPC.enabled = true;
+            _opc.enabled = true;
         }
         else
         {
-            OPC.enabled = false;
+            _opc.enabled = false;
         }
 
 
         if (Input.GetMouseButtonDown(0) &&
-            Time.time - action_t > action_delay)
+            Time.time - _actionT > action_delay)
         {
-            action_t = Time.time;
+            _actionT = Time.time;
             if (!_hasDolly)
             {
                 PickupDolly();
@@ -119,23 +76,23 @@ public class ObjectInteraction : MonoBehaviour
 
 
             //action_t = Time.time;
-            if (num_items == 0)
+            if (_numItems == 0)
             {
                 // if no item, pick up item.
 
                 PickupItem(itemSlot);
             }
-            else if (num_items == 1 && _hasDolly)
+            else if (_numItems == 1 && _hasDolly)
             {
                 PickupItem(itemSlot2);
             }
         }
 
         if (Input.GetMouseButton(1) &&
-            Time.time - action_t > action_delay)
+            Time.time - _actionT > action_delay)
         {
-            action_t = Time.time;
-            if (num_items == 0 && _hasDolly)
+            _actionT = Time.time;
+            if (_numItems == 0 && _hasDolly)
             {
                 DropDolly();
                 return;
@@ -146,12 +103,13 @@ public class ObjectInteraction : MonoBehaviour
                 return;
             }
         }
-        
+
         if (Input.GetMouseButtonDown(1))
         {
             _pressedTime = Time.timeSinceLevelLoad;
             _inputHeld = false;
-        } else if (Input.GetMouseButtonUp(1))
+        }
+        else if (Input.GetMouseButtonUp(1))
         {
             //Debug.Log("Mouse Up!");
             if (!_inputHeld)
@@ -160,13 +118,13 @@ public class ObjectInteraction : MonoBehaviour
                 //Debug.Log("Right Click!");
                 DropItem();
             }
-            else if ( _inputHeld && _currentForceMultiplier > 0.0f)
+            else if (_inputHeld && _currentForceMultiplier > 0.0f)
             {
                 //Debug.Log("Right Click and Hold!");
                 // Input was held, so throw item
-                if (num_items == 0 || _hasDolly) return;
+                if (_numItems == 0 || _hasDolly) return;
                 ThrowItem();
-                OnThrow.Invoke();
+                onThrow.Invoke();
                 _eventInvoked = false;
                 _currentForceMultiplier = 0.0f;
             }
@@ -180,128 +138,23 @@ public class ObjectInteraction : MonoBehaviour
             // Holding down the button.
             _inputHeld = true;
             // charge up the throw
-            if (num_items == 1 && !_hasDolly)
+            if (_numItems == 1 && !_hasDolly)
             {
                 if (!_eventInvoked)
                 {
-                    OnThrow.Invoke();
+                    onThrow.Invoke();
                     _eventInvoked = true;
                 }
+
                 ChargeThrow();
             }
         }
-
-        //if ((Input.GetKeyDown(KeyCode.E) || 
-        //    (Input.GetMouseButton(0) && !_hasItem)) &&
-        //    Time.time - action_t > action_delay)
-        //{
-        //    action_t = Time.time;
-        //    // If we do not have dolly, pick it up first
-        //    if (!_hasDolly)
-        //    {
-        //        PickupDolly();
-        //    }
-        //    if (!_hasItem)
-        //    {
-        //        // if no item, pick up item.
-        //        PickupItem();
-        //        if (!_hasItem) {
-        //            DropDolly();
-        //        }
-        //    }
-        //    // If we have an item, drop it first.
-        //    else if (_hasItem)
-        //    {
-        //        DropItem();
-        //    }
-        //    else if (_hasDolly && !_hasItem)
-        //    {
-        //        Debug.Log("you should never see this");
-        //        // No, item so drop dolly.
-        //        DropDolly();
-        //    }
-        //}
     }
 
-    void FixedUpdate()
-    {
-        // if (Input.GetMouseButtonDown(1))
-        // {
-        //     _pressedTime = Time.timeSinceLevelLoad;
-        //     _inputHeld = false;
-        // } else if (Input.GetMouseButtonUp(1))
-        // {
-        //     Debug.Log("Mouse Up!");
-        //     if (!_inputHeld)
-        //     {
-        //         // Player released right click without holding, so drop item
-        //         Debug.Log("Right Click!");
-        //         DropItem();
-        //     }
-        //     else if ( _inputHeld && _currentForceMultiplier > 0.0f)
-        //     {
-        //         Debug.Log("Right Click and Hold!");
-        //         // Input was held, so throw item
-        //         if (num_items == 0 || _hasDolly) return;
-        //         ThrowItem();
-        //         OnThrow.Invoke();
-        //         _eventInvoked = false;
-        //         _currentForceMultiplier = 0.0f;
-        //     }
-        //
-        //     _inputHeld = false;
-        // }
-        //
-        // if (Input.GetMouseButton(1) && Time.timeSinceLevelLoad - _pressedTime > 1f)
-        // {
-        //     Debug.Log("Holding!");
-        //     // Holding down the button.
-        //     _inputHeld = true;
-        //     // charge up the throw
-        //     if (num_items == 1 && !_hasDolly)
-        //     {
-        //         if (!_eventInvoked)
-        //         {
-        //             OnThrow.Invoke();
-        //             _eventInvoked = true;
-        //         }
-        //         ChargeThrow();
-        //     }
-        // }
-        
-        // if (Input.GetMouseButton(1))
-        // {
-        //     // We are holding down the mouse button, so charge up the force.
-        //
-        //     if (num_items == 1 && !_hasDolly)
-        //     {
-        //         if (!_eventInvoked)
-        //         {
-        //             if (_currentForceMultiplier > 1.0f)
-        //             {
-        //                 OnThrow.Invoke();
-        //                 _eventInvoked = true;
-        //             }
-        //         }
-        //
-        //         ChargeThrow();
-        //     }
-        // }
-
-        // if (!Input.GetMouseButton(1) && _currentForceMultiplier > 0.0f)
-        // {
-        //     if (num_items == 0 || _hasDolly) return;
-        //     // Throw item.
-        //     ThrowItem();
-        //     _currentForceMultiplier = 0.0f;
-        //     OnThrow.Invoke();
-        //     _eventInvoked = false;
-        // }
-    }
 
     private void ChargeThrow()
     {
-        _currentForceMultiplier += Time.deltaTime * charge_force_scaler;
+        _currentForceMultiplier += Time.deltaTime * chargeForceScaler;
 
         // If we go over our maximum charge, then set it to max
         if (_currentForceMultiplier >= maxForceMultiplier)
@@ -383,7 +236,8 @@ public class ObjectInteraction : MonoBehaviour
         //Debug.Log("Throw!");
         GameObject item = _pickedUpObjects.Peek();
         // First, drop the object
-        if (!item.CompareTag("BluePackage")) {
+        if (!item.CompareTag("BluePackage"))
+        {
             DropItem();
 
             // We want to throw object in direction the player is facing
@@ -404,7 +258,8 @@ public class ObjectInteraction : MonoBehaviour
             // Set the collision event destroyOnCollision flag
             collisionEvent.destroyOnCollision = true;
         }
-        else {
+        else
+        {
             // Reset our trajectory calculations
             _currentForceMultiplier = 0f;
             // Disable LineRenderer
@@ -423,7 +278,7 @@ public class ObjectInteraction : MonoBehaviour
     private void DropDolly()
     {
         // Dont drop dolly if we have an item in it!
-        if (num_items > 0) return;
+        if (_numItems > 0) return;
 
         // Debug.Log("drop called");
 
@@ -438,8 +293,6 @@ public class ObjectInteraction : MonoBehaviour
         dolly.transform.parent = null;
         dolly = null;
         _hasDolly = false;
-
-        // TODO: Enable jump
     }
 
     private void PickupDolly()
@@ -468,42 +321,39 @@ public class ObjectInteraction : MonoBehaviour
 
         // Add dolly mass to player
         GetComponent<Rigidbody>().mass += rb.mass;
-
-
-        // TODO: Disable jump
     }
 
     private void DropItem()
     {
         if (_pickedUpObjects.Count == 0) return;
 
-        Debug.Log(_pickedUpObjects);
-        if (_hasDolly && num_items == 2)
-        {
-            _pickedUpObjects.Peek().transform.position += transform.forward;
-        }
+        GameObject item = _pickedUpObjects.Peek();
 
-        num_items--;
+        if (_hasDolly && _numItems == 2)
+        {
+            item.transform.position += transform.forward;
+        }
+        
+        _numItems--;
         LayerMask mask = LayerMask.GetMask("Grabbable Object");
         float dist = 2f;
         Debug.DrawRay(transform.position, transform.forward * dist);
         if (Physics.Raycast(transform.position, transform.forward, dist, mask))
         {
-            _pickedUpObjects.Peek().transform.position += Vector3.up;
+            item.transform.position += Vector3.up;
         }
 
         // Re-enable rigidbody and collider.
-        Rigidbody rb = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
+        Rigidbody rb = item.GetComponent<Rigidbody>();
 
-        Collider col = _pickedUpObjects.Peek().GetComponent<Collider>();
+        Collider col = item.GetComponent<Collider>();
 
         // Set the parent back to null
-        _pickedUpObjects.Peek().transform.parent = null;
+        item.transform.parent = null;
         rb.isKinematic = false;
         col.enabled = true;
 
-
-        _pickedUpObjectRigidbody = _pickedUpObjects.Peek().GetComponent<Rigidbody>();
+        _pickedUpObjectRigidbody = item.GetComponent<Rigidbody>();
         _pickedUpObjects.Pop();
 
         // Subtract object mass from player
@@ -513,9 +363,7 @@ public class ObjectInteraction : MonoBehaviour
         _currentForceMultiplier = 0f;
         // Disable LineRenderer
         lineRenderer.enabled = false;
-
-
-        //Debug.Log("Dropped Item");
+        EventBus.Publish(new ObjectInteractionEvent());
     }
 
 
@@ -523,7 +371,7 @@ public class ObjectInteraction : MonoBehaviour
     {
         GameObject item = GetItem();
         if (item == null) return;
-        num_items++;
+        _numItems++;
 
         string[] validTags = {"Package", "GoldenPackage", "BluePackage"};
 
@@ -553,6 +401,7 @@ public class ObjectInteraction : MonoBehaviour
 
         _pickedUpObjects.Push(item);
         _pickedUpObjectRigidbody = item.GetComponent<Rigidbody>();
+        EventBus.Publish(new ObjectInteractionEvent());
     }
 
 
