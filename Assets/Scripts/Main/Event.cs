@@ -119,3 +119,11 @@ public class EnemyStateEvent
         drawingGun = _drawingGun;
     }
 }
+
+public class ObjectInteractionEvent
+{
+    public ObjectInteractionEvent()
+    {
+        
+    }
+}
