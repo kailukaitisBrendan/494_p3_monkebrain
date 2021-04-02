@@ -9,8 +9,21 @@ public class wagon_behavior : MonoBehaviour
     Rigidbody rb;
     public Camera cam;
     public float movementSpeed = 6f;
-        void Start()
+    public static wagon_behavior instance = null;  
+    void Start()
     {
+        //Check if instance already exists
+        if (instance == null) {
+            //if not, set instance to this
+            instance = this;
+        }
+        //If instance already exists and it's not this:
+        else if (instance != this) {
+            instance.gameObject.SetActive(true);
+            Destroy(gameObject);
+        }
+        //Sets this to not be destroyed when reloading scene
+        DontDestroyOnLoad(gameObject);
         rb = GetComponent<Rigidbody>();
     }
 

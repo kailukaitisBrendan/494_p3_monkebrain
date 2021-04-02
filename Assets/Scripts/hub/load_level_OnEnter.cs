@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class load_level_OnEnter : MonoBehaviour
 {
     public string s = "Main_Menu";
+    public GameObject g;
+    public GameObject c;
 
     public void Update(){
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) {
+            g.SetActive(false);
+            c.SetActive(false);
             SceneManager.LoadScene(s);
+        }
     }
 }

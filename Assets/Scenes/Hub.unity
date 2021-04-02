@@ -303,6 +303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: EnemyLevel
+  g: {fileID: 57099037}
+  c: {fileID: 1303626916}
 --- !u!1 &180699186
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +340,7 @@ Transform:
   - {fileID: 1531808464}
   - {fileID: 1266537117}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &181482195
 PrefabInstance:
@@ -1479,6 +1481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: Level5
+  g: {fileID: 57099037}
+  c: {fileID: 1303626916}
 --- !u!4 &534167970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2279037599455138538, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
@@ -1585,7 +1589,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 88dd312abc60e894386df5ac09ef89b1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 88dd312abc60e894386df5ac09ef89b1,
         type: 3}
@@ -2162,6 +2166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: Level6
+  g: {fileID: 57099037}
+  c: {fileID: 1303626916}
 --- !u!1001 &727794060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2291,6 +2297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: Level7
+  g: {fileID: 57099037}
+  c: {fileID: 1303626916}
 --- !u!1 &732570495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,7 +2389,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &732715817
 PrefabInstance:
@@ -2398,7 +2406,7 @@ PrefabInstance:
     - target: {fileID: 2279037599455138538, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2279037599455138538, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
         type: 3}
@@ -2418,7 +2426,7 @@ PrefabInstance:
     - target: {fileID: 2279037599455138538, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 2279037599455138538, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
         type: 3}
@@ -2469,6 +2477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785705396310931148, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0367ac69d4a34726bb9e8164ad1c7e0, type: 3}
@@ -3968,6 +3981,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: Level1
+  g: {fileID: 57099037}
+  c: {fileID: 1303626916}
 --- !u!1 &1303626916
 GameObject:
   m_ObjectHideFlags: 0
@@ -4046,11 +4061,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303626916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.89, y: 3.67, z: -0.24}
+  m_LocalPosition: {x: 7.91, y: 22.768, z: 1.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1303626920
 MonoBehaviour:
@@ -4066,12 +4081,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 57099037}
   offset: {x: 0, y: 15, z: -1}
-  baseRadius: 17
+  baseRadius: 15
   radius: 20
   sensitivity: {x: 0, y: 0}
-  y_axis_position: 15
+  y_axis_position: 11
   min_y: 0
-  max_y: 15
+  max_y: 11
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4175,7 +4190,7 @@ RectTransform:
   - {fileID: 1593228839}
   - {fileID: 1854232090}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4574,6 +4589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: Dolly Tutorial
+  g: {fileID: 57099037}
+  c: {fileID: 1303626916}
 --- !u!4 &1625649543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1889249611845972117, guid: b7220a17290399746bc5f6d7b72c8a1b,
@@ -5566,7 +5583,7 @@ PrefabInstance:
     - target: {fileID: 167837618669570822, guid: cb29f600ac4de4e49bf20a1925040ff9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 167837618669570822, guid: cb29f600ac4de4e49bf20a1925040ff9,
         type: 3}
@@ -5632,8 +5649,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 1079a015ac6918b419407502a85fa07d,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 167837618669570872, guid: cb29f600ac4de4e49bf20a1925040ff9,
         type: 3}
       propertyPath: m_IsTrigger

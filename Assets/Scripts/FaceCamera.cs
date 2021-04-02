@@ -16,6 +16,11 @@ public class FaceCamera : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        transform.rotation = mainCamera.transform.rotation;
-    } 
+        if (mainCamera == null) {
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+        else {
+            transform.rotation = mainCamera.transform.rotation;
+        }
+    }
 }

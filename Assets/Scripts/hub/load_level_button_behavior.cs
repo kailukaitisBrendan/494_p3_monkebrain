@@ -7,6 +7,9 @@ public class load_level_button_behavior : MonoBehaviour
     public string s = "Main_Menu";
 
     public void OnButtonPress(){
+        Time.timeScale = 1f;
+        if (s == "Main_Menu" || s == "Hub")
+            Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(s);
     }
 }
