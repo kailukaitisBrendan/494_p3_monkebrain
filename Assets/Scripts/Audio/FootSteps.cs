@@ -1,18 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FootSteps : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private AudioClip[] _clips;
+    private AudioSource _audioSource;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        _audioSource = GetComponentInParent<AudioSource>();
+    }
+    
+    private void Step()
+    {
+        AudioClip clip = _clips[UnityEngine.Random.Range(0, _clips.Length)];
+        _audioSource.PlayOneShot(clip);
     }
 }

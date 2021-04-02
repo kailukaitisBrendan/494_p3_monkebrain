@@ -429,6 +429,11 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6974805035240246420, guid: 908fb1146e0ee6f4f86639bff20c168a,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8497152196208681333, guid: 908fb1146e0ee6f4f86639bff20c168a,
         type: 3}
       propertyPath: m_Name

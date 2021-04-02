@@ -65,15 +65,15 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            //play walking sound
-            if (_isGrounded && !_isPlayingWalkingSound)
-            {
-                _sound.Stop();
-                _sound.loop = true;
-                _sound.clip = walkingSound;
-                _sound.Play();
-                _isPlayingWalkingSound = true;
-            }
+            // play walking sound
+             if (_isGrounded && !_isPlayingWalkingSound)
+             {
+                 // _sound.Stop();
+                 // _sound.loop = true;
+                 // _sound.clip = walkingSound;
+                 // _sound.Play();
+                 _isPlayingWalkingSound = true;
+             }
 
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg +
@@ -90,8 +90,8 @@ public class ThirdPersonMovement : MonoBehaviour
         else
         {
             //stop walking sound
-            if (_sound.clip != hitGround)
-                _sound.Stop();
+            // if (_sound.clip != hitGround)
+            //     _sound.Stop();
             _isPlayingWalkingSound = false;
 
 
@@ -114,9 +114,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (_jumped && _isGrounded)
         {
-            _sound.clip = hitGround;
+            //_sound.clip = hitGround;
             _sound.loop = false;
-            _sound.Play();
+            _sound.PlayOneShot(hitGround);
             _jumped = false;
             StartCoroutine(WaitForFallSoundToFinish());
         }
@@ -125,7 +125,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (!_isGrounded)
         {
             _jumped = true;
-            _sound.Stop();
+            // _sound.Stop();
             _isPlayingWalkingSound = false;
         }
 
