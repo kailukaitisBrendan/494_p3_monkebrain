@@ -58,6 +58,7 @@ public class EnemyAmimator : MonoBehaviour
         }
         if (drawingGun)
         {
+           // Debug.Log("stickemup");
             animator.SetBool("DrawingGun", true);
             animator.SetBool("isWalking", false);
         }
