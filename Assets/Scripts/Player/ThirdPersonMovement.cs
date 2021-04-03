@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Numerics;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -18,9 +22,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public float groundDistance = 0.4f;
 
-    public float angleDamping = 0.1f;
-    
-    public AudioClip walkingSound;
     public AudioClip hitGround;
     
     private float _angleVelocity;
@@ -29,11 +30,14 @@ public class ThirdPersonMovement : MonoBehaviour
     private Camera _mainCamera;
     private bool _isPlayingWalkingSound = false;
     private AudioSource _sound;
-    
+
     private bool _jumped = false;
 
     // Denotes base velocity (before factoring in player inputs)
     public Vector3 baseVelocity;
+    public Transform followTransform;
+    public AxisState xAxis;
+    public AxisState yAxis;
 
     private void Awake()
     {
@@ -63,11 +67,14 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (_isThrowing)
         {
-            // If we are in the process of throwing an object, then our mouse x input should control the players 
-            // rotation
-            Vector3 angle = transform.eulerAngles;
-            angle.y = _mainCamera.transform.eulerAngles.y;
-            transform.eulerAngles = angle;
+            xAxis.Update(Time.deltaTime);
+            yAxis.Update(Time.deltaTime);
+
+            followTransform.eulerAngles = new Vector3(yAxis.Value, xAxis.Value, 0);
+            
+            // Rotate the player to match the camera yaw
+            float yawCamera = _mainCamera.transform.rotation.eulerAngles.y;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), rotationSpeed * Time.deltaTime);
         }
 
         if (direction.magnitude >= 0.1f)
@@ -85,15 +92,14 @@ public class ThirdPersonMovement : MonoBehaviour
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg +
                                 _mainCamera.transform.eulerAngles.y;
-            //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _angleVelocity, angleDamping);
-            //transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f), Time.deltaTime * rotationSpeed);
-            //transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            if (!_isThrowing)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f),
+                    Time.deltaTime * rotationSpeed);
+            }
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             velocity = moveDir.normalized * movementSpeed;
-            //Debug.Log(velocity);
         }
         else
         {

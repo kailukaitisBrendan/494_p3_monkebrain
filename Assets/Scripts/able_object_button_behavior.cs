@@ -11,13 +11,17 @@ public class able_object_button_behavior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             OnButtonPress();
-            Time.timeScale = 0f;
         }
     }
 
     public void OnButtonPress(){
-        print("buttonpress");
+        //print("buttonpress");
         s.SetActive(b);
         Cursor.visible = b;
+        if (!b) {
+            Time.timeScale = 1f;
+        } else {
+            Time.timeScale = 0f;
+        }
     }
 }

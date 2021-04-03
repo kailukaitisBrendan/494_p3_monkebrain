@@ -20,6 +20,13 @@ public class CameraSensitivity : MonoBehaviour
         _baseYSensitivity = _cinemachine.m_YAxis.m_MaxSpeed;
     }
 
+    void Update() {
+        if(PlayerPrefs.GetFloat("sens") != horizontalSensitivity) {
+            horizontalSensitivity = PlayerPrefs.GetFloat("sens");
+            _cinemachine.m_XAxis.m_MaxSpeed = _baseXSensitivity * horizontalSensitivity;
+        }
+    }
+
     public void OnChangeSensitivity(float x, float y)
     {
         _cinemachine.m_YAxis.m_MaxSpeed = _baseYSensitivity * verticalSensitivity;

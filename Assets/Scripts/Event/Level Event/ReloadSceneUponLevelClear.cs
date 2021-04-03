@@ -10,6 +10,8 @@ public class ReloadSceneUponLevelClear : MonoBehaviour
     private Subscription<LevelClearEvent> levelClearSubscription;
     AudioSource sound;
     public AudioClip mailshere;
+    public GameObject winScreen;
+
     void Start()
     {
         sound = GetComponent<AudioSource>();
@@ -21,8 +23,8 @@ public class ReloadSceneUponLevelClear : MonoBehaviour
         //Debug.Log("mailshere");
         sound.clip = mailshere;
         sound.Play();
+        winScreen.SetActive(true);
         StartCoroutine(WaitForMailsHere());
-        
     }
 
     IEnumerator WaitForMailsHere()
