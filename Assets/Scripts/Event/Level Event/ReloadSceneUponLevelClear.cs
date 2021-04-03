@@ -13,10 +13,10 @@ public class ReloadSceneUponLevelClear : MonoBehaviour
     void Start()
     {
         sound = GetComponent<AudioSource>();
-        levelClearSubscription = EventBus.Subscribe<LevelClearEvent>(ReloadScene);
+        levelClearSubscription = EventBus.Subscribe<LevelClearEvent>(LoadScene);
     }
 
-    void ReloadScene(LevelClearEvent _event)
+    void LoadScene(LevelClearEvent _event)
     {
         //Debug.Log("mailshere");
         sound.clip = mailshere;
