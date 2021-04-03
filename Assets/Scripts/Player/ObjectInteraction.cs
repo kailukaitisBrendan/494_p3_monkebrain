@@ -42,11 +42,16 @@ public class ObjectInteraction : MonoBehaviour
     // public Image box2;
     private bool _inputHeld = false;
     private float _pressedTime = 0f;
+    private GameObject holdingBox;
+    private GameObject notHoldingBox;
+    
 
     private void Start()
     {
         // box2.enabled = false;
         _opc = GetComponentInChildren<BoxCollider>();
+        holdingBox = transform.Find("holdingBox").gameObject;
+        notHoldingBox = transform.Find("notHoldingBox").gameObject;
     }
 
     private void Update()
@@ -57,10 +62,14 @@ public class ObjectInteraction : MonoBehaviour
         if (_hasDolly || _numItems > 0)
         {
             _opc.enabled = true;
+            holdingBox.SetActive(true);
+            notHoldingBox.SetActive(false);
         }
         else
         {
             _opc.enabled = false;
+            holdingBox.SetActive(false);
+            notHoldingBox.SetActive(true);
         }
 
 
