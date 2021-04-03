@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 4561909937871581249}
   - component: {fileID: 4561909937871581263}
   - component: {fileID: 4561909937871581248}
+  - component: {fileID: 8538252911235825745}
   m_Layer: 0
   m_Name: FreeLookCamera
   m_TagString: CineMachineController
@@ -516,6 +517,20 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
+--- !u!114 &8538252911235825745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561909937871581250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca35a5ccd93d0874da1b97e17b81f66f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalSensitivity: 1
+  verticalSensitivity: 1
 --- !u!1 &4561909938262334806
 GameObject:
   m_ObjectHideFlags: 0
