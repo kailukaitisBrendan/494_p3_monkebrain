@@ -467,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7
+  rotationSpeed: 6
   jumpPower: 5
   groundMask:
     serializedVersion: 2
