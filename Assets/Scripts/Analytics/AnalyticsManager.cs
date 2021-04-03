@@ -74,29 +74,26 @@ public class AnalyticsManager : MonoBehaviour
         customParams.Add("seconds_played", secondsElapsed);
         customParams.Add("player_location", playerLocation);
         customParams.Add("golden_package_location", goldenPackageLocation);
+        
         AnalyticsResult res;
+        string event_name;
 
         if (Globals.analyticsOn) {
             switch(state){
             case LevelEndState.Won:
-                res = AnalyticsEvent.LevelComplete(thisScene.name,
-                                                thisScene.buildIndex, 
-                                                customParams);
+                event_name = "LevelComplete_" + thisScene.name;
                 break;
             case LevelEndState.Lost:
-                res = AnalyticsEvent.LevelFail(thisScene.name,
-                                            thisScene.buildIndex, 
-                                            customParams);
+                event_name = "LevelFail_" + thisScene.name;
                 break;
             case LevelEndState.Quit:
             default:
-                res = AnalyticsEvent.LevelQuit(thisScene.name,
-                                            thisScene.buildIndex, 
-                                            customParams);
+                event_name = "LevelQuit_" + thisScene.name;
                 break;
             }
 
-            Debug.Log("Data shared about level " + state);
+            res = Analytics.CustomEvent(event_name, customParams);
+            Debug.Log("Data shared about " + event_name);
         }
 
     }
