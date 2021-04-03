@@ -41,7 +41,7 @@ public class EnemyAmimator : MonoBehaviour
     void Update()
     {
         //Debug.Log(isWalking);
-        if (!isWalking)
+        if (!isWalking && !isDistracted && !isDazed && !drawingGun)
         {
             
             idle.SetActive(true);
