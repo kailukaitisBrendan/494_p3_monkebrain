@@ -37,7 +37,9 @@ public class AnalyticsManager : MonoBehaviour
 
     void Awake () {
         thisScene = SceneManager.GetActiveScene();
-        AnalyticsEvent.LevelStart(thisScene.name, thisScene.buildIndex);
+        if (Globals.analyticsOn) {
+            AnalyticsEvent.LevelStart(thisScene.name, thisScene.buildIndex);
+        }
     }
 
     void Start () {
@@ -74,23 +76,27 @@ public class AnalyticsManager : MonoBehaviour
         customParams.Add("golden_package_location", goldenPackageLocation);
         AnalyticsResult res;
 
-        switch(state){
-        case LevelEndState.Won:
-            res = AnalyticsEvent.LevelComplete(thisScene.name,
-                                             thisScene.buildIndex, 
-                                             customParams);
-            break;
-        case LevelEndState.Lost:
-            res = AnalyticsEvent.LevelFail(thisScene.name,
-                                         thisScene.buildIndex, 
-                                         customParams);
-            break;
-        case LevelEndState.Quit:
-        default:
-            res = AnalyticsEvent.LevelQuit(thisScene.name,
-                                         thisScene.buildIndex, 
-                                         customParams);
-            break;
+        if (Globals.analyticsOn) {
+            switch(state){
+            case LevelEndState.Won:
+                res = AnalyticsEvent.LevelComplete(thisScene.name,
+                                                thisScene.buildIndex, 
+                                                customParams);
+                break;
+            case LevelEndState.Lost:
+                res = AnalyticsEvent.LevelFail(thisScene.name,
+                                            thisScene.buildIndex, 
+                                            customParams);
+                break;
+            case LevelEndState.Quit:
+            default:
+                res = AnalyticsEvent.LevelQuit(thisScene.name,
+                                            thisScene.buildIndex, 
+                                            customParams);
+                break;
+            }
+
+            Debug.Log("Data shared about level " + state);
         }
 
     }

@@ -47,3 +47,7 @@ thumbs.db
 # VSCode files
 *.vscode/
 *.vscode/*
+
+
+# Git files
+.gitattributes
