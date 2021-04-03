@@ -29,6 +29,8 @@ public class ReloadSceneUponLevelClear : MonoBehaviour
     {
         
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(s);
+        SceneTransitioner st = FindObjectOfType<SceneTransitioner>();
+        if (st) st.LoadScene(s);
+        else SceneManager.LoadScene(s);
     }
 }

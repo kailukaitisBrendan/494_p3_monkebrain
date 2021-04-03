@@ -23,7 +23,10 @@ public class load_level_OnEnter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) {
             g.SetActive(false);
             c.SetActive(false);
-            SceneManager.LoadScene(s);
+
+        SceneTransitioner st = FindObjectOfType<SceneTransitioner>();
+        if (st) st.LoadScene(s);
+        else SceneManager.LoadScene(s);
         }
     }
 }

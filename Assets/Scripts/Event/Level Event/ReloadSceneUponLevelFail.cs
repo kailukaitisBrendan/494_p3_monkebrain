@@ -27,8 +27,10 @@ public class ReloadSceneUponLevelFail : MonoBehaviour
     IEnumerator WaitThenLoad()
     {
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(
-            SceneManager.GetActiveScene().buildIndex
-        );
+
+        string sceneIndex = SceneManager.GetActiveScene().name;
+        SceneTransitioner st = FindObjectOfType<SceneTransitioner>();
+        if (st) st.LoadScene(sceneIndex);
+        else SceneManager.LoadScene(sceneIndex);
     }
 }

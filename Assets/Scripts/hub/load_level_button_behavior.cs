@@ -10,6 +10,9 @@ public class load_level_button_behavior : MonoBehaviour
         Time.timeScale = 1f;
         if (s == "Main_Menu" || s == "Hub")
             Cursor.lockState = CursorLockMode.None;
-        SceneManager.LoadScene(s);
+        
+        SceneTransitioner st = FindObjectOfType<SceneTransitioner>();
+        if (st) st.LoadScene(s);
+        else SceneManager.LoadScene(s);
     }
 }
