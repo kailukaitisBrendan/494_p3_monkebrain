@@ -33,6 +33,7 @@ public class EnemyMovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PublishAnim();
         playerSpottedSubscription = EventBus.Subscribe<PlayerSpottedEvent>(_OnPlayerSpotted);
         hitObjectSubscription = EventBus.Subscribe<HitObjectEvent>(_OnHitObject);
 
@@ -52,12 +53,10 @@ public class EnemyMovementController : MonoBehaviour
         StartCoroutine(MoveEnemy());
     }
 
-    private void Update()
+    private void PublishAnim()
     {
-        {
-            //Animation publisher
-            EventBus.Publish<EnemyStateEvent>(new EnemyStateEvent(true, atBox, isDazed, drawingGun));
-        }
+        //Animation publisher
+        EventBus.Publish<EnemyStateEvent>(new EnemyStateEvent(!isStatic, atBox, isDazed, drawingGun));
     }
 
     IEnumerator MoveEnemy()
@@ -91,7 +90,7 @@ public class EnemyMovementController : MonoBehaviour
         yield return null;
     }
 
-    //Collisions
+    // Collisions
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Player") && !isDazed)
@@ -127,6 +126,7 @@ public class EnemyMovementController : MonoBehaviour
     IEnumerator WaitToDie()
     {
         drawingGun = true;
+        PublishAnim();
         yield return new WaitForSeconds(1f);
         EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
     }
@@ -152,8 +152,6 @@ public class EnemyMovementController : MonoBehaviour
             emoteText.text = "!";
 
             desiredPositionIsGameobject.agent.speed = chaseSpeed;
-            //desiredPositionIsGameobject.agent.acceleration = chaseAcceleration;
-            //desiredPositionIsGameobject.agent.stoppingDistance = distanceFromPlayer;
         }
         // change target to move to the waypoints
         else
@@ -166,17 +164,16 @@ public class EnemyMovementController : MonoBehaviour
             emoteText.text = "";
 
             desiredPositionIsGameobject.agent.speed = normalSpeed;
-            //desiredPositionIsGameobject.agent.acceleration = normalAccel;
-            //desiredPositionIsGameobject.agent.stoppingDistance = 0f;
             if (pathPoints.Length < 1)
                 return;
 
             StartCoroutine(MoveEnemy());
         }
-    }  
+    }
 
     void _OnHitObject(HitObjectEvent e)
     {
+        PublishAnim();
         Debug.Log(e.hitObject); // ground
         Debug.Log(e.sourceObject); // golden package
 
@@ -185,7 +182,7 @@ public class EnemyMovementController : MonoBehaviour
 
         bool enemyOccupied = isChasingPlayer || isDistracted || isDazed;
 
-        if (packageInRange && !isDazed)
+        if (packageInRange && !enemyOccupied)
         {
             Debug.Log("check");
             if (e.hitObject.CompareTag("Enemy"))
@@ -197,7 +194,7 @@ public class EnemyMovementController : MonoBehaviour
                 Debug.Log("Daze Enemy");
                 StartCoroutine(DazeEnemy());
             }
-            else if(!isStatic && !enemyOccupied)
+            else if(!isStatic)
             {
                 Debug.Log("Distract Enemy");
                 StartCoroutine(DistractEnemy(e.sourceObject));
@@ -210,6 +207,7 @@ public class EnemyMovementController : MonoBehaviour
     {
         isDistracted = true;
         emoteText.text = "?";
+        PublishAnim();
 
         Debug.Log("Chase Box at: " + box.transform.position);
         desiredPositionIsGameobject.target = box;
@@ -218,13 +216,16 @@ public class EnemyMovementController : MonoBehaviour
 
         yield return StartCoroutine(WaitToGetToPoint(box, 2f));
         atBox = true;
+        PublishAnim();
         
         desiredPositionIsGameobject.agent.speed = 0f;
         yield return new WaitForSeconds(distractTime);
         atBox = false;
+        PublishAnim();
         
         desiredPositionIsGameobject.agent.speed = normalSpeed;
         isDistracted = false;
+        PublishAnim();
 
         EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
         emoteText.text = "";
@@ -233,6 +234,7 @@ public class EnemyMovementController : MonoBehaviour
     IEnumerator DazeEnemy()
     {
         isDazed = true;
+        PublishAnim();
         emoteText.text = "*";
         desiredPositionIsGameobject.target = null;
 
@@ -241,6 +243,7 @@ public class EnemyMovementController : MonoBehaviour
         yield return new WaitForSeconds(dazeTime);
         EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
         isDazed = false;
+        PublishAnim();
         emoteText.text = "";
     }
 
