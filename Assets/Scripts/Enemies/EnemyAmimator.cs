@@ -15,6 +15,7 @@ public class EnemyAmimator : MonoBehaviour
     private GameObject stickemup;
     private GameObject looking;
     private GameObject dazed;
+    private GameObject idle;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class EnemyAmimator : MonoBehaviour
         stickemup = transform.Find("stickemup").gameObject;
         looking = transform.Find("looking").gameObject;
         dazed = transform.Find("dazed").gameObject;
+        idle = transform.Find("idle").gameObject;
     }
 
 
@@ -38,12 +40,25 @@ public class EnemyAmimator : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(isWalking);
+        if (!isWalking)
+        {
+            
+            idle.SetActive(true);
+            walking.SetActive(false);
+            looking.SetActive(false);
+            dazed.SetActive(false);
+            stickemup.SetActive(false);
+        }
+
+
         if (isWalking && !isDistracted && !isDazed && !drawingGun)
         {
             walking.SetActive(true);
             looking.SetActive(false);
             dazed.SetActive(false);
             stickemup.SetActive(false);
+            idle.SetActive(false);
         }
 
 
@@ -53,6 +68,7 @@ public class EnemyAmimator : MonoBehaviour
             looking.SetActive(true);
             dazed.SetActive(false);
             stickemup.SetActive(false);
+            idle.SetActive(false);
         }
 
         if (isDazed)
@@ -61,6 +77,7 @@ public class EnemyAmimator : MonoBehaviour
             looking.SetActive(false);
             dazed.SetActive(true);
             stickemup.SetActive(false);
+            idle.SetActive(false);
         }
 
         if (drawingGun)
@@ -69,6 +86,7 @@ public class EnemyAmimator : MonoBehaviour
             looking.SetActive(false);
             dazed.SetActive(false);
             stickemup.SetActive(true);
+            idle.SetActive(false);
         }
     }
 }
