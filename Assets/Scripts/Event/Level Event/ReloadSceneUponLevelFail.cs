@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ReloadSceneUponLevelFail : MonoBehaviour
 {
-    private Subscription<LevelFailEvent> levelClearSubscription;
+    private Subscription<LevelFailEvent> levelFailSubscription;
     AudioSource sound;
     public AudioClip stickemup;
     void Start()
     {
         sound = GetComponent<AudioSource>();
-        levelClearSubscription = EventBus.Subscribe<LevelFailEvent>(ReloadScene);
+        levelFailSubscription = EventBus.Subscribe<LevelFailEvent>(ReloadScene);
     }
 
     void ReloadScene(LevelFailEvent _event)

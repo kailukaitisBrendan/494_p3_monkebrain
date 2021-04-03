@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5605151875140230365}
   - component: {fileID: 922557842}
   - component: {fileID: 922557843}
+  - component: {fileID: 6647769425229890014}
   m_Layer: 0
   m_Name: Level Controller
   m_TagString: Untagged
@@ -154,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9ecf0f1d20f4098b18a2dd092e8bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  s: Hub
   mailshere: {fileID: 8300000, guid: c30fc9aa43f445346a73e0c933081ea1, type: 3}
 --- !u!114 &922557843
 MonoBehaviour:
@@ -168,3 +170,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stickemup: {fileID: 8300000, guid: 57ff8126aca384640902e255ede33928, type: 3}
+--- !u!114 &6647769425229890014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3399810704303149335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7305546df6b5c4b40a975fb6443f184d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
