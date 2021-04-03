@@ -9,6 +9,7 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     private Rigidbody _rb;
     public float movementSpeed = 6f;
+    public float rotationSpeed = 10f;
     public float jumpPower = 5f;
 
     public LayerMask groundMask;
@@ -86,7 +87,8 @@ public class ThirdPersonMovement : MonoBehaviour
                                 _mainCamera.transform.eulerAngles.y;
             //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _angleVelocity, angleDamping);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            //transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f), Time.deltaTime * rotationSpeed);
             //transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
