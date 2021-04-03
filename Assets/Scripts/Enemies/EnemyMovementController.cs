@@ -91,7 +91,7 @@ public class EnemyMovementController : MonoBehaviour
         yield return null;
     }
 
-    // Collisions
+    //Collisions
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Player") && !isDazed)
@@ -152,6 +152,8 @@ public class EnemyMovementController : MonoBehaviour
             emoteText.text = "!";
 
             desiredPositionIsGameobject.agent.speed = chaseSpeed;
+            //desiredPositionIsGameobject.agent.acceleration = chaseAcceleration;
+            //desiredPositionIsGameobject.agent.stoppingDistance = distanceFromPlayer;
         }
         // change target to move to the waypoints
         else
@@ -164,12 +166,14 @@ public class EnemyMovementController : MonoBehaviour
             emoteText.text = "";
 
             desiredPositionIsGameobject.agent.speed = normalSpeed;
+            //desiredPositionIsGameobject.agent.acceleration = normalAccel;
+            //desiredPositionIsGameobject.agent.stoppingDistance = 0f;
             if (pathPoints.Length < 1)
                 return;
 
             StartCoroutine(MoveEnemy());
         }
-    }
+    }  
 
     void _OnHitObject(HitObjectEvent e)
     {
@@ -181,7 +185,7 @@ public class EnemyMovementController : MonoBehaviour
 
         bool enemyOccupied = isChasingPlayer || isDistracted || isDazed;
 
-        if (packageInRange && !enemyOccupied)
+        if (packageInRange && !isDazed)
         {
             Debug.Log("check");
             if (e.hitObject.CompareTag("Enemy"))
@@ -193,7 +197,7 @@ public class EnemyMovementController : MonoBehaviour
                 Debug.Log("Daze Enemy");
                 StartCoroutine(DazeEnemy());
             }
-            else if(!isStatic)
+            else if(!isStatic && !enemyOccupied)
             {
                 Debug.Log("Distract Enemy");
                 StartCoroutine(DistractEnemy(e.sourceObject));

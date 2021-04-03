@@ -33,7 +33,7 @@ public class DesiredPositionIsGameobject : MonoBehaviour
             {
                 agent.SetDestination(target_go.transform.position);
             }
-            yield return new WaitForSeconds(pathfinding_refresh_interval_sec);
+            //yield return new WaitForSeconds(pathfinding_refresh_interval_sec);
             yield return null;
         }
     }
