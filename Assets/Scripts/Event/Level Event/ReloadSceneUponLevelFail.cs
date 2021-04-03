@@ -8,6 +8,7 @@ public class ReloadSceneUponLevelFail : MonoBehaviour
     private Subscription<LevelFailEvent> levelFailSubscription;
     AudioSource sound;
     public AudioClip stickemup;
+    public GameObject loseScreen;
     void Start()
     {
         sound = GetComponent<AudioSource>();
@@ -19,8 +20,8 @@ public class ReloadSceneUponLevelFail : MonoBehaviour
         sound.clip = stickemup;
         sound.Play();
         //Debug.Log("sound?");
+        loseScreen.SetActive(true);
         StartCoroutine(WaitThenLoad());
-        
     }
 
 

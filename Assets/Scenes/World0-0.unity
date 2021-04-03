@@ -726,6 +726,14 @@ PrefabInstance:
       propertyPath: s
       value: Hub
       objectReference: {fileID: 0}
+    - target: {fileID: 922557842, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
+      propertyPath: winScreen
+      value: 
+      objectReference: {fileID: 947441388}
+    - target: {fileID: 922557843, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 947441389}
     - target: {fileID: 2585001580040263232, guid: 3ee4c70173cee4374be2064ed8d55fb9,
         type: 3}
       propertyPath: m_RootOrder
@@ -1197,6 +1205,18 @@ MonoBehaviour:
 --- !u!224 &947441387 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 427497096361577906, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+    type: 3}
+  m_PrefabInstance: {fileID: 947441385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &947441388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 404739815273607287, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+    type: 3}
+  m_PrefabInstance: {fileID: 947441385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &947441389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2876896393649797448, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
     type: 3}
   m_PrefabInstance: {fileID: 947441385}
   m_PrefabAsset: {fileID: 0}
@@ -2692,12 +2712,12 @@ PrefabInstance:
     - target: {fileID: 4561909937361771341, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016857454
+      value: -0.000000016857461
       objectReference: {fileID: 0}
     - target: {fileID: 4561909937361771341, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000003447562
+      value: 0.0000000034475633
       objectReference: {fileID: 0}
     - target: {fileID: 4561909937411083111, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
