@@ -12,7 +12,7 @@ using Vector3 = UnityEngine.Vector3;
 public class PlayerMove : MonoBehaviour
 {
     private Rigidbody _rb;
-    public float movementSpeed = 6f;
+    public float baseMovementSpeed = 1f;
     public float rotationSpeed = 10f;
 
     public LayerMask groundMask;
@@ -29,6 +29,7 @@ public class PlayerMove : MonoBehaviour
     private Camera _mainCamera;
     private bool _isPlayingWalkingSound = false;
     private AudioSource _sound;
+    private float _movementSpeed = 0.2f;
 
     private bool _jumped = false;
 
@@ -73,16 +74,7 @@ public class PlayerMove : MonoBehaviour
         // Try and align player's rotation with the angle of the ground. 
         //AlignWithGround();
 
-        if (!_opc.enabled)
-        {
-            
-            movementSpeed = 0.21f;
-        }
-        else
-        {
-            
-            movementSpeed = 0.15f;
-        }
+        _movementSpeed = !_opc.enabled ? 0.21f : 0.15f;
 
         // check grounded if jump is not recent
         if (Time.time - time_jump > 0.2f) {
@@ -145,7 +137,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     void FixedUpdate() {
-        controller.Move(direction.normalized * movementSpeed);
+        controller.Move(direction.normalized * (_movementSpeed * baseMovementSpeed));
         // gravity
         if (!_isGrounded )
         {

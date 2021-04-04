@@ -30,11 +30,15 @@ public class TriggerButtonEventUponPress : MonoBehaviour
             EventBus.Publish<ButtonPressEvent>(new ButtonPressEvent(buttonEventId));
             sound.Play();
             pressed = true;
+
+            Debug.Log("Button " + buttonEventId + " pressed");
         }
-        else if (transform.localPosition.y / initialPosition > threshold) {
+        else if (pressed && transform.localPosition.y / initialPosition > threshold) {
             
             EventBus.Publish<ButtonLiftEvent>(new ButtonLiftEvent(buttonEventId));
             pressed = false;
+
+            Debug.Log("Button " + buttonEventId + " lifted");
         }
     }
 }

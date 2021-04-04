@@ -16,10 +16,10 @@ public class IntroSceneDialogController : MonoBehaviour
         rollInText = GetComponent<RollInText>();
     }
 
-    public void OnCameraLive()
-    {
-        Debug.Log("Hello!");
-    }
+    // public void OnCameraLive()
+    // {
+    //     Debug.Log("Hello!");
+    // }
 
     IEnumerator StartOldManSpeech()
     {
@@ -36,7 +36,7 @@ public class IntroSceneDialogController : MonoBehaviour
         //gameObject.SetActive(false);
     }
 
-    void PlayNextMessage()
+    public void PlayNextMessage()
     {
         Debug.Log("Playing Message");
         rollInText.fullMessage = messages[messagesIndex];
