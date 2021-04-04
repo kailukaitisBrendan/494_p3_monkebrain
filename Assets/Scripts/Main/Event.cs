@@ -127,3 +127,11 @@ public class ObjectInteractionEvent
         
     }
 }
+
+public class ThrowingEvent
+{
+    public ThrowingEvent()
+    {
+        
+    }
+}

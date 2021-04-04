@@ -153,6 +153,7 @@ public class ObjectInteraction : MonoBehaviour
                 if (!_eventInvoked)
                 {
                     onThrow.Invoke();
+                    EventBus.Publish(new ThrowingEvent());
                     _eventInvoked = true;
                 }
 
@@ -374,6 +375,7 @@ public class ObjectInteraction : MonoBehaviour
         // Disable LineRenderer
         lineRenderer.enabled = false;
         EventBus.Publish(new ObjectInteractionEvent());
+        EventBus.Publish(new ThrowingEvent());
     }
 
 
