@@ -23,7 +23,7 @@ public class ReloadSceneUponLevelClear : MonoBehaviour
         //Debug.Log("mailshere");
         sound.clip = mailshere;
         sound.Play();
-        winScreen.SetActive(true);
+        if (winScreen) winScreen.SetActive(true);
         StartCoroutine(WaitForMailsHere());
     }
 

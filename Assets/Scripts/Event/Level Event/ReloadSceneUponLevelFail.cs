@@ -20,7 +20,7 @@ public class ReloadSceneUponLevelFail : MonoBehaviour
         sound.clip = stickemup;
         sound.Play();
         //Debug.Log("sound?");
-        loseScreen.SetActive(true);
+        if (loseScreen) loseScreen.SetActive(true);
         StartCoroutine(WaitThenLoad());
     }
 
