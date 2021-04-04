@@ -921,10 +921,10 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6132076, g: 0.12437701, b: 0.12437701, a: 1}
   m_Intensity: 25
   m_Range: 8.5
-  m_SpotAngle: 75
+  m_SpotAngle: 130
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
@@ -1221,7 +1221,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 7479
   field_radius: 10.52
-  view_range: 224
+  view_range: 130
   cur_view_range: 0
 --- !u!114 &8398375989089109119
 MonoBehaviour:
