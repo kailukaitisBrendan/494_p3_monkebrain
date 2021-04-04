@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae147e108e381a3459deb06a2835f694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupDistance: 2
+  pickupDistance: 3
   pickupRadius: 2
   itemSlot: {fileID: 6333447323867098795}
   itemSlot2: {fileID: 1166358741}
