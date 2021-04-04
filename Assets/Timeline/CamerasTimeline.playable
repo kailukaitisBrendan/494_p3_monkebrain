@@ -212,8 +212,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: mixamo.com
   m_Markers:
-    m_Objects:
-    - {fileID: 1425836288712419989}
+    m_Objects: []
   m_InfiniteClipPreExtrapolation: 0
   m_InfiniteClipPostExtrapolation: 0
   m_InfiniteClipOffsetPosition: {x: 0, y: 0, z: 0}
@@ -322,6 +321,22 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &-3824348748989476320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 17.3
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: b79a7e65e8f57a3468e447f2fab8142d, type: 2}
 --- !u!114 &-2196191025559795049
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -923,6 +938,7 @@ MonoBehaviour:
     - {fileID: 3533320389574769320}
     - {fileID: 6343131697476184066}
     - {fileID: 8675746832133333925}
+    - {fileID: -3824348748989476320}
   m_TrackProperties:
     volume: 1
     stereoPan: 0
@@ -1163,7 +1179,7 @@ MonoBehaviour:
   - {fileID: -6981730468847670464}
   - {fileID: 1755750465232031570}
   - {fileID: -1972054206590703775}
-  m_FixedDuration: 74.76666666666667
+  m_FixedDuration: 74.93333333333334
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 1
@@ -1201,22 +1217,6 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: b79a7e65e8f57a3468e447f2fab8142d, type: 2}
---- !u!114 &1425836288712419989
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
-  m_Name: Signal Emitter
-  m_EditorClassIdentifier: 
-  m_Time: 17.3
-  m_Retroactive: 0
-  m_EmitOnce: 1
-  m_Asset: {fileID: 11400000, guid: b79a7e65e8f57a3468e447f2fab8142d, type: 2}
 --- !u!114 &1755750465232031570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1242,7 +1242,7 @@ MonoBehaviour:
     m_Start: 17.283333333333335
     m_ClipIn: 0
     m_Asset: {fileID: -424940050198034486}
-    m_Duration: 57.483333333333334
+    m_Duration: 57.650000000000006
     m_TimeScale: 1
     m_ParentTrack: {fileID: 1755750465232031570}
     m_EaseInDuration: 0
@@ -1401,7 +1401,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1419,7 +1437,7 @@ MonoBehaviour:
     m_Start: 15
     m_ClipIn: 0
     m_Asset: {fileID: -5663170476382701799}
-    m_Duration: 59.766666666666666
+    m_Duration: 59.93333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6218443847769058153}
     m_EaseInDuration: 0
@@ -1467,7 +1485,8 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CloseUpCam
   m_Markers:
-    m_Objects: []
+    m_Objects:
+    - {fileID: 8147426294145008958}
 --- !u!114 &6330409565384696616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1557,6 +1576,22 @@ MonoBehaviour:
   m_bufferingTime: 0.1
   m_ClipProperties:
     volume: 1
+--- !u!114 &8147426294145008958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 74.93333333333334
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 404a7a80476d2e945903a49b98cc581a, type: 2}
 --- !u!114 &8221520680200288963
 MonoBehaviour:
   m_ObjectHideFlags: 1
