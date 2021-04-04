@@ -682,7 +682,7 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: 0
   gravity: -0.05
   jumpPower: 0.3
-  jumpAppliedTime: 0.2
+  jumpAppliedTime: 0.15
 --- !u!1 &8497152197109940811
 GameObject:
   m_ObjectHideFlags: 0
