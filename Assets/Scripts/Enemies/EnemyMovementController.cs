@@ -102,7 +102,7 @@ public class EnemyMovementController : MonoBehaviour
             PlayerMove playerMove = collision.collider.gameObject.GetComponent<PlayerMove>();
             if (playerMove != null)
             {
-                playerMove.movementSpeed = 0f;
+                playerMove.baseMovementSpeed = 0f;
                 playerMove.rotationSpeed = 0f;
             }
             StartCoroutine(WaitToDie());
@@ -119,7 +119,7 @@ public class EnemyMovementController : MonoBehaviour
             PlayerMove playerMove = other.gameObject.GetComponent<PlayerMove>();
             if (playerMove != null)
             {
-                playerMove.movementSpeed = 0f;
+                playerMove.baseMovementSpeed = 0f;
                 playerMove.rotationSpeed = 0f;
             }
             StartCoroutine(WaitToDie());
