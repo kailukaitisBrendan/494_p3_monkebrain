@@ -43,6 +43,8 @@ thumbs.db
 # Jetbrains files
 *.idea/*
 
+# VS files
+*.vs/*
 
 # VSCode files
 *.vscode/
