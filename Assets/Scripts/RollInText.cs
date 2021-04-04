@@ -13,10 +13,6 @@ public class RollInText : MonoBehaviour
     private void Awake()
     {
         textComponent = this.GetComponent<TextMeshProUGUI>();
-
-    }
-    void Start()
-    {
     }
 
     public IEnumerator ShowText()

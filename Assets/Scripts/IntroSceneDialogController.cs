@@ -8,6 +8,7 @@ public class IntroSceneDialogController : MonoBehaviour
     public string[] messages;
     RollInText rollInText;
     public float textDuration = 3f;
+    int messagesIndex = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,6 @@ public class IntroSceneDialogController : MonoBehaviour
     public void OnCameraLive()
     {
         Debug.Log("Hello!");
-        StartCoroutine(StartOldManSpeech());
     }
 
     IEnumerator StartOldManSpeech()
@@ -34,6 +34,14 @@ public class IntroSceneDialogController : MonoBehaviour
         
         // Text is done.
         //gameObject.SetActive(false);
+    }
+
+    void PlayNextMessage()
+    {
+        Debug.Log("Playing Message");
+        rollInText.fullMessage = messages[messagesIndex];
+        StartCoroutine(rollInText.ShowText());
+        ++messagesIndex;
     }
 
 }
