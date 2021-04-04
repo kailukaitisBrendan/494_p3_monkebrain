@@ -903,6 +903,11 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4289985393076564439, guid: 908fb1146e0ee6f4f86639bff20c168a,
+        type: 3}
+      propertyPath: followTransform
+      value: 
+      objectReference: {fileID: 896564512}
     - target: {fileID: 6974805035240246420, guid: 908fb1146e0ee6f4f86639bff20c168a,
         type: 3}
       propertyPath: m_Volume
@@ -1008,6 +1013,12 @@ PrefabInstance:
 --- !u!4 &896564511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8497152196208681337, guid: 908fb1146e0ee6f4f86639bff20c168a,
+    type: 3}
+  m_PrefabInstance: {fileID: 896564510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &896564512 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1163144218924466044, guid: 908fb1146e0ee6f4f86639bff20c168a,
     type: 3}
   m_PrefabInstance: {fileID: 896564510}
   m_PrefabAsset: {fileID: 0}
@@ -2697,28 +2708,28 @@ PrefabInstance:
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21815279
+      value: 0.2181528
       objectReference: {fileID: 0}
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000145422625
+      value: 8.026101e-16
       objectReference: {fileID: 0}
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000032507301
+      value: -1.08900604e-16
       objectReference: {fileID: 0}
     - target: {fileID: 589409570343530021, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 896564511}
+      objectReference: {fileID: 896564512}
     - target: {fileID: 589409570343530021, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 896564511}
+      objectReference: {fileID: 0}
     - target: {fileID: 589409571675197839, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_Follow
