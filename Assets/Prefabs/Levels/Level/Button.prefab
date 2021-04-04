@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d759ca34084934176ae0fdc8ef7b2fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 0.7
+  threshold: 0.5
   buttonEventId: 0
 --- !u!82 &7631626211505541578
 AudioSource:
