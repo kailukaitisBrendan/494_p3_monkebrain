@@ -284,6 +284,7 @@ public class ObjectInteraction : MonoBehaviour
             ThirdPersonMovement tpm = GetComponent<ThirdPersonMovement>();
             tpm.baseVelocity = new Vector3(force.x, 0f, force.z);
         }
+        EventBus.Publish(new ThrowingEvent());
     }
 
     private void DropDolly()
@@ -375,7 +376,6 @@ public class ObjectInteraction : MonoBehaviour
         // Disable LineRenderer
         lineRenderer.enabled = false;
         EventBus.Publish(new ObjectInteractionEvent());
-        EventBus.Publish(new ThrowingEvent());
     }
 
 
