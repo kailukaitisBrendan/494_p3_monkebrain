@@ -124,7 +124,7 @@ SpringJoint:
   m_ConnectedBody: {fileID: 7204206149586570426}
   m_Anchor: {x: 0, y: 0.5, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 30.5, z: 0}
+  m_ConnectedAnchor: {x: 0, y: 11.199999, z: 0}
   serializedVersion: 2
   m_Spring: 10
   m_Damper: 10
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d759ca34084934176ae0fdc8ef7b2fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 0.5
+  threshold: 0.7
   buttonEventId: 0
 --- !u!82 &7631626211505541578
 AudioSource:

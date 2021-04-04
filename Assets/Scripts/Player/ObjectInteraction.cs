@@ -153,6 +153,7 @@ public class ObjectInteraction : MonoBehaviour
                 if (!_eventInvoked)
                 {
                     onThrow.Invoke();
+                    EventBus.Publish(new ThrowingEvent());
                     _eventInvoked = true;
                 }
 
@@ -283,6 +284,7 @@ public class ObjectInteraction : MonoBehaviour
             ThirdPersonMovement tpm = GetComponent<ThirdPersonMovement>();
             tpm.baseVelocity = new Vector3(force.x, 0f, force.z);
         }
+        EventBus.Publish(new ThrowingEvent());
     }
 
     private void DropDolly()
@@ -367,7 +369,7 @@ public class ObjectInteraction : MonoBehaviour
         _pickedUpObjects.Pop();
 
         // Subtract object mass from player
-        GetComponent<Rigidbody>().mass -= rb.mass;
+        //GetComponent<Rigidbody>().mass -= rb.mass;
 
         // Reset our trajectory calculations
         _currentForceMultiplier = 0f;
@@ -405,7 +407,7 @@ public class ObjectInteraction : MonoBehaviour
         col.enabled = false;
 
         // Add object mass to player
-        GetComponent<Rigidbody>().mass += rb.mass;
+        //GetComponent<Rigidbody>().mass += rb.mass;
 
         // Ignore collisions between player and package
 

@@ -34,10 +34,15 @@ public class ThirdPersonMovement : MonoBehaviour
     private bool _jumped = false;
 
     // Denotes base velocity (before factoring in player inputs)
-    public Vector3 baseVelocity;
     public Transform followTransform;
     public AxisState xAxis;
     public AxisState yAxis;
+
+    public Vector3 baseVelocity;
+
+    // maybe fix for input?
+    Vector3 velocity;
+    Vector3 direction;
 
     private void Awake()
     {
@@ -48,11 +53,15 @@ public class ThirdPersonMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        velocity = Vector3.zero;
+        direction = Vector3.zero;
         _rb = GetComponent<Rigidbody>();
         Cursor.visible = false;
         _mainCamera = Camera.main;
         _sound = GetComponent<AudioSource>();
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -61,10 +70,12 @@ public class ThirdPersonMovement : MonoBehaviour
         //AlignWithGround();
 
         // Get the movement inputs.
-        Vector3 velocity = Vector3.zero;
+        velocity = Vector3.zero;
         _isGrounded = IsGrounded();
-        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
+        direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
 
+
+        // THROWING
         if (_isThrowing)
         {
             xAxis.Update(Time.deltaTime);
@@ -107,25 +118,21 @@ public class ThirdPersonMovement : MonoBehaviour
             // if (_sound.clip != hitGround)
             //     _sound.Stop();
             _isPlayingWalkingSound = false;
-
-
             velocity = Vector3.zero;
         }
 
-
+        // JUMPING
         velocity.y = _rb.velocity.y;
-
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             _isGrounded = false;
             velocity.y = jumpPower;
+            _rb.velocity = velocity + baseVelocity;
         }
-
         if (_isGrounded)
         {
             baseVelocity = Vector3.zero;
         }
-
         if (_jumped && _isGrounded)
         {
             //_sound.clip = hitGround;
@@ -134,7 +141,6 @@ public class ThirdPersonMovement : MonoBehaviour
             _jumped = false;
             StartCoroutine(WaitForFallSoundToFinish());
         }
-
         //stop walking sound
         if (!_isGrounded)
         {
@@ -145,8 +151,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
         //Animation publisher
         EventBus.Publish<MovementEvent>(new MovementEvent(_isPlayingWalkingSound, _jumped, _isGrounded));
+    }
 
-
+    void FixedUpdate() {
         _rb.velocity = velocity + baseVelocity;
     }
 
