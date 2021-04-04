@@ -560,7 +560,7 @@ MonoBehaviour:
   groundDistance: 0.4
   hitGround: {fileID: 8300000, guid: da4ec7cfba8664543ae58627e33ed649, type: 3}
   baseVelocity: {x: 0, y: 0, z: 0}
-  followTransform: {fileID: 0}
+  followTransform: {fileID: 1163144218924466044}
   xAxis:
     Value: 0
     m_SpeedMode: 0
