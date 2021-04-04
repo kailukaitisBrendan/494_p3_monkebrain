@@ -18,6 +18,13 @@ public class Respawnable : MonoBehaviour
     {
         transform.position = initPosition;
         transform.rotation = initRotation;
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+
+        if (rb) {
+            rb.velocity = new Vector3(0f,0f,0f); 
+            rb.angularVelocity = new Vector3(0f,0f,0f);
+        }
     }
 
 }
