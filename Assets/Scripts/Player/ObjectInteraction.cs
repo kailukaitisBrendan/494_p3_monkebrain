@@ -153,6 +153,7 @@ public class ObjectInteraction : MonoBehaviour
                 if (!_eventInvoked)
                 {
                     onThrow.Invoke();
+                    EventBus.Publish(new ThrowingEvent());
                     _eventInvoked = true;
                 }
 
@@ -283,6 +284,7 @@ public class ObjectInteraction : MonoBehaviour
             ThirdPersonMovement tpm = GetComponent<ThirdPersonMovement>();
             tpm.baseVelocity = new Vector3(force.x, 0f, force.z);
         }
+        EventBus.Publish(new ThrowingEvent());
     }
 
     private void DropDolly()

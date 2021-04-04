@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8497152196208681337}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -2, y: 0, z: 0}
 --- !u!114 &1166358742
 MonoBehaviour:
@@ -71,7 +71,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8497152196208681337}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4341517710122263791
 Animator:
@@ -373,7 +373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6270476675774693207}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 89.46, y: -0.495, z: 17}
+  m_LocalPosition: {x: 0, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8497152196208681337}
@@ -417,8 +417,8 @@ Transform:
   - {fileID: 6333447323867098795}
   - {fileID: 8231854697542493952}
   - {fileID: 445998092972689753}
-  - {fileID: 1166358741}
   - {fileID: 8218031657446126718}
+  - {fileID: 1166358741}
   - {fileID: 2601020575028455270}
   - {fileID: 76769375494884089}
   - {fileID: 1163144218924466044}
@@ -560,19 +560,19 @@ MonoBehaviour:
   groundDistance: 0.4
   hitGround: {fileID: 8300000, guid: da4ec7cfba8664543ae58627e33ed649, type: 3}
   baseVelocity: {x: 0, y: 0, z: 0}
-  followTransform: {fileID: 0}
+  followTransform: {fileID: 1163144218924466044}
   xAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 0
-    m_AccelTime: 0
-    m_DecelTime: 0
-    m_InputAxisName: 
+    m_MaxSpeed: 300
+    m_AccelTime: 0.02
+    m_DecelTime: 0.02
+    m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
-    m_MinValue: 0
-    m_MaxValue: 0
-    m_Wrap: 0
+    m_MinValue: -180
+    m_MaxValue: 180
+    m_Wrap: 1
     m_Recentering:
       m_enabled: 0
       m_WaitTime: 0
@@ -582,14 +582,14 @@ MonoBehaviour:
   yAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 0
-    m_AccelTime: 0
-    m_DecelTime: 0
-    m_InputAxisName: 
+    m_MaxSpeed: 4
+    m_AccelTime: 0.02
+    m_DecelTime: 0.02
+    m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
-    m_InvertInput: 0
-    m_MinValue: 0
-    m_MaxValue: 0
+    m_InvertInput: 1
+    m_MinValue: -90
+    m_MaxValue: 90
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0
