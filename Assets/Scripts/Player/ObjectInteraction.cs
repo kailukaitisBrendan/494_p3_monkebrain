@@ -369,7 +369,7 @@ public class ObjectInteraction : MonoBehaviour
         _pickedUpObjects.Pop();
 
         // Subtract object mass from player
-        GetComponent<Rigidbody>().mass -= rb.mass;
+        //GetComponent<Rigidbody>().mass -= rb.mass;
 
         // Reset our trajectory calculations
         _currentForceMultiplier = 0f;
@@ -407,7 +407,7 @@ public class ObjectInteraction : MonoBehaviour
         col.enabled = false;
 
         // Add object mass to player
-        GetComponent<Rigidbody>().mass += rb.mass;
+        //GetComponent<Rigidbody>().mass += rb.mass;
 
         // Ignore collisions between player and package
 

@@ -390,11 +390,10 @@ GameObject:
   - component: {fileID: 8497152196208681337}
   - component: {fileID: 8497152196208681338}
   - component: {fileID: 8497152196208681339}
-  - component: {fileID: 8497152196208681332}
-  - component: {fileID: 8497152196208681336}
   - component: {fileID: 8884979795343272461}
-  - component: {fileID: 4289985393076564439}
   - component: {fileID: 3739356241672764110}
+  - component: {fileID: 8526544259005089113}
+  - component: {fileID: 7050508145094453373}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -472,36 +471,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &8497152196208681332
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8497152196208681333}
-  m_Material: {fileID: 13400000, guid: 1079a015ac6918b419407502a85fa07d, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8497152196208681336
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8497152196208681333}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &8884979795343272461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +496,7 @@ MonoBehaviour:
   onThrow:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4289985393076564439}
+      - m_Target: {fileID: 0}
         m_MethodName: OnToggleThrowing
         m_Mode: 1
         m_Arguments:
@@ -538,65 +507,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4289985393076564439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8497152196208681333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0304bd7a8d7f9141b48456eae0108c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 7
-  rotationSpeed: 6
-  jumpPower: 5
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4096
-  groundCheck: {fileID: 8218031657446126718}
-  groundDistance: 0.4
-  hitGround: {fileID: 8300000, guid: da4ec7cfba8664543ae58627e33ed649, type: 3}
-  baseVelocity: {x: 0, y: 0, z: 0}
-  followTransform: {fileID: 1163144218924466044}
-  xAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.02
-    m_DecelTime: 0.02
-    m_InputAxisName: Mouse X
-    m_InputAxisValue: 0
-    m_InvertInput: 0
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 0
-      m_RecenteringTime: 0
-      m_LegacyHeadingDefinition: 0
-      m_LegacyVelocityFilterStrength: 0
-  yAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 4
-    m_AccelTime: 0.02
-    m_DecelTime: 0.02
-    m_InputAxisName: Mouse Y
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -90
-    m_MaxValue: 90
-    m_Wrap: 0
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 0
-      m_RecenteringTime: 0
-      m_LegacyHeadingDefinition: 0
-      m_LegacyVelocityFilterStrength: 0
 --- !u!82 &3739356241672764110
 AudioSource:
   m_ObjectHideFlags: 0
@@ -693,6 +603,84 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!143 &8526544259005089113
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8497152196208681333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.1
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7050508145094453373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8497152196208681333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93b3137eb11ad742a48b38943dc1c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 0.2
+  rotationSpeed: 6
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  groundCheck: {fileID: 8218031657446126718}
+  groundDistance: 0.1
+  hitGround: {fileID: 8300000, guid: da4ec7cfba8664543ae58627e33ed649, type: 3}
+  _isGrounded: 0
+  followTransform: {fileID: 1163144218924466044}
+  xAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 0
+    m_AccelTime: 0
+    m_DecelTime: 0
+    m_InputAxisName: 
+    m_InputAxisValue: 0
+    m_InvertInput: 0
+    m_MinValue: 0
+    m_MaxValue: 0
+    m_Wrap: 0
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 0
+      m_RecenteringTime: 0
+      m_LegacyHeadingDefinition: 0
+      m_LegacyVelocityFilterStrength: 0
+  yAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 0
+    m_AccelTime: 0
+    m_DecelTime: 0
+    m_InputAxisName: 
+    m_InputAxisValue: 0
+    m_InvertInput: 0
+    m_MinValue: 0
+    m_MaxValue: 0
+    m_Wrap: 0
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 0
+      m_RecenteringTime: 0
+      m_LegacyHeadingDefinition: 0
+      m_LegacyVelocityFilterStrength: 0
+  gravity: -0.05
+  jumpPower: 0.3
 --- !u!1 &8497152197109940811
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +769,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6333447323867098795}
-  - component: {fileID: 6510039085652782364}
   m_Layer: 11
   m_Name: ItemSlot
   m_TagString: Player
@@ -803,18 +790,6 @@ Transform:
   m_Father: {fileID: 8497152196208681337}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -2, y: 0, z: 0}
---- !u!114 &6510039085652782364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8917929062937886382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36e2980296b70ce44975b8232e382419, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &475697290732711186
 PrefabInstance:
   m_ObjectHideFlags: 0
