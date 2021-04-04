@@ -77,7 +77,7 @@ public class PlayerMove : MonoBehaviour
         _movementSpeed = !_opc.enabled ? 0.21f : 0.15f;
 
         // check grounded if jump is not recent
-        if (Time.time - time_jump > 0.2f) {
+        if (Time.time - time_jump > 0.1f) {
             _isGrounded = IsGrounded();
         }
         // Get the movement inputs.
@@ -112,6 +112,7 @@ public class PlayerMove : MonoBehaviour
             time_jump = Time.time;
             velocity.y = 0.11f;
             _isGrounded = false;
+            _jumped = true;
         }
         // THROWING
         if (_isThrowing) {
@@ -139,15 +140,14 @@ public class PlayerMove : MonoBehaviour
     void FixedUpdate() {
         controller.Move(direction.normalized * (_movementSpeed * baseMovementSpeed));
         // gravity
-        if (!_isGrounded )
+        if (!_isGrounded)
         {
             // jump mechanic
             if (Time.time - time_jump < jumpAppliedTime && velocity.y == 0.11f)
                 velocity.y += 0.5f * jumpPower * Time.deltaTime * Time.deltaTime;
-            velocity.y += 0.5f * gravity * (Time.time - time_jump) * (Time.time - time_jump);
+            velocity.y += 0.5f * gravity * Time.deltaTime * Time.deltaTime;
             _isPlayingWalkingSound = false;
             controller.Move(velocity);
-            _jumped = true;
         }
     }
 

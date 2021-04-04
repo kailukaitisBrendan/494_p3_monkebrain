@@ -680,8 +680,8 @@ MonoBehaviour:
       m_RecenteringTime: 0
       m_LegacyHeadingDefinition: 0
       m_LegacyVelocityFilterStrength: 0
-  gravity: -0.05
-  jumpPower: 0.3
+  gravity: -50
+  jumpPower: 100
   jumpAppliedTime: 0.2
 --- !u!1 &8497152197109940811
 GameObject:
