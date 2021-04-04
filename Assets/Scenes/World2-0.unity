@@ -2057,19 +2057,11 @@ PrefabInstance:
     - target: {fileID: 922557842, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
       propertyPath: winScreen
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 427497096774805558}
     - target: {fileID: 922557843, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
       propertyPath: loseScreen
       value: 
       objectReference: {fileID: 427497096774805557}
-=======
-      objectReference: {fileID: 1492323206}
-    - target: {fileID: 922557843, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
-      propertyPath: loseScreen
-      value: 
-      objectReference: {fileID: 1096610580}
->>>>>>> a87067f1721240b2bb90d16edd36e53bcc37c1e9
     - target: {fileID: 2585001580040263232, guid: 3ee4c70173cee4374be2064ed8d55fb9,
         type: 3}
       propertyPath: m_RootOrder

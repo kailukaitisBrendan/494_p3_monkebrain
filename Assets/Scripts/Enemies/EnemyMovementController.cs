@@ -99,10 +99,11 @@ public class EnemyMovementController : MonoBehaviour
             // Player is caught by enemy. Stop all movement and have player "die."
             StopAllCoroutines();
             desiredPositionIsGameobject.StopAllCoroutines();
-            ThirdPersonMovement playerMovement = collision.collider.gameObject.GetComponent<ThirdPersonMovement>();
-            if (playerMovement != null)
+            PlayerMove playerMove = collision.collider.gameObject.GetComponent<PlayerMove>();
+            if (playerMove != null)
             {
-                playerMovement.movementSpeed = 0f;
+                playerMove.movementSpeed = 0f;
+                playerMove.rotationSpeed = 0f;
             }
             StartCoroutine(WaitToDie());
         }
@@ -115,10 +116,11 @@ public class EnemyMovementController : MonoBehaviour
             // Player is caught by enemy. Stop all movement and have player "die."
             StopAllCoroutines();
             desiredPositionIsGameobject.StopAllCoroutines();
-            ThirdPersonMovement playerMovement = other.gameObject.GetComponent<ThirdPersonMovement>();
-            if (playerMovement != null)
+            PlayerMove playerMove = other.gameObject.GetComponent<PlayerMove>();
+            if (playerMove != null)
             {
-                playerMovement.movementSpeed = 0f;
+                playerMove.movementSpeed = 0f;
+                playerMove.rotationSpeed = 0f;
             }
             StartCoroutine(WaitToDie());
         }
@@ -181,9 +183,7 @@ public class EnemyMovementController : MonoBehaviour
         bool packageInRange = fieldOfView.PackageInFieldOfView(e.sourceObject.transform.position);
         Debug.Log("packageinrange? " + packageInRange);
 
-        bool enemyOccupied = isChasingPlayer || isDistracted || isDazed;
-
-        if (packageInRange && !enemyOccupied)
+        if (packageInRange && !isDazed)
         {
             Debug.Log("check");
             if (e.hitObject.CompareTag("Enemy"))
@@ -195,7 +195,7 @@ public class EnemyMovementController : MonoBehaviour
                 Debug.Log("Daze Enemy");
                 StartCoroutine(DazeEnemy());
             }
-            else if(!isStatic)
+            else if(!isStatic && !isDistracted && !isChasingPlayer)
             {
                 Debug.Log("Distract Enemy");
                 StartCoroutine(DistractEnemy(e.sourceObject));
