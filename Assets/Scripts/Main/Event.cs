@@ -110,13 +110,15 @@ public class EnemyStateEvent
     public bool isDistracted;
     public bool isDazed;
     public bool drawingGun;
+    public int enemyID;
 
-    public EnemyStateEvent(bool _isWalking, bool _isDrawingGun, bool _isAlerted, bool _drawingGun)
+    public EnemyStateEvent(bool _isWalking, bool _isDrawingGun, bool _isAlerted, bool _drawingGun, int _enemyID)
     {
         isWalking = _isWalking;
         isDistracted = _isDrawingGun;
         isDazed = _isAlerted;
         drawingGun = _drawingGun;
+        enemyID = _enemyID;
     }
 }
 

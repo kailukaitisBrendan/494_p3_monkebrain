@@ -22,6 +22,7 @@ public class EnemyMovementController : MonoBehaviour
     bool isDazed = false;
     bool atBox = false;
     bool drawingGun = false;
+    public int enemyID;
 
     public TextMeshPro emoteText;
 
@@ -56,7 +57,7 @@ public class EnemyMovementController : MonoBehaviour
     private void PublishAnim()
     {
         //Animation publisher
-        EventBus.Publish<EnemyStateEvent>(new EnemyStateEvent(!isStatic, atBox, isDazed, drawingGun));
+        EventBus.Publish<EnemyStateEvent>(new EnemyStateEvent(!isStatic, atBox, isDazed, drawingGun, enemyID));
     }
 
     IEnumerator MoveEnemy()
