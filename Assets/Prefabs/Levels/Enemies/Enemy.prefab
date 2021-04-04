@@ -1240,7 +1240,7 @@ MonoBehaviour:
   pathPoints:
   - {fileID: 0}
   - {fileID: 0}
-  chaseSpeed: 8
+  chaseSpeed: 8.5
   dazeTime: 7
   distractTime: 3
   isStatic: 0

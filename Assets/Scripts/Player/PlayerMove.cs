@@ -46,6 +46,8 @@ public class PlayerMove : MonoBehaviour
     public float jumpPower = 0.3f;
     public float jumpAppliedTime = 0.2f;
 
+    private BoxCollider _opc;
+
     private void Awake()
     {
         // Lock the cursor to the game window
@@ -62,6 +64,7 @@ public class PlayerMove : MonoBehaviour
         _mainCamera = Camera.main;
         _sound = GetComponent<AudioSource>();
         time_jump = Time.time;
+        _opc = GetComponentInChildren<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -69,6 +72,17 @@ public class PlayerMove : MonoBehaviour
     {
         // Try and align player's rotation with the angle of the ground. 
         //AlignWithGround();
+
+        if (!_opc.enabled)
+        {
+            
+            movementSpeed = 0.21f;
+        }
+        else
+        {
+            
+            movementSpeed = 0.15f;
+        }
 
         // check grounded if jump is not recent
         if (Time.time - time_jump > 0.2f) {

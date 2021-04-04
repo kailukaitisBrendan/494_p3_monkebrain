@@ -33,19 +33,24 @@ public class EnemyAmimator : MonoBehaviour
 
     void EnemyUpdate(EnemyStateEvent e)
     {
-        isWalking = e.isWalking;
-        isDistracted = e.isDistracted;
-        isDazed = e.isDazed;
-        drawingGun = e.drawingGun;
         incomingEnemyId = e.enemyID;
+        if (incomingEnemyId == enemyId)
+        {
+            isWalking = e.isWalking;
+            isDistracted = e.isDistracted;
+            isDazed = e.isDazed;
+            drawingGun = e.drawingGun;
+        }
+        
     }
     // Update is called once per frame
 
     void Update()
     {
+        
         if (incomingEnemyId == enemyId)
         {
-            //Debug.Log(isWalking);
+            
             if (!isWalking && !isDistracted && !isDazed && !drawingGun)
             {
 
