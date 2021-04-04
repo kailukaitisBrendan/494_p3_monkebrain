@@ -241,8 +241,9 @@ public class EnemyMovementController : MonoBehaviour
         desiredPositionIsGameobject.agent.ResetPath();
 
         yield return new WaitForSeconds(dazeTime);
-        EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
+
         isDazed = false;
+        EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
         PublishAnim();
         emoteText.text = "";
     }
