@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour
     private float _angleVelocity;
     public bool _isGrounded = false;
     private bool _isThrowing = false;
+    private bool _firstThrow = false;
     private Camera _mainCamera;
     private bool _isPlayingWalkingSound = false;
     private AudioSource _sound;
@@ -121,8 +122,13 @@ public class PlayerMove : MonoBehaviour
         }
         // THROWING
         if (_isThrowing) {
-            xAxis.Update(Time.deltaTime);
-            yAxis.Update(Time.deltaTime);
+            if (_firstThrow) {
+                xAxis.Value = followTransform.rotation.eulerAngles.y;
+                yAxis.Value = followTransform.rotation.eulerAngles.x;
+                _firstThrow = false;
+            }
+            xAxis.Value += Input.GetAxis("Mouse X") * PlayerPrefs.GetFloat("sens") * 500f * Time.deltaTime;
+            //yAxis.Value -= Input.GetAxis("Mouse Y") * PlayerPrefs.GetFloat("sens") * 1000 * Time.deltaTime;
 
             followTransform.eulerAngles = new Vector3(yAxis.Value, xAxis.Value, 0);
             
@@ -197,6 +203,7 @@ public class PlayerMove : MonoBehaviour
 
     public void OnToggleThrowing()
     {
+        _firstThrow = true;
         _isThrowing = !_isThrowing;
     }
 
