@@ -19,6 +19,19 @@ public class OnTriggerLevelFail : MonoBehaviour {
             if (sound) {
                 sound.Play();
             }
+
+            // Disable player object interaction
+            GameObject player = other.gameObject;
+            if (player.GetComponent<ObjectInteraction>()) {
+                player.GetComponent<ObjectInteraction>().enabled = false;
+            }
+
+            // Disable Camera
+            foreach (GameObject obj in GameObject.FindGameObjectsWithTag("CineMachineController"))
+            {
+                obj.SetActive(false);
+            }
+
             StartCoroutine(WaitForScream());
         }
     }
