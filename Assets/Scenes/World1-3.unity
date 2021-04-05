@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ca274a57bd10a9c49a386b52649ef912, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: ae3f7bdd81407b549885f6715e3e057c,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -722,12 +723,12 @@ PrefabInstance:
     - target: {fileID: 3028411558953443918, guid: 14b6445c716e62a47af5fbf15d01430f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016657673
+      value: 0.000000016807402
       objectReference: {fileID: 0}
     - target: {fileID: 3028411558953443918, guid: 14b6445c716e62a47af5fbf15d01430f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000003406704
+      value: -0.000000003437325
       objectReference: {fileID: 0}
     - target: {fileID: 3028411559797957726, guid: 14b6445c716e62a47af5fbf15d01430f,
         type: 3}
