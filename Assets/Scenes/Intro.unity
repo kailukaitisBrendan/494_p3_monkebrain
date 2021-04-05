@@ -278,7 +278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &41448357
 Light:
   m_ObjectHideFlags: 0
@@ -290,14 +290,14 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 6
   m_Range: 10
   m_SpotAngle: 101.7
   m_InnerSpotAngle: 3.4
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -348,7 +348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41448356}
   m_LocalRotation: {x: 0.9765221, y: 0, z: 0, w: 0.2154173}
-  m_LocalPosition: {x: 0.444, y: 3.47, z: 1.48}
+  m_LocalPosition: {x: 0.444, y: 3.928, z: 2.468}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6787,6 +6787,8 @@ PlayableDirector:
     value: {fileID: 723633117}
   - key: {fileID: 947148871207201867, guid: 28fc4e7c781f9494aac0afb31179daf3, type: 2}
     value: {fileID: 1776547196}
+  - key: {fileID: 8975440174205707754, guid: 28fc4e7c781f9494aac0afb31179daf3, type: 2}
+    value: {fileID: 41448356}
   m_ExposedReferences:
     m_References:
     - 559d3afb45671bb449491ede9bc90d77: {fileID: 1247685481}
