@@ -1771,6 +1771,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1490130725}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1060358081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 404739815273607287, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+    type: 3}
+  m_PrefabInstance: {fileID: 427497096774805556}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1208100783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,6 +2091,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7844b94417848457a9cf072cbf315977, type: 3}
+--- !u!1 &1365870844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2876896393649797448, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+    type: 3}
+  m_PrefabInstance: {fileID: 427497096774805556}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1389043919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2846,6 +2858,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 922557842, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
+      propertyPath: winScreen
+      value: 
+      objectReference: {fileID: 1060358081}
+    - target: {fileID: 922557843, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
+      propertyPath: loseScreen
+      value: 
+      objectReference: {fileID: 1365870844}
     - target: {fileID: 2585001580040263232, guid: 3ee4c70173cee4374be2064ed8d55fb9,
         type: 3}
       propertyPath: m_RootOrder
