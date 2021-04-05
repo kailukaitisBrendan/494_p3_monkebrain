@@ -11,7 +11,6 @@ public class load_level_button_behavior : MonoBehaviour
         Time.timeScale = 1f;
         if (s == "Main_Menu" || s == "Hub") {
             Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
         }
         
         SceneTransitioner st = FindObjectOfType<SceneTransitioner>();
