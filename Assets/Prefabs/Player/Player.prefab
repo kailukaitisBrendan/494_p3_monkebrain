@@ -639,7 +639,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   groundCheck: {fileID: 8218031657446126718}
-  groundDistance: 0.1
+  groundDistance: 0.5
   hitGround: {fileID: 8300000, guid: da4ec7cfba8664543ae58627e33ed649, type: 3}
   _isGrounded: 0
   followTransform: {fileID: 1163144218924466044}
