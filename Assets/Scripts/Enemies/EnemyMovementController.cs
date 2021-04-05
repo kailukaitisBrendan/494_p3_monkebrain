@@ -81,12 +81,17 @@ public class EnemyMovementController : MonoBehaviour
         // set desired target
         desiredPositionIsGameobject.target = target;
 
-        while (!almostEqual(transform.position.x, target.transform.position.x, eps) || !almostEqual(transform.position.z, target.transform.position.z, eps))
-        {
-            yield return null;
+        if (target != null) {
+            while (!almostEqual(transform.position.x, target.transform.position.x, eps) || !almostEqual(transform.position.z, target.transform.position.z, eps))
+            {
+                yield return null;
+            }
+
+            desiredPositionIsGameobject.agent.ResetPath();
         }
 
-        desiredPositionIsGameobject.agent.ResetPath();
+
+        
 
         yield return null;
     }
@@ -195,11 +200,15 @@ public class EnemyMovementController : MonoBehaviour
                     return;
 
                 Debug.Log("Daze Enemy");
+                StopAllCoroutines();
+
                 StartCoroutine(DazeEnemy());
             }
             else if(!isStatic && !isDistracted && !isChasingPlayer)
             {
                 Debug.Log("Distract Enemy");
+                StopAllCoroutines();
+
                 StartCoroutine(DistractEnemy(e.sourceObject));
             }
         }
@@ -217,7 +226,7 @@ public class EnemyMovementController : MonoBehaviour
 
         desiredPositionIsGameobject.agent.ResetPath();
 
-        yield return StartCoroutine(WaitToGetToPoint(box, 3f));
+        yield return StartCoroutine(WaitToGetToPoint(box, 2.5f));
         atBox = true;
         PublishAnim();
         
@@ -237,6 +246,8 @@ public class EnemyMovementController : MonoBehaviour
     IEnumerator DazeEnemy()
     {
         isDazed = true;
+        isChasingPlayer = false;
+        isDistracted = false;
         PublishAnim();
         emoteText.text = "*";
         desiredPositionIsGameobject.target = null;
