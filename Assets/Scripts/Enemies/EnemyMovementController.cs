@@ -69,7 +69,7 @@ public class EnemyMovementController : MonoBehaviour
             GameObject target = pathPoints[pointIndex];
 
             // wait until enemy has reached the target
-            yield return StartCoroutine(WaitToGetToPoint(target, .1f));
+            yield return StartCoroutine(WaitToGetToPoint(target, 2f));
 
             // increment pointIndex
             pointIndex = (pointIndex + 1) % pathPoints.Length;
@@ -104,6 +104,7 @@ public class EnemyMovementController : MonoBehaviour
             {
                 playerMove.baseMovementSpeed = 0f;
                 playerMove.rotationSpeed = 0f;
+                playerMove.enabled = false;
             }
             StartCoroutine(WaitToDie());
         }
@@ -121,6 +122,7 @@ public class EnemyMovementController : MonoBehaviour
             {
                 playerMove.baseMovementSpeed = 0f;
                 playerMove.rotationSpeed = 0f;
+                playerMove.enabled = false;
             }
             StartCoroutine(WaitToDie());
         }

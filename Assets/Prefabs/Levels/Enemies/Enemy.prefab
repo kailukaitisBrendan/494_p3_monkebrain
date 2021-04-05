@@ -1068,6 +1068,7 @@ GameObject:
   - component: {fileID: 64135987249860524}
   - component: {fileID: 4433059029040789886}
   - component: {fileID: 8210941703684672760}
+  - component: {fileID: 9051226001509710148}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Enemy
@@ -1154,7 +1155,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8398375989089109118}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1.1168507
   m_Height: 5.0065746
   m_Direction: 1
@@ -1184,12 +1185,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 8398375989089109118}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.25
+  m_Radius: 1.64
   m_Speed: 3.5
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 220
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1401,6 +1402,19 @@ CapsuleCollider:
   m_Height: 5.03
   m_Direction: 1
   m_Center: {x: -0.04685068, y: 1.4432874, z: 6.8963824e-10}
+--- !u!65 &9051226001509710148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398375989089109118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.017841, y: 5.006575, z: 2.0946538}
+  m_Center: {x: -0.050621033, y: 1.4704969, z: 0.05358717}
 --- !u!1 &8398375989129526073
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,15 +3296,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91fba9af1e7ed4b439523d4c447af19a, type: 3}
---- !u!1 &5876046129504190881 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 91fba9af1e7ed4b439523d4c447af19a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6722327246321040624}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6539288776556436251 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 91fba9af1e7ed4b439523d4c447af19a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6722327246321040624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5876046129504190881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 91fba9af1e7ed4b439523d4c447af19a,
     type: 3}
   m_PrefabInstance: {fileID: 6722327246321040624}
   m_PrefabAsset: {fileID: 0}
