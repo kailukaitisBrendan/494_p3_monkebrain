@@ -54,5 +54,4 @@ thumbs.db
 # Git files
 .gitattributes
 
-Ocean50x50W750H750.asset
-Ocean50x50W750H750.asset*
+*Ocean50x50W750H750.asset*
