@@ -7,7 +7,6 @@ public class SensSlider : MonoBehaviour
 {
     public Slider mSlider;
     void Start () {
-        PlayerPrefs.GetFloat("sens");
         mSlider.value = PlayerPrefs.GetFloat("sens");
     }
 

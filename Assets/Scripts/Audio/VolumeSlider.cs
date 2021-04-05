@@ -8,8 +8,6 @@ public class VolumeSlider : MonoBehaviour
 {
     public Slider mSlider;
     void Start () {
-        PlayerPrefs.GetFloat("volume");
-
         mSlider.value = PlayerPrefs.GetFloat("volume");
         AudioListener.volume = PlayerPrefs.GetFloat("volume");
     }
