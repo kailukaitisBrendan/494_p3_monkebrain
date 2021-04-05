@@ -109,6 +109,7 @@ public class EnemyMovement : MonoBehaviour
         // Debug.Log("start death");
         yield return new WaitForSeconds(1f);
         // Debug.Log("end death");
-        EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
+        bool wasFall = false;
+        EventBus.Publish<LevelFailEvent>(new LevelFailEvent(wasFall));
     }
 }

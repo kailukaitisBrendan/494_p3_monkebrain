@@ -41,7 +41,8 @@ public class OnTriggerLevelFail : MonoBehaviour {
         if (fallen)
         {
             fallen = false;
-            EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
+            bool wasFall = true;
+            EventBus.Publish<LevelFailEvent>(new LevelFailEvent(wasFall));
         }
 
     }

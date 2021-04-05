@@ -138,7 +138,8 @@ public class EnemyMovementController : MonoBehaviour
         drawingGun = true;
         PublishAnim();
         yield return new WaitForSeconds(1f);
-        EventBus.Publish<LevelFailEvent>(new LevelFailEvent());
+        bool wasFall = false;
+        EventBus.Publish<LevelFailEvent>(new LevelFailEvent(wasFall));
     }
 
     // Events
