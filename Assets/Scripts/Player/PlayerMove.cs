@@ -160,7 +160,10 @@ public class PlayerMove : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        return (Physics.CheckSphere(new Vector3(groundCheck.position.x - 0.2f,groundCheck.position.y,groundCheck.position.z), groundDistance, groundMask) 
+        || Physics.CheckSphere(new Vector3(groundCheck.position.x + 0.2f,groundCheck.position.y,groundCheck.position.z), groundDistance, groundMask)
+        || Physics.CheckSphere(new Vector3(groundCheck.position.x,groundCheck.position.y,groundCheck.position.z - 0.2f), groundDistance, groundMask)
+        || Physics.CheckSphere(new Vector3(groundCheck.position.x,groundCheck.position.y,groundCheck.position.z + 0.2f), groundDistance, groundMask));
     }
 
     private void AlignWithGround()
@@ -168,7 +171,7 @@ public class PlayerMove : MonoBehaviour
         // This function tries to align the player's rotation with the angle of the ground if they are on a slope.
         RaycastHit hitInfo;
         Debug.DrawRay(groundCheck.position, Vector3.down * 2f, Color.cyan);
-        if (Physics.Raycast(groundCheck.position, Vector3.down, out hitInfo, 1f, groundMask))
+        if (Physics.Raycast( groundCheck.position, Vector3.down, out hitInfo, 1f, groundMask))
         {
             // We hit the ground, calculate the angle of the player and our hit's normal.
             float angle = Vector3.Angle(hitInfo.normal, Vector3.up);
