@@ -9,8 +9,10 @@ public class load_level_button_behavior : MonoBehaviour
     public void OnButtonPress(){
         Debug.Log("Transition!");
         Time.timeScale = 1f;
-        if (s == "Main_Menu" || s == "Hub")
+        if (s == "Main_Menu" || s == "Hub") {
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
         
         SceneTransitioner st = FindObjectOfType<SceneTransitioner>();
         if (st) st.LoadScene(s);
