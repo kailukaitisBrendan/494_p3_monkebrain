@@ -55,6 +55,11 @@ public class ObjectInteraction : MonoBehaviour
         notHoldingBox = transform.Find("notHoldingBox").gameObject;
     }
 
+    private void OnDisable()
+    {
+        lineRenderer.enabled = false;
+    }
+
     private void Update()
     {
         //BoxColorChange();
