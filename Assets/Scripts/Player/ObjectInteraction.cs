@@ -12,8 +12,10 @@ using System.Linq;
 public class ObjectInteraction : MonoBehaviour
 {
     public float pickupDistance;
-    public float pickupRadius;
-    public float pickup_offset = 1f;
+    public float pickupFront = 0.5f;
+    public float pickupHeight = 0.5f;
+    public Vector3 pickupBox;
+
     public Transform itemSlot;
     public Transform itemSlot2;
     public GameObject dolly;
@@ -437,15 +439,14 @@ public class ObjectInteraction : MonoBehaviour
         // Create mask so we only collide with pickup-able objects.
         LayerMask mask = LayerMask.GetMask("Grabbable Object") + LayerMask.GetMask("Golden Package");
         Vector3 pos = transform.position;
-        pos.y = itemSlot.position.y - pickup_offset;
+        pos.y = itemSlot.position.y - pickupHeight;
         RaycastHit hit;
-        if (Physics.SphereCast(pos, pickupRadius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2,
+        if (Physics.BoxCast(pos, pickupBox, Vector3.forward * pickupBox.z, out hit, Quaternion.identity, pickupDistance / 2,
                 mask)
             || Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, pickupDistance, mask))
         {
             Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
         }
-
         return hit.transform == null ? null : hit.transform.gameObject;
     }
 
@@ -468,12 +469,17 @@ public class ObjectInteraction : MonoBehaviour
         return hit.transform == null ? null : hit.transform.gameObject;
     }
 
-    private void OnDrawGizmos()
+    //Draw the BoxCast as a gizmo to show where it currently is testing. Click the Gizmos button to see this
+    void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
         Vector3 pos = transform.position;
-        pos.y = itemSlot.transform.position.y;
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * pickupDistance / 2;
-        Gizmos.DrawWireSphere(pos + direction, pickupRadius);
+        pos.z = itemSlot.position.z + pickupFront;
+        pos.y = itemSlot.position.y - pickupHeight;
+        Gizmos.color = Color.red;
+
+        //Draw a Ray forward from GameObject toward the maximum distance
+        Gizmos.DrawRay(pos, Vector3.forward * pickupBox.z * pickupDistance / 2);
+        //Draw a cube at the maximum distance
+        Gizmos.DrawWireCube(pos + Vector3.forward * pickupBox.z * pickupDistance / 2, transform.localScale);
     }
 }
