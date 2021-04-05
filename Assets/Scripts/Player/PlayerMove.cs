@@ -11,6 +11,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMove : MonoBehaviour
 {
+    public ParticleSystem dust;
     private Rigidbody _rb;
     public float baseMovementSpeed = 1f;
     public float rotationSpeed = 10f;
@@ -78,7 +79,11 @@ public class PlayerMove : MonoBehaviour
 
         // check grounded if jump is not recent
         if (Time.time - time_jump > 0.1f) {
+            bool temp = _isGrounded;
             _isGrounded = IsGrounded();
+            if (_isGrounded && ! temp) {
+                CreateDust();
+            }
         }
         // Get the movement inputs.
         direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
@@ -193,5 +198,12 @@ public class PlayerMove : MonoBehaviour
     public void OnToggleThrowing()
     {
         _isThrowing = !_isThrowing;
+    }
+
+    void CreateDust() {
+        dust.Play();
+    }
+    void StopDust() {
+        dust.Stop();
     }
 }
