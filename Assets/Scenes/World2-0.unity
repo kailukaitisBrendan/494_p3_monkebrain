@@ -412,17 +412,17 @@ PrefabInstance:
     - target: {fileID: 130476397796894301, guid: ea760b82bd2cf65479ee10e667b38e6f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 520.1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 130476397796894301, guid: ea760b82bd2cf65479ee10e667b38e6f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.19999999
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 130476397796894301, guid: ea760b82bd2cf65479ee10e667b38e6f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 535
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 130476397796894301, guid: ea760b82bd2cf65479ee10e667b38e6f,
         type: 3}
@@ -2159,6 +2159,31 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1457735080}
+    - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -89.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.11999893
+      objectReference: {fileID: 0}
+    - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000016957795
+      objectReference: {fileID: 0}
+    - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000000034680834
+      objectReference: {fileID: 0}
     - target: {fileID: 589409571675197839, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_Follow
