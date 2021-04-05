@@ -47,7 +47,7 @@ public class CameraFol : MonoBehaviour
         // START RAYCAST TO MAKE OBJECTS IN HUB TRANSPARENT
         // raycast to check if there is something between player and camera
         // credit to the unity documentation for this section
-        hits = Physics.RaycastAll(transform.position, transform.forward, 16.2f);
+        hits = Physics.RaycastAll(transform.position, transform.forward, 15.5f);
         for (int i = 0; i < hits.Length; i++)
         {
             hit = hits[i];

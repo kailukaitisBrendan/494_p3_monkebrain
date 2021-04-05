@@ -13,6 +13,7 @@ public class ObjectInteraction : MonoBehaviour
 {
     public float pickupDistance;
     public float pickupRadius;
+    public float pickup_offset = 1f;
     public Transform itemSlot;
     public Transform itemSlot2;
     public GameObject dolly;
@@ -423,7 +424,7 @@ public class ObjectInteraction : MonoBehaviour
         // Create mask so we only collide with pickup-able objects.
         LayerMask mask = LayerMask.GetMask("Grabbable Object") + LayerMask.GetMask("Golden Package");
         Vector3 pos = transform.position;
-        pos.y = itemSlot.position.y - 0.5f;
+        pos.y = itemSlot.position.y - pickup_offset;
         RaycastHit hit;
         if (Physics.SphereCast(pos, pickupRadius, transform.TransformDirection(Vector3.forward), out hit, pickupDistance / 2,
                 mask)

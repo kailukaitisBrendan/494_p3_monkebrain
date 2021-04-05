@@ -5192,7 +5192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dust: {fileID: 167837617986766240}
   cam: {fileID: 0}
-  movementSpeed: 6
+  movementSpeed: 8
 --- !u!1 &167837619309757807
 GameObject:
   m_ObjectHideFlags: 0
