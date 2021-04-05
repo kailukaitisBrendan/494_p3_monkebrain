@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class thumpOnCollisionEnter : MonoBehaviour
 {
+    Subscription<HitObjectEvent> hitObjectSubscription;
+    public ParticleSystem dust;
     AudioSource thump;
     private bool hasBeenPlaced = false;
-    private void Awake()
-    {
+    private void Awake() {
         thump = GetComponent<AudioSource>();
-        StartCoroutine(WaitForPlacement());
+        hitObjectSubscription = EventBus.Subscribe<HitObjectEvent>(_OnHitObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == 12)
-        {
-            if (hasBeenPlaced)
-                thump.Play();
-        }
+    void _OnHitObject(HitObjectEvent e) {
+        thump.Play();
+        dust.Play();
     }
 
-    IEnumerator WaitForPlacement()
-    {
-        yield return new WaitForSeconds(1);
-        hasBeenPlaced = true;
+    void CreateDust() {
+        dust.Play();
     }
-
-
+    void StopDust() {
+        dust.Stop();
+    }
 
 }

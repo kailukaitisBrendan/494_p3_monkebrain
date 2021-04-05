@@ -8,9 +8,19 @@ public class MusicalWorlds : MonoBehaviour
     public GameObject b;
     public GameObject c;
     public GameObject wagon;
-
+    public static MusicalWorlds instance = null;  
     void Start()
     {
+        //Check if instance already exists
+        if (instance == null) {
+            //if not, set instance to this
+            instance = this;
+        }
+        //If instance already exists and it's not this:
+        else if (instance != this) {
+            instance.gameObject.SetActive(true);
+            Destroy(gameObject);
+        }
         DontDestroyOnLoad(this.gameObject);
         a.SetActive(true);
         b.SetActive(false);
