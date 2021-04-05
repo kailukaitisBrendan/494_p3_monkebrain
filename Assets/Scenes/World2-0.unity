@@ -864,6 +864,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1208100784}
     m_Modifications:
+    - target: {fileID: 4433059029040789886, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: enemyId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8398375989006282952, guid: 0353ac26689944e2e9889a47baba65a9,
         type: 3}
       propertyPath: m_SpotAngle
@@ -2159,17 +2164,17 @@ PrefabInstance:
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21815279
+      value: 0.2181528
       objectReference: {fileID: 0}
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000145422625
+      value: 8.026101e-16
       objectReference: {fileID: 0}
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000032507301
+      value: -1.08900604e-16
       objectReference: {fileID: 0}
     - target: {fileID: 589409570240432722, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}

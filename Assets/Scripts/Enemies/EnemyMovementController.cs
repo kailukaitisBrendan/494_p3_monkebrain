@@ -217,7 +217,7 @@ public class EnemyMovementController : MonoBehaviour
 
         desiredPositionIsGameobject.agent.ResetPath();
 
-        yield return StartCoroutine(WaitToGetToPoint(box, 2f));
+        yield return StartCoroutine(WaitToGetToPoint(box, 3f));
         atBox = true;
         PublishAnim();
         
