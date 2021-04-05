@@ -17,8 +17,11 @@ public class ReloadSceneUponLevelFail : MonoBehaviour
 
     void ReloadScene(LevelFailEvent _event)
     {
-        sound.clip = stickemup;
-        sound.Play();
+        if (!_event.wasFall)
+        {
+            sound.clip = stickemup;
+            sound.Play();
+        }
         //Debug.Log("sound?");
         if (loseScreen) loseScreen.SetActive(true);
         StartCoroutine(WaitThenLoad());

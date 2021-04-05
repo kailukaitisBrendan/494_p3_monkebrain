@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SensSlider : MonoBehaviour
 {
+    public Slider mSlider;
     void Start () {
-        PlayerPrefs.SetFloat("sens", 1f);
+        mSlider.value = PlayerPrefs.GetFloat("sens");
     }
 
     public void SetSens (float sliderValue)

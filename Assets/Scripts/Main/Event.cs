@@ -37,8 +37,10 @@ public class LevelClearEvent
 // USE: published when a level is failed
 public class LevelFailEvent
 {
-    public LevelFailEvent()
+    public bool wasFall; 
+    public LevelFailEvent(bool _wasFall)
     {
+        wasFall = _wasFall;
     }
 }
 

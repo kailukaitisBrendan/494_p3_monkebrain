@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
+    public Slider mSlider;
     void Start () {
-        PlayerPrefs.SetFloat("volume", 1f);
+        mSlider.value = PlayerPrefs.GetFloat("volume");
         AudioListener.volume = PlayerPrefs.GetFloat("volume");
     }
-
     public void SetLevel (float sliderValue)
     {
         PlayerPrefs.SetFloat("volume", sliderValue);
