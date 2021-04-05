@@ -115,6 +115,14 @@ public class ObjectInteraction : MonoBehaviour
             }
         }
 
+        // Cancel out of throw
+        if (Input.GetMouseButtonDown(0) && lineRenderer.enabled) {
+            // Reset our trajectory calculations
+            _currentForceMultiplier = 0f;
+            // Disable LineRenderer
+            lineRenderer.enabled = false;
+        }
+
         if (Input.GetMouseButtonDown(1))
         {
             _pressedTime = Time.timeSinceLevelLoad;
