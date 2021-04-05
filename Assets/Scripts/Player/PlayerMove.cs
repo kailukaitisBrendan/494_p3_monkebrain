@@ -74,7 +74,7 @@ public class PlayerMove : MonoBehaviour
         // Try and align player's rotation with the angle of the ground. 
         //AlignWithGround();
 
-        _movementSpeed = !_opc.enabled ? 0.21f : 0.15f;
+        _movementSpeed = !_opc.enabled ? _movementSpeed : 0.18f;
 
         // check grounded if jump is not recent
         if (Time.time - time_jump > 0.1f) {
