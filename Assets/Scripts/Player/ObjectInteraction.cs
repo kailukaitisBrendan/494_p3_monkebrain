@@ -55,14 +55,16 @@ public class ObjectInteraction : MonoBehaviour
         _opc = GetComponentInChildren<BoxCollider>();
         holdingBox = transform.Find("holdingBox").gameObject;
         notHoldingBox = transform.Find("notHoldingBox").gameObject;
+        holoBox = transform.Find("Holobox").gameObject;
     }
 
     private void OnDisable()
     {
         lineRenderer.enabled = false;
+        holoBox.SetActive(false);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //BoxColorChange();
 
@@ -128,6 +130,7 @@ public class ObjectInteraction : MonoBehaviour
             _currentForceMultiplier = 0f;
             // Disable LineRenderer
             lineRenderer.enabled = false;
+            holoBox.SetActive(false);
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -195,7 +198,8 @@ public class ObjectInteraction : MonoBehaviour
     private void DrawTrajectoryPath()
     {
         List<Vector3> path = new List<Vector3>();
-        lineRenderer.enabled = true;
+       // lineRenderer.enabled = true;
+        holoBox.SetActive(true);
         // ---- Draw trajectory path -----
         // To draw the trajectory path we need to simulate the projectile position across set intervals.
         // First, we need to calculate the total time the projectile will take before landing
@@ -230,8 +234,47 @@ public class ObjectInteraction : MonoBehaviour
 
         // Now, draw the trajectory using a LineRenderer.
         lineRenderer.positionCount = path.Count;
+        Debug.Log(path.Count);
         lineRenderer.SetPositions(path.ToArray());
+
+        foreach (var item in path)
+        {
+            
+            if (HoloBoxOverLap(item))
+            {
+                holoboxPos = item;
+                holoboxPos.y -= 0.5f;
+                break;
+            }
+        }
+        holoBox.transform.position = holoboxPos;
+        
+        
+        
     }
+
+    Vector3 holoboxPos;
+    private RaycastHit holoboxhit;
+    private float holoboxMaxDist;
+    Vector3 halfExtents = new Vector3(1, 1, 1);
+    GameObject holoBox;
+    
+    private bool HoloBoxOverLap(Vector3 point)
+    {
+        LayerMask mask = LayerMask.GetMask("Player") + LayerMask.GetMask("ObjectPickedUp");
+        if (Physics.OverlapBox(point, halfExtents, transform.rotation, ~mask).Length > 0)
+        
+        {
+           // foreach (var item in Physics.OverlapBox(point, halfExtents, transform.rotation, ~mask))
+            //{
+              //  Debug.Log(item.name);
+            //}
+            return true;
+        }
+        return false;
+    }
+
+
 
     private Vector3 CalculateVelocity(bool mass = false)
     {
@@ -291,6 +334,8 @@ public class ObjectInteraction : MonoBehaviour
             _currentForceMultiplier = 0f;
             // Disable LineRenderer
             lineRenderer.enabled = false;
+            holoBox.SetActive(false);
+
 
             // Add Force to player
             Rigidbody rb = GetComponent<Rigidbody>();
@@ -391,6 +436,7 @@ public class ObjectInteraction : MonoBehaviour
         _currentForceMultiplier = 0f;
         // Disable LineRenderer
         lineRenderer.enabled = false;
+        holoBox.SetActive(false);
         EventBus.Publish(new ObjectInteractionEvent());
     }
 
@@ -472,14 +518,20 @@ public class ObjectInteraction : MonoBehaviour
     //Draw the BoxCast as a gizmo to show where it currently is testing. Click the Gizmos button to see this
     void OnDrawGizmos()
     {
-        Vector3 pos = transform.position;
-        pos.z = itemSlot.position.z + pickupFront;
-        pos.y = itemSlot.position.y - pickupHeight;
-        Gizmos.color = Color.red;
+       // Vector3 pos = transform.position;
+        //pos.z = itemSlot.position.z + pickupFront;
+        //pos.y = itemSlot.position.y - pickupHeight;
+        //Gizmos.color = Color.red;
 
         //Draw a Ray forward from GameObject toward the maximum distance
-        Gizmos.DrawRay(pos, Vector3.forward * pickupBox.z * pickupDistance / 2);
+        //  Gizmos.DrawRay(pos, Vector3.forward * pickupBox.z * pickupDistance / 2);
         //Draw a cube at the maximum distance
-        Gizmos.DrawWireCube(pos + Vector3.forward * pickupBox.z * pickupDistance / 2, transform.localScale);
+        // Gizmos.DrawWireCube(pos + Vector3.forward * pickupBox.z * pickupDistance / 2, transform.localScale);
+
+
+        //holobox checking
+        Gizmos.color = Color.blue;
+        //Draw a cube that extends to where the hit exists
+        Gizmos.DrawWireCube(holoboxPos, halfExtents);
     }
 }
