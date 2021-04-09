@@ -12,7 +12,7 @@ using System.Linq;
 public class ObjectInteraction : MonoBehaviour
 {
     public float pickupDistance;
-    public float pickupFront = 0.5f;
+    //public float pickupFront = 0.5f;
     public float pickupHeight = 0.5f;
     public Vector3 pickupBox;
 
@@ -198,7 +198,7 @@ public class ObjectInteraction : MonoBehaviour
     private void DrawTrajectoryPath()
     {
         List<Vector3> path = new List<Vector3>();
-       // lineRenderer.enabled = true;
+        lineRenderer.enabled = true;
         holoBox.SetActive(true);
         // ---- Draw trajectory path -----
         // To draw the trajectory path we need to simulate the projectile position across set intervals.
@@ -234,7 +234,6 @@ public class ObjectInteraction : MonoBehaviour
 
         // Now, draw the trajectory using a LineRenderer.
         lineRenderer.positionCount = path.Count;
-        Debug.Log(path.Count);
         lineRenderer.SetPositions(path.ToArray());
 
         foreach (var item in path)
