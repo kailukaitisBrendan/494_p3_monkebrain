@@ -9,6 +9,7 @@ public class RollInText : MonoBehaviour
     public string fullMessage;
     string currentMessage = "";
     public float letterDelay = .1f;
+    public bool cancelTyping = false;
 
     private void Awake()
     {
@@ -17,12 +18,15 @@ public class RollInText : MonoBehaviour
 
     public IEnumerator ShowText()
     {
-        for (int i = 0; i < fullMessage.Length; ++i)
+        cancelTyping = false;
+        for (int i = 0; i < fullMessage.Length && !cancelTyping; ++i)
         {
             currentMessage += fullMessage[i];
             textComponent.text = currentMessage;
             yield return new WaitForSeconds(letterDelay);
         }
         currentMessage = "";
+        textComponent.text = fullMessage;
     }
+    
 }
