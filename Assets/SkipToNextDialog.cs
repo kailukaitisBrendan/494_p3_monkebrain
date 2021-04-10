@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 public class SkipToNextDialog : MonoBehaviour
 {
-    
+    public UnityEvent onSceneSkip;
     private TimelineAsset _timeline;
     private PlayableDirector _director;
     private List<TimelineClip> _dialogClips;
@@ -37,6 +38,12 @@ public class SkipToNextDialog : MonoBehaviour
         {
             if (_nextClip == null) return;
             _director.time = _nextClip.start;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // skip to next scene.
+            onSceneSkip.Invoke();
         }
     }
 
