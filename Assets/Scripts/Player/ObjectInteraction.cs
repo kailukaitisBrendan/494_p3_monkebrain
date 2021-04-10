@@ -73,7 +73,7 @@ public class ObjectInteraction : MonoBehaviour
         holoBox.SetActive(false);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //BoxColorChange();
 
