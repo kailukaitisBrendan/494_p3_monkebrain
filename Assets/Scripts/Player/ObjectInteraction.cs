@@ -47,7 +47,16 @@ public class ObjectInteraction : MonoBehaviour
     private float _pressedTime = 0f;
     private GameObject holdingBox;
     private GameObject notHoldingBox;
-    
+
+
+
+    //holobox stuff
+    Vector3 holoboxPos;
+    Vector3 halfExtents = new Vector3(0.5f, 0.5f, 0.5f);
+    GameObject holoBox;
+
+
+
 
     private void Start()
     {
@@ -242,7 +251,7 @@ public class ObjectInteraction : MonoBehaviour
             if (HoloBoxOverLap(item))
             {
                 holoboxPos = item;
-                holoboxPos.y -= 0.5f;
+               
                 break;
             }
         }
@@ -252,12 +261,7 @@ public class ObjectInteraction : MonoBehaviour
         
     }
 
-    Vector3 holoboxPos;
-    private RaycastHit holoboxhit;
-    private float holoboxMaxDist;
-    Vector3 halfExtents = new Vector3(1, 1, 1);
-    GameObject holoBox;
-    
+   
     private bool HoloBoxOverLap(Vector3 point)
     {
         LayerMask mask = LayerMask.GetMask("Player") + LayerMask.GetMask("ObjectPickedUp");
@@ -395,9 +399,21 @@ public class ObjectInteraction : MonoBehaviour
         GetComponent<Rigidbody>().mass += rb.mass;
     }
 
+    private bool CanDrop()
+    {
+        LayerMask mask = LayerMask.GetMask("Player") + LayerMask.GetMask("ObjectPickedUp");
+
+        if (Physics.OverlapBox(itemSlot.position, halfExtents, transform.rotation, ~mask).Length > 0)
+        {
+            return false;
+        }
+        return true;
+
+    }
     private void DropItem()
     {
         if (_pickedUpObjects.Count == 0) return;
+        if (!CanDrop()) return;
 
         GameObject item = _pickedUpObjects.Peek();
 
