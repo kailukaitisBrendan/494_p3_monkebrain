@@ -65,7 +65,7 @@ public class SkipToNextDialog : MonoBehaviour
             }
         }
         
-        Debug.Log(_nextClip.start);
+        //Debug.Log(_nextClip.start);
         
     }
     
