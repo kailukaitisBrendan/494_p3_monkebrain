@@ -7037,7 +7037,7 @@ PrefabInstance:
     - target: {fileID: 4181726566813115398, guid: 5b9b09702583f4ff8b526a0a268e0a79,
         type: 3}
       propertyPath: letterDelay
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4181726566813115398, guid: 5b9b09702583f4ff8b526a0a268e0a79,
         type: 3}
