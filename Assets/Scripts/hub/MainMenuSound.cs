@@ -6,10 +6,26 @@ using UnityEngine.SceneManagement;
 public class MainMenuSound : MonoBehaviour
 {
     AudioSource a;
+    public static MainMenuSound instance = null; 
     // Start is called before the first frame update
     void Start()
     {
         a = GetComponent<AudioSource>();
+        //Check if instance already exists
+        if (instance == null) {
+            //if not, set instance to this
+            instance = this;
+        }
+        //If instance already exists and it's not this:
+        else if (instance != this) {
+            instance.gameObject.SetActive(true);
+            Destroy(gameObject);
+        }
+        GameObject g = GameObject.Find("SoundController");
+        if (g != null) {
+            instance.gameObject.SetActive(true);
+            Destroy(gameObject);
+        }
         DontDestroyOnLoad(this.gameObject);
     }
 
