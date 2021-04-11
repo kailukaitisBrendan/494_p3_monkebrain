@@ -16,12 +16,14 @@ public class EnemyAmimator : MonoBehaviour
     private GameObject looking;
     private GameObject dazed;
     private GameObject idle;
-    public int enemyId;
     private int incomingEnemyId;
+
+    private int _enemyID;
     // Start is called before the first frame update
     void Start()
     {
         EnemyState = EventBus.Subscribe<EnemyStateEvent>(EnemyUpdate);
+        _enemyID = GetComponent<EnemyMovementController>().enemyID;
         walking = transform.Find("walking").gameObject;
         stickemup = transform.Find("stickemup").gameObject;
         looking = transform.Find("looking").gameObject;
@@ -34,7 +36,7 @@ public class EnemyAmimator : MonoBehaviour
     void EnemyUpdate(EnemyStateEvent e)
     {
         incomingEnemyId = e.enemyID;
-        if (incomingEnemyId == enemyId)
+        if (incomingEnemyId == _enemyID)
         {
             isWalking = e.isWalking;
             isDistracted = e.isDistracted;
@@ -47,57 +49,54 @@ public class EnemyAmimator : MonoBehaviour
 
     void Update()
     {
+        if (incomingEnemyId != _enemyID) return;
         
-        if (incomingEnemyId == enemyId)
+        if (!isWalking && !isDistracted && !isDazed && !drawingGun)
         {
-            
-            if (!isWalking && !isDistracted && !isDazed && !drawingGun)
-            {
 
-                idle.SetActive(true);
-                walking.SetActive(false);
-                looking.SetActive(false);
-                dazed.SetActive(false);
-                stickemup.SetActive(false);
-            }
+            idle.SetActive(true);
+            walking.SetActive(false);
+            looking.SetActive(false);
+            dazed.SetActive(false);
+            stickemup.SetActive(false);
+        }
 
 
-            if (isWalking && !isDistracted && !isDazed && !drawingGun)
-            {
-                walking.SetActive(true);
-                looking.SetActive(false);
-                dazed.SetActive(false);
-                stickemup.SetActive(false);
-                idle.SetActive(false);
-            }
+        if (isWalking && !isDistracted && !isDazed && !drawingGun)
+        {
+            walking.SetActive(true);
+            looking.SetActive(false);
+            dazed.SetActive(false);
+            stickemup.SetActive(false);
+            idle.SetActive(false);
+        }
 
 
-            if (isDistracted)
-            {
-                walking.SetActive(false);
-                looking.SetActive(true);
-                dazed.SetActive(false);
-                stickemup.SetActive(false);
-                idle.SetActive(false);
-            }
+        if (isDistracted)
+        {
+            walking.SetActive(false);
+            looking.SetActive(true);
+            dazed.SetActive(false);
+            stickemup.SetActive(false);
+            idle.SetActive(false);
+        }
 
-            if (isDazed)
-            {
-                walking.SetActive(false);
-                looking.SetActive(false);
-                dazed.SetActive(true);
-                stickemup.SetActive(false);
-                idle.SetActive(false);
-            }
+        if (isDazed)
+        {
+            walking.SetActive(false);
+            looking.SetActive(false);
+            dazed.SetActive(true);
+            stickemup.SetActive(false);
+            idle.SetActive(false);
+        }
 
-            if (drawingGun)
-            {
-                walking.SetActive(false);
-                looking.SetActive(false);
-                dazed.SetActive(false);
-                stickemup.SetActive(true);
-                idle.SetActive(false);
-            }
+        if (drawingGun)
+        {
+            walking.SetActive(false);
+            looking.SetActive(false);
+            dazed.SetActive(false);
+            stickemup.SetActive(true);
+            idle.SetActive(false);
         }
     }
 }

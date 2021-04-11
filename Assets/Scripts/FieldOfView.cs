@@ -32,11 +32,11 @@ public class FieldOfView : MonoBehaviour
 
         if(playerSpotted)
         {
-            EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(visibleTargetPlayer, transform.gameObject));
+            EventBus.Publish(new PlayerSpottedEvent(visibleTargetPlayer, transform.gameObject));
         }
         else
         {
-            EventBus.Publish<PlayerSpottedEvent>(new PlayerSpottedEvent(null, transform.gameObject));
+            EventBus.Publish(new PlayerSpottedEvent(null, transform.gameObject));
         }
     }
 
