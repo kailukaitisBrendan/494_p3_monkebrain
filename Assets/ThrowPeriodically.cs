@@ -30,11 +30,19 @@ public class ThrowPeriodically : MonoBehaviour
     public float aimDuration = 5f;
     private float time = 0;
 
+    private GameObject idle;
+    private GameObject throwing;
+    private GameObject turning;
 
+    private bool starting = true;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        idle = transform.Find("Idle").gameObject;
+        throwing = transform.Find("Throwing").gameObject;
+        turning = transform.Find("Turning").gameObject;
+
     }
 
     // Update is called once per frame
@@ -54,6 +62,7 @@ public class ThrowPeriodically : MonoBehaviour
         if (time > aimDuration) {
             time = 0f;
             ThrowItem();
+            starting = false;
         }
     }
 
@@ -63,7 +72,11 @@ public class ThrowPeriodically : MonoBehaviour
         // Throw projectile
         Vector3 force = CalculateVelocity();
         GameObject item = projectileInstance;
-
+        MeshRenderer[] mr = item.GetComponentsInChildren<MeshRenderer>();
+        foreach (var mesh in mr)
+        {
+            mesh.enabled = true;
+        }
         // Re-enable rigidbody and collider.
         Rigidbody rb = item.GetComponent<Rigidbody>();
 
@@ -80,7 +93,10 @@ public class ThrowPeriodically : MonoBehaviour
 
         // Disable LineRenderer
         lineRenderer.enabled = false;
+        throwing.SetActive(false);
+        idle.SetActive(true);
         holoBox.SetActive(false);
+        turning.SetActive(false);
         projectileInstance.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
         projectileInstance = null;
 
@@ -103,6 +119,13 @@ public class ThrowPeriodically : MonoBehaviour
         // Disable collider of grabbed object.
         Collider col = item.GetComponent<Collider>();
         col.enabled = false;
+        MeshRenderer[] mr = item.GetComponentsInChildren<MeshRenderer>();
+        foreach (var mesh in mr)
+        {
+            mesh.enabled = false;
+        }
+        lineRenderer.enabled = false;
+
     }
 
 
@@ -150,6 +173,14 @@ public class ThrowPeriodically : MonoBehaviour
         List<Vector3> path = new List<Vector3>();
         lineRenderer.enabled = true;
         holoBox.SetActive(true);
+        if (!starting)
+            throwing.SetActive(true);
+        else
+        {
+            turning.SetActive(true);
+            
+        }
+        idle.SetActive(false);
         // ---- Draw trajectory path -----
         // To draw the trajectory path we need to simulate the projectile position across set intervals.
         // First, we need to calculate the total time the projectile will take before landing
