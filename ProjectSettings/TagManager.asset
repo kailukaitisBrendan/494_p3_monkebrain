@@ -12,6 +12,7 @@ TagManager:
   - CineMachineController
   - Enemy
   - BluePackage
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -460,12 +460,20 @@ public class ObjectInteraction : MonoBehaviour
     {
         GameObject item = GetItem();
         if (item == null) return;
-        _numItems++;
+        // return if item was already thrown
+        if (item.GetComponent<OnCollisionEvent>() != null) {
+            return;
+        }
 
         string[] validTags = {"Package", "GoldenPackage", "BluePackage"};
 
         // Return if item does not have a valid tag
         if (!validTags.Any(tag => item.CompareTag(tag))) return;
+
+        _numItems++;
+
+
+
         // Get the rigidbody of our hit.
         Rigidbody rb = item.GetComponent<Rigidbody>();
         //Disable the rigidbody and rest velocities 
