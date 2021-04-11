@@ -171,7 +171,7 @@ public class ThrowPeriodically : MonoBehaviour
     private void DrawTrajectoryPath()
     {
         List<Vector3> path = new List<Vector3>();
-        lineRenderer.enabled = true;
+       // lineRenderer.enabled = true;
         holoBox.SetActive(true);
         if (!starting)
             throwing.SetActive(true);
