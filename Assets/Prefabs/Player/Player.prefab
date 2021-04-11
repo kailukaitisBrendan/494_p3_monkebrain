@@ -486,7 +486,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupDistance: 2
-  pickupFront: 0.2
   pickupHeight: 0.5
   pickupBox: {x: 2, y: 2, z: 0}
   itemSlot: {fileID: 6333447323867098795}
@@ -642,7 +641,7 @@ MonoBehaviour:
   rotationSpeed: 6
   groundMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 4608
   groundCheck: {fileID: 8218031657446126718}
   groundDistance: 0.1
   hitGround: {fileID: 8300000, guid: da4ec7cfba8664543ae58627e33ed649, type: 3}
