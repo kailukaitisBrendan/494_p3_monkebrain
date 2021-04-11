@@ -16,7 +16,18 @@ public class ExplodeOnCollisionEnter : MonoBehaviour
 
     void _OnHitObject(HitObjectEvent e) {
         if (e.sourceObject != gameObject) return;
+        if (hasBeenPlaced) return;
+        
+        // Hide mesh
         mesh.SetActive(false);
+
+        // Disable Collider
+        GetComponent<CapsuleCollider>().isTrigger = true;
+        
+        // Cancel movement
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+
         hasBeenPlaced = true;
         dust.Play();
     }
@@ -24,7 +35,17 @@ public class ExplodeOnCollisionEnter : MonoBehaviour
     private void Update()
     {
         if (hasBeenPlaced && !dust.IsAlive()) {
-            Destroy(gameObject);
+            Respawnable resp = GetComponent<Respawnable>();
+
+            if (resp && resp.enabled) {
+                mesh.SetActive(true);
+                GetComponent<CapsuleCollider>().isTrigger = false;
+                resp.Respawn();
+                hasBeenPlaced = false;
+            }
+            else {
+                Destroy(gameObject);
+            }
         }
     }
 

@@ -17,7 +17,7 @@ public class OnCollisionEvent : MonoBehaviour
     private void Start()
     {
         // Default layer mask to ground and enemies
-        collisionLayers = LayerMask.GetMask("Ground", "Enemy", "Conveyor Belt");
+        collisionLayers = LayerMask.GetMask("Ground", "Enemy", "Conveyor Belt", "Iteractable Object");
         collisionTags = new List<string> {"Enemy"};
     }
 

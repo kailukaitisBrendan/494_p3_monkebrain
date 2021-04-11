@@ -26,19 +26,28 @@ public class TriggerButtonEventUponPress : MonoBehaviour
         // Publish button press event when a button is pressed beyond it's threshold
         if (!pressed && 
             transform.localPosition.y / initialPosition <= threshold) {
-            
-            EventBus.Publish<ButtonPressEvent>(new ButtonPressEvent(buttonEventId));
-            sound.Play();
-            pressed = true;
-
-            Debug.Log("Button " + buttonEventId + " pressed");
+            Press();
         }
         else if (pressed && transform.localPosition.y / initialPosition > threshold) {
-            
-            EventBus.Publish<ButtonLiftEvent>(new ButtonLiftEvent(buttonEventId));
-            pressed = false;
-
-            Debug.Log("Button " + buttonEventId + " lifted");
+            Lift();
         }
+    }
+
+    public void Press()
+    {
+        EventBus.Publish<ButtonPressEvent>(new ButtonPressEvent(buttonEventId));
+        sound.Play();
+        pressed = true;
+
+        Debug.Log("Button " + buttonEventId + " pressed");
+    }
+
+    public void Lift()
+    {
+        EventBus.Publish<ButtonLiftEvent>(new ButtonLiftEvent(buttonEventId));
+        pressed = false;
+
+        Debug.Log("Button " + buttonEventId + " lifted");
+
     }
 }
