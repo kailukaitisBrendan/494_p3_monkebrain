@@ -54,8 +54,11 @@ public class ObjectInteraction : MonoBehaviour
     Vector3 holoboxPos;
     Vector3 halfExtents = new Vector3(0.5f, 0.5f, 0.5f);
     GameObject holoBox;
+    GameObject holoCrate;
+    GameObject holoPackage;
+    GameObject holoTnt;
 
-
+    private string itemTag;
 
 
     private void Start()
@@ -65,6 +68,10 @@ public class ObjectInteraction : MonoBehaviour
         holdingBox = transform.Find("holdingBox").gameObject;
         notHoldingBox = transform.Find("notHoldingBox").gameObject;
         holoBox = transform.Find("Holobox").gameObject;
+        holoCrate = holoBox.transform.Find("crate").gameObject;
+        holoPackage = holoBox.transform.Find("package").gameObject;
+        holoTnt = holoBox.transform.Find("tnt").gameObject;
+
     }
 
     private void OnDisable()
@@ -208,7 +215,30 @@ public class ObjectInteraction : MonoBehaviour
     {
         List<Vector3> path = new List<Vector3>();
         lineRenderer.enabled = true;
+
+     
+
+
         holoBox.SetActive(true);
+        if(itemTag == "TNT")
+        {
+            holoTnt.SetActive(true);
+            holoCrate.SetActive(false);
+            holoPackage.SetActive(false);
+        }
+        if(itemTag == "Package")
+        {
+            holoTnt.SetActive(false);
+            holoCrate.SetActive(true);
+            holoPackage.SetActive(false);
+        }
+        if(itemTag == "GoldenPackage")
+        {
+            holoTnt.SetActive(false);
+            holoCrate.SetActive(false);
+            holoPackage.SetActive(true);
+        }
+
         // ---- Draw trajectory path -----
         // To draw the trajectory path we need to simulate the projectile position across set intervals.
         // First, we need to calculate the total time the projectile will take before landing
@@ -465,14 +495,14 @@ public class ObjectInteraction : MonoBehaviour
             return;
         }
 
-        string[] validTags = {"Package", "GoldenPackage", "BluePackage"};
+        string[] validTags = {"Package", "GoldenPackage", "BluePackage", "TNT"};
 
         // Return if item does not have a valid tag
         if (!validTags.Any(tag => item.CompareTag(tag))) return;
 
         _numItems++;
 
-
+        itemTag = item.tag;
 
         // Get the rigidbody of our hit.
         Rigidbody rb = item.GetComponent<Rigidbody>();
