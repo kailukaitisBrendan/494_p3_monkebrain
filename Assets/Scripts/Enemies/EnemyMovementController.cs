@@ -158,7 +158,7 @@ public class EnemyMovementController : MonoBehaviour
     private void PublishAnim()
     {
         //Animation publisher
-        Debug.Log("idle: " + isIdle + " atbox: " + _atBox + " dazed: " + _isDazed + " drawGun: " + _drawingGun);
+        //Debug.Log("idle: " + isIdle + " atbox: " + _atBox + " dazed: " + _isDazed + " drawGun: " + _drawingGun);
         EventBus.Publish(new EnemyStateEvent(!isIdle, _atBox, _isDazed, _drawingGun, enemyID));
     }
 
@@ -166,6 +166,7 @@ public class EnemyMovementController : MonoBehaviour
     {
         // If we see the player, change the currentTarget to player.
         if (gameObject != e.enemy) return;
+        if (_isDazed) return;
 
         if (e.player != null)
         {
@@ -191,8 +192,8 @@ public class EnemyMovementController : MonoBehaviour
 
         PublishAnim();
         bool packageInRange = fieldOfView.PackageInFieldOfView(e.sourceObject.transform.position);
-        Debug.Log("package In Range? " + packageInRange);
-        Debug.Log("IsDistracted: " + _isDistracted);
+        //Debug.Log("package In Range? " + packageInRange);
+        //Debug.Log("IsDistracted: " + _isDistracted);
         
         // Check if package hit the enemy
         if (e.hitObject == gameObject)
@@ -203,7 +204,7 @@ public class EnemyMovementController : MonoBehaviour
             _isDistracted = false;
             emoteText.text = "*";
             PublishAnim();
-            Debug.Log("Hit Enemy!");
+            //Debug.Log("Hit Enemy!");
         }
         else if (packageInRange)
         {
