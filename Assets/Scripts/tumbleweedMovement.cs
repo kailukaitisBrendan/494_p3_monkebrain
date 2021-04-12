@@ -12,24 +12,30 @@ public class tumbleweedMovement : MonoBehaviour
     float time_run = 6.0f;
     float speed = 8f;
     float rot;
+    public bool dead;
     void Start() {
         // generate random movement vector
         rot = Random.Range(-180f,180f);
         transform.rotation = Quaternion.Euler(0, rot, 0);
         time_spawn = Time.time;
+        dead = false;
     }
 
     // Update is called once per frame
     void FixedUpdate() {
         // move in random direction
-        transform.position += new Vector3(speed * Time.deltaTime * Mathf.Sin(rot),0f,speed * Time.deltaTime* Mathf.Cos(rot));
+        if (!dead) {
+            transform.position += new Vector3(speed * Time.deltaTime * Mathf.Sin(rot),0f,speed * Time.deltaTime* Mathf.Cos(rot));
+        }
         if (cam != null) {
             if (Mathf.Abs(gameObject.transform.position.x - cam.transform.position.x) > 200f 
             || Mathf.Abs(gameObject.transform.position.z - cam.transform.position.z) > 200f) {
+                dead = true;
                 Destroy(gameObject);
             }
         }
         if (Time.time - time_spawn > time_run) {
+            dead = true;
             CreateDust();
             skin.SetActive(false);
             particlesystem1.SetActive(false);
@@ -39,6 +45,7 @@ public class tumbleweedMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider coll) {
         if (coll.gameObject.layer != 12) {
+            dead = true;
             CreateDust();
             skin.SetActive(false);
             particlesystem1.SetActive(false);
