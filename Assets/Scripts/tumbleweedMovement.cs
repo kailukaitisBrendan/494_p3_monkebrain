@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class tumbleweedMovement : MonoBehaviour
 {
+    public ParticleSystem poof;
+    public GameObject skin;
+    public GameObject particlesystem1;
     GameObject cam;
     float time_spawn;
     float time_run = 6.0f;
@@ -27,17 +30,30 @@ public class tumbleweedMovement : MonoBehaviour
             }
         }
         if (Time.time - time_spawn > time_run) {
-            Destroy(gameObject);
+            CreateDust();
+            skin.SetActive(false);
+            particlesystem1.SetActive(false);
+            Destroy(gameObject,1f);
         }
     }
 
     void OnTriggerEnter(Collider coll) {
         if (coll.gameObject.layer != 12) {
-            Destroy(gameObject);
+            CreateDust();
+            skin.SetActive(false);
+            particlesystem1.SetActive(false);
+            Destroy(gameObject,1f);
         }
     }
 
     public void SetCam(GameObject came) {
         cam = came;
+    }
+
+    void CreateDust() {
+        poof.Play();
+    }
+    void StopDust() {
+        poof.Stop();
     }
 }
