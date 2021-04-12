@@ -91,7 +91,7 @@ public class MusicalWorlds : MonoBehaviour
             if (c.GetComponent<AudioSource>().volume < 0.8f)
                 c.GetComponent<AudioSource>().volume += Time.deltaTime * 0.5f;
         }
-        if (wagon.transform.position.x <= -45f) {
+        if (wagon.transform.position.x <= -40f) {
             a.SetActive(false);
             d.SetActive(true);
             b.SetActive(false);
