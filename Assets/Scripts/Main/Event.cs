@@ -139,3 +139,15 @@ public class ThrowingEvent
         
     }
 }
+
+// Toast Event
+
+public class ToastRequestEvent
+{
+    public string message;
+
+    public ToastRequestEvent(string s)
+    {
+        message = s;
+    }
+}
