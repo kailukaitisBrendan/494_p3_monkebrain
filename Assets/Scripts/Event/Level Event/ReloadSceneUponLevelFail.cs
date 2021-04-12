@@ -25,6 +25,7 @@ public class ReloadSceneUponLevelFail : MonoBehaviour
         //Debug.Log("sound?");
         if (loseScreen) loseScreen.SetActive(true);
         StartCoroutine(WaitThenLoad());
+        Debug.Log("Level failed, was fall? " + _event.wasFall);
     }
 
 

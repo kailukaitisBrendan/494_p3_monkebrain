@@ -26,6 +26,7 @@ public class BossTntReactor : MonoBehaviour
 
     void _OnHitObject(HitObjectEvent e) {
         if (e.hitObject != gameObject) return;
+        if (e.sourceObject.tag != "TNT") return;
         
         // Wake up if applicable
         GetComponent<ThrowPeriodically>().enabled = true;
@@ -37,7 +38,7 @@ public class BossTntReactor : MonoBehaviour
 
         --health;
         if (UI) {
-            UI.text = "WANTED\nStuffalo Steal:  " + health + "/" + max_health;
+            UI.text = "Stuffalo Steal:  " + health + "/" + max_health;
         }
         if (health == 0) {
             EventBus.Publish<LevelClearEvent>(new LevelClearEvent());

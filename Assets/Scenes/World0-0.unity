@@ -2393,6 +2393,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1813690303}
     m_Modifications:
+    - target: {fileID: 427497096157770889, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427497096157770889, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427497096157770889, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2279037599455138538, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
         type: 3}
       propertyPath: m_RootOrder
@@ -2467,21 +2482,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ground (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 427497096157770889, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 427497096157770889, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 427497096157770889, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0367ac69d4a34726bb9e8164ad1c7e0, type: 3}
@@ -5235,15 +5235,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 45190814750488719, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 130476397796894273, guid: ea760b82bd2cf65479ee10e667b38e6f,
         type: 3}
       propertyPath: m_Name
       value: Sand
+      objectReference: {fileID: 0}
+    - target: {fileID: 130476397796894273, guid: ea760b82bd2cf65479ee10e667b38e6f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 130476397796894301, guid: ea760b82bd2cf65479ee10e667b38e6f,
         type: 3}
@@ -5294,6 +5294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: waveFrequency
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 45190814750488719, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea760b82bd2cf65479ee10e667b38e6f, type: 3}
@@ -5836,7 +5841,7 @@ PrefabInstance:
     - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.053787433
+      value: -0.053787436
       objectReference: {fileID: 0}
     - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}

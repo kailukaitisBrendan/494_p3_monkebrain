@@ -15,6 +15,8 @@ public class PlayerTntReactor : MonoBehaviour
     }
 
     void _OnHitObject(HitObjectEvent e) {
+        if (e.sourceObject.tag != "TNT") return;
+
         Vector3 displacement = e.sourceObject.transform.position - transform.position;
 
         if (displacement.sqrMagnitude > blastRadius * blastRadius) return;

@@ -25,6 +25,7 @@ public class ReloadSceneUponLevelClear : MonoBehaviour
         sound.Play();
         if (winScreen) winScreen.SetActive(true);
         StartCoroutine(WaitForMailsHere());
+        Debug.Log("Level cleared");
     }
 
     IEnumerator WaitForMailsHere()
