@@ -20,6 +20,8 @@ public class EnemyMovementController : MonoBehaviour
     public float dazeTime = 10f;
     public float distractTime = 3f;
 
+    float angleTurn = 140f;
+
     public int enemyID;
 
     #endregion
@@ -93,6 +95,20 @@ public class EnemyMovementController : MonoBehaviour
         }
 
         UpdateCurrentTarget();
+
+        if (_currentTarget == pathPoints[_pointIndex])
+        {
+            // if a dude is turning at a pathpoint decrease fov
+            if (Vector3.Angle(transform.forward, transform.position - _currentTarget.transform.position) < angleTurn)
+            {
+                fieldOfView.cur_field_radius = fieldOfView.field_radius/2;
+            }
+            else
+            {
+                fieldOfView.cur_field_radius = fieldOfView.field_radius;
+            }
+        }
+
         // Move the enemy to the target destination. 
         if (_currentTarget != null)
         {
