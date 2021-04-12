@@ -3860,8 +3860,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "[ WASD ]\t\t= Movement\n[ Space ]\t\t= Jump\n[ Left Click ]\t\t= Pick
-    Up\n[ Right Click ]\t= Drop\n[ Hold R Click ]\t= Aim/Throw"
+  m_Text: "[ WASD ]\t\t= Movement\n[ Space ]\t\t= Jump\n[ Left Click ]\t= Pick Up\n[
+    Right Click ]\t= Drop\n[ Hold R Click ]\t= Aim/Throw"
 --- !u!222 &1582078973
 CanvasRenderer:
   m_ObjectHideFlags: 0
