@@ -43,6 +43,11 @@ public class ThrowPeriodically : MonoBehaviour
         throwing = transform.Find("Throwing").gameObject;
         turning = transform.Find("Turning").gameObject;
 
+        holoBox.transform.parent = null;
+
+        if (Globals.debug) {
+            lineRenderer.enabled = true;
+        }
     }
 
     // Update is called once per frame
@@ -55,10 +60,11 @@ public class ThrowPeriodically : MonoBehaviour
             SpawnItem();
         }
 
-        // Aim
-        DrawTrajectoryPath();
-
         time += Time.deltaTime;
+
+        // Aim
+        DrawTrajectoryPath(time > aimDuration);
+
         if (time > aimDuration) {
             time = 0f;
             ThrowItem();
@@ -77,6 +83,11 @@ public class ThrowPeriodically : MonoBehaviour
         {
             mesh.enabled = true;
         }
+        Projector[] pr = item.GetComponentsInChildren<Projector>();
+        foreach (var proj in pr)
+        {
+            proj.enabled = true;
+        }
         // Re-enable rigidbody and collider.
         Rigidbody rb = item.GetComponent<Rigidbody>();
 
@@ -92,10 +103,9 @@ public class ThrowPeriodically : MonoBehaviour
         OnCollisionEvent collisionEvent = item.AddComponent<OnCollisionEvent>();
 
         // Disable LineRenderer
-        lineRenderer.enabled = false;
         throwing.SetActive(false);
         idle.SetActive(true);
-        holoBox.SetActive(false);
+        // holoBox.SetActive(false);
         turning.SetActive(false);
         projectileInstance.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
         projectileInstance = null;
@@ -124,7 +134,12 @@ public class ThrowPeriodically : MonoBehaviour
         {
             mesh.enabled = false;
         }
-        lineRenderer.enabled = false;
+        Projector[] pr = item.GetComponentsInChildren<Projector>();
+        foreach (var proj in pr)
+        {
+            proj.enabled = false;
+        }
+        //lineRenderer.enabled = false;
 
     }
 
@@ -168,11 +183,8 @@ public class ThrowPeriodically : MonoBehaviour
     }
 
 
-    private void DrawTrajectoryPath()
+    private void DrawTrajectoryPath(bool reset_holobox = false)
     {
-        List<Vector3> path = new List<Vector3>();
-       // lineRenderer.enabled = true;
-        holoBox.SetActive(true);
         if (!starting)
             throwing.SetActive(true);
         else
@@ -190,6 +202,9 @@ public class ThrowPeriodically : MonoBehaviour
         // v = the magnitude of the velocity vector
         // g = gravity
 
+        if (! (Globals.debug || reset_holobox) ) return;
+
+        List<Vector3> path = new List<Vector3>();
         Vector3 position = projectileInstance.transform.position;
         Vector3 velocity = CalculateVelocity(true);
         //Debug.Log(velocity);
@@ -217,6 +232,9 @@ public class ThrowPeriodically : MonoBehaviour
         lineRenderer.positionCount = path.Count;
         lineRenderer.SetPositions(path.ToArray());
 
+        if (!reset_holobox) return;
+
+        holoBox.SetActive(true);
         foreach (var item in path)
         {
             
@@ -233,8 +251,7 @@ public class ThrowPeriodically : MonoBehaviour
 
     private bool HoloBoxOverLap(Vector3 point)
     {
-        return false;
-        LayerMask mask = LayerMask.GetMask("Enemy") + LayerMask.GetMask("ObjectPickedUp");
+        LayerMask mask = LayerMask.GetMask("Grabbable Object") + LayerMask.GetMask("Player") + LayerMask.GetMask("Enemy") + LayerMask.GetMask("ObjectPickedUp");
         if (Physics.OverlapBox(point, halfExtents, transform.rotation, ~mask).Length > 0)
         
         {

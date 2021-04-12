@@ -5,4 +5,5 @@ using UnityEngine;
 public static class Globals
 {
     public static bool analyticsOn = false;
+    public static bool debug = false;
 }

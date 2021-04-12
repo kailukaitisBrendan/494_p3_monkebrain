@@ -8394,6 +8394,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1871844526915952684, guid: 8d2bf3df84d3a91439c364d666392175,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395369204175176582, guid: 8d2bf3df84d3a91439c364d666392175,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931875428659561053, guid: 8d2bf3df84d3a91439c364d666392175,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999078833794127993, guid: 8d2bf3df84d3a91439c364d666392175,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2999078833871580121, guid: 8d2bf3df84d3a91439c364d666392175,
         type: 3}
       propertyPath: m_RootOrder
@@ -8478,6 +8498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6392455384720160502, guid: 8d2bf3df84d3a91439c364d666392175,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6660003533159926605, guid: 8d2bf3df84d3a91439c364d666392175,
         type: 3}
@@ -25799,17 +25824,17 @@ PrefabInstance:
     - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.18348308
+      value: 0.18348306
       objectReference: {fileID: 0}
     - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.053787462
+      value: -0.053787436
       objectReference: {fileID: 0}
     - target: {fileID: 589409570992916884, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.010055121
+      value: 0.010055115
       objectReference: {fileID: 0}
     - target: {fileID: 589409571675197833, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
