@@ -12,6 +12,7 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstacleMaskForBox;
 
     public float field_radius = 5f;
+    public float cur_field_radius;
     public float view_range = 75;
     public float cur_view_range;
 
@@ -19,6 +20,7 @@ public class FieldOfView : MonoBehaviour
     void Start()
     {
         cur_view_range = view_range;
+        cur_field_radius = field_radius;
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class FieldOfView : MonoBehaviour
         visibleTargetPlayer = null;
         playerSpotted = false;
 
-        Collider[] targets = Physics.OverlapSphere(transform.position, field_radius, targetMask);
+        Collider[] targets = Physics.OverlapSphere(transform.position, cur_field_radius, targetMask);
         for (int i = 0; i < targets.Length; ++i)
         {
             Vector3 objectToTargetDir = (targets[i].transform.position - transform.position).normalized;
@@ -70,7 +72,7 @@ public class FieldOfView : MonoBehaviour
         Debug.DrawRay(transform.position, package_to_enemy_dir * distance_to_package, Color.blue, 5f, false);
 
         //make sure there are no obstacles/walls in the way and package is within radius
-        if (distance_to_package <= field_radius && !Physics.Raycast(transform.position, package_to_enemy_dir, distance_to_package, obstacleMaskForBox))
+        if (distance_to_package <= cur_field_radius && !Physics.Raycast(transform.position, package_to_enemy_dir, distance_to_package, obstacleMaskForBox))
         {
             inRange = true;
         }
@@ -80,6 +82,6 @@ public class FieldOfView : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, field_radius);
+        Gizmos.DrawWireSphere(transform.position, cur_field_radius);
     }
 }
