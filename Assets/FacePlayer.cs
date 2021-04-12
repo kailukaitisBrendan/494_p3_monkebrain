@@ -25,7 +25,9 @@ public class FacePlayer : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, backward, 2);
         }
         else {
-            transform.LookAt(player.transform);
+            Vector3 direction = player.transform.position;
+            direction.y = transform.position.y;
+            transform.LookAt(direction);
         }
     }
 
