@@ -14,6 +14,9 @@ public class MailBoxTriggerEnter : MonoBehaviour
         {
             
             Transform gp = other.gameObject.transform.Find("ItemSlot").Find("Golden Package");
+            if (gp == null) {
+                gp = other.gameObject.transform.Find("ItemSlot").Find("Golden Package (1)");
+            }
             if (gp != null)
             {
                 EventBus.Publish<LevelClearEvent>(new LevelClearEvent());
