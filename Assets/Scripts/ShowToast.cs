@@ -60,7 +60,7 @@ public class ShowToast : MonoBehaviour
             }
             if (enemyToast)
             {
-                message = "Watch out for enemies!";
+                message = "Watch out for bandits!";
             }
             if (enemyDistractedToast)
             {
