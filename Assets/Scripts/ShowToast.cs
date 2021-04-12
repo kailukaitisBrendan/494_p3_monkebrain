@@ -12,11 +12,16 @@ public class ShowToast : MonoBehaviour
     public bool enemyToast;
     public bool enemyDazedToast;
     public bool enemyDistractedToast;
-
+    public bool bossToast;
     public bool doToasts;
 
     bool toastTriggered1 = false;
     bool toastTriggered2 = false;
+
+    // added some audio to the enemy warning toast
+    public AudioSource watch_out;
+    public AudioSource stuffalo_steal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +66,8 @@ public class ShowToast : MonoBehaviour
             if (enemyToast)
             {
                 message = "Watch out for bandits!";
+                if (watch_out != null)
+                    watch_out.Play();
             }
             if (enemyDistractedToast)
             {
@@ -69,6 +76,12 @@ public class ShowToast : MonoBehaviour
             if (enemyDazedToast)
             {
                 message = "Throw and hit an enemy with a package to daze them";
+            }
+            if (bossToast)
+            {
+                message = "Defeat Stuffalo Steal by sending some TNT his way!";
+                if (watch_out != null)
+                    stuffalo_steal.Play();
             }
             toastTriggered2 = true;
             EventBus.Publish<ToastRequestEvent>(new ToastRequestEvent(message));
