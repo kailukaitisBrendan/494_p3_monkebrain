@@ -49,6 +49,10 @@ public class PlayerMove : MonoBehaviour
     public float jumpPower = 0.3f;
     public float jumpAppliedTime = 0.2f;
 
+    float groundcheckradius = 0.5f;
+    Quaternion lookRotation;
+    float targetAngle;
+
     private BoxCollider _opc;
 
     private void Awake()
@@ -89,32 +93,39 @@ public class PlayerMove : MonoBehaviour
         // Get the movement inputs.
         direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
 
-        if (direction.magnitude >= 0.1f)
+        if (direction.magnitude >= 0.1f && _isGrounded)
         {
             // play walking sound
             if (_isGrounded && !_isPlayingWalkingSound) {
                  _isPlayingWalkingSound = true;
             }
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg +
+            targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg +
                                 _mainCamera.transform.eulerAngles.y;
             if (!_isThrowing)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, targetAngle, 0f),
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(lookRotation.eulerAngles.x, targetAngle, lookRotation.eulerAngles.z),
                     Time.deltaTime * rotationSpeed);
             }
-            direction = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-        }
-        else
-        {
+            direction = Quaternion.Euler(lookRotation.eulerAngles.x, targetAngle, lookRotation.eulerAngles.z) * Vector3.forward;
+        } else if (direction.magnitude >= 0.1f) {
+            // play walking sound
+            if (_isGrounded && !_isPlayingWalkingSound) {
+                 _isPlayingWalkingSound = true;
+            }
+            targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg +
+                                _mainCamera.transform.eulerAngles.y;
+            direction = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+        } else {
             _isPlayingWalkingSound = false;
         }
 
         if (_isGrounded) {
-            velocity = Vector3.zero;
+            if (transform.rotation.eulerAngles.x < 1f && transform.rotation.eulerAngles.z < 1f)
+                velocity = Vector3.zero;
+            AlignWithGround();
         }
         // JUMPING
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
-        {
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded) {
             time_jump = Time.time;
             velocity.y = 0.11f;
             _isGrounded = false;
@@ -134,7 +145,7 @@ public class PlayerMove : MonoBehaviour
             
             // Rotate the player to match the camera yaw
             float yawCamera = _mainCamera.transform.rotation.eulerAngles.y;
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, yawCamera, 0f), rotationSpeed * Time.deltaTime);
         }
         if (_jumped && _isGrounded)
         {
@@ -156,10 +167,12 @@ public class PlayerMove : MonoBehaviour
             // jump mechanic
             if (Time.time - time_jump < jumpAppliedTime && velocity.y == 0.11f)
                 velocity.y += 0.5f * jumpPower * Time.deltaTime * Time.deltaTime;
-            velocity.y += 0.5f * gravity * Time.deltaTime * Time.deltaTime;
             _isPlayingWalkingSound = false;
-            controller.Move(velocity);
+            // lerp to zero rotation
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, targetAngle, 0), Time.deltaTime * rotationSpeed);
         }
+        velocity.y += 0.5f * gravity * Time.deltaTime * Time.deltaTime;
+        controller.Move(velocity);
     }
 
 
@@ -171,10 +184,7 @@ public class PlayerMove : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return (Physics.CheckSphere(new Vector3(groundCheck.position.x - 0.2f,groundCheck.position.y,groundCheck.position.z), groundDistance, groundMask) 
-        || Physics.CheckSphere(new Vector3(groundCheck.position.x + 0.2f,groundCheck.position.y,groundCheck.position.z), groundDistance, groundMask)
-        || Physics.CheckSphere(new Vector3(groundCheck.position.x,groundCheck.position.y,groundCheck.position.z - 0.2f), groundDistance, groundMask)
-        || Physics.CheckSphere(new Vector3(groundCheck.position.x,groundCheck.position.y,groundCheck.position.z + 0.2f), groundDistance, groundMask));
+        return (Physics.CheckBox(groundCheck.transform.position, new Vector3(groundcheckradius,groundDistance,groundcheckradius), Quaternion.identity, groundMask));
     }
 
     private void AlignWithGround()
@@ -182,21 +192,21 @@ public class PlayerMove : MonoBehaviour
         // This function tries to align the player's rotation with the angle of the ground if they are on a slope.
         RaycastHit hitInfo;
         Debug.DrawRay(groundCheck.position, Vector3.down * 2f, Color.cyan);
-        if (Physics.Raycast( groundCheck.position, Vector3.down, out hitInfo, 1f, groundMask))
+        if (Physics.Raycast( groundCheck.position, Vector3.down, out hitInfo, 0.5f, groundMask))
         {
             // We hit the ground, calculate the angle of the player and our hit's normal.
             float angle = Vector3.Angle(hitInfo.normal, Vector3.up);
 
-            if (angle < 30)
+            if (angle < 80f || angle > 280f)
             {
                 Vector3 slopeForward = Vector3.Cross(transform.right, hitInfo.normal);
-                Quaternion lookRotation = Quaternion.LookRotation(slopeForward);
+                lookRotation = Quaternion.LookRotation(slopeForward);
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
-                _rb.freezeRotation = true;
+                //_rb.freezeRotation = true;
             }
             else
             {
-                _rb.freezeRotation = false;
+                //_rb.freezeRotation = false;
             }
         }
     }

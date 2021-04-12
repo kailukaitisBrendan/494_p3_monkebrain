@@ -7,19 +7,23 @@ public class spawnTumbleweed : MonoBehaviour
     float time_spawn;
     float time_since;
     public GameObject tumbleweed;
+    public float y_coord = 0.5f;
+    public float x_radius = 30f;
+    public float z_radius = 30f;
     GameObject inst;
     void Start() {
+        Time.timeScale = 1.0f;
         time_spawn = Time.time;
-        time_since = Time.time + 0.5f;
+        time_since = 0.2f;
     }
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         // at random intervals, spawn a new tumbleweed
         if (Time.time - time_spawn > time_since) {
-            time_since = Time.time + Random.Range(1.0f,2.0f);
-            inst = Instantiate(tumbleweed, new Vector3 (transform.position.x - 30f,0.5f,transform.position.z + 30f), Quaternion.identity);
+            time_since = Random.Range(0.8f,3.0f);
+            time_spawn = Time.time;
+            inst = Instantiate(tumbleweed, new Vector3 (transform.position.x - x_radius,y_coord,transform.position.z + z_radius), Quaternion.identity);
             inst.GetComponent<tumbleweedMovement>().SetCam(gameObject);
-            inst = Instantiate(tumbleweed, new Vector3 (transform.position.x - 30f,0.5f,transform.position.z - 30f), Quaternion.identity);
+            inst = Instantiate(tumbleweed, new Vector3 (transform.position.x - x_radius,y_coord,transform.position.z - z_radius), Quaternion.identity);
             inst.GetComponent<tumbleweedMovement>().SetCam(gameObject);
         }
     }
