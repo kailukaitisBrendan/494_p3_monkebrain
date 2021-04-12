@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossTntReactor : MonoBehaviour
 {
@@ -8,10 +9,19 @@ public class BossTntReactor : MonoBehaviour
 
     public int health = 4;
 
+    private int max_health;
+
+    public Text UI;
+
     // Start is called before the first frame update
     void Start()
     {
         hitObjectSubscription = EventBus.Subscribe<HitObjectEvent>(_OnHitObject);
+        max_health = health;
+
+        if (UI) {
+            UI.text = "Stuffalo Steal:  " + health + "/" + max_health;
+        }
     }
 
     void _OnHitObject(HitObjectEvent e) {
@@ -26,6 +36,9 @@ public class BossTntReactor : MonoBehaviour
             e.sourceObject.GetComponent<Respawnable>().enabled = false;
 
         --health;
+        if (UI) {
+            UI.text = "WANTED\nStuffalo Steal:  " + health + "/" + max_health;
+        }
         if (health == 0) {
             EventBus.Publish<LevelClearEvent>(new LevelClearEvent());
             Destroy(gameObject);

@@ -8,7 +8,7 @@ public class SetDefaultPlayerPrefs : MonoBehaviour
     {
         if (PlayerPrefs.GetFloat("sens") == 0f && PlayerPrefs.GetFloat("volume") == 0f) {
             PlayerPrefs.SetFloat("sens", 0.3f);
-            PlayerPrefs.SetFloat("volume", 1.0f);
+            PlayerPrefs.SetFloat("volume", 0.3f);
         }
     }
 
