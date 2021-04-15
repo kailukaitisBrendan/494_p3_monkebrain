@@ -25,3 +25,5 @@ Brandon Fiechter - Tumbleweed Town
 
 Unity Asset Store:
 	Low Poly Water - Ebru Dogan
+	Flexible Cel Shader - Zachary Petersen
+	FRE Skybox Extended Shader - Boxophobic
