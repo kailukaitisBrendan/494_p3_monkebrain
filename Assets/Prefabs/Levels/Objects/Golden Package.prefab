@@ -118,6 +118,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5321102094047497900, guid: 518da76f516b7fa4598a500bbd46aa34,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5425936902554118479, guid: 518da76f516b7fa4598a500bbd46aa34,
         type: 3}
       propertyPath: m_IsActive
