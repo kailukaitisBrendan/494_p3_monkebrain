@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 7.282023, z: -16.939602}
+  m_FollowOffset: {x: 0, y: 0.4001943, z: -12.0002575}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -6.2735047
+    Value: -65.17099
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 7.282023, z: -16.939602}
+  m_FollowOffset: {x: 0, y: 0.4001943, z: -12.0002575}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -204,7 +204,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -6.2735047
+    Value: -65.17099
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 7.282023, z: -16.939602}
+  m_FollowOffset: {x: 0, y: 0.4001943, z: -12.0002575}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -687,7 +687,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -6.2735047
+    Value: -65.17099
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -1046,7 +1046,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: 0.459724
+    Value: 0.000024146184
     m_SpeedMode: 0
     m_MaxSpeed: 4
     m_AccelTime: 0.1
@@ -1070,7 +1070,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: -6.2735047
+    Value: -65.17099
     m_SpeedMode: 0
     m_MaxSpeed: 450
     m_AccelTime: 0.1
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 392503
   m_IgnoreTag: Player
   m_TransparentLayers:
     serializedVersion: 2

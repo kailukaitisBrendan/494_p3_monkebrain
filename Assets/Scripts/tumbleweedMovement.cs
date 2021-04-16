@@ -34,22 +34,25 @@ public class tumbleweedMovement : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if (Time.time - time_spawn > time_run) {
+        if (Time.time - time_spawn > time_run && !poof.IsAlive()) {
+
+            if (dead) {
+                Destroy(gameObject);
+            }
+
             dead = true;
             CreateDust();
             skin.SetActive(false);
             particlesystem1.SetActive(false);
-            Destroy(gameObject,1f);
         }
     }
 
     void OnTriggerEnter(Collider coll) {
-        if (coll.gameObject.layer != 12) {
+        if (coll.gameObject.layer != 12 && !poof.IsAlive()) {
             dead = true;
             CreateDust();
             skin.SetActive(false);
             particlesystem1.SetActive(false);
-            Destroy(gameObject,1f);
         }
     }
 

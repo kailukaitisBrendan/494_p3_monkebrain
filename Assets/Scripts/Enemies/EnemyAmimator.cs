@@ -47,7 +47,7 @@ public class EnemyAmimator : MonoBehaviour
     }
     // Update is called once per frame
 
-    void Update()
+    void FixedUpdate()
     {
         if (incomingEnemyId != _enemyID) return;
         
