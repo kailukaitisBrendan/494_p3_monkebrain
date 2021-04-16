@@ -75,7 +75,7 @@ public class EnemyMovementController : MonoBehaviour
         PublishAnim();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isIdle)
         {
@@ -112,7 +112,9 @@ public class EnemyMovementController : MonoBehaviour
         // Move the enemy to the target destination. 
         if (_currentTarget != null)
         {
-            _agent.SetDestination(_currentTarget.transform.position);
+            Vector3 destination = _currentTarget.transform.position;
+            destination.y = transform.position.y;
+            _agent.SetDestination(destination);
         }
     }
 

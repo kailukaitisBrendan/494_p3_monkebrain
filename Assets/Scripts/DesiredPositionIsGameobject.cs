@@ -21,7 +21,7 @@ public class DesiredPositionIsGameobject : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         startHasRun = true;
-        StartCoroutine(PathfindingLoop());
+        // StartCoroutine(PathfindingLoop());
     }
 
     public IEnumerator PathfindingLoop()
@@ -31,7 +31,9 @@ public class DesiredPositionIsGameobject : MonoBehaviour
             GameObject target_go = target;
             if (target_go != null)
             {
-                agent.SetDestination(target_go.transform.position);
+                Vector3 destination = target_go.transform.position;
+                destination.y = transform.position.y;
+                agent.SetDestination(destination);
             }
             //yield return new WaitForSeconds(pathfinding_refresh_interval_sec);
             yield return null;

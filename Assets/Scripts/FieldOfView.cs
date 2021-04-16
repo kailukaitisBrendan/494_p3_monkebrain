@@ -24,7 +24,7 @@ public class FieldOfView : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         bool spottedValueChanged = playerSpotted;
         FindVisibleTargets();
