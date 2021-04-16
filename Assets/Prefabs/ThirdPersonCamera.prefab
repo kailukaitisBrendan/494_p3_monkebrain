@@ -356,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589409570266211537}
   m_LocalRotation: {x: 0.20036533, y: 0.000000015687634, z: -0.0000000032083187, w: 0.97972125}
-  m_LocalPosition: {x: -24.909706, y: 53.778656, z: -0.47390303}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 589409570240432722}
@@ -567,7 +567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589409570343530023}
   m_LocalRotation: {x: 0.13150227, y: 0.041620646, z: -0.00551208, w: 0.9904264}
-  m_LocalPosition: {x: -23.409706, y: 46.16366, z: 14.526097}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 589409571226219058}
@@ -932,9 +932,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 589409571675197833}
+  - component: {fileID: 6051937595336110788}
   - component: {fileID: 589409571675197839}
   - component: {fileID: 589409571675197832}
-  - component: {fileID: 6051937595336110788}
   m_Layer: 0
   m_Name: FreeLookCamera
   m_TagString: CineMachineController
@@ -950,7 +950,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589409571675197834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.909706, y: 53.778656, z: -0.47390303}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 589409569901049157}
@@ -959,6 +959,57 @@ Transform:
   m_Father: {fileID: 589409570240432722}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6051937595336110788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589409571675197834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca35a5ccd93d0874da1b97e17b81f66f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalSensitivity: 1
+  verticalSensitivity: 1
+  player: {fileID: 0}
+  xAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 0
+    m_AccelTime: 0
+    m_DecelTime: 0
+    m_InputAxisName: 
+    m_InputAxisValue: 0
+    m_InvertInput: 0
+    m_MinValue: 0
+    m_MaxValue: 0
+    m_Wrap: 0
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 0
+      m_RecenteringTime: 0
+      m_LegacyHeadingDefinition: 0
+      m_LegacyVelocityFilterStrength: 0
+  yAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 0
+    m_AccelTime: 0
+    m_DecelTime: 0
+    m_InputAxisName: 
+    m_InputAxisValue: 0
+    m_InvertInput: 0
+    m_MinValue: 0
+    m_MaxValue: 0
+    m_Wrap: 0
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 0
+      m_RecenteringTime: 0
+      m_LegacyHeadingDefinition: 0
+      m_LegacyVelocityFilterStrength: 0
 --- !u!114 &589409571675197839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1090,20 +1141,6 @@ MonoBehaviour:
   m_Damping: 1
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
---- !u!114 &6051937595336110788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589409571675197834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca35a5ccd93d0874da1b97e17b81f66f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSensitivity: 1
-  verticalSensitivity: 1
 --- !u!1 &589409571766095749
 GameObject:
   m_ObjectHideFlags: 0

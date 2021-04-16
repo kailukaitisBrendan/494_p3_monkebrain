@@ -44,7 +44,7 @@ public class MusicalWorlds : MonoBehaviour
                 b.SetActive(false);
             }
             // turn up a
-            if (a.GetComponent<AudioSource>().volume < 0.8f)
+            if (a.GetComponent<AudioSource>().volume < 0.5f)
                 a.GetComponent<AudioSource>().volume += Time.deltaTime * 0.5f;
         }
         if (wagon.transform.position.x < 75f && wagon.transform.position.x > 0f) {
@@ -66,7 +66,7 @@ public class MusicalWorlds : MonoBehaviour
             if (c.GetComponent<AudioSource>().volume < 0.1f) {
                 c.SetActive(false);
             }
-            if (b.GetComponent<AudioSource>().volume < 0.8f)
+            if (b.GetComponent<AudioSource>().volume < 0.5f)
                 b.GetComponent<AudioSource>().volume += Time.deltaTime * 0.5f;
         }
         if (wagon.transform.position.x < 0f && wagon.transform.position.x > -40f) {
@@ -88,7 +88,7 @@ public class MusicalWorlds : MonoBehaviour
             if (b.GetComponent<AudioSource>().volume < 0.1f) {
                 b.SetActive(false);
             }
-            if (c.GetComponent<AudioSource>().volume < 0.8f)
+            if (c.GetComponent<AudioSource>().volume < 0.5f)
                 c.GetComponent<AudioSource>().volume += Time.deltaTime * 0.5f;
         }
         if (wagon.transform.position.x <= -40f) {
@@ -104,7 +104,7 @@ public class MusicalWorlds : MonoBehaviour
                 c.SetActive(false);
             }
             d.SetActive(true);
-            if (d.GetComponent<AudioSource>().volume < 0.8f)
+            if (d.GetComponent<AudioSource>().volume < 0.5f)
                     d.GetComponent<AudioSource>().volume += Time.deltaTime * 0.5f;
         }
     }
