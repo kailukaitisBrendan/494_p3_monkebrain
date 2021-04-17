@@ -523,7 +523,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.677
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -645,8 +645,8 @@ MonoBehaviour:
     m_Bits: 5633
   groundCheck: {fileID: 8218031657446126718}
   groundDistance: 0.1
-  hitGround: {fileID: 8300000, guid: da4ec7cfba8664543ae58627e33ed649, type: 3}
-  _isGrounded: 0
+  hitGround: {fileID: 8300000, guid: b75b07dc9f0726f4a843104ec1bda508, type: 3}
+  _isGrounded: 1
   followTransform: {fileID: 1163144218924466044}
   xAxis:
     Value: 0
@@ -992,6 +992,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8497152196208681337}
     m_Modifications:
+    - target: {fileID: 2627442208046413682, guid: 8eab0c7082d2b1440ad854e5ba69cae0,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7473887262842484098, guid: 8eab0c7082d2b1440ad854e5ba69cae0,
         type: 3}
       propertyPath: m_Name
@@ -1157,6 +1162,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 1.152317
+      objectReference: {fileID: 0}
+    - target: {fileID: -7187236598618033908, guid: 7102166d418f822479da2880ed7d3c12,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7187236598618033908, guid: 7102166d418f822479da2880ed7d3c12,
+        type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7187236598618033908, guid: 7102166d418f822479da2880ed7d3c12,
         type: 3}
@@ -1567,7 +1582,7 @@ PrefabInstance:
     - target: {fileID: 4883148151418371072, guid: 2f8ab846a5353c44492b65e6d6ed77d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4883148151418371072, guid: 2f8ab846a5353c44492b65e6d6ed77d1,
         type: 3}

@@ -60,8 +60,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -382652638819485698, guid: 1e0bf7bd91980f645a590048b2d550ab, type: 3}
-  - {fileID: 2926557707537190794, guid: 1e0bf7bd91980f645a590048b2d550ab, type: 3}
+  - {fileID: 2100000, guid: 6a58801236152714499e95bcefffccc3, type: 2}
+  - {fileID: 2100000, guid: 27d828afd0ef999469f5a82b9db7ac61, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1609258911599223165}
   m_Layer: 0
-  m_Name: glowmailbox
+  m_Name: NewMailBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

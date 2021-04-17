@@ -29,6 +29,7 @@ public class ExplodeOnCollisionEnter : MonoBehaviour
         rb.velocity = Vector3.zero;
 
         hasBeenPlaced = true;
+        thump.Play();
         dust.Play();
     }
 
@@ -49,12 +50,4 @@ public class ExplodeOnCollisionEnter : MonoBehaviour
         }
     }
 
-    void CreateDust() {
-        mesh.SetActive(false);
-        dust.Play();
-    }
-    void StopDust() {
-        dust.Stop();
-        Destroy(gameObject);
-    }
 }

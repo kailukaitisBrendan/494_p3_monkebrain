@@ -151,7 +151,7 @@ public class PlayerMove : MonoBehaviour
         {
             //_sound.clip = hitGround;
             _sound.loop = false;
-            _sound.PlayOneShot(hitGround);
+            _sound.PlayOneShot(hitGround, 1.5f);
             _jumped = false;
             StartCoroutine(WaitForFallSoundToFinish());
         }
