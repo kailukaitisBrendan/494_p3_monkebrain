@@ -14198,6 +14198,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wagon
       objectReference: {fileID: 0}
+    - target: {fileID: 900345307334259651, guid: cb29f600ac4de4e49bf20a1925040ff9,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 900345307334259651, guid: cb29f600ac4de4e49bf20a1925040ff9,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.16862747
+      objectReference: {fileID: 0}
+    - target: {fileID: 900345307334259651, guid: cb29f600ac4de4e49bf20a1925040ff9,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.2083405
+      objectReference: {fileID: 0}
+    - target: {fileID: 900345307334259651, guid: cb29f600ac4de4e49bf20a1925040ff9,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.35686275
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb29f600ac4de4e49bf20a1925040ff9, type: 3}
 --- !u!1 &2040886614 stripped
