@@ -431,7 +431,7 @@ public class ObjectInteraction : MonoBehaviour
 
     private bool CanDrop()
     {
-        LayerMask mask = LayerMask.GetMask("Player") + LayerMask.GetMask("ObjectPickedUp");
+        LayerMask mask = LayerMask.GetMask("Player") + LayerMask.GetMask("ObjectPickedUp") + LayerMask.GetMask("Level Clear Object");
 
         if (Physics.OverlapBox(itemSlot.position, halfExtents, transform.rotation, ~mask).Length > 0)
         {

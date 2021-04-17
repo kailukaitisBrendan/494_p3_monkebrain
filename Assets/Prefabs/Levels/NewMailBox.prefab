@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3377636625050554457}
   - component: {fileID: 1287894293497013045}
   - component: {fileID: 1287894293497013042}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1609258911599223165}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: NewMailBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 3346881604656035969}
   - component: {fileID: 6137079407649100301}
   - component: {fileID: 7889486295488487668}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: US.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 4093540995686064805}
   - component: {fileID: 5030047499225951670}
   - component: {fileID: 3418120515313281096}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: US
   m_TagString: Untagged
   m_Icon: {fileID: 0}
