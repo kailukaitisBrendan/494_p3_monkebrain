@@ -155,6 +155,7 @@ MonoBehaviour:
     glitch in water  I think we should be our own company and be competing against
     the Fells Wargo peeps  '
   letterDelay: 0.05
+  cancelTyping: 0
 --- !u!114 &4181726566813115398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +187,7 @@ MonoBehaviour:
     the canyon. They\u2019re a bunch of hooligans, so i\u2019d suggest ya watch out
     for them unless yer lookin\u2019 to drop. "
   - 'Now quit piddlin around and get to work! '
+  letterDelay: 0.1
 --- !u!1 &4181726566960094566
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98bdf1b6018fd4e8db2b478657c3e155, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c377d88a5caa4a8c95e8e8ca13b6c05, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

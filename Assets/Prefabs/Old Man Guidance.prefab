@@ -138,7 +138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98bdf1b6018fd4e8db2b478657c3e155, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c377d88a5caa4a8c95e8e8ca13b6c05, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -424,4 +424,7 @@ MonoBehaviour:
   enemyToast: 0
   enemyDazedToast: 0
   enemyDistractedToast: 0
+  bossToast: 0
   doToasts: 0
+  watch_out: {fileID: 0}
+  stuffalo_steal: {fileID: 0}
