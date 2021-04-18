@@ -2831,6 +2831,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 922557842, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
+      propertyPath: s
+      value: HubMine
+      objectReference: {fileID: 0}
+    - target: {fileID: 922557842, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
       propertyPath: winScreen
       value: 
       objectReference: {fileID: 1060358081}
@@ -2910,17 +2914,17 @@ PrefabInstance:
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -78.568985
+      value: -103.47869
       objectReference: {fileID: 0}
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.4198036
+      value: 46.358852
       objectReference: {fileID: 0}
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.039047
+      value: -5.51295
       objectReference: {fileID: 0}
     - target: {fileID: 589409569901049157, guid: c582eec15cf65f24bac2a1d9c9c02545,
         type: 3}
@@ -4022,6 +4026,11 @@ PrefabInstance:
         type: 3}
       propertyPath: s
       value: Level5
+      objectReference: {fileID: 0}
+    - target: {fileID: 427497097596289086, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+        type: 3}
+      propertyPath: s
+      value: HubMine
       objectReference: {fileID: 0}
     - target: {fileID: 5569766100451480561, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
         type: 3}
