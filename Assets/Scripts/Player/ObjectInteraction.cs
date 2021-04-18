@@ -534,19 +534,13 @@ public class ObjectInteraction : MonoBehaviour
 
     public GameObject GetItem()
     {
-        // Raycast out from player to see if item is in front of the player.
-        // Create mask so we only collide with pickup-able objects.
-        LayerMask mask = LayerMask.GetMask("Grabbable Object") + LayerMask.GetMask("Golden Package");
-        Vector3 pos = transform.position;
-        pos.y = itemSlot.position.y - pickupHeight;
-        RaycastHit hit;
-        if (Physics.BoxCast(pos, pickupBox, Vector3.forward * pickupBox.z, out hit, Quaternion.identity, pickupDistance / 2,
-                mask)
-            || Physics.Raycast(pos, transform.TransformDirection(Vector3.forward), out hit, pickupDistance, mask))
-        {
-            Debug.DrawRay(pos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-        }
-        return hit.transform == null ? null : hit.transform.gameObject;
+        Vector3 PickupCube = new Vector3(1.5f, 1.5f, 1.5f);
+        LayerMask mask = LayerMask.GetMask("Golden Package") + LayerMask.GetMask("Grabbable Object");
+        if (Physics.OverlapBox(itemSlot.position, PickupCube, transform.rotation, mask).Length > 0)
+            return Physics.OverlapBox(itemSlot.position, PickupCube, transform.rotation, mask)[0].gameObject;
+        else
+            return null;
+        
     }
 
     public GameObject GetDolly()
