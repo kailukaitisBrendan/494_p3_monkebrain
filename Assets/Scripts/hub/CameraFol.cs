@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CameraFol : MonoBehaviour
@@ -40,6 +41,7 @@ public class CameraFol : MonoBehaviour
     Renderer rend;
     RaycastHit[] hits = new RaycastHit[0];
     RaycastHit[] old_hits = new RaycastHit[0];
+    Hashtable shaders = new Hashtable();
 
     float t = 0.0f;
     void Update()
@@ -54,6 +56,12 @@ public class CameraFol : MonoBehaviour
             rend = hit.transform.GetComponent<Renderer>();
             if (rend)
             {
+                // Add list of shaders to shader hash table
+                if (!shaders.ContainsKey(rend)) {
+                    Shader[] rend_shaders = rend.materials.Select(material => material.shader).ToArray();
+                    shaders.Add(rend, rend_shaders);
+                }
+
                 // Change the material of all hit colliders
                 // to use a transparent shader.
                 for (int j = 0; j < rend.materials.Length; j++) {
@@ -77,11 +85,14 @@ public class CameraFol : MonoBehaviour
                     if (hit.transform == hits[j].transform)
                         matched = true;
                 }
+
+                Shader[] rend_shaders = (Shader[])shaders[rend];
+
                 // Change the material of all hit colliders
                 // to use a transparent shader.
                 if (matched == false) {
                     for (int j = 0; j < rend.materials.Length; j++) {
-                        rend.materials[j].shader = Shader.Find("Standard");
+                        rend.materials[j].shader = rend_shaders[j];
                         Color tempColor = rend.materials[j].color;
                         tempColor.a = 1f;
                         rend.materials[j].color = tempColor;
