@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43749025, g: 0.48531145, b: 0.5655863, a: 1}
+  m_IndirectSpecularColor: {r: 0.4412995, g: 0.49010247, b: 0.5701529, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8153,13 +8153,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335125287}
-  m_LocalRotation: {x: 0.45451945, y: -0.54167527, z: 0.45451945, w: 0.54167527}
+  m_LocalRotation: {x: 0.44013008, y: -0.48374942, z: 0.30818236, w: 0.6908659}
   m_LocalPosition: {x: -21.85, y: 37.19, z: -27.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 80, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: -70, z: 0}
 --- !u!1001 &1337722238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9395,6 +9395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 2-0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392394509959086767, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5392394510486990888, guid: 2fbcf75fd5c84ec4782a2f6d2ea469e1,
         type: 3}
@@ -15204,6 +15209,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8d0a461d38645c44dbb9ad27b52d9578, type: 2}
+    - target: {fileID: 3531449537251997505, guid: c7d790d9dfc959647a7d426aacfa0bc4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4200145448933993979, guid: c7d790d9dfc959647a7d426aacfa0bc4,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -15219,7 +15229,13 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6858612888584181576, guid: c7d790d9dfc959647a7d426aacfa0bc4,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6858612888584181576, guid: c7d790d9dfc959647a7d426aacfa0bc4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c7d790d9dfc959647a7d426aacfa0bc4, type: 3}
 --- !u!1001 &6850975810048296945
 PrefabInstance:
