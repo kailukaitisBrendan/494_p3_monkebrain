@@ -124,15 +124,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6652725513331149018, guid: d33074ebc224e994ab851f2b6ac06dc9,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dac63f60cfc347343a2b9347b55f5e46, type: 2}
+    - target: {fileID: -6652725513331149018, guid: d33074ebc224e994ab851f2b6ac06dc9,
+        type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: -4689008602499963454, guid: d33074ebc224e994ab851f2b6ac06dc9,
+      objectReference: {fileID: 2100000, guid: 9dd7b666fc466a34eb8c71d0cad09baa, type: 2}
+    - target: {fileID: -1439730007547781893, guid: d33074ebc224e994ab851f2b6ac06dc9,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dac63f60cfc347343a2b9347b55f5e46, type: 2}
     - target: {fileID: 919132149155446097, guid: d33074ebc224e994ab851f2b6ac06dc9,
         type: 3}
       propertyPath: m_Name
       value: wagon
       objectReference: {fileID: 0}
+    - target: {fileID: 1129496810705857465, guid: d33074ebc224e994ab851f2b6ac06dc9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dac63f60cfc347343a2b9347b55f5e46, type: 2}
+    - target: {fileID: 7071182760956848314, guid: d33074ebc224e994ab851f2b6ac06dc9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dac63f60cfc347343a2b9347b55f5e46, type: 2}
+    - target: {fileID: 7202271454713460447, guid: d33074ebc224e994ab851f2b6ac06dc9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dac63f60cfc347343a2b9347b55f5e46, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d33074ebc224e994ab851f2b6ac06dc9, type: 3}
 --- !u!4 &4124554426277004936 stripped
