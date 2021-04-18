@@ -474,6 +474,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7601226680800833775, guid: b62997bee0c21164ab2e91b9eb134669,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2b6cbeacf68c784dbc86e19b3c3a7e7, type: 2}
     - target: {fileID: -5428232151515439880, guid: b62997bee0c21164ab2e91b9eb134669,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -518,7 +523,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 715cdf5166bcd0349b6563673458605b, type: 2}
+      objectReference: {fileID: 2100000, guid: e2b6cbeacf68c784dbc86e19b3c3a7e7, type: 2}
     - target: {fileID: 505769685411576237, guid: b62997bee0c21164ab2e91b9eb134669,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -554,6 +559,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 715cdf5166bcd0349b6563673458605b, type: 2}
+    - target: {fileID: 6829333093618665122, guid: b62997bee0c21164ab2e91b9eb134669,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf58cc4c3ab17284399c007505755fc5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62997bee0c21164ab2e91b9eb134669, type: 3}
 --- !u!1001 &223798951
@@ -1011,6 +1021,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c6e434d6e3d10a64e981b8c06eeec3fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0be8ff83d42c2644fbd6d6c4615f1ae5, type: 2}
     - target: {fileID: 919132149155446097, guid: c6e434d6e3d10a64e981b8c06eeec3fb,
         type: 3}
       propertyPath: m_Name
