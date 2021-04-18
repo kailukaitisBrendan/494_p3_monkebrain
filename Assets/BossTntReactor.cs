@@ -7,21 +7,20 @@ public class BossTntReactor : MonoBehaviour
 {
     Subscription<HitObjectEvent> hitObjectSubscription;
 
-    public int health = 4;
+    public int health = 5;
 
     private int max_health;
 
-    public Text UI;
+    public Image UI;
+
+    private float max_offset_max_x;
+    private float offset_min_x;
 
     // Start is called before the first frame update
     void Start()
     {
         hitObjectSubscription = EventBus.Subscribe<HitObjectEvent>(_OnHitObject);
         max_health = health;
-
-        if (UI) {
-            UI.text = "Stuffalo Steal:  " + health + "/" + max_health;
-        }
     }
 
     void _OnHitObject(HitObjectEvent e) {
@@ -38,7 +37,7 @@ public class BossTntReactor : MonoBehaviour
 
         --health;
         if (UI) {
-            UI.text = "Stuffalo Steal:  " + health + "/" + max_health;
+            UI.fillAmount = (float)(health) / (float)(max_health);
         }
         if (health == 0) {
             EventBus.Publish<LevelClearEvent>(new LevelClearEvent());

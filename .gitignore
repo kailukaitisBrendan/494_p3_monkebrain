@@ -54,4 +54,8 @@ thumbs.db
 # Git files
 .gitattributes
 
+# icloud files
+.icloud
+
+
 *Ocean50x50W750H750.asset*
