@@ -1596,6 +1596,11 @@ PrefabInstance:
       propertyPath: enemyId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4433059029040789886, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: isWalking
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8398375989006282952, guid: 0353ac26689944e2e9889a47baba65a9,
         type: 3}
       propertyPath: m_SpotAngle
