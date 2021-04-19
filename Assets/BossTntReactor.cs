@@ -35,6 +35,11 @@ public class BossTntReactor : MonoBehaviour
         if (e.sourceObject.GetComponent<Respawnable>())
             e.sourceObject.GetComponent<Respawnable>().enabled = false;
 
+        // Increase Throw Rate
+        if (GetComponent<ThrowPeriodically>()) {
+            GetComponent<ThrowPeriodically>().OnDamage();
+        }
+
         --health;
         if (UI) {
             UI.fillAmount = (float)(health) / (float)(max_health);

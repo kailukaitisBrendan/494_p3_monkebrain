@@ -56,6 +56,7 @@ thumbs.db
 
 # icloud files
 .icloud
+*.icloud
 
 
 *Ocean50x50W750H750.asset*
