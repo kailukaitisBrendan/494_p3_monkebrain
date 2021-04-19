@@ -27,7 +27,7 @@ public class ThrowPeriodically : MonoBehaviour
     private GameObject projectileInstance;
 
 
-    public float aimDuration = 5f;
+    private float aimDuration = 6f;
     private float time = 0;
 
     private GameObject idle;
@@ -70,6 +70,10 @@ public class ThrowPeriodically : MonoBehaviour
             ThrowItem();
             starting = false;
         }
+    }
+
+    public void OnDamage() {
+        aimDuration -= 0.5f;
     }
 
 
