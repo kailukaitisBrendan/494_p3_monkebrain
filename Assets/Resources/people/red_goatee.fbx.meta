@@ -15,7 +15,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -23,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -68,12 +69,93 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
+  referencedClips:
+  - 0dd02a915e9589d41abcf9d83567331a
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: red_goatee(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cylinder.014
+      parentName: red_goatee(Clone)
+      position: {x: -0.75631666, y: 3.093417, z: 0}
+      rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+      scale: {x: 9.284618, y: 4.642309, z: 55.707718}
+    - name: Cone
+      parentName: red_goatee(Clone)
+      position: {x: -0.67219114, y: 2.7961617, z: -0.0002798083}
+      rotation: {x: -0.00000005338508, y: 0.7071068, z: -0.7071067, w: 0.000000053385072}
+      scale: {x: 10, y: 20, z: 10}
+    - name: Hat.001
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 4.022505, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 91.671715, y: 91.671715, z: 10.151126}
+    - name: Cylinder.050
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 2.6053934, z: 1.0684738}
+      rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+      scale: {x: 13.4671135, y: 13.4671135, z: 67.33557}
+    - name: Cylinder.051
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 2.605395, z: -1.0762858}
+      rotation: {x: 1, y: 0, z: -0, w: 0.0000000754979}
+      scale: {x: 13.4671135, y: 13.4671135, z: 67.33557}
+    - name: Cylinder.049
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 2.0266778, z: -0.003906}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 35.00122, y: 52.501835, z: 56.001957}
+    - name: Cylinder.052
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 0.7578339, z: 0.21609394}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 26.953264, y: 26.953264, z: 77.00935}
+    - name: Cylinder.053
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 0.7578339, z: -0.22390611}
+      rotation: {x: 0.000000030908623, y: 0.7071068, z: -0.7071067, w: -0.000000030908616}
+      scale: {x: -26.953264, y: -26.953264, z: -77.00935}
+    - name: Sphere.002
+      parentName: red_goatee(Clone)
+      position: {x: -0.84638417, y: 3.251157, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 11.048067, y: 13.888722, z: 12.623586}
+    - name: Eyes.007
+      parentName: red_goatee(Clone)
+      position: {x: -0.80897397, y: 3.3918943, z: 0.003722118}
+      rotation: {x: 0.009970319, y: 0.70703655, z: 0.70703644, w: -0.0099703185}
+      scale: {x: -100, y: -110.46217, z: -50.455296}
+    - name: Headd.002
+      parentName: red_goatee(Clone)
+      position: {x: 0.00000041723254, y: 3.5782242, z: -0.002849126}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 90, y: 90, z: 78.1192}
+    - name: Cylinder.055
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 2.6053934, z: 1.0684738}
+      rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+      scale: {x: 13.333776, y: 13.333776, z: 66.66888}
+    - name: Cylinder.056
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 2.605395, z: -1.0762858}
+      rotation: {x: 1, y: 0, z: -0, w: 0.0000000754979}
+      scale: {x: 13.333776, y: 13.333776, z: 66.66888}
+    - name: Cylinder.047
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 0.7578339, z: 0.21458477}
+      rotation: {x: 0.000000030908623, y: 0.7071068, z: -0.7071067, w: -0.000000030908616}
+      scale: {x: -26.6864, y: -26.6864, z: -76.2469}
+    - name: Cylinder.038
+      parentName: red_goatee(Clone)
+      position: {x: -0, y: 0.7578339, z: -0.22414726}
+      rotation: {x: 0.000000030908623, y: 0.7071068, z: -0.7071067, w: -0.000000030908616}
+      scale: {x: -26.6864, y: -26.6864, z: -76.2469}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -84,13 +166,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
