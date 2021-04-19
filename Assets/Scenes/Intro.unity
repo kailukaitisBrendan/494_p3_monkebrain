@@ -7718,6 +7718,12 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4181726566960094564, guid: 5b9b09702583f4ff8b526a0a268e0a79,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a442c205e7e2234599006448910ea0c,
+        type: 3}
     - target: {fileID: 4181726568138666642, guid: 5b9b09702583f4ff8b526a0a268e0a79,
         type: 3}
       propertyPath: m_Name
