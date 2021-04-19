@@ -13,9 +13,20 @@ public class tumbleweedMovement : MonoBehaviour
     float speed = 8f;
     float rot;
     public bool dead;
+    public bool baby_scene = false;
     void Start() {
         // generate random movement vector
         rot = Random.Range(-180f,180f);
+        print(rot);
+        if (baby_scene) {
+            float a = Mathf.Sqrt(Mathf.Pow(Mathf.Sin(rot) * speed,2) + Mathf.Pow(Mathf.Cos(rot) * speed,2) );
+            float b = Mathf.Sqrt(Mathf.Pow(Camera.main.transform.position.x - transform.position.x,2) + 
+                Mathf.Pow(Camera.main.transform.position.z - transform.position.z,2));
+            float c = Mathf.Sqrt(Mathf.Pow(Camera.main.transform.position.x - (transform.position.x + Mathf.Sin(rot) * speed),2) + 
+                Mathf.Pow(Camera.main.transform.position.z - (transform.position.z + Mathf.Cos(rot) * speed),2));
+            rot += Mathf.Acos((c*c - a*a - b*b) / (-2*a*b));
+        }
+        print(rot);
         transform.rotation = Quaternion.Euler(0, rot, 0);
         time_spawn = Time.time;
         dead = false;
