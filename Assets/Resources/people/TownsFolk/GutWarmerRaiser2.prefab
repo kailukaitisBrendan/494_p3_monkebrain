@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &5693684599028243075
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4883430489342467056}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0dd02a915e9589d41abcf9d83567331a, type: 3}
+  m_Controller: {fileID: 9100000, guid: 9665360310ab8384ba53f7b2f55ea23c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5693684598842656619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4883430490048229400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe11e0f56134dd49af23a8edd2ae98a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 8171014941674205037}
 --- !u!1 &5693684597296418455
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,40 +96,6 @@ Transform:
   m_Father: {fileID: 5693684597296418454}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5693684598842656619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4883430490048229400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fe11e0f56134dd49af23a8edd2ae98a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPos: {fileID: 5693684599122912831}
-  endPos: {fileID: 5693684598282128623}
-  moveSpeed: 0.51
---- !u!95 &5693684599028243075
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4883430489342467056}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0dd02a915e9589d41abcf9d83567331a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9665360310ab8384ba53f7b2f55ea23c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5693684599122912831
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,12 +161,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c6e434d6e3d10a64e981b8c06eeec3fb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: -0.1323
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c6e434d6e3d10a64e981b8c06eeec3fb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.145
+      value: -0.1582
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c6e434d6e3d10a64e981b8c06eeec3fb,
         type: 3}
@@ -317,6 +315,12 @@ GameObject:
 --- !u!4 &5228325693852582218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0dd02a915e9589d41abcf9d83567331a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5693684599068878497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8171014941674205037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4728426434207774260, guid: 0dd02a915e9589d41abcf9d83567331a,
     type: 3}
   m_PrefabInstance: {fileID: 5693684599068878497}
   m_PrefabAsset: {fileID: 0}
