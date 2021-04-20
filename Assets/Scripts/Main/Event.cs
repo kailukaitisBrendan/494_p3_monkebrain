@@ -151,3 +151,12 @@ public class ToastRequestEvent
         message = s;
     }
 }
+
+public class RespawnEvent
+{
+    public GameObject gameObject;
+    public RespawnEvent(GameObject _gameObject)
+    {
+        gameObject = _gameObject;
+    }
+}

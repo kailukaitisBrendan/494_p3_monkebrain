@@ -52,6 +52,8 @@ public class EnemyMovementController : MonoBehaviour
 
     private Subscription<HitObjectEvent> _hitObjectSubscription;
 
+    private Subscription<RespawnEvent> _respawnPackageSubscription;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,8 @@ public class EnemyMovementController : MonoBehaviour
         PublishAnim();
         _playerSpottedSubscription = EventBus.Subscribe<PlayerSpottedEvent>(OnPlayerSpotted);
         _hitObjectSubscription = EventBus.Subscribe<HitObjectEvent>(OnHitObject);
+        _respawnPackageSubscription = EventBus.Subscribe<RespawnEvent>(OnRespawnPackage);
+
 
         //desiredPositionIsGameobject = GetComponent<DesiredPositionIsGameobject>();
         fieldOfView = GetComponent<FieldOfView>();
@@ -101,11 +105,11 @@ public class EnemyMovementController : MonoBehaviour
             // if a dude is turning at a pathpoint decrease fov
             if (Vector3.Angle(transform.forward, transform.position - _currentTarget.transform.position) < angleTurn)
             {
-                fieldOfView.cur_field_radius = fieldOfView.field_radius/2;
+                fieldOfView.cur_view_range = fieldOfView.view_range / 2;
             }
             else
             {
-                fieldOfView.cur_field_radius = fieldOfView.field_radius;
+                fieldOfView.cur_view_range = fieldOfView.view_range;
             }
         }
 
@@ -192,6 +196,9 @@ public class EnemyMovementController : MonoBehaviour
             _agent.speed = chaseSpeed;
             fieldOfView.cur_view_range = 360f;
             emoteText.text = "!";
+            _isDistracted = false;
+            _atBox = false;
+            PublishAnim();
         }
         else
         {
@@ -243,6 +250,20 @@ public class EnemyMovementController : MonoBehaviour
         }
     }
 
+    private void OnRespawnPackage(RespawnEvent e)
+    {
+        if (_isDistracted && _currentTarget == e.gameObject)
+        {
+            _isDistracted = false;
+            emoteText.text = "";
+            _currentTarget = null;
+            _elapsedTime = 0f;
+            _atBox = false;
+            PublishAnim();
+            _agent.ResetPath();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && !_isDazed)
@@ -267,6 +288,8 @@ public class EnemyMovementController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         EventBus.Publish<LevelFailEvent>(new LevelFailEvent(false));
     }
+
+
     //
     // IEnumerator MoveEnemy()
     // {

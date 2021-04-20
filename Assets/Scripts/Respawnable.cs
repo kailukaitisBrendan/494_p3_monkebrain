@@ -16,6 +16,8 @@ public class Respawnable : MonoBehaviour
 
     public void Respawn()
     {
+        EventBus.Publish<RespawnEvent>(new RespawnEvent(this.gameObject));
+
         transform.position = initPosition;
         transform.rotation = initRotation;
 

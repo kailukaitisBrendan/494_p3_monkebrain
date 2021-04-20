@@ -1646,6 +1646,16 @@ PrefabInstance:
       propertyPath: view_range
       value: 130
       objectReference: {fileID: 0}
+    - target: {fileID: 8398375989089109120, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: field_radius
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398375989089109120, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: cur_field_radius
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
         type: 3}
       propertyPath: m_RootOrder
