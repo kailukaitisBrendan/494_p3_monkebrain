@@ -16,6 +16,22 @@ MonoBehaviour:
   VirtualCamera:
     exposedName: c1d63fa7b19794ac9b16c35f3f5f6dd9
     defaultValue: {fileID: 0}
+--- !u!114 &-5374390180809872412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 0
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 7a08e9911258a5c47a50b042e6454f3a, type: 2}
 --- !u!114 &-5176044381060785543
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,7 +131,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -133,7 +167,7 @@ MonoBehaviour:
     m_Start: 8.466666666666667
     m_ClipIn: 0
     m_Asset: {fileID: -9173636991258781912}
-    m_Duration: 5.483333333333333
+    m_Duration: 19.799999999999997
     m_TimeScale: 1
     m_ParentTrack: {fileID: -4815428260465829336}
     m_EaseInDuration: 0
@@ -199,7 +233,9 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CM vcam2
   m_Markers:
-    m_Objects: []
+    m_Objects:
+    - {fileID: -5374390180809872412}
+    - {fileID: 520944683365823405}
 --- !u!114 &-4592002371538628160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,3 +296,19 @@ MonoBehaviour:
     m_Framerate: 60
   m_DurationMode: 0
   m_MarkerTrack: {fileID: -4592002371538628160}
+--- !u!114 &520944683365823405
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 13.933333333333334
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 404a7a80476d2e945903a49b98cc581a, type: 2}
