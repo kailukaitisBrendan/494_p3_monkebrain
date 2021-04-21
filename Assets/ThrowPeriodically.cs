@@ -11,6 +11,9 @@ using System.Linq;
 
 public class ThrowPeriodically : MonoBehaviour
 {
+
+    Subscription<LevelClearEvent> levelClearSubscription;
+
     private GameObject player;
 
     public LineRenderer lineRenderer;
@@ -33,6 +36,9 @@ public class ThrowPeriodically : MonoBehaviour
     private GameObject idle;
     private GameObject throwing;
     private GameObject turning;
+    private GameObject dying;
+
+    private bool dead = false;
 
     private bool starting = true;
     // Start is called before the first frame update
@@ -42,6 +48,9 @@ public class ThrowPeriodically : MonoBehaviour
         idle = transform.Find("Idle").gameObject;
         throwing = transform.Find("Throwing").gameObject;
         turning = transform.Find("Turning").gameObject;
+        dying = transform.Find("Boss Dying").gameObject;
+
+        levelClearSubscription = EventBus.Subscribe<LevelClearEvent>(OnDeath);
 
         holoBox.transform.parent = null;
 
@@ -50,9 +59,23 @@ public class ThrowPeriodically : MonoBehaviour
         }
     }
 
+    void OnDeath(LevelClearEvent _event) {
+        throwing.SetActive(false);
+        idle.SetActive(false);
+        holoBox.SetActive(false);
+        turning.SetActive(false);
+
+        GetComponent<FacePlayer>().enabled = false;
+
+        dying.SetActive(true);
+        dead = true;
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
+        if (dead) return;
+
         if (!projectilePrefab) return;
 
         // Spawn

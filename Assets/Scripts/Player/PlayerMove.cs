@@ -11,6 +11,9 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMove : MonoBehaviour
 {
+
+    private Subscription<LevelFailEvent> levelFailSubscription;
+
     public ParticleSystem dust;
     private Rigidbody _rb;
     public float baseMovementSpeed = 1f;
@@ -27,6 +30,7 @@ public class PlayerMove : MonoBehaviour
     private float _angleVelocity;
     public bool _isGrounded = false;
     private bool _isThrowing = false;
+    private bool _isDead = false;
     private bool _firstThrow = false;
     private Camera _mainCamera;
     private bool _isPlayingWalkingSound = false;
@@ -72,11 +76,29 @@ public class PlayerMove : MonoBehaviour
         _sound = GetComponent<AudioSource>();
         time_jump = Time.time;
         _opc = GetComponentInChildren<BoxCollider>();
+        levelFailSubscription = EventBus.Subscribe<LevelFailEvent>(OnDeath);
+    }
+
+    void OnDeath(LevelFailEvent _event) {
+
+        // Return if enemy death
+        if (!_event.wasFall) return;
+
+        _isDead = true;
+
+        GameObject dying = transform.Find("Player Dying").gameObject;
+
+        foreach (Transform child in transform) {
+            child.gameObject.SetActive(false);
+        }
+
+        dying.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_isDead) return;
         // Try and align player's rotation with the angle of the ground. 
         //AlignWithGround();
 

@@ -46,7 +46,6 @@ public class BossTntReactor : MonoBehaviour
         }
         if (health == 0) {
             EventBus.Publish<LevelClearEvent>(new LevelClearEvent());
-            Destroy(gameObject);
         }
     }
 

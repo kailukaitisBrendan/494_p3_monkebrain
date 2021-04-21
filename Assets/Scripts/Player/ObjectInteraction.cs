@@ -11,6 +11,8 @@ using System.Linq;
 
 public class ObjectInteraction : MonoBehaviour
 {
+    private Subscription<LevelFailEvent> levelFailSubscription;
+
     public float pickupDistance;
     //public float pickupFront = 0.5f;
     public float pickupHeight = 0.5f;
@@ -59,6 +61,7 @@ public class ObjectInteraction : MonoBehaviour
     GameObject holoTnt;
 
     private string itemTag;
+    private bool isDead = false;
 
 
     private void Start()
@@ -71,7 +74,13 @@ public class ObjectInteraction : MonoBehaviour
         holoCrate = holoBox.transform.Find("crate").gameObject;
         holoPackage = holoBox.transform.Find("package").gameObject;
         holoTnt = holoBox.transform.Find("tnt").gameObject;
+        levelFailSubscription = EventBus.Subscribe<LevelFailEvent>(OnDeath);
 
+    }
+
+    private void OnDeath(LevelFailEvent _event) {
+        if (!_event.wasFall) return;
+        isDead = true;
     }
 
     private void OnDisable()
@@ -82,6 +91,7 @@ public class ObjectInteraction : MonoBehaviour
 
     private void Update()
     {
+        if (isDead) return;
         //BoxColorChange();
 
         //Add box collider if has dolly
