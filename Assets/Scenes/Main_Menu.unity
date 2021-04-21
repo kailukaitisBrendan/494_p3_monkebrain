@@ -2152,11 +2152,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 927160784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82ce75b955019d240aa5480e9a6b289d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0cd76008c5e27408b5335a120d6707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level_menus: {fileID: 266547535}
-  main_menus: {fileID: 378588894}
+  s: credits
+  s1: credits
 --- !u!114 &927160787
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class PlayGameButton : MonoBehaviour
         if (Time.time < 0.1f) {
             PlayerPrefs.SetInt("PlayedIntro", 0);
             PlayerPrefs.SetFloat("sens", 0.3f);
-            PlayerPrefs.SetFloat("volume", 1.0f);
+            PlayerPrefs.SetFloat("volume", 0.5f);
             PlayerPrefs.SetInt("Mine", 0);
         }
     }
