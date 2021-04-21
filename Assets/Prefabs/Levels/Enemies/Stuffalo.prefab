@@ -648,6 +648,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Dying
       objectReference: {fileID: 0}
+    - target: {fileID: 6682002616670851442, guid: 483bf5918ec514e4597ed19a8accdba8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 483bf5918ec514e4597ed19a8accdba8, type: 3}
 --- !u!4 &6817541485591209482 stripped
