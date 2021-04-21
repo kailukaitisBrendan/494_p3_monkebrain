@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 362fbd0e1621e0841af3fafbad7a3d1e,
+  m_LightingDataAsset: {fileID: 112000000, guid: 5cfadb42bd87c1a4b9d80e2ddb7cda77,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -14705,6 +14705,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poof_sound: {fileID: 0}
+  poof: {fileID: 0}
 --- !u!1001 &870412290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18434,16 +18436,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1889249611845972116, guid: b7220a17290399746bc5f6d7b72c8a1b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1889249611845972117, guid: b7220a17290399746bc5f6d7b72c8a1b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 130476397796894273, guid: ea760b82bd2cf65479ee10e667b38e6f,
         type: 3}
       propertyPath: m_Name
@@ -18518,6 +18510,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889249611845972116, guid: b7220a17290399746bc5f6d7b72c8a1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889249611845972117, guid: b7220a17290399746bc5f6d7b72c8a1b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7220a17290399746bc5f6d7b72c8a1b, type: 3}
@@ -19833,6 +19835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poof_sound: {fileID: 0}
+  poof: {fileID: 0}
 --- !u!43 &1147879119
 Mesh:
   m_ObjectHideFlags: 0
@@ -24133,6 +24137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poof_sound: {fileID: 0}
+  poof: {fileID: 0}
 --- !u!1 &1476154706
 GameObject:
   m_ObjectHideFlags: 0
@@ -37917,6 +37923,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poof_sound: {fileID: 0}
+  poof: {fileID: 0}
 --- !u!4 &2062632305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2999078833871580121, guid: 8d2bf3df84d3a91439c364d666392175,
@@ -39663,6 +39671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poof_sound: {fileID: 0}
+  poof: {fileID: 0}
 --- !u!1001 &2146189586
 PrefabInstance:
   m_ObjectHideFlags: 0

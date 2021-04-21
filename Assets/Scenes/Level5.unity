@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.7286702, g: 0.6720161, b: 0.6412785, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: c4f831022f905e94b96979d0cfccf676,
+  m_LightingDataAsset: {fileID: 112000000, guid: 88be7b94a707ec840aa703943c72b965,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1397,6 +1397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stickemup: {fileID: 0}
+  loseScreen: {fileID: 0}
 --- !u!114 &436717217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,6 +1412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s: Hub
   mailshere: {fileID: 0}
+  winScreen: {fileID: 0}
 --- !u!4 &442616100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2279037599455138538, guid: f0367ac69d4a34726bb9e8164ad1c7e0,
@@ -3284,7 +3286,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &1401948712 stripped
 Transform:
@@ -3575,7 +3577,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 1639999200}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8497152196208681343, guid: 908fb1146e0ee6f4f86639bff20c168a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 908fb1146e0ee6f4f86639bff20c168a, type: 3}
@@ -4192,12 +4194,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 297045840}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &1639999200 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 4561909937411083108, guid: c582eec15cf65f24bac2a1d9c9c02545,
-    type: 3}
-  m_PrefabInstance: {fileID: 1630061940}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1681624784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7204206149586570427, guid: 7844b94417848457a9cf072cbf315977,
@@ -4310,26 +4306,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!1 &1728319449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4561909937871581250, guid: c582eec15cf65f24bac2a1d9c9c02545,
-    type: 3}
-  m_PrefabInstance: {fileID: 1630061940}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1728319453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728319449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca35a5ccd93d0874da1b97e17b81f66f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSensitivity: 1
-  verticalSensitivity: 1
 --- !u!1001 &1759576281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5479,7 +5455,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 1639999200}
+      objectReference: {fileID: 0}
     - target: {fileID: 427497096157770889, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
         type: 3}
       propertyPath: m_Pivot.x
