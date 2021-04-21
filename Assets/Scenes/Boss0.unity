@@ -34983,6 +34983,11 @@ PrefabInstance:
       propertyPath: s
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 427497097596289086, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+        type: 3}
+      propertyPath: s
+      value: HubMine
+      objectReference: {fileID: 0}
     - target: {fileID: 3009851102969768010, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
         type: 3}
       propertyPath: m_RootOrder
