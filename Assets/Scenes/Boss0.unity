@@ -21460,7 +21460,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 922557842, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
       propertyPath: s
-      value: Hub
+      value: EndCredits
       objectReference: {fileID: 0}
     - target: {fileID: 922557842, guid: 3ee4c70173cee4374be2064ed8d55fb9, type: 3}
       propertyPath: winScreen
