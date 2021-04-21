@@ -127,11 +127,96 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7187236598618033908, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27d828afd0ef999469f5a82b9db7ac61, type: 2}
+    - target: {fileID: -3902381218038471373, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 715cdf5166bcd0349b6563673458605b, type: 2}
+    - target: {fileID: -3814722678289240146, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27d828afd0ef999469f5a82b9db7ac61, type: 2}
+    - target: {fileID: -3814722678289240146, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2128434df74da94d9072fbe95760c0d, type: 2}
+    - target: {fileID: -3722405182657794361, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf58cc4c3ab17284399c007505755fc5, type: 2}
+    - target: {fileID: -2435698542862857910, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5745a5185bd2a34888490ab617c564d, type: 2}
+    - target: {fileID: 188058655708357034, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2128434df74da94d9072fbe95760c0d, type: 2}
     - target: {fileID: 919132149155446097, guid: 550b00f07a25a8d479bc05c8b990a2fb,
         type: 3}
       propertyPath: m_Name
       value: Wave Hip Hop Dance
       objectReference: {fileID: 0}
+    - target: {fileID: 973239223809054351, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5745a5185bd2a34888490ab617c564d, type: 2}
+    - target: {fileID: 977425982761743393, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27d828afd0ef999469f5a82b9db7ac61, type: 2}
+    - target: {fileID: 1052917478160427000, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5745a5185bd2a34888490ab617c564d, type: 2}
+    - target: {fileID: 4902572019737557387, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5745a5185bd2a34888490ab617c564d, type: 2}
+    - target: {fileID: 4935772617882616242, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27d828afd0ef999469f5a82b9db7ac61, type: 2}
+    - target: {fileID: 6260552838088577173, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5745a5185bd2a34888490ab617c564d, type: 2}
+    - target: {fileID: 6559769545585348260, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2128434df74da94d9072fbe95760c0d, type: 2}
+    - target: {fileID: 8129263174399075947, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27d828afd0ef999469f5a82b9db7ac61, type: 2}
+    - target: {fileID: 8129263174399075947, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2128434df74da94d9072fbe95760c0d, type: 2}
+    - target: {fileID: 8877388137476603868, guid: 550b00f07a25a8d479bc05c8b990a2fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27d828afd0ef999469f5a82b9db7ac61, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 550b00f07a25a8d479bc05c8b990a2fb, type: 3}
 --- !u!1 &2696162821469838796 stripped
