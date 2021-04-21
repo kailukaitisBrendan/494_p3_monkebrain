@@ -13,6 +13,7 @@ public class PlayGameButton : MonoBehaviour
             PlayerPrefs.SetInt("PlayedIntro", 0);
             PlayerPrefs.SetFloat("sens", 0.3f);
             PlayerPrefs.SetFloat("volume", 1.0f);
+            PlayerPrefs.SetInt("Mine", 0);
         }
     }
     public void OnButtonPress() {
