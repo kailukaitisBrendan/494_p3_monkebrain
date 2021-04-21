@@ -29,6 +29,7 @@ public class playSoundOnEvents : MonoBehaviour
     }
     void OnHitObject(HitObjectEvent e)
     {
+        if (e.hitObject != gameObject) return;
         //if hit enemy
         if (e.hitObject.layer == 13)
         {
