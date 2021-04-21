@@ -112,31 +112,15 @@ public class CameraFol : MonoBehaviour
         old_hits = hits;
         // END RAYCAST TRANSPARENCY FUNCTION
 
-        
+        // keep within circle of player
         radius = baseRadius;
-
-        
-        t -= Input.GetAxis("Mouse X") * sensitivity.x * Time.deltaTime;
+        // calculate player.transform.position x y and z
         Vector3 playerXZ = Vector3.zero;
-        playerXZ.x += player.transform.position.x;
-        playerXZ.z += player.transform.position.z;
-        Vector3 playerY = Vector3.zero;
-        playerY.y += player.transform.position.y;
-        if (y_axis_position <= max_y && y_axis_position >= min_y) {
-            y_axis_position += Input.GetAxis("Mouse Y") * sensitivity.y * Time.deltaTime;
-        }
-        if(y_axis_position > max_y)
-        {
-            y_axis_position = max_y;
-        }
-        if(y_axis_position < min_y)
-        {
-            y_axis_position = 0;
-        }
-        Vector3 xz_position = new Vector3(Mathf.Cos(t), 0.0f, Mathf.Sin(t)) * radius + playerXZ;
-        Vector3 y_position = new Vector3(0.0f, y_axis_position, 0.0f) + playerY;
-        Vector3 newPos = xz_position + y_position;
-        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * lerpSpeed);
+        playerXZ.x += player.transform.position.x + Mathf.Cos(t) * radius;
+        playerXZ.y += player.transform.position.y + y_axis_position;
+        playerXZ.z += player.transform.position.z + Mathf.Sin(t) * radius;
+        // lerp to position
+        transform.position = Vector3.Lerp(transform.position, playerXZ, Time.deltaTime * lerpSpeed);
     }
 
     private void LateUpdate()
