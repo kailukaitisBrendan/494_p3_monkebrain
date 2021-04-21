@@ -5560,7 +5560,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wagon
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 167837618669570874, guid: cb29f600ac4de4e49bf20a1925040ff9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 167837618669570873, guid: cb29f600ac4de4e49bf20a1925040ff9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cb29f600ac4de4e49bf20a1925040ff9, type: 3}
 --- !u!4 &1314240029 stripped
 Transform:
