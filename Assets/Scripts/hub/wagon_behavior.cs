@@ -20,6 +20,7 @@ public class wagon_behavior : MonoBehaviour
         //If instance already exists and it's not this:
         else if (instance != this) {
             if (SceneManager.GetActiveScene().name == "HubMine" && PlayerPrefs.GetInt("Mine") != 1) {
+                PlayerPrefs.SetInt("Mine",1);
                 Destroy(instance);
             } else {
                 instance.gameObject.SetActive(true);

@@ -24,12 +24,16 @@ public class CameraFol : MonoBehaviour
         if (instance == null) {
             //if not, set instance to this
             instance = this;
+            // teleport to above wagon
+            transform.position = new Vector3(player.transform.position.x + 4f,player.transform.position.y + 11f,player.transform.position.z);
         }
         //If instance already exists and it's not this:
         else if (instance != this) {
+            // teleport to above wagon
+            instance.gameObject.transform.position = new Vector3(instance.player.transform.position.x + 4f,instance.player.transform.position.y + 11f,instance.player.transform.position.z);
             if (SceneManager.GetActiveScene().name == "HubMine" && PlayerPrefs.GetInt("Mine") != 1) {
-                Destroy(instance);
                 PlayerPrefs.SetInt("Mine",1);
+                Destroy(instance);
             } else {
                 instance.gameObject.SetActive(true);
                 Destroy(gameObject);
@@ -123,9 +127,7 @@ public class CameraFol : MonoBehaviour
         playerXZ.z += player.transform.position.z;
                 Vector3 playerY = Vector3.zero;
         playerY.y += player.transform.position.y;
-                        if (y_axis_position <= max_y && y_axis_position >= min_y)
-        {
-            
+        if (y_axis_position <= max_y && y_axis_position >= min_y) {
             y_axis_position += Input.GetAxis("Mouse Y") * sensitivity.y * Time.deltaTime;
         }
         if(y_axis_position > max_y)
@@ -139,8 +141,7 @@ public class CameraFol : MonoBehaviour
         Vector3 xz_position = new Vector3(Mathf.Cos(t), 0.0f, Mathf.Sin(t)) * radius + playerXZ;
         Vector3 y_position = new Vector3(0.0f, y_axis_position, 0.0f) + playerY;
         Vector3 newPos = xz_position + y_position;
-                        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * lerpSpeed);
-
+        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * lerpSpeed);
     }
 
     private void LateUpdate()
@@ -152,7 +153,7 @@ public class CameraFol : MonoBehaviour
 
     private bool CheckWall()
     {
-            Vector3 checker = transform.position;
+        Vector3 checker = transform.position;
         checker.y = player.transform.position.y;
         float dist = 4f;
         //Debug.DrawRay(player.transform.position, checker - player.transform.position, Color.yellow);
