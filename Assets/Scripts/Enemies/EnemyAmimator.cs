@@ -49,8 +49,6 @@ public class EnemyAmimator : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (incomingEnemyId != _enemyID) return;
-        
         if (!isWalking && !isDistracted && !isDazed && !drawingGun)
         {
 
@@ -79,6 +77,7 @@ public class EnemyAmimator : MonoBehaviour
             dazed.SetActive(false);
             stickemup.SetActive(false);
             idle.SetActive(false);
+            Debug.Log("distracted");
         }
 
         if (isDazed)
@@ -88,6 +87,7 @@ public class EnemyAmimator : MonoBehaviour
             dazed.SetActive(true);
             stickemup.SetActive(false);
             idle.SetActive(false);
+            Debug.Log("DAZED");
         }
 
         if (drawingGun)

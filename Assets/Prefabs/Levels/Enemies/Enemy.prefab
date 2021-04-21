@@ -1060,7 +1060,6 @@ GameObject:
   - component: {fileID: 8398375989089109125}
   - component: {fileID: 8398375989089109123}
   - component: {fileID: 8398375989089109122}
-  - component: {fileID: 8398375989089109121}
   - component: {fileID: 8398375989089109120}
   - component: {fileID: 8398375989089109119}
   - component: {fileID: 3703694373792037137}
@@ -1184,21 +1183,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8398375989089109121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8398375989089109118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93f9989adf6d43979c9babaa21b9906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  agent: {fileID: 0}
-  pathfinding_refresh_interval_sec: 0
 --- !u!114 &8398375989089109120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,7 +1226,7 @@ MonoBehaviour:
   pathPoints:
   - {fileID: 0}
   - {fileID: 0}
-  chaseSpeed: 7
+  chaseSpeed: 7.5
   isIdle: 0
   distanceEpsilon: 1
   dazeTime: 7
