@@ -19,4 +19,11 @@ public class LockLevels : MonoBehaviour
                 child.SetActive(false);
         }
     }
+
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Alpha0)) {
+            PlayerPrefs.SetInt("levelLock",11);
+        }
+    }
 }

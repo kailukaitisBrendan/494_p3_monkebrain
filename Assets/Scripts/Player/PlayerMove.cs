@@ -150,7 +150,7 @@ public class PlayerMove : MonoBehaviour
             AlignWithGround();
         }
         // JUMPING
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded) {
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && !_isThrowing) {
             time_jump = Time.time;
             velocity.y = 0.11f;
             _isGrounded = false;
@@ -193,7 +193,7 @@ public class PlayerMove : MonoBehaviour
             // jump mechanic
             if (Time.time - time_jump < jumpAppliedTime && velocity.y == 0.11f)
                 velocity.y += 0.5f * jumpPower * Time.deltaTime * Time.deltaTime;
-            if (groundcheckradius == 0.1f && Time.time - time_jump > jumpAppliedTime)
+            if (groundcheckradius == 0.1f && Time.time - time_jump > jumpAppliedTime * 3f)
                 groundcheckradius = 0.5f;
             _isPlayingWalkingSound = false;
             // lerp to zero rotation
