@@ -112,20 +112,15 @@ public class CameraFol : MonoBehaviour
         old_hits = hits;
         // END RAYCAST TRANSPARENCY FUNCTION
 
-        if (CheckWall())
-        {
-            radius = wallBuffer * Vector3.Distance(camhit.point, player.transform.position);
-            //Debug.Log("True");
-        }
-        else
-        {
-            radius = baseRadius;
-        }
-                t -= Input.GetAxis("Mouse X") * sensitivity.x * Time.deltaTime;
-                Vector3 playerXZ = Vector3.zero;
+        
+        radius = baseRadius;
+
+        
+        t -= Input.GetAxis("Mouse X") * sensitivity.x * Time.deltaTime;
+        Vector3 playerXZ = Vector3.zero;
         playerXZ.x += player.transform.position.x;
         playerXZ.z += player.transform.position.z;
-                Vector3 playerY = Vector3.zero;
+        Vector3 playerY = Vector3.zero;
         playerY.y += player.transform.position.y;
         if (y_axis_position <= max_y && y_axis_position >= min_y) {
             y_axis_position += Input.GetAxis("Mouse Y") * sensitivity.y * Time.deltaTime;
@@ -151,18 +146,17 @@ public class CameraFol : MonoBehaviour
     }
 
 
-    private bool CheckWall()
-    {
-        Vector3 checker = transform.position;
-        checker.y = player.transform.position.y;
-        float dist = 4f;
-        //Debug.DrawRay(player.transform.position, checker - player.transform.position, Color.yellow);
-        
-        if(Physics.Raycast(player.transform.position, checker - player.transform.position, out camhit, dist, ~mask)){
-            
-            return true;
-        }
-        //Debug.Log(false);
-        return false;
-        } 
+    //private bool CheckWall()
+    //{
+    //    Vector3 checker = transform.position;
+    //    checker.y = player.transform.position.y;
+    //    float dist = 4f;
+    //    //Debug.DrawRay(player.transform.position, checker - player.transform.position, Color.yellow);
+    //    
+    //    if(Physics.Raycast(player.transform.position, checker - player.transform.position, out camhit, dist, ~mask)){
+    //        
+    //        return true;
+    //    }
+    //    return false;
+    //    } 
 }
