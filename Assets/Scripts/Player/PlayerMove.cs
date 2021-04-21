@@ -108,6 +108,9 @@ public class PlayerMove : MonoBehaviour
         if (Time.time - time_jump > 0.1f) {
             bool temp = _isGrounded;
             _isGrounded = IsGrounded();
+            if (temp && !_isGrounded) {
+                velocity.y = 0f;
+            }
             if (_isGrounded && ! temp) {
                 CreateDust();
             }
@@ -152,6 +155,7 @@ public class PlayerMove : MonoBehaviour
             velocity.y = 0.11f;
             _isGrounded = false;
             _jumped = true;
+            groundcheckradius = 0.1f;
         }
         // THROWING
         if (_isThrowing) {
@@ -171,6 +175,7 @@ public class PlayerMove : MonoBehaviour
         }
         if (_jumped && _isGrounded)
         {
+            groundcheckradius = 0.5f;
             //_sound.clip = hitGround;
             _sound.loop = false;
             _sound.PlayOneShot(hitGround, 1.5f);

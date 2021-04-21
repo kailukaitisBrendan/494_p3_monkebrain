@@ -639,7 +639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dust: {fileID: 4226500854560732406}
-  baseMovementSpeed: 0.75
+  baseMovementSpeed: 0.8
   rotationSpeed: 6
   groundMask:
     serializedVersion: 2
