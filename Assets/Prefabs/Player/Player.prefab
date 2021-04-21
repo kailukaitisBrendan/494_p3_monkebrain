@@ -643,7 +643,7 @@ MonoBehaviour:
   rotationSpeed: 6
   groundMask:
     serializedVersion: 2
-    m_Bits: 5633
+    m_Bits: 136705
   groundCheck: {fileID: 8218031657446126718}
   groundDistance: 0.1
   hitGround: {fileID: 8300000, guid: b75b07dc9f0726f4a843104ec1bda508, type: 3}
