@@ -175,7 +175,6 @@ public class PlayerMove : MonoBehaviour
         }
         if (_jumped && _isGrounded)
         {
-            groundcheckradius = 0.5f;
             //_sound.clip = hitGround;
             _sound.loop = false;
             _sound.PlayOneShot(hitGround, 1.5f);
@@ -194,6 +193,8 @@ public class PlayerMove : MonoBehaviour
             // jump mechanic
             if (Time.time - time_jump < jumpAppliedTime && velocity.y == 0.11f)
                 velocity.y += 0.5f * jumpPower * Time.deltaTime * Time.deltaTime;
+            if (groundcheckradius == 0.1f && Time.time - time_jump > jumpAppliedTime)
+                groundcheckradius = 0.5f;
             _isPlayingWalkingSound = false;
             // lerp to zero rotation
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, targetAngle, 0), Time.deltaTime * rotationSpeed);
