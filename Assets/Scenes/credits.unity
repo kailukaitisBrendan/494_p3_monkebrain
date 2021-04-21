@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b3d750f42261441b3a1712b28a09c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 40
 --- !u!1 &1045061963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,7 +2833,7 @@ MonoBehaviour:
     type: 3}
   y_coord: -0.56
   x_radius: 35
-  z_radius: 30
+  z_radius: 40
 --- !u!114 &1086997587
 MonoBehaviour:
   m_ObjectHideFlags: 0
