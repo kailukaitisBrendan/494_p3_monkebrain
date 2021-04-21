@@ -262,6 +262,11 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.434
       objectReference: {fileID: 0}
+    - target: {fileID: 2092781121838800990, guid: 518da76f516b7fa4598a500bbd46aa34,
+        type: 3}
+      propertyPath: m_OrthographicSize
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3420032518718215895, guid: 518da76f516b7fa4598a500bbd46aa34,
         type: 3}
       propertyPath: m_Layer
@@ -276,6 +281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3995411960569579582, guid: 518da76f516b7fa4598a500bbd46aa34,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.088
       objectReference: {fileID: 0}
     - target: {fileID: 5321102094047497900, guid: 518da76f516b7fa4598a500bbd46aa34,
         type: 3}
