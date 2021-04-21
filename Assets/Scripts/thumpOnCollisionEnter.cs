@@ -15,6 +15,7 @@ public class thumpOnCollisionEnter : MonoBehaviour
 
     void _OnHitObject(HitObjectEvent e) {
         if (e.justRespawned) return;
+        if (e.sourceObject != gameObject) return;
         thump.Play();
         dust.Play();
     }
