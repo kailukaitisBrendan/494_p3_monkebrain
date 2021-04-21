@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.32464993, g: 0.5952215, b: 0.93287325, a: 1}
+  m_IndirectSpecularColor: {r: 0.31870368, g: 0.60546017, b: 0.94854647, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2810,6 +2810,7 @@ GameObject:
   - component: {fileID: 1086997594}
   - component: {fileID: 1086997596}
   - component: {fileID: 1086997595}
+  - component: {fileID: 1086997597}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3082,6 +3083,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1086997597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086997585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e32eff3bcc95ae4289ccf1e68a5fcba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipSceneEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1086997595}
+        m_MethodName: OnButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1109813869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6807812908110139585, guid: 1de255f69be00bb40b0a11c43404bb72,
