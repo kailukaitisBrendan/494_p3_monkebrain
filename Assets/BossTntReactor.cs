@@ -46,6 +46,7 @@ public class BossTntReactor : MonoBehaviour
         }
         if (health == 0) {
             EventBus.Publish<LevelClearEvent>(new LevelClearEvent());
+            Globals.gameComplete = true;
         }
     }
 
