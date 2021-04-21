@@ -144,6 +144,9 @@ public class ThrowPeriodically : MonoBehaviour
     {
         if (projectileInstance) return;
         GameObject item = projectileInstance = Instantiate(projectilePrefab, transform);
+        if (item.GetComponent<Respawnable>()) {
+            item.GetComponent<Respawnable>().enabled = false;
+        }
 
         item.transform.localPosition = new Vector3(2, 2, 0); 
 

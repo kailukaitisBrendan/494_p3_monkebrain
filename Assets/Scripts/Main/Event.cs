@@ -84,11 +84,13 @@ public class HitObjectEvent
 {
     public GameObject sourceObject;
     public GameObject hitObject;
+    public bool justRespawned;
 
-    public HitObjectEvent(GameObject _sourceObject, GameObject _hitObject)
+    public HitObjectEvent(GameObject _sourceObject, GameObject _hitObject, bool _justRespawned = false)
     {
         sourceObject = _sourceObject;
         hitObject = _hitObject;
+        justRespawned = _justRespawned;
     }
 }
 

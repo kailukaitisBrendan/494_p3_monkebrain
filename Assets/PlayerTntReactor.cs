@@ -16,6 +16,7 @@ public class PlayerTntReactor : MonoBehaviour
 
     void _OnHitObject(HitObjectEvent e) {
         if (e.sourceObject.tag != "TNT") return;
+        if (e.justRespawned) return;
 
         Vector3 displacement = e.sourceObject.transform.position - transform.position;
 

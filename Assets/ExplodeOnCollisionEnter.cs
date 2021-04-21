@@ -17,7 +17,9 @@ public class ExplodeOnCollisionEnter : MonoBehaviour
     void _OnHitObject(HitObjectEvent e) {
         if (e.sourceObject != gameObject) return;
         if (hasBeenPlaced) return;
-        
+
+        if (e.justRespawned) return;
+
         // Hide mesh
         mesh.SetActive(false);
 

@@ -8486,18 +8486,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 428792445}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &484734691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484734689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!208 &484734692
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -9195,18 +9183,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1557111650}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &560242323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560242322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!208 &560242324
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -21138,18 +21114,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 847456378}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1108812323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1108812322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!208 &1108812324
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -21172,18 +21136,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 590886656}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1120435548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120435547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!208 &1120435549
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -35594,18 +35546,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2137453293}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1838044304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1838044303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640ac02b833dd4ddd813097f9a773df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!208 &1838044305
 NavMeshObstacle:
   m_ObjectHideFlags: 0
