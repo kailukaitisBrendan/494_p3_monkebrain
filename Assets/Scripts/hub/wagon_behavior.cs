@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class wagon_behavior : MonoBehaviour
 {
     public ParticleSystem dust;
@@ -19,8 +19,12 @@ public class wagon_behavior : MonoBehaviour
         }
         //If instance already exists and it's not this:
         else if (instance != this) {
-            instance.gameObject.SetActive(true);
-            Destroy(gameObject);
+            if (SceneManager.GetActiveScene().name == "HubMine" && PlayerPrefs.GetInt("Mine") != 1) {
+                Destroy(instance);
+            } else {
+                instance.gameObject.SetActive(true);
+                Destroy(gameObject);
+            }
         }
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
@@ -64,8 +68,6 @@ public class wagon_behavior : MonoBehaviour
 
     void Rotate(Vector3 force)
     {
-
-
         if (!Input.GetKey(KeyCode.Space) && force.y == 0)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(force), 0.1f);
@@ -99,7 +101,6 @@ public class wagon_behavior : MonoBehaviour
         else
         {
             rb.velocity = new Vector3(0f, 0f, 0f);
-
         }
     }
 

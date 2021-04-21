@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CameraFol : MonoBehaviour
 {
     public GameObject player;
@@ -27,8 +27,13 @@ public class CameraFol : MonoBehaviour
         }
         //If instance already exists and it's not this:
         else if (instance != this) {
-            instance.gameObject.SetActive(true);
-            Destroy(gameObject);
+            if (SceneManager.GetActiveScene().name == "HubMine" && PlayerPrefs.GetInt("Mine") != 1) {
+                Destroy(instance);
+                PlayerPrefs.SetInt("Mine",1);
+            } else {
+                instance.gameObject.SetActive(true);
+                Destroy(gameObject);
+            }
         }
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);

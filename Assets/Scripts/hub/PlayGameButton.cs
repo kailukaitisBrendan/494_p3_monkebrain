@@ -16,6 +16,11 @@ public class PlayGameButton : MonoBehaviour
         }
     }
     public void OnButtonPress() {
+        if (PlayerPrefs.GetInt("Mine") != 1) {
+            s1 = "Hub";
+        } else {
+            s1 = "HubMine";
+        }
         Debug.Log("Transition!");
         Time.timeScale = 1f;
         if (s1 == "Main_Menu" || s1 == "Intro" || s1 == "Hub") {
