@@ -17,14 +17,16 @@ Old man: Blake Hussey
 Postman: John Fleury
 Bandit:  Allen Chan
 
-No Copyright Music:
-Chris Haugen - Tumbleweed Texas
-Chris Haugen - Way Out West
-Kevin MacLeod - Corncob
-ZitronSound - Lonely Cowboy
-Brett Van Donsel - Big Western Sky
-Brandon Fiechter - Tumbleweed Town
+Sound Artist:
+	Andreya Ware
 
+CC Music:
+"Uptown" - Mohr and Elena
+"Roundup on the Prairie - Aaron Kenney
+"Tumbleweed Texas" - Chris Haugen
+"Way Out West" - Chris Haugen
+"The Gunfight" - Everet Almond
+"Lonely Cowboy" - ZitronSound
 
 Unity Asset Store:
 	Low Poly Water - Ebru Dogan
