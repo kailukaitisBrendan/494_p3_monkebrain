@@ -3555,19 +3555,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Developers:\r\n    \tJuliet Carpenter\r\n     \tBrendan Kailukaitis\r\n    
-    \tHogan Mastanduno\r\n\tJack Thiesen\r\n\tBennet Tierney\r\n\r\nVoice Actors:\r\n\tOld
-    man: Blake Hussey\r\n\tPostman: John Fleury\r\n\tBandit: Allen Chan\r\n\r\nSpecial
-    Thanks To:\r\n\tAndreya Ware\r\n\r\nMusic:\r\n\t\"Tumbleweed Texas\" - Chris
-    Haugen\r\n\t\"Way Out West\" - Chris Haugen\r\n\t\"Corncob\" - Kevin Macleod\r\n\t\"Lonely
-    Cowboy\" - ZitronSound\r\n\t\"Big Western Sky\" - Brett Van Donsel\r\n\t\"Tumbleweed
-    Town\" - Brandon Fiechter\r\n\t\"Roundup on the Prairie\" - Aaron Kenny\n\r\nFeaturing
-    Art and Assets From:\r\n\r\nfreesound.org\r\n\tsave2thelight - boot foley\r\n\tstubb
+    \tHogan Mastanduno\r\n\t\tJack Thiesen\r\n\t\tBennet Tierney\r\n\t\r\n\r\nVoice
+    Actors:\r\n\tOld man: Blake Hussey\r\n\tPostman: John Fleury\r\n\tBandit: Allen
+    Chan\r\n\r\nSpecial Thanks To:\r\n\tAndreya Ware\r\n\r\nMusic:\r\n\t\"Tumbleweed
+    Texas\" - Chris Haugen\r\n\t\"Way Out West\" - Chris Haugen\r\n\t\"Corncob\"
+    - Kevin Macleod\r\n\t\"Lonely Cowboy\" - ZitronSound\r\n\t\"Big Western Sky\"
+    - Brett Van Donsel\r\n\t\"Tumbleweed Town\" - Brandon Fiechter\r\n\t\"Uptown\"
+    - Mohr and Elena\r\n\t\"The Gunfight\" - Everet Almond\r\n\r\nFeaturing Art and
+    Assets From:\r\n\r\nfreesound.org\r\n\tsave2thelight - boot foley\r\n\tstubb
     - thump1\r\n\tcosmicember - body-fall-5\r\n\tJustInvoke - Air Burst\r\n\tLampEight
     Shed Door 1\r\n\tdeleted_user_3330286 -- deathfalling\r\n\tdodrio - pop\r\n\tSamsterBirdies
-    - Thump 2\r\n\t\r\nclipartmax.com\r\n\t Cardboard Box Clipart Cardboard Closed
-    Box Clip Art - Closed Cardboard Box Png\r\n\r\n\r\nUnity Asset Store:\r\n\tLow
-    Poly Water - Ebru Dogan\r\n\tFlexible Cel Shader - Zachary Petersen\r\n\tFRE
-    Skybox Extended Shader - Boxophobic"
+    - Thump 2\r\n\tBertsz - Squish impact\r\n\t\r\nclipartmax.com\r\n\t Cardboard
+    Box Clipart Cardboard Closed Box Clip Art - Closed Cardboard Box Png\r\n\r\n\r\nUnity
+    Asset Store:\r\n\tLow Poly Water - Ebru Dogan\r\n\tFlexible Cel Shader - Zachary
+    Petersen\r\n\tFRE Skybox Extended Shader - Boxophobic"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d9c01f313d0f748509736fc6b16546db, type: 2}
   m_sharedMaterial: {fileID: -682895644312204564, guid: d9c01f313d0f748509736fc6b16546db,
