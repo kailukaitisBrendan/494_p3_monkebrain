@@ -38,7 +38,9 @@ public class MainMenuSound : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Intro" && a.volume > 0.07f) {
             a.volume -= Time.deltaTime * 0.08f;
         }
-        if (SceneManager.GetActiveScene().name == "Hub") {
+        if (SceneManager.GetActiveScene().name == "Hub" 
+            || SceneManager.GetActiveScene().name == "HubMine"
+            || SceneManager.GetActiveScene().name == "credits") {
             Destroy(this.gameObject);
         }
     }
