@@ -29,6 +29,9 @@ public class MusicalWorlds : MonoBehaviour
     }
     void Update()
     {
+        if (wagon == null) {
+            wagon = GameObject.FindGameObjectsWithTag("Wagon")[0];
+        }
         if (wagon.transform.position.x >= 75f) {
             d.SetActive(false);
             a.SetActive(true);

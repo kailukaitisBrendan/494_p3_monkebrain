@@ -10801,7 +10801,7 @@ PrefabInstance:
     - target: {fileID: 623114143651608952, guid: 8d2bf3df84d3a91439c364d666392175,
         type: 3}
       propertyPath: m_Pitch
-      value: 0
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 623114143651608952, guid: 8d2bf3df84d3a91439c364d666392175,
         type: 3}

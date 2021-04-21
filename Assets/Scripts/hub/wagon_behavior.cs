@@ -10,7 +10,7 @@ public class wagon_behavior : MonoBehaviour
     public Camera cam;
     public float movementSpeed = 6f;
     public static wagon_behavior instance = null;  
-    void Start()
+    void Awake()
     {
         //Check if instance already exists
         if (instance == null) {
@@ -19,9 +19,12 @@ public class wagon_behavior : MonoBehaviour
         }
         //If instance already exists and it's not this:
         else if (instance != this) {
-            if (SceneManager.GetActiveScene().name == "HubMine" && PlayerPrefs.GetInt("Mine") != 1) {
+            if (SceneManager.GetActiveScene().name == "HubMine"
+                    && instance.transform.position.x < -20f
+                    && instance.transform.position.x > -50f) {
                 PlayerPrefs.SetInt("Mine",1);
-                Destroy(instance);
+                Destroy(instance.gameObject);
+                instance = this;
             } else {
                 instance.gameObject.SetActive(true);
                 Destroy(gameObject);
