@@ -22324,51 +22324,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1600516940}
     m_Modifications:
-    - target: {fileID: 8398375989089109119, guid: 0353ac26689944e2e9889a47baba65a9,
-        type: 3}
-      propertyPath: pathPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 1932965609}
-    - target: {fileID: 8398375989089109119, guid: 0353ac26689944e2e9889a47baba65a9,
-        type: 3}
-      propertyPath: pathPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 1518958524}
-    - target: {fileID: 8398375989089109119, guid: 0353ac26689944e2e9889a47baba65a9,
-        type: 3}
-      propertyPath: pathPoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 839329660}
-    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 11.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.87484616
-      objectReference: {fileID: 0}
-    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
     - target: {fileID: 2667571733637062198, guid: ffdf5d254d8f8f64abeb20410755e6e7,
         type: 3}
       propertyPath: m_RootOrder
@@ -22423,6 +22378,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cactus2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398375989089109119, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: pathPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1932965609}
+    - target: {fileID: 8398375989089109119, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: pathPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1518958524}
+    - target: {fileID: 8398375989089109119, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: pathPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 839329660}
+    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.87484616
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398375989089109127, guid: 0353ac26689944e2e9889a47baba65a9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffdf5d254d8f8f64abeb20410755e6e7, type: 3}
@@ -29914,6 +29914,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 427497097561575680, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
+        type: 3}
+      propertyPath: s
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 3009851102969768010, guid: ed87e1b48493baa4cb7fbdfd82fd6686,
         type: 3}

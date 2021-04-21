@@ -8930,7 +8930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b56cfdcd30d84040afee31f57fc962e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s: Boss0
+  s: Boss_scene
 --- !u!1 &1374685192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3531449537251997505, guid: c7d790d9dfc959647a7d426aacfa0bc4,
@@ -14878,7 +14878,7 @@ Transform:
   - {fileID: 546964156}
   - {fileID: 969139620}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2073557140 stripped
 Transform:
