@@ -16,11 +16,16 @@ public class BossTntReactor : MonoBehaviour
     private float max_offset_max_x;
     private float offset_min_x;
 
+    AudioSource sound;
+    public AudioClip hitObjectSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
         hitObjectSubscription = EventBus.Subscribe<HitObjectEvent>(_OnHitObject);
         max_health = health;
+        sound = GetComponent<AudioSource>();
     }
 
     void _OnHitObject(HitObjectEvent e) {
@@ -41,6 +46,9 @@ public class BossTntReactor : MonoBehaviour
         }
 
         --health;
+        sound.clip = hitObjectSound;
+        sound.Play();
+
         if (UI) {
             UI.fillAmount = (float)(health) / (float)(max_health);
         }
