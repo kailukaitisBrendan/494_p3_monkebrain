@@ -78,7 +78,7 @@ Material:
     - _GradYCap: 0
     - _HighIntensity: 4.89
     - _LightScalar: 0.85
-    - _LowIntensity: 3.25
+    - _LowIntensity: 3.2
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -98,6 +98,6 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
     - _HighColor: {r: 1, g: 0.9249019, b: 0.495283, a: 1}
-    - _LowColor: {r: 0.06038627, g: 0.13528697, b: 0.5566038, a: 1}
+    - _LowColor: {r: 0.56910825, g: 0.6067561, b: 0.8207547, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}

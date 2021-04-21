@@ -18,6 +18,8 @@ public class BossTntReactor : MonoBehaviour
 
     AudioSource sound;
     public AudioClip hitObjectSound;
+    public AudioClip squish;
+    public ParticleSystem hitAnimation;
 
 
     // Start is called before the first frame update
@@ -48,6 +50,9 @@ public class BossTntReactor : MonoBehaviour
         --health;
         sound.clip = hitObjectSound;
         sound.Play();
+        sound.clip = squish;
+        sound.Play();
+        hitAnimation.Play();
 
         if (UI) {
             UI.fillAmount = (float)(health) / (float)(max_health);
