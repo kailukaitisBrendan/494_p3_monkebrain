@@ -193,7 +193,7 @@ public class PlayerMove : MonoBehaviour
             // jump mechanic
             if (Time.time - time_jump < jumpAppliedTime && velocity.y == 0.11f)
                 velocity.y += 0.5f * jumpPower * Time.deltaTime * Time.deltaTime;
-            if (groundcheckradius == 0.1f && Time.time - time_jump > jumpAppliedTime * 8f)
+            if (groundcheckradius == 0.1f && Time.time - time_jump > jumpAppliedTime * 6f)
                 groundcheckradius = 0.5f;
             _isPlayingWalkingSound = false;
             // lerp to zero rotation
