@@ -59,6 +59,8 @@ public class PlayerMove : MonoBehaviour
 
     private BoxCollider _opc;
 
+    public GameObject skin;
+
     private void Awake()
     {
         // Lock the cursor to the game window
@@ -147,6 +149,7 @@ public class PlayerMove : MonoBehaviour
         if (_isGrounded) {
             if (transform.rotation.eulerAngles.x < 1f && transform.rotation.eulerAngles.z < 1f)
                 velocity = Vector3.zero;
+            
             AlignWithGround();
         }
         // JUMPING

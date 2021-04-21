@@ -45,6 +45,14 @@ public class EnemyMovementController : MonoBehaviour
 
     #endregion
 
+    #region Sound
+
+    AudioSource sound;
+    public AudioClip playerSpotted;
+    public AudioClip hitObjectSound;
+
+    #endregion
+
 
     public TextMeshPro emoteText;
 
@@ -58,6 +66,8 @@ public class EnemyMovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sound = GetComponent<AudioSource>();
+
         PublishAnim();
         _playerSpottedSubscription = EventBus.Subscribe<PlayerSpottedEvent>(OnPlayerSpotted);
         _hitObjectSubscription = EventBus.Subscribe<HitObjectEvent>(OnHitObject);
@@ -199,6 +209,9 @@ public class EnemyMovementController : MonoBehaviour
             _isDistracted = false;
             _atBox = false;
             PublishAnim();
+
+            sound.clip = playerSpotted;
+            sound.Play();
         }
         else
         {
@@ -229,6 +242,9 @@ public class EnemyMovementController : MonoBehaviour
             _isDistracted = false;
             emoteText.text = "*";
             PublishAnim();
+
+            sound.clip = hitObjectSound;
+            sound.Play();
             //Debug.Log("Hit Enemy!");
         }
         else if (packageInRange)
@@ -243,6 +259,9 @@ public class EnemyMovementController : MonoBehaviour
             _isDazed = false;
             emoteText.text = "?";
             PublishAnim();
+
+            sound.clip = playerSpotted;
+            sound.Play();
 
             // Set current target to be the object.
             _currentTarget = e.sourceObject;
