@@ -25,10 +25,31 @@ public class load_level_OnEnter : MonoBehaviour
             c.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
-        
-        SceneTransitioner st = FindObjectOfType<SceneTransitioner>();
-        if (st) st.LoadScene(s);
-        else SceneManager.LoadScene(s);
+            // this isn't very elegant but it works
+            if (s == "World0-0") {
+                PlayerPrefs.SetInt("levelLock",1);
+            } else if (s == "World0-1") {
+                PlayerPrefs.SetInt("levelLock",2);
+            } else if (s == "New1-0") {
+                PlayerPrefs.SetInt("levelLock",3);
+            } else if (s == "New1-1") {
+                PlayerPrefs.SetInt("levelLock",4);
+            } else if (s == "New1-2") {
+                PlayerPrefs.SetInt("levelLock",5);
+            } else if (s == "New1-3") {
+                PlayerPrefs.SetInt("levelLock",6);
+            } else if (s == "HubMine") {
+                PlayerPrefs.SetInt("levelLock",7);
+            } else if (s == "World2-0") {
+                PlayerPrefs.SetInt("levelLock",8);
+            } else if (s == "World2-1") {
+                PlayerPrefs.SetInt("levelLock",9);
+            } else if (s == "Boss_scene") {
+                PlayerPrefs.SetInt("levelLock",10);
+            }
+            SceneTransitioner st = FindObjectOfType<SceneTransitioner>();
+            if (st) st.LoadScene(s);
+            else SceneManager.LoadScene(s);
         }
     }
 }

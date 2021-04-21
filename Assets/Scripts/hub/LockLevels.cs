@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class LockLevels : MonoBehaviour
 {
-    // Start is called before the first frame update
+    int num_levels = 0;
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (PlayerPrefs.GetInt("levelLock") > 0) {
+            num_levels = PlayerPrefs.GetInt("levelLock");
+        }
+        // disable appropriate number of kids
+        // number of active kids should be levelLock + 2
+        // this code is from stack overflow
+        for(int i = num_levels + 2; i< gameObject.transform.childCount; i++) {
+            var child = gameObject.transform.GetChild(i).gameObject;
+            if(child != null)
+                child.SetActive(false);
+        }
     }
 }
