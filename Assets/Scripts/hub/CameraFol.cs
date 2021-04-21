@@ -19,7 +19,7 @@ public class CameraFol : MonoBehaviour
     public float lerpSpeed = 2f;
 
     public static CameraFol instance = null;  
-    void Start() {
+    void Awake() {
         //Check if instance already exists
         if (instance == null) {
             //if not, set instance to this
@@ -30,11 +30,15 @@ public class CameraFol : MonoBehaviour
         //If instance already exists and it's not this:
         else if (instance != this) {
             // teleport to above wagon
-            instance.gameObject.transform.position = new Vector3(instance.player.transform.position.x + 4f,instance.player.transform.position.y + 11f,instance.player.transform.position.z);
-            if (SceneManager.GetActiveScene().name == "HubMine" && PlayerPrefs.GetInt("Mine") != 1) {
+            if (SceneManager.GetActiveScene().name == "HubMine" 
+                    && instance.player.transform.position.x < -20f
+                    && instance.player.transform.position.x > -50f) {
                 PlayerPrefs.SetInt("Mine",1);
-                Destroy(instance);
+                transform.position = new Vector3(player.transform.position.x + 4f,player.transform.position.y + 11f,player.transform.position.z);
+                Destroy(instance.gameObject);
+                instance = this;
             } else {
+                instance.gameObject.transform.position = new Vector3(instance.player.transform.position.x + 4f,instance.player.transform.position.y + 11f,instance.player.transform.position.z);
                 instance.gameObject.SetActive(true);
                 Destroy(gameObject);
             }
