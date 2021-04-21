@@ -688,6 +688,7 @@ MonoBehaviour:
   gravity: -50
   jumpPower: 100
   jumpAppliedTime: 0.2
+  skin: {fileID: 3410208715590991324}
 --- !u!114 &4243323038616572056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,7 +846,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7102166d418f822479da2880ed7d3c12,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7102166d418f822479da2880ed7d3c12,
         type: 3}
@@ -1277,7 +1278,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7102166d418f822479da2880ed7d3c12,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7102166d418f822479da2880ed7d3c12,
         type: 3}
